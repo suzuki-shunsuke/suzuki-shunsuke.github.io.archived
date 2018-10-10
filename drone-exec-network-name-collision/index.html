@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				drone exec を並列実行した際のdocker network name の衝突について &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-09-30 18:52:34 &#43;0900 &#43;0900">September 30, 2018</time>
+		</div>
+
+		<h1 class="post-title">drone exec を並列実行した際のdocker network name の衝突について</h1>
+		<div class="post-line"></div>
+
+		<p>drone exec を並列実行すると docker network name が衝突することがあります。</p>
+
+<pre><code>$ drone exec --local &amp; drone exec --local
+[1] 42934
+2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name)
+2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name.
+[1]  + exit 1     drone exec --local
+</code></pre>
+
+<p>drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</p>
+
+<ul>
+<li><a href="https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/pipeline.go#L58">https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/pipeline.go#L58</a></li>
+<li><a href="https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/pipeline.go#L62">https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/pipeline.go#L62</a></li>
+<li><a href="https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/backend/docker/docker.go#L50">https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/backend/docker/docker.go#L50</a></li>
+<li><a href="https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/backend/docker/docker.go#L179">https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/backend/docker/docker.go#L179</a></li>
+</ul>
+
+<p>削除するので、並列で実行しない限り基本的に衝突したりすることはありません。</p>
+
+<p>なお、 docker の仕様では同じ名前の network を作成できるようです。</p>
+
+<ul>
+<li><a href="https://github.com/moby/moby/issues/20648">https://github.com/moby/moby/issues/20648</a></li>
+<li><a href="https://github.com/moby/moby/issues/18864">https://github.com/moby/moby/issues/18864</a></li>
+</ul>
+
+<p><code>drone exec</code> は <code>{prefix}_default</code> というネットワークを作成します。</p>
+
+<p><a href="https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/frontend/yaml/compiler/compiler.go#L85">https://github.com/cncd/pipeline/blob/b03959913369b4e2a6c49be514f52d076ef6b172/pipeline/frontend/yaml/compiler/compiler.go#L85</a></p>
+
+<p><code>{prefix}</code> はデフォルトで <code>drone</code> ですが、コマンドライン引数で指定できます。</p>
+
+<p><a href="https://github.com/drone/drone-cli/blob/800d6949bd96847b4d5c400e261b18386ea2226f/drone/exec/exec.go#L62">https://github.com/drone/drone-cli/blob/800d6949bd96847b4d5c400e261b18386ea2226f/drone/exec/exec.go#L62</a></p>
+
+<p>このprefixを変えれば衝突は回避できます。
+bash, zshなら次のように乱数を指定すれば良いと思います。</p>
+
+<pre><code>$ drone exec --local --prefix drone_${RANDOM}
+</code></pre>
+
+<p>なお、 <code>drone exec --help</code> の中に <code>--prefix</code> オプションはありませんが、これは明示的にhelpから消しているからです。</p>
+
+<p><a href="https://github.com/drone/drone-cli/blob/eca37514c1c3a441dbb0618531b91e05f56067e8/drone/exec/exec.go#L65">https://github.com/drone/drone-cli/blob/eca37514c1c3a441dbb0618531b91e05f56067e8/drone/exec/exec.go#L65</a></p>
+
+<p>なぜ消しているかは分かりません。</p>
+
+<p>なお、 drone の build では prefix に プロセスIDと乱数を使うことで衝突を避けているようです。</p>
+
+<p><a href="https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/hook.go#L552">https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/hook.go#L552</a></p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/go-gencfg/" class="left arrow">&#8592;</a>
+		<a href="/drone-circle-volume-difference/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.745949847 &#43;0000 UTC m=&#43;0.037541784">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

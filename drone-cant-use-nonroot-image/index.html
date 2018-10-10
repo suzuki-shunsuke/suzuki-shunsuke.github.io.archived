@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				drone で非rootユーザーで実行されるImageを使えない &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-09-30 21:42:16 &#43;0900 &#43;0900">September 30, 2018</time>
+		</div>
+
+		<h1 class="post-title">drone で非rootユーザーで実行されるImageを使えない</h1>
+		<div class="post-line"></div>
+
+		<p>drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。</p>
+
+<pre><code>/bin/sh: 3: cannot create /root/.netrc: Permission denied
+</code></pre>
+
+<p>これについては drone の開発者が回答しています。</p>
+
+<ul>
+<li><a href="https://discourse.drone.io/t/solved-netrc-permission-denied/171/2">https://discourse.drone.io/t/solved-netrc-permission-denied/171/2</a></li>
+<li><a href="https://discourse.drone.io/t/solved-netrc-permission-denied/171/4">https://discourse.drone.io/t/solved-netrc-permission-denied/171/4</a></li>
+</ul>
+
+<p>結論を言うと、
+他のイメージを使うか、
+rootで実行されるようにイメージを修正する必要がありそうです。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/drone-tag-conditional-step/" class="left arrow">&#8592;</a>
+		<a href="/use-portainer-for-drone-admin/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.745051673 &#43;0000 UTC m=&#43;0.036643608">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

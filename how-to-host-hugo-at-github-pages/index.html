@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Hugo製ブログをGitHub PagesへCIでデプロイ &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-10-01 08:04:16 &#43;0900 &#43;0900">October 1, 2018</time>
+		</div>
+
+		<h1 class="post-title">Hugo製ブログをGitHub PagesへCIでデプロイ</h1>
+		<div class="post-line"></div>
+
+		
+
+<p><a href="https://gohugo.io/">https://gohugo.io/</a> と <a href="https://pages.github.com/">https://pages.github.com/</a> の話です。
+master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。</p>
+
+<h2 id="前提">前提</h2>
+
+<ul>
+<li>テーマは master branch に含めない(CIでcloneする)</li>
+<li>buildしたものは gh-pages ブランチにデプロイ</li>
+</ul>
+
+<h2 id="コード">コード</h2>
+
+<p>.circleci/config.yml</p>
+
+<pre><code class="language-yaml">---
+version: 2
+jobs:
+  build:
+    docker:
+    - image: suzukishunsuke/hugo-ci:0.1.2
+    steps:
+    - checkout
+    - run: git config user.name &quot;***&quot;
+    - run: git config user.email &quot;***@example.com&quot;
+    # --depth 1 で高速化
+    - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale
+    - run: hugo
+    - run: sh release.sh
+workflows:
+  version: 2
+  build:
+    jobs:
+    - build:
+        filters:
+          branches:
+            only: master
+</code></pre>
+
+<p>release.sh</p>
+
+<pre><code class="language-sh">git checkout gh-pages
+mv .git .circleci public
+cd public
+
+# 生成物に差分があったときのみデプロイ
+git status --porcelain
+if [ -n &quot;`git status --porcelain`&quot; ]; then
+  git add .
+  git commit -m &quot;update&quot;
+  git push origin gh-pages
+fi
+</code></pre>
+
+<p>hugo をインストールした Docker Image を用意しておきます。</p>
+
+<p><a href="https://hub.docker.com/r/suzukishunsuke/hugo-ci/">https://hub.docker.com/r/suzukishunsuke/hugo-ci/</a></p>
+
+<p>ビルドしたものを gh-pages ブランチにデプロイする方法を工夫していて、
+<code>.git</code> を <code>public</code> ディレクトリに移動しています。</p>
+
+<pre><code class="language-sh">git checkout gh-pages
+mv .git .circleci public
+cd public
+</code></pre>
+
+<p>あと、ビルドされたものに差分があったときのみデプロイするようにしています。</p>
+
+<pre><code class="language-sh">if [ -n &quot;`git status --porcelain`&quot; ]; then
+</code></pre>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/migrate-from-travis-ci-to-circle-ci/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.744657736 &#43;0000 UTC m=&#43;0.036249674">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

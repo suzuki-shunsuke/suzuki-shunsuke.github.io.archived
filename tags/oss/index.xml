@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oss on melody</title>
+    <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
+    <description>Recent content in Oss on melody</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Thu, 06 Sep 2018 23:59:35 +0900</lastBuildDate>
+    
+	<atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ</title>
+      <link>https://suzuki-shunsuke.github.io/go-gencfg/</link>
+      <pubDate>Thu, 06 Sep 2018 23:59:35 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/go-gencfg/</guid>
+      <description>自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。
+使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。
+https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				metabase を使って drone の利用状況を可視化する &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-09-30 22:55:57 &#43;0900 &#43;0900">September 30, 2018</time>
+		</div>
+
+		<h1 class="post-title">metabase を使って drone の利用状況を可視化する</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>drone OSS 0.8.5 で検証しています。</p>
+
+<p><a href="https://drone.io/">https://drone.io/</a> と <a href="https://www.metabase.com/">https://www.metabase.com/</a> の話です。</p>
+
+<p>drone の利用状況を可視化したかったので、
+drone の DB(MySQL) のデータを metabase で可視化しました。</p>
+
+<h2 id="どんなグラフを作ったのか">どんなグラフを作ったのか</h2>
+
+<p>いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。</p>
+
+<ul>
+<li>ユーザー数</li>
+<li>有効化されたリポジトリ数</li>
+<li>buildの多いリポジトリ</li>
+<li>buildをよく実行しているユーザー</li>
+<li>ビルド時間の分布</li>
+<li>build event の割合(push, tag, pull request, deployment)</li>
+<li>リポジトリのsecretsの数の分布</li>
+</ul>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/use-portainer-for-drone-admin/" class="left arrow">&#8592;</a>
+		<a href="/migrate-from-travis-ci-to-circle-ci/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.744760445 &#43;0000 UTC m=&#43;0.036352382">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

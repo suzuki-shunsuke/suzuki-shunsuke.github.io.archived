@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on melody</title>
+    <link>https://suzuki-shunsuke.github.io/tags/</link>
+    <description>Recent content in Tags on melody</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Mon, 01 Oct 2018 07:23:15 +0900</lastBuildDate>
+    
+	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Circleci</title>
+      <link>https://suzuki-shunsuke.github.io/tags/circleci/</link>
+      <pubDate>Mon, 01 Oct 2018 07:23:15 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/circleci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Drone</title>
+      <link>https://suzuki-shunsuke.github.io/tags/drone/</link>
+      <pubDate>Sun, 30 Sep 2018 22:55:57 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/drone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://suzuki-shunsuke.github.io/tags/hugo/</link>
+      <pubDate>Mon, 01 Oct 2018 08:04:16 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Metabase</title>
+      <link>https://suzuki-shunsuke.github.io/tags/metabase/</link>
+      <pubDate>Sun, 30 Sep 2018 22:55:57 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/metabase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oss</title>
+      <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
+      <pubDate>Thu, 06 Sep 2018 23:59:35 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/oss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Portainer</title>
+      <link>https://suzuki-shunsuke.github.io/tags/portainer/</link>
+      <pubDate>Sun, 30 Sep 2018 21:56:42 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/portainer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Travisci</title>
+      <link>https://suzuki-shunsuke.github.io/tags/travisci/</link>
+      <pubDate>Mon, 01 Oct 2018 07:23:15 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/travisci/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

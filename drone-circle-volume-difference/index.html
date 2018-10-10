@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Drone と Circle CI の workspace の扱いの違いについて &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-09-30 19:27:59 &#43;0900 &#43;0900">September 30, 2018</time>
+		</div>
+
+		<h1 class="post-title">Drone と Circle CI の workspace の扱いの違いについて</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。</p>
+
+<p><a href="http://docs.drone.io/workspace/">http://docs.drone.io/workspace/</a></p>
+
+<p>circle ci はデフォルトで job 間で workspace を共有しません。
+persist_to_workspace を指定することで共有する事ができます。</p>
+
+<p><a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs</a></p>
+
+<p>circle ci の場合は volume を共有するのではなく、指定したディレクトリを archive し、次の job で展開することでファイルを共有するようです。</p>
+
+<p>この違いには一長一短があります。</p>
+
+<p>circle ci の場合は archive, unarchive する分、volume 共有に比べて時間がかかります。</p>
+
+<p>そのため、下手に job を分けるより一つの job で処理したほうが処理時間が短くなる場合がありますが、
+build や test といった処理は出来れば別の job として実行したいでしょうし、それでは workflow が使えません。</p>
+
+<p>ただし、共有するパスは自由に選べるので必要最小限に抑えることで時間を短縮できます。</p>
+
+<p>また、circle ci の場合は archive するパス及び展開先のパスを自由に選べるので自由度が高いです。
+drone の場合、 workspace 以外のファイルを共有できません。</p>
+
+<p>また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、
+circle ci の場合、別のノードでの実行が可能です。
+drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。</p>
+
+<h2 id="結局どっちのほうがいいのか">結局どっちのほうがいいのか</h2>
+
+<p>一長一短があると言ったとおり、一概にどっちが良いとは言えませんが、個人的には drone のやり方のほうが直感的だし、
+何より速いので好きです。同じ pipeline の処理を複数のノードに分散させたいことって個人的にはあまりありません。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/drone-exec-network-name-collision/" class="left arrow">&#8592;</a>
+		<a href="/drone-git-authentication/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.745954886 &#43;0000 UTC m=&#43;0.037546835">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

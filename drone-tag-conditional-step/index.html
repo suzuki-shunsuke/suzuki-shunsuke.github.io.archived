@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				drone の step を実行するか否かをタグ名で判定する方法 &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-09-30 21:30:06 &#43;0900 &#43;0900">September 30, 2018</time>
+		</div>
+
+		<h1 class="post-title">drone の step を実行するか否かをタグ名で判定する方法</h1>
+		<div class="post-line"></div>
+
+		<p>drone 0.8.5 で検証しています。</p>
+
+<p>tag 名による判定方法はドキュメントには書いてないので書いておきます。</p>
+
+<pre><code>when:
+  ref: refs/tags/foo-*  # タグ名が foo-* ならステップを実行
+</code></pre>
+
+<p>グロブ <code>*</code> には <code>/</code> は含まれないことには注意してください。</p>
+
+<p>上記の例だと、 tag <code>foo/bar/0.1.0</code> はマッチしません。
+これは Go の <a href="https://golang.org/pkg/path/filepath/#Match">filepath.Match</a> を使っているからです。</p>
+
+<ul>
+<li><a href="https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70">https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70</a></li>
+<li><a href="https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80">https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80</a></li>
+</ul>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/drone-project-visibility/" class="left arrow">&#8592;</a>
+		<a href="/drone-cant-use-nonroot-image/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.745336093 &#43;0000 UTC m=&#43;0.036928110">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

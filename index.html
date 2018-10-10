@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+	<meta name="generator" content="Hugo 0.48" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta name="description" content="">
+	
+		<title>
+				melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="https://suzuki-shunsuke.github.io/index.xml" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="catalogue">
+		
+			<a href="https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/" class="catalogue-item">
+				<div>
+					<time datetime="2018-10-01 08:04:16 &#43;0900 &#43;0900" class="catalogue-time">October 1, 2018</time>
+					<h1 class="catalogue-title">Hugo製ブログをGitHub PagesへCIでデプロイ</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。
+前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml
+--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &quot;***&quot; - run: git config user.email &quot;***@example.com&quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/" class="catalogue-item">
+				<div>
+					<time datetime="2018-10-01 07:23:15 &#43;0900 &#43;0900" class="catalogue-time">October 1, 2018</time>
+					<h1 class="catalogue-title">travis ci から circle ci への移行のすすめ</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						travis ci と circle ci の無償SaaS 版を比較しています。
+OSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。
+Circle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。
+自分の場合 Golang のツールの CI用に Docker Image を用意しています。
+https://hub.docker.com/r/suzukishunsuke/go-ci/
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 22:55:57 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">metabase を使って drone の利用状況を可視化する</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						 drone OSS 0.8.5 で検証しています。
+https://drone.io/ と https://www.metabase.com/ の話です。
+drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
+どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。
+ ユーザー数 有効化されたリポジトリ数 buildの多いリポジトリ buildをよく実行しているユーザー ビルド時間の分布 build event の割合(push, tag, pull request, deployment) リポジトリのsecretsの数の分布  
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/use-portainer-for-drone-admin/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 21:56:42 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone の管理のために portainer を導入した</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone OSS 0.8.5 で検証しています。
+https://drone.io/ と https://portainer.io/ の話です。
+drone はかなり安定したシステムだと思いますが、 ユーザーが好きなイメージで好きなコマンドを実行できる以上、トラブルが起こることはあります。
+その結果、 特定の build がタイムアウトにならずに延々と実行され続けるなんてことがあります。
+その場合、
+ どのノードのどのコンテナでトラブルが起きているのか そのコンテナで何が起こっているのか  というのを知りたいのですが、 drone にはそういった管理機能はありません。
+そこで 複数のサーバで実行されている Docker コンテナを管理できるツールはないかと探したところ、 portainer が良さそうだったので導入しました。
+portainer を使うと複数のサーバのコンテナを一覧で見ることが出来、 コンテナを操作(削除、停止、再起動etc)出来ます。 コンテナのログや簡単なメトリックス(CPU, memory, network usage) が見れます。 コンテナだけでなく、network や volume, image といったリソースも管理できます。
+portainer の導入 公式ドキュメントに書いてありますが、 swarm cluster を構築してそこにデプロイすればよいです。
+ https://docs.docker.com/engine/swarm/swarm-tutorial/ https://portainer.readthedocs.io/en/stable/deployment.html#inside-a-swarm-cluster  困っていること 毎回検索で絞り込みしないといけない 検索で絞り込んだ後に特定のコンテナの詳細画面飛んだ後一覧に戻ると 検索がクリアされているのでもう一度検索しないといけないのが面倒です。
+もう少し高度な検索がしたい 自由入力の検索ボックスが1つあるだけで、特にクエリが書けるわけでもなさそうなので、 もう少し高度な検索がしたいです。 例えば Created At で 1時間以上前に特定のノードで作られたコンテナの一覧とか。
+docker API でエラーが出て、コンテナを操作できない これは多分不具合とかではなく自分の設定が良くないのだと思います。 この辺の issue が関係してそうですが、まだ解消できていません。
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/drone-cant-use-nonroot-image/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 21:42:16 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone で非rootユーザーで実行されるImageを使えない</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。
+/bin/sh: 3: cannot create /root/.netrc: Permission denied  これについては drone の開発者が回答しています。
+ https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/drone-tag-conditional-step/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 21:30:06 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone の step を実行するか否かをタグ名で判定する方法</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone 0.8.5 で検証しています。
+tag 名による判定方法はドキュメントには書いてないので書いておきます。
+when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グロブ * には / は含まれないことには注意してください。
+上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。
+ https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/drone-project-visibility/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 20:32:20 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone の project visibility とは</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						恐らく公式ドキュメントに説明がない気がするので書いておきます。 と言っても、以下のissueに全部書いてありますが。
+https://github.com/drone/drone/issues/2042
+droneの web ui からリポジトリごとに設定できます。 そのリポジトリが誰に見えるかの設定です。
+ public: ログインしていなくても誰でも見れる(publicリポジトリのデフォルト) private: リポジトリにアクセスできる人しか見れない(privateリポジトリのデフォルト) internal: ログインしていれば誰でも見れる  
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/drone-matrix-build-run-only-27/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 20:26:11 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone の matrix build が27個しか実行されない</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone 0.8.5 で検証しています。
+matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。
+ https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。
+limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = append(axisList, axis) if p &gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/drone-build-timeout/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 20:16:28 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone の build の timeout が変更できない</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone 0.8.5 で検証しています。
+drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
+ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
+PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
+ https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  
+					</p>
+	
+				</div>
+			</a>
+		
+			<a href="https://suzuki-shunsuke.github.io/drone-git-authentication/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 19:44:27 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">Drone の build 実行時の認証方法</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。 この際に何かしらの方法で認証しているはずです。
+結論を言うと、
+あるリポジトリAのbuildでは、 リポジトリAの drone連携を有効化したユーザー Bの access token を .netrc に書き込んで認証しています。 よってユーザーBにcloneする権限があるリポジトリはcloneできるし、 ユーザーBにcloneする権限がないリポジトリはcloneできません。 つまり、 誰が連携を有効化するかが重要 になります(これについては後述します)。 なお、drone連携の有効化はそのリポジトリのowner以上でないと出来ません。
+drone上でリポジトリの連携を有効化すると、 リポジトリのHookが作成されます。 リポジトリの settings &gt; Hooks から確認できます。 この Hook の Payload URL を見ると access_token クエリがあると思います。 JWTのようですね。これはリポジトリの連携を有効化したユーザーのtokenです。
+このtokenが GitHub から drone への webhook のパラメータとして送られてくるので、 drone 側で認証し、認証したユーザーのGitHub のaccess token を取得し、 build 時にコンテナの /root/.netrc に書き込むようです。
+.netrcに書き込まれているのは試しに個人の private repository で .
+					</p>
+	
+				</div>
+			</a>
+		
+	</div>
+	
+	<div class="pagination">
+		
+		
+			<a href="/page/2/" class="right arrow">&#8594;</a>
+		
+	
+		<span>1</span>
+	</div>
+</main>
+
+		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.748481892 &#43;0000 UTC m=&#43;0.040073830">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

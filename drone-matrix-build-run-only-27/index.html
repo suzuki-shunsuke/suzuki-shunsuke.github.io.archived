@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				drone の matrix build が27個しか実行されない &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-09-30 20:26:11 &#43;0900 &#43;0900">September 30, 2018</time>
+		</div>
+
+		<h1 class="post-title">drone の matrix build が27個しか実行されない</h1>
+		<div class="post-line"></div>
+
+		<p>drone 0.8.5 で検証しています。</p>
+
+<pre><code class="language-yaml">matrix:
+  ZOO:
+  - 1
+  - 2
+  - 3
+  - 4
+  FOO:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  BAR:
+  - 1
+  - 2
+</code></pre>
+
+<p>上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、
+27個しか実行されないようにハードコードされていました。</p>
+
+<ul>
+<li><a href="https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11">https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11</a></li>
+<li><a href="https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93">https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93</a></li>
+</ul>
+
+<p>関係ある部分だけ抽出すると以下のような感じになります。</p>
+
+<pre><code class="language-go">limitAxis = 25
+
+axisList := []Axis{}
+for p := 0; p &lt; perm; p++ {
+	axisList = append(axisList, axis)
+	if p &gt; limitAxis {
+		break
+	}
+}
+</code></pre>
+
+<p>制限をかけるのは仕方ないですが、
+エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので
+ユーザーとしては混乱しますね。
+build の結果の画面の上の方に warning があると嬉しいです。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/drone-build-timeout/" class="left arrow">&#8592;</a>
+		<a href="/drone-project-visibility/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.745425704 &#43;0000 UTC m=&#43;0.037017646">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

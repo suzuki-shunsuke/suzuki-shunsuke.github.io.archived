@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				travis ci から circle ci への移行のすすめ &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-10-01 07:23:15 &#43;0900 &#43;0900">October 1, 2018</time>
+		</div>
+
+		<h1 class="post-title">travis ci から circle ci への移行のすすめ</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>travis ci と circle ci の無償SaaS 版を比較しています。</p>
+
+<p>OSS の CI では travis ci がよく使われる印象がありますが、
+場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。
+ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、
+travis でやったほうが速いかもしれません。</p>
+
+<h2 id="circle-ci-の良いところ">Circle CI の良いところ</h2>
+
+<ul>
+<li>好きな Docker Image が使える</li>
+<li>ローカルでテストが出来る</li>
+<li>Pending 時間が travis ci に比べて短い気がする(主観)</li>
+<li>private repository の CI も出来る</li>
+</ul>
+
+<p>好きな Docker Image が使えるのが大きいですね。
+予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、
+ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。
+同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。</p>
+
+<p>自分の場合 Golang のツールの CI用に Docker Image を用意しています。</p>
+
+<p><a href="https://hub.docker.com/r/suzukishunsuke/go-ci/">https://hub.docker.com/r/suzukishunsuke/go-ci/</a></p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/visualize-drone-usage-by-metabase/" class="left arrow">&#8592;</a>
+		<a href="/how-to-host-hugo-at-github-pages/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-10-10 12:02:19.744740001 &#43;0000 UTC m=&#43;0.036331960">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>
