@@ -42,6 +42,24 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/drone-git-authentication/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 19:44:27 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">Drone の build 実行時の認証方法</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。 この際に何かしらの方法で認証しているはずです。
+結論を言うと、
+あるリポジトリAのbuildでは、 リポジトリAの drone連携を有効化したユーザー Bの access token を .netrc に書き込んで認証しています。 よってユーザーBにcloneする権限があるリポジトリはcloneできるし、 ユーザーBにcloneする権限がないリポジトリはcloneできません。 つまり、 誰が連携を有効化するかが重要 になります(これについては後述します)。 なお、drone連携の有効化はそのリポジトリのowner以上でないと出来ません。
+drone上でリポジトリの連携を有効化すると、 リポジトリのHookが作成されます。 リポジトリの settings &gt; Hooks から確認できます。 この Hook の Payload URL を見ると access_token クエリがあると思います。 JWTのようですね。これはリポジトリの連携を有効化したユーザーのtokenです。
+このtokenが GitHub から drone への webhook のパラメータとして送られてくるので、 drone 側で認証し、認証したユーザーのGitHub のaccess token を取得し、 build 時にコンテナの /root/.netrc に書き込むようです。
+.netrcに書き込まれているのは試しに個人の private repository で .
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/drone-circle-volume-difference/" class="catalogue-item">
 				<div>
 					<time datetime="2018-09-30 19:27:59 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
@@ -121,7 +139,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-10-10 12:09:28.786239676 &#43;0000 UTC m=&#43;0.053379954">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-10-10 12:26:32.013970653 &#43;0000 UTC m=&#43;0.041614065">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
