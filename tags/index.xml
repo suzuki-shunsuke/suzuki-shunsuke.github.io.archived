@@ -6,10 +6,19 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Mon, 01 Oct 2018 07:23:15 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 12 Oct 2018 21:02:51 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ansible</title>
+      <link>https://suzuki-shunsuke.github.io/tags/ansible/</link>
+      <pubDate>Fri, 12 Oct 2018 21:02:51 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/ansible/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Circleci</title>
