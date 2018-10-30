@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Oss on melody</title>
-    <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
-    <description>Recent content in Oss on melody</description>
+    <title>Golang on melody</title>
+    <link>https://suzuki-shunsuke.github.io/tags/golang/</link>
+    <description>Recent content in Golang on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <lastBuildDate>Tue, 30 Oct 2018 08:35:16 +0900</lastBuildDate>
     
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suzuki-shunsuke.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -27,17 +27,6 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
 なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
 自分が欲しかったのは魔法のようなAPIではなく、シンプルなAPIです。 interfaceのメソッドを実装した関数を構造体のフィールドに渡し、構造体のメソッドでそのフィールドを呼び出すことで、 簡単にメソッドの実装を切り替えたいのです。
 mock.Impl.Getwd = func() (string, error) { return &amp;quot;/tmp&amp;quot;, nil } mock.</description>
-    </item>
-    
-    <item>
-      <title>go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ</title>
-      <link>https://suzuki-shunsuke.github.io/go-gencfg/</link>
-      <pubDate>Thu, 06 Sep 2018 23:59:35 +0900</pubDate>
-      
-      <guid>https://suzuki-shunsuke.github.io/go-gencfg/</guid>
-      <description>自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。
-使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。
-https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</description>
     </item>
     
   </channel>

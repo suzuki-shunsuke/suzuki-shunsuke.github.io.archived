@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/gomic/</loc>
+    <lastmod>2018-10-30T08:35:16+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/test-ansible-on-docker/</loc>
     <lastmod>2018-10-12T21:02:51+09:00</lastmod>
   </url>
@@ -105,6 +110,12 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/golang/</loc>
+    <lastmod>2018-10-30T08:35:16+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/tags/hugo/</loc>
     <lastmod>2018-10-10T21:14:03+09:00</lastmod>
     <priority>0</priority>
@@ -118,7 +129,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
-    <lastmod>2018-09-06T23:59:35+09:00</lastmod>
+    <lastmod>2018-10-30T08:35:16+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -142,7 +153,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2018-10-12T21:02:51+09:00</lastmod>
+    <lastmod>2018-10-30T08:35:16+09:00</lastmod>
     <priority>0</priority>
   </url>
   
