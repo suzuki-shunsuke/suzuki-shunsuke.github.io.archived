@@ -70,13 +70,7 @@
 <li>自動生成できるコードは自動生成すべき</li>
 </ul></li>
 <li>設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易</li>
-<li>生成されるモックはシンプルなAPIのみ提供するので学習コストが低い
-
-<ul>
-<li>interfaceのメソッドを実装した関数を構造体のフィールドに渡すパターン</li>
-<li>gomockが提供する便利APIは不採用</li>
-<li>EXPECT, RETURNT パターン(?) も不採用</li>
-</ul></li>
+<li>生成されるモックはシンプルなAPIのみ提供するので学習コストが低い</li>
 </ul>
 
 <h2 id="gomic-とは">gomic とは</h2>
@@ -104,7 +98,7 @@
 <p>上述のように既に同様のツールはありますし、 gomock と minimock は試しました。
 しかしあまり満足のいくものではなかったため、自分で作ることにしました。</p>
 
-<p>自分が欲しかったのは魔法のようなAPIではなく、シンプルなAPIです。
+<p>自分が欲しかったのは学習コストの低いシンプルなAPIです。
 interfaceのメソッドを実装した関数を構造体のフィールドに渡し、構造体のメソッドでそのフィールドを呼び出すことで、
 簡単にメソッドの実装を切り替えたいのです。</p>
 
@@ -161,7 +155,7 @@ golintのようなlinterでエラーにならないようにコードコメン�
 <h2 id="モックの使い方">モックの使い方</h2>
 
 <p>生成されたモックの使い方について軽く説明します。
-<a href="https://github.com/suzuki-shunsuke/gomic/releases/tag/v0.2.1-1">v0.2.1-1</a> 時点のものなので古くなっているかもしれません。
+<a href="https://github.com/suzuki-shunsuke/gomic/releases/tag/v0.4.0">v0.4.0</a> 時点のものなので古くなっているかもしれません。
 最新の使い方は</p>
 
 <ul>
@@ -171,7 +165,7 @@ golintのようなlinterでエラーにならないようにコードコメン�
 
 <p>をご確認ください。</p>
 
-<p>以下のサンプルは <a href="https://github.com/suzuki-shunsuke/gomic/tree/v0.2.1-1/examples">v0.2.1-1のサンプル</a> を元にしています。</p>
+<p>以下のサンプルは <a href="https://github.com/suzuki-shunsuke/gomic/tree/v0.4.0/examples">v0.4.0のサンプル</a> を元にしています。</p>
 
 <p>まず mock を生成します(以下このモックを生成する関数を&rdquo;コンストラクタ&rdquo;と呼びます)。</p>
 
@@ -192,6 +186,11 @@ golintのようなlinterでエラーにならないようにコードコメン�
 
 <p><code>mock.Getwd</code> を呼び出すと <code>mock.Impl.Getwd</code> が呼び出されます。</p>
 
+<p>上記のサンプルのように決まった値を返すだけの fake はよくあるので、以下のように簡単に書けるようにしています。</p>
+
+<pre><code class="language-go">mock.SetFakeGetwd(&quot;/tmp&quot;, fmt.Errorf(&quot;&quot;))
+</code></pre>
+
 <p>実装がセットされていない状態でモックのメソッドを呼び出すと
 <code>mock.CallbackNotImplemented</code> が呼び出されます(コンストラクタの第二引数が <code>mock.CallbackNotImplemented</code> にセットされています)。
 モックの生成後に<code>mock.CallbackNotImplemented</code> を直接変更しても大丈夫です。</p>
@@ -208,7 +207,7 @@ gomic.DefaultCallbackNotImplemented は コンストラクタの第一引数が 
 
 <p>上で説明したことは</p>
 
-<p><a href="https://github.com/suzuki-shunsuke/gomic/blob/v0.2.1-1/examples/os_mock.go#L31-L56">https://github.com/suzuki-shunsuke/gomic/blob/v0.2.1-1/examples/os_mock.go#L31-L56</a></p>
+<p><a href="https://github.com/suzuki-shunsuke/gomic/blob/v0.4.0/examples/os_mock.go#L30-L63">https://github.com/suzuki-shunsuke/gomic/blob/v0.4.0/examples/os_mock.go#L30-L63</a></p>
 
 <p>を見てもらえばわかると思います。</p>
 
@@ -223,7 +222,7 @@ gomic.DefaultCallbackNotImplemented は コンストラクタの第一引数が 
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-10-31 13:18:41.371649174 &#43;0000 UTC m=&#43;0.043307401">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-11-06 23:20:30.64951349 &#43;0000 UTC m=&#43;0.075264463">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on melody</title>
-    <link>https://suzuki-shunsuke.github.io/tags/golang/</link>
-    <description>Recent content in Golang on melody</description>
+    <title>Gomic on melody</title>
+    <link>https://suzuki-shunsuke.github.io/tags/gomic/</link>
+    <description>Recent content in Gomic on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <lastBuildDate>Tue, 30 Oct 2018 08:35:16 +0900</lastBuildDate>
     
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://suzuki-shunsuke.github.io/tags/gomic/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
