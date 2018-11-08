@@ -193,6 +193,15 @@ golintのようなlinterでエラーにならないようにコードコメン�
 <pre><code class="language-go">mock.SetReturnGetwd(&quot;/tmp&quot;, fmt.Errorf(&quot;&quot;))
 </code></pre>
 
+<p>モックの <code>SetFuncXXX</code> 及び <code>SetReturnXXX</code> はモック自身を返すのでメソッドチェーンが出来るようになっています。</p>
+
+<pre><code class="language-go">mock := examples.NewOSMock(nil, nil).
+  SetReturnMkdir(nil).
+	SetFuncGetwd(func() (string, error) {
+		return &quot;/tmp&quot;, fmt.Errorf(&quot;&quot;)
+	})
+</code></pre>
+
 <p>実装がセットされていない状態でモックのメソッドを呼び出すと
 コンストラクタの第二引数で渡した関数が呼び出されます。</p>
 
@@ -223,7 +232,7 @@ gomic.DefaultCallbackNotImplemented は コンストラクタの第一引数が 
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-11-08 15:25:26.34348348 &#43;0000 UTC m=&#43;0.041106536">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-11-08 15:32:54.424004843 &#43;0000 UTC m=&#43;0.038972414">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
