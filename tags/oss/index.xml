@@ -45,8 +45,8 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
 同様のツールは幾つかあります。
  https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
 なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
-自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数を構造体のフィールドに渡し、構造体のメソッドでそのフィールドを呼び出すことで、 簡単にメソッドの実装を切り替えたいのです。
-mock.Impl.Getwd = func() (string, error) { return &amp;quot;/tmp&amp;quot;, nil } mock.Getwd() // &amp;quot;/tmp&amp;quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</description>
+自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
+// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &amp;quot;/tmp&amp;quot;, nil }) mock.Getwd() // &amp;quot;/tmp&amp;quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</description>
     </item>
     
     <item>
