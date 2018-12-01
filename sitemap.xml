@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/graylog-terraform/</loc>
+    <lastmod>2018-12-01T14:56:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/graylog/</loc>
     <lastmod>2018-11-27T16:40:33+09:00</lastmod>
   </url>
@@ -133,7 +138,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/graylog/</loc>
-    <lastmod>2018-11-27T16:40:33+09:00</lastmod>
+    <lastmod>2018-12-01T14:56:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -151,7 +156,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
-    <lastmod>2018-11-27T16:40:33+09:00</lastmod>
+    <lastmod>2018-12-01T14:56:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -168,6 +173,12 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/terraform/</loc>
+    <lastmod>2018-12-01T14:56:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/tags/travisci/</loc>
     <lastmod>2018-10-01T07:23:15+09:00</lastmod>
     <priority>0</priority>
@@ -175,7 +186,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2018-11-27T16:40:33+09:00</lastmod>
+    <lastmod>2018-12-01T14:56:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   

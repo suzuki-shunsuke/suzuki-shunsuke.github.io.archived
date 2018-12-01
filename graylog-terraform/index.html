@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				GraylogをTerraformで管理する &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-12-01 14:56:00 &#43;0900 &#43;0900">December 1, 2018</time>
+		</div>
+
+		<h1 class="post-title">GraylogをTerraformで管理する</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。
+<a href="https://www.graylog.org/">Graylog</a>とは何かは<a href="/graylog/">こちら</a>を読んでください。</p>
+
+<p>Graylogには様々なリソースがあります。</p>
+
+<ul>
+<li>User</li>
+<li>Role</li>
+<li>Input</li>
+<li>Index Set</li>
+<li>Stream</li>
+<li>Stream Rule</li>
+<li>Dashboard</li>
+<li>Alert</li>
+<li>etc</li>
+</ul>
+
+<p>これらのリソースはWeb UIから作成したり出来るわけですが、
+Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。
+また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。</p>
+
+<p>APIを使って管理できるツールを探したものの見つからなかったので、
+APIを使ってGraylog用のterraform providerを自作しています。</p>
+
+<p><a href="https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform">https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform</a></p>
+
+<p>GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。</p>
+
+<ul>
+<li>Input</li>
+<li>User</li>
+<li>Role</li>
+<li>Index Set</li>
+<li>Stream</li>
+<li>Ldap Setting</li>
+</ul>
+
+<p>Role はサポートしているので権限管理は問題なく出来ます。
+Stream Rule と Dashboard もサポートしたいです。</p>
+
+<p>出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。</p>
+
+<h2 id="terraform-を使った管理方法">terraform を使った管理方法</h2>
+
+<p>以下では自分の管理方法を紹介します。</p>
+
+<p><a href="https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform">https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform</a></p>
+
+<p>にサンプルが置いてあります。</p>
+
+<p>基本はプロジェクトごとに</p>
+
+<ol>
+<li>Index Set, Stream, Role といったリソースを作成</li>
+<li>User に Role を付与</li>
+</ol>
+
+<p>という流れになります。</p>
+
+<p>1のプロジェクトごとの設定は <a href="https://www.terraform.io/docs/modules/index.html">terraform の module</a> という形でまとめてしまい、プロジェクトごとにディレクトリを作成しています。</p>
+
+<h2 id="terraform-provider-の開発について">terraform provider の開発について</h2>
+
+<p>terraform provider の開発はドキュメントが少なく動かしつつ手探りで書いていたりしています。
+terraform provider の開発に興味のある方はこの辺を見てみると良いと思います。</p>
+
+<ul>
+<li><a href="https://www.terraform.io/docs/plugins/provider.html">https://www.terraform.io/docs/plugins/provider.html</a></li>
+<li><a href="https://www.terraform.io/guides/writing-custom-terraform-providers.html">https://www.terraform.io/guides/writing-custom-terraform-providers.html</a></li>
+<li><a href="https://godoc.org/github.com/hashicorp/terraform/helper/schema">https://godoc.org/github.com/hashicorp/terraform/helper/schema</a></li>
+<li><a href="https://godoc.org/github.com/hashicorp/terraform/helper/resource#TestCase">https://godoc.org/github.com/hashicorp/terraform/helper/resource#TestCase</a></li>
+</ul>
+
+<p>あとは <a href="https://github.com/terraform-providers/terraform-provider-google">https://github.com/terraform-providers/terraform-provider-google</a> のような公式の provider のソースコードも参考になります。</p>
+
+<h2 id="最後に">最後に</h2>
+
+<p>API を使って terraform provider を開発することで、Infrastructure as Code をある程度実現できました。</p>
+
+<ul>
+<li>Stream Rule と Dashboard をサポートできていない</li>
+<li>Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできない</li>
+</ul>
+
+<p>という問題がクリア出来てないので、そこをクリアしたいです。</p>
+
+<p>また、</p>
+
+<ul>
+<li>まだ terraform を CI で出来ていない(ローカルから実行している)</li>
+<li>新しいプロジェクトやユーザーの追加の際に雛形を自動生成できるツールを作りたい(特に、新しく参画した人のためにあると良い)</li>
+</ul>
+
+<p>といった点も改善したいです(出来たら記事にしたいと思います)。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/graylog/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-12-01 23:49:32.659588083 &#43;0000 UTC m=&#43;0.041014943">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

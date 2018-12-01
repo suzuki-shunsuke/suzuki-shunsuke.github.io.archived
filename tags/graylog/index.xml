@@ -6,10 +6,31 @@
     <description>Recent content in Graylog on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Tue, 27 Nov 2018 16:40:33 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 01 Dec 2018 14:56:00 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/graylog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GraylogをTerraformで管理する</title>
+      <link>https://suzuki-shunsuke.github.io/graylog-terraform/</link>
+      <pubDate>Sat, 01 Dec 2018 14:56:00 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/graylog-terraform/</guid>
+      <description>Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
+Graylogには様々なリソースがあります。
+ User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
+APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
+https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform
+GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
+ Input User Role Index Set Stream Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Stream Rule と Dashboard もサポートしたいです。
+出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
+terraform を使った管理方法 以下では自分の管理方法を紹介します。
+https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
+にサンプルが置いてあります。
+基本はプロジェクトごとに
+ Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。</description>
+    </item>
     
     <item>
       <title>Graylog で log を管理する</title>
