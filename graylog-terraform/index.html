@@ -85,11 +85,13 @@ APIを使ってGraylog用のterraform providerを自作しています。</p>
 <li>Role</li>
 <li>Index Set</li>
 <li>Stream</li>
+<li>Stream Rule</li>
+<li>Dashboard</li>
 <li>Ldap Setting</li>
 </ul>
 
 <p>Role はサポートしているので権限管理は問題なく出来ます。
-Stream Rule と Dashboard もサポートしたいです。</p>
+Dashboard Widget もサポートしたいです。</p>
 
 <p>出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。</p>
 
@@ -131,7 +133,7 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
 <p>API を使って terraform provider を開発することで、Infrastructure as Code をある程度実現できました。</p>
 
 <ul>
-<li>Stream Rule と Dashboard をサポートできていない</li>
+<li>~Stream Rule と Dashboard をサポートできていない~</li>
 <li>Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできない</li>
 </ul>
 
@@ -140,11 +142,18 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
 <p>また、</p>
 
 <ul>
-<li>まだ terraform を CI で出来ていない(ローカルから実行している)</li>
+<li>~まだ terraform を CI で出来ていない(ローカルから実行している)~</li>
 <li>新しいプロジェクトやユーザーの追加の際に雛形を自動生成できるツールを作りたい(特に、新しく参画した人のためにあると良い)</li>
 </ul>
 
 <p>といった点も改善したいです(出来たら記事にしたいと思います)。</p>
+
+<h2 id="2018-12-03-追記">2018-12-03 追記</h2>
+
+<ul>
+<li>Stream Rule サポートしました</li>
+<li>terraform を CI で実行するようにしました(気が向いたら記事書きます)</li>
+</ul>
 
 
 	</div>
@@ -156,7 +165,7 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-12-01 23:49:32.659588083 &#43;0000 UTC m=&#43;0.041014943">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-03 14:47:20.338194242 &#43;0000 UTC m=&#43;0.045842043">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
