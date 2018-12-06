@@ -42,6 +42,30 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/ansible-molecule/" class="catalogue-item">
+				<div>
+					<time datetime="2018-12-06 23:08:04 &#43;0900 &#43;0900" class="catalogue-time">December 6, 2018</time>
+					<h1 class="catalogue-title">molecule でansible の role と playbook をテストする</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。
+以前 Docker を使って ansible のテストをする方法を紹介しました。
+https://suzuki-shunsuke.github.io/test-ansible-on-docker/
+この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。
+molecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。
+ 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、
+ star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。
+それでは使っていきましょう。
+インストール https://molecule.readthedocs.io/en/latest/installation.html
+$ pip install molecule  role のテスト playbookに比べて role のテストは簡単です。
+role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。
+$ molecule init scenario -r &lt;role name&gt;  こうすると molecule ディレクトリが生成されます。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/graylog-terraform/" class="catalogue-item">
 				<div>
 					<time datetime="2018-12-01 14:56:00 &#43;0900 &#43;0900" class="catalogue-time">December 1, 2018</time>
@@ -230,30 +254,6 @@ drone の利用状況を可視化したかったので、 drone の DB(MySQL) �
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/use-portainer-for-drone-admin/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 21:56:42 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">drone の管理のために portainer を導入した</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone OSS 0.8.5 で検証しています。
-https://drone.io/ と https://portainer.io/ の話です。
-drone はかなり安定したシステムだと思いますが、 ユーザーが好きなイメージで好きなコマンドを実行できる以上、トラブルが起こることはあります。
-その結果、 特定の build がタイムアウトにならずに延々と実行され続けるなんてことがあります。
-その場合、
- どのノードのどのコンテナでトラブルが起きているのか そのコンテナで何が起こっているのか  というのを知りたいのですが、 drone にはそういった管理機能はありません。
-そこで 複数のサーバで実行されている Docker コンテナを管理できるツールはないかと探したところ、 portainer が良さそうだったので導入しました。
-portainer を使うと複数のサーバのコンテナを一覧で見ることが出来、 コンテナを操作(削除、停止、再起動etc)出来ます。 コンテナのログや簡単なメトリックス(CPU, memory, network usage) が見れます。 コンテナだけでなく、network や volume, image といったリソースも管理できます。
-portainer の導入 公式ドキュメントに書いてありますが、 swarm cluster を構築してそこにデプロイすればよいです。
- https://docs.docker.com/engine/swarm/swarm-tutorial/ https://portainer.readthedocs.io/en/stable/deployment.html#inside-a-swarm-cluster  困っていること 毎回検索で絞り込みしないといけない 検索で絞り込んだ後に特定のコンテナの詳細画面飛んだ後一覧に戻ると 検索がクリアされているのでもう一度検索しないといけないのが面倒です。
-もう少し高度な検索がしたい 自由入力の検索ボックスが1つあるだけで、特にクエリが書けるわけでもなさそうなので、 もう少し高度な検索がしたいです。 例えば Created At で 1時間以上前に特定のノードで作られたコンテナの一覧とか。
-docker API でエラーが出て、コンテナを操作できない これは多分不具合とかではなく自分の設定が良くないのだと思います。 この辺の issue が関係してそうですが、まだ解消できていません。
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -268,7 +268,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-12-03 14:50:33.284351939 &#43;0000 UTC m=&#43;0.057407880">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-06 15:12:18.64650095 &#43;0000 UTC m=&#43;0.045702823">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

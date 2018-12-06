@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				molecule でansible の role と playbook をテストする &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-12-06 23:08:04 &#43;0900 &#43;0900">December 6, 2018</time>
+		</div>
+
+		<h1 class="post-title">molecule でansible の role と playbook をテストする</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>ansible 専用の testing ツール <a href="https://molecule.readthedocs.io/en/latest/index.html">molecule</a> を紹介します。
+molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。</p>
+
+<p>以前 Docker を使って ansible のテストをする方法を紹介しました。</p>
+
+<p><a href="https://suzuki-shunsuke.github.io/test-ansible-on-docker/">https://suzuki-shunsuke.github.io/test-ansible-on-docker/</a></p>
+
+<p>この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。
+これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。</p>
+
+<p>molecule は ansible 専用の testing ツールです。
+基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。</p>
+
+<ul>
+<li>情報が少ない</li>
+<li>公式ドキュメントも分かりづらい部分がある</li>
+<li>コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い</li>
+</ul>
+
+<p>という風に辛い部分もありますが、</p>
+
+<ul>
+<li>star数はそれなりにある</li>
+<li>ansible の公式のプロジェクトである <a href="https://github.com/ansible/molecule/">https://github.com/ansible/molecule/</a></li>
+<li><a href="https://github.com/geerlingguy">geerlingguy</a> さんも使ってる</li>
+</ul>
+
+<p>という風に良い面もあります。</p>
+
+<p>それでは使っていきましょう。</p>
+
+<h2 id="インストール">インストール</h2>
+
+<p><a href="https://molecule.readthedocs.io/en/latest/installation.html">https://molecule.readthedocs.io/en/latest/installation.html</a></p>
+
+<pre><code>$ pip install molecule
+</code></pre>
+
+<h2 id="role-のテスト">role のテスト</h2>
+
+<p>playbookに比べて role のテストは簡単です。</p>
+
+<p>role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</p>
+
+<pre><code>$ molecule init scenario -r &lt;role name&gt;
+</code></pre>
+
+<p>こうすると <code>molecule</code> ディレクトリが生成されます。</p>
+
+<p><code>molecule/default/molecule.yml</code> を修正します。</p>
+
+<p><a href="https://molecule.readthedocs.io/en/latest/configuration.html">https://molecule.readthedocs.io/en/latest/configuration.html</a></p>
+
+<pre><code class="language-yaml">---
+dependency:
+  name: galaxy
+  # 依存する role がある場合
+  options:
+    role-file: roles.yml
+driver:
+  name: docker
+lint:
+  name: yamllint
+# https://molecule.readthedocs.io/en/latest/configuration.html#platforms
+platforms:
+  - name: server  # コンテナの名前になる
+    # 必要に応じて image を変更
+    image: centos:7
+    # systemd を使ったりする場合
+    # https://molecule.readthedocs.io/en/latest/examples.html#systemd-container
+    privileged: true
+    command: /sbin/init  # systemd を使う場合必要
+provisioner:
+  # https://molecule.readthedocs.io/en/latest/configuration.html#id12
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    group_vars:
+      # variables を指定
+      all:
+        nginx_server_name: localhost
+        mysql_host: localhost
+        mysql_port: 3306
+        mysql_database: grafana
+        mysql_user: root
+        mysql_password: password
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+</code></pre>
+
+<p>そして test コマンドを実行します。</p>
+
+<pre><code>$ molecule test [-s &lt;senario name&gt;]
+</code></pre>
+
+<p>molecule ではデフォルトで <a href="https://github.com/ansible/ansible-lint">ansible-lint</a> が使われています。
+それまで ansible-lint を使ってこなかった人は結構 lint に引っかかるかもしれません。</p>
+
+<p><code>test</code> コマンドではコンテナが削除されるため、デバッグが難しかったりします。</p>
+
+<p>その場合、 <code>converge</code> コマンドを実行すればコンテナは消えません。</p>
+
+<pre><code>$ molecule converge [-s &lt;senario name&gt;]
+</code></pre>
+
+<h2 id="playbook-のテスト">playbook のテスト</h2>
+
+<p>次に playbook のテストです。割とこれが本題だったりします。
+molecule は基本的に playbook というより role 用のツールなので若干工夫が必要です。</p>
+
+<p>自分はよく ansible playbook のディレクトリ構成を以下のようにします。</p>
+
+<pre><code>hello-molecule/  # ルートディレクトリ
+  agent.yml # agent グループ用の playbook
+  group_vars/
+    all.yml  # 共通のvariables
+    agent.yml  # agent グループ用の variables
+  roles/  # role
+  inventories/
+    prod.yml # production用のinventory
+  roles.yml  # 依存する role のリスト
+  ansible.cfg
+</code></pre>
+
+<p>このときに playbook <code>agent.yml</code> のテストがしたいのです。
+molecule のためにこの構成を弄ったりは極力したくありません。</p>
+
+<p>playbook のディレクトリで <code>molecule init</code> を実行します。</p>
+
+<pre><code>$ molecule init scenario -s agent -r hello-molecule
+</code></pre>
+
+<p>するとこうなります。</p>
+
+<pre><code>hello-molecule/
+  agent.yml
+  group_vars/
+    all.yml
+    agent.yml
+  roles/
+  inventories/
+    prod.yml
+  roles.yml
+  ansible.cfg
+  molecule/
+    agent/
+      molecule.yml
+      playbook.yml # これは使わない。消す
+</code></pre>
+
+<p>ここから molecule.yml を修正していきます。
+一部抜粋します。</p>
+
+<pre><code class="language-yaml">---
+dependency:
+  name: galaxy
+  options:
+    role-file: roles.yml # ルートディレクトリからの相対パス
+platforms:
+  - name: server  # group名
+    image: centos:7
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ../../server.yml # ルートディレクトリにある playbookを指定
+  env:
+    ANSIBLE_ROLES_PATH: ../../roles:../../_roles  # roleのパスを修正
+scenario:
+  name: server
+</code></pre>
+
+<p>このように playbookや role のパスを修正すればあとは role のテストと同じ要領でいけると思います。</p>
+
+<p>以上、簡単ですが molecule の使い方を紹介しました。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/graylog-terraform/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-12-06 15:12:18.642379909 &#43;0000 UTC m=&#43;0.041581794">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

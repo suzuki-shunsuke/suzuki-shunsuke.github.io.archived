@@ -6,7 +6,7 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Wed, 31 Oct 2018 08:56:04 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 06 Dec 2018 23:08:04 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Ansible</title>
       <link>https://suzuki-shunsuke.github.io/tags/ansible/</link>
-      <pubDate>Wed, 31 Oct 2018 08:56:04 +0900</pubDate>
+      <pubDate>Thu, 06 Dec 2018 23:08:04 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/ansible/</guid>
       <description></description>
@@ -80,6 +80,15 @@
       <pubDate>Sun, 30 Sep 2018 22:55:57 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/metabase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Molecule</title>
+      <link>https://suzuki-shunsuke.github.io/tags/molecule/</link>
+      <pubDate>Thu, 06 Dec 2018 23:08:04 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/molecule/</guid>
       <description></description>
     </item>
     
