@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Graylog の Terraform を CI/CDで実行する &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-12-07 08:22:49 &#43;0900 &#43;0900">December 7, 2018</time>
+		</div>
+
+		<h1 class="post-title">Graylog の Terraform を CI/CDで実行する</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>以前 Graylog を Terraform で管理する記事を書きました。</p>
+
+<p><a href="https://suzuki-shunsuke.github.io/graylog-terraform/">https://suzuki-shunsuke.github.io/graylog-terraform/</a></p>
+
+<p>今回はそれを CI/CD で実行できるようにした話です。</p>
+
+<p>ただし、今回の内容は Graylog に限らず Terraform を CI/CD で実行する方法として使えると思います。</p>
+
+<p>今回実現したのは以下のことです。</p>
+
+<ul>
+<li>PR時にテストをする</li>
+<li><code>plan/*</code> tag を push すると <code>terraform plan</code> が実行される</li>
+<li><code>apply/*</code> tag を push すると <code>terraform apply</code> が実行され、tfstate がコミット、プッシュされる</li>
+</ul>
+
+<h2 id="ci-cd用の-user-role-を作成する">CI/CD用の user, role を作成する</h2>
+
+<p>まずは role を作成します。</p>
+
+<pre><code>resource &quot;graylog_role&quot; &quot;terraform&quot; {
+  name        = &quot;terraform&quot;
+  description = &quot;terraform&quot;
+
+  permissions = [
+    &quot;dashboards:*&quot;,
+    &quot;indexsets:*&quot;,
+    &quot;inputs:*&quot;,
+    &quot;roles:*&quot;,
+    &quot;streams:*&quot;,
+    &quot;users:*&quot;,
+  ]
+}
+</code></pre>
+
+<p>permission は terraform で管理するリソースのみ付与しますが、
+それでも結構強い権限を付与するので取扱に注意してください。</p>
+
+<p>よりちゃんと権限管理するのであれば project ごとに role, user を分けるという手もありそうですが、そうすると管理も大変そうです。</p>
+
+<p>次に user を作成します。</p>
+
+<pre><code>resource &quot;graylog_user&quot; &quot;terraform&quot; {
+  username  = &quot;terraform&quot;
+  email     = &quot;terraform@example.com&quot;
+  full_name = &quot;terraform&quot;
+
+  roles = [
+    &quot;terraform&quot;,
+    &quot;Reader&quot;,
+  ]
+}
+</code></pre>
+
+<p>Reader か Admin は必須らしいのでReaderを付与しています。</p>
+
+<p><a href="http://docs.graylog.org/en/2.5/pages/users_and_roles/permission_system.html">http://docs.graylog.org/en/2.5/pages/users_and_roles/permission_system.html</a></p>
+
+<blockquote>
+<p>Every user needs to at least have the standard “Reader” permissions
+but those do not provide any access to data or maintenance functionalities.</p>
+</blockquote>
+
+<p>次にこのユーザーの token を発行します。</p>
+
+<p><a href="http://docs.graylog.org/en/2.5/pages/configuration/rest_api.html#creating-and-using-access-token">http://docs.graylog.org/en/2.5/pages/configuration/rest_api.html#creating-and-using-access-token</a></p>
+
+<pre><code>$ curl -u &lt;username&gt;:&lt;password&gt; -H 'Accept: application/json' -X POST 'https://graylog.example.com/api/users/&lt;username&gt;/tokens/&lt;tokenname&gt;?pretty=true'
+</code></pre>
+
+<p>発行したトークンを CI/CD にクレデンシャルとしてセットします。
+やり方は利用するCI/CDによって変わります。</p>
+
+<p>以降は <a href="https://drone.io/">drone ci</a> という CI/CD プラットフォームを前提に書きますが、
+travis ci や circle ci, jenkins など他のCI/CDでも考え方は一緒だと思います。</p>
+
+<p>.drone.yml は 以下のようになります。</p>
+
+<pre><code class="language-yaml">---
+pipeline:
+  envsubst:
+    image: suzukishunsuke/alpine-envsubst:0.1.0
+    commands:
+    - envsubst &lt; terraform.tfvars.tpl &gt; terraform.tfvars
+    secrets:
+    - source: terraform_token_prod
+      target: graylog_auth_name
+    when:
+      event: tag
+  plan:
+    image: &amp;terraform_image &quot;suzukishunsuke/terraform-graylog:0.1.2&quot;
+    commands:
+    - terraform init
+    - terraform validate
+    - terraform fmt -check
+    - terraform plan
+    when:
+      event: tag
+      ref: refs/tags/plan/*
+  apply:
+    image: *terraform_image
+    commands:
+    - terraform init
+    - terraform validate
+    - terraform plan
+    - terraform fmt -check
+    - terraform apply -auto-approve
+    when:
+      event: tag
+      ref: refs/tags/apply/*
+  git:
+    image: plugins/git
+    commands:
+    - sh drone_pipeline_commands/git.sh
+    when:
+      event: tag
+      ref: refs/tags/apply/*
+  validate:
+    image: *terraform_image
+    environment:
+    - &quot;TF_VAR_auth_name=dummy&quot;
+    - &quot;TF_VAR_auth_password=token&quot;
+    - &quot;TF_VAR_web_endpoint_uri=https://graylog.example.com/api&quot;
+    commands:
+    - terraform init
+    - terraform validate
+    - terraform fmt -check
+    when:
+      event: pull_request
+</code></pre>
+
+<p>まずは terraform を実行するための Docker Image を用意しました。</p>
+
+<p><a href="https://hub.docker.com/r/suzukishunsuke/terraform-graylog/">https://hub.docker.com/r/suzukishunsuke/terraform-graylog/</a></p>
+
+<p>PR時のテストでは terraform validate と terraform fmt を実行します。</p>
+
+<pre><code class="language-yaml">  validate:
+    image: *terraform_image
+    environment:
+    - &quot;TF_VAR_auth_name=dummy&quot;
+    - &quot;TF_VAR_auth_password=token&quot;
+    - &quot;TF_VAR_web_endpoint_uri=https://graylog.example.com/api&quot;
+    commands:
+    - terraform init
+    - terraform validate
+    - terraform fmt -check
+    when:
+      event: pull_request
+</code></pre>
+
+<p><code>TF_VAR_</code> で始まるのが terraform の変数です。</p>
+
+<p><a href="https://www.terraform.io/docs/configuration/variables.html#environment-variables">https://www.terraform.io/docs/configuration/variables.html#environment-variables</a></p>
+
+<p>token は適当な文字列をセットしてください。PR時には実際にgraylog の API を呼ばないので適当なので問題ありません。</p>
+
+<p>次に <code>plan/*</code> と tag を push すると <code>terraform plan</code> が実行されます。
+この結果を見て <code>terraform apply</code> を実行します。</p>
+
+<p>これは <a href="https://0-8-0.docs.drone.io/manage-secrets/">drone の secrets</a> の都合なのですが、secrets の環境変数は全部大文字になってしまうため <code>TF_VAR_auth_name</code> という環境変数をセットできません。そのため <a href="https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html">envsubst</a> を使って terraform.tfvars に token を書き込んでいます。</p>
+
+<pre><code class="language-yaml">  envsubst:
+    image: suzukishunsuke/alpine-envsubst:0.1.0
+    commands:
+    - envsubst &lt; terraform.tfvars.tpl &gt; terraform.tfvars
+    secrets:
+    - source: terraform_token_prod
+      target: graylog_auth_name
+    when:
+      event: tag
+</code></pre>
+
+<p>terraform.tfvars.tpl はこんな感じです。</p>
+
+<pre><code>web_endpoint_uri = &quot;https://graylog.example.com/api&quot;
+auth_name = &quot;$GRAYLOG_AUTH_NAME&quot;
+auth_password = &quot;token&quot;
+</code></pre>
+
+<p>plan を実行する step です。</p>
+
+<pre><code class="language-yaml">  plan:
+    image: &amp;terraform_image &quot;suzukishunsuke/terraform-graylog:0.1.2&quot;
+    commands:
+    - terraform init
+    - terraform validate
+    - terraform fmt -check
+    - terraform plan
+    when:
+      event: tag
+      ref: refs/tags/plan/*
+</code></pre>
+
+<p><code>apply/*</code> と tag を push すると <code>terraform apply</code> が実行されます。</p>
+
+<pre><code class="language-yaml">  apply:
+    image: *terraform_image
+    commands:
+    - terraform init
+    - terraform validate
+    - terraform plan
+    - terraform fmt -check
+    - terraform apply -auto-approve
+    when:
+      event: tag
+      ref: refs/tags/apply/*
+</code></pre>
+
+<p>terraform.tfstate をコミット, プッシュします。</p>
+
+<pre><code class="language-yaml">  git:
+    image: plugins/git
+    commands:
+    - sh drone_pipeline_commands/git.sh
+    when:
+      event: tag
+      ref: refs/tags/apply/*
+</code></pre>
+
+<p>drone_pipeline_commands/git.sh はこんな感じです。</p>
+
+<pre><code class="language-sh">git status --porcelain || exit 1
+if `git diff --exit-code --quiet terraform.tfstate`; then
+  echo &quot;terraform.tfstate isn't changed&quot;
+  exit 0
+else
+  git config user.name drone
+  git config user.email drone@example.com
+  git add . || exit 1
+  git commit -m &quot;build: commit by drone&quot; || exit 1
+  git push origin HEAD:master || exit 1
+fi
+</code></pre>
+
+<p>terraform.tfstate に変化があった場合のみ コミット・プッシュするようにしています。
+この辺のやり方はもっとうまいやり方があるかもしれません
+(自分のシェルスクリプト力が低いため)。</p>
+
+<p><code>terraform plan</code> の <code>-detailed-exitcode</code> オプションを使うのが良い気がします。</p>
+
+<pre><code>  -detailed-exitcode  Return detailed exit codes when the command exits. This
+                      will change the meaning of exit codes to:
+                      0 - Succeeded, diff is empty (no changes)
+                      1 - Errored
+                      2 - Succeeded, there is a diff
+</code></pre>
+
+<p>以上 Graylog の Terraform を CI/CD で実行する方法を紹介しました。
+Graylog に限らず、 Terraform を CI/CD で実行する方法として使えると思うので参考になれば幸いです。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/ansible-molecule/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-12-07 00:18:25.993039057 &#43;0000 UTC m=&#43;0.048789144">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

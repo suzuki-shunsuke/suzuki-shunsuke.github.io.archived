@@ -42,6 +42,25 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/" class="catalogue-item">
+				<div>
+					<time datetime="2018-12-07 08:22:49 &#43;0900 &#43;0900" class="catalogue-time">December 7, 2018</time>
+					<h1 class="catalogue-title">Graylog の Terraform を CI/CDで実行する</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						以前 Graylog を Terraform で管理する記事を書きました。
+https://suzuki-shunsuke.github.io/graylog-terraform/
+今回はそれを CI/CD で実行できるようにした話です。
+ただし、今回の内容は Graylog に限らず Terraform を CI/CD で実行する方法として使えると思います。
+今回実現したのは以下のことです。
+ PR時にテストをする plan/* tag を push すると terraform plan が実行される apply/* tag を push すると terraform apply が実行され、tfstate がコミット、プッシュされる  CI/CD用の user, role を作成する まずは role を作成します。
+resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] }  permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/ansible-molecule/" class="catalogue-item">
 				<div>
 					<time datetime="2018-12-06 23:08:04 &#43;0900 &#43;0900" class="catalogue-time">December 6, 2018</time>
@@ -237,23 +256,6 @@ https://hub.docker.com/r/suzukishunsuke/go-ci/
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 22:55:57 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">metabase を使って drone の利用状況を可視化する</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						 drone OSS 0.8.5 で検証しています。
-https://drone.io/ と https://www.metabase.com/ の話です。
-drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
-どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。
- ユーザー数 有効化されたリポジトリ数 buildの多いリポジトリ buildをよく実行しているユーザー ビルド時間の分布 build event の割合(push, tag, pull request, deployment) リポジトリのsecretsの数の分布  
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -268,7 +270,7 @@ drone の利用状況を可視化したかったので、 drone の DB(MySQL) �
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-12-06 15:12:18.64650095 &#43;0000 UTC m=&#43;0.045702823">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-07 00:18:25.99872869 &#43;0000 UTC m=&#43;0.054478778">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
