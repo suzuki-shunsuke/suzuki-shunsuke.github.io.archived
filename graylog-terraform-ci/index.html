@@ -67,6 +67,18 @@
 <li><code>apply/*</code> tag を push すると <code>terraform apply</code> が実行され、tfstate がコミット、プッシュされる</li>
 </ul>
 
+<h2 id="ソースコード">ソースコード</h2>
+
+<p><a href="https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform">https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform</a> に置いておきました。</p>
+
+<ul>
+<li><a href="https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25">https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21">https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml">https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl">https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh">https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh</a></li>
+</ul>
+
 <h2 id="ci-cd用の-user-role-を作成する">CI/CD用の user, role を作成する</h2>
 
 <p>まずは role を作成します。</p>
@@ -312,7 +324,7 @@ Graylog に限らず、 Terraform を CI/CD で実行する方法として使え
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-12-07 10:41:39.457523369 &#43;0000 UTC m=&#43;0.070555422">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-07 10:46:34.964607421 &#43;0000 UTC m=&#43;0.044937619">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
