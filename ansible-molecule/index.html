@@ -89,6 +89,11 @@ molecule の公式ドキュメント以外の情報は少ないので、参考�
 <pre><code>$ pip install molecule
 </code></pre>
 
+<p>Docker を使う場合 <code>docker-py</code> も必要です。</p>
+
+<pre><code>$ pip install docker-py
+</code></pre>
+
 <h2 id="role-のテスト">role のテスト</h2>
 
 <p>playbookに比べて role のテストは簡単です。</p>
@@ -118,16 +123,22 @@ lint:
 platforms:
   - name: server  # コンテナの名前になる
     # 必要に応じて image を変更
-    image: centos:7
+    # 今回は ansibleのremote user を非rootにするために自作の Docker Image を指定
+    # https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
+    image: suzukishunsuke/ansible-test-centos:0.1.0
     # systemd を使ったりする場合
     # https://molecule.readthedocs.io/en/latest/examples.html#systemd-container
     privileged: true
     command: /sbin/init  # systemd を使う場合必要
+    env:
+      USER: foo # DockerだとUSER環境変数が空になってしまうようなので明示的に設定
 provisioner:
   # https://molecule.readthedocs.io/en/latest/configuration.html#id12
   name: ansible
   lint:
     name: ansible-lint
+  options:
+    user: foo # 非rootユーザーで実行
   inventory:
     group_vars:
       # variables を指定
@@ -146,19 +157,34 @@ verifier:
     name: flake8
 </code></pre>
 
+<p>test の前にまずは lint します。</p>
+
+<pre><code>$ molecule lint [-s &lt;senario name&gt;]
+</code></pre>
+
+<p>すると yamllint の設定ファイル <code>.yamllint</code> が作られていると思うので、必要に応じて修正します。</p>
+
+<p><a href="https://yamllint.readthedocs.io/en/stable/configuration.html">https://yamllint.readthedocs.io/en/stable/configuration.html</a></p>
+
+<p>ansible-lint で引っかかった人はこちらを参照してください。</p>
+
+<p><a href="https://github.com/ansible/ansible-lint">https://github.com/ansible/ansible-lint</a></p>
+
 <p>そして test コマンドを実行します。</p>
 
 <pre><code>$ molecule test [-s &lt;senario name&gt;]
 </code></pre>
-
-<p>molecule ではデフォルトで <a href="https://github.com/ansible/ansible-lint">ansible-lint</a> が使われています。
-それまで ansible-lint を使ってこなかった人は結構 lint に引っかかるかもしれません。</p>
 
 <p><code>test</code> コマンドではコンテナが削除されるため、デバッグが難しかったりします。</p>
 
 <p>その場合、 <code>converge</code> コマンドを実行すればコンテナは消えません。</p>
 
 <pre><code>$ molecule converge [-s &lt;senario name&gt;]
+</code></pre>
+
+<p>消したくなったら destroy コマンドで消しましょう。</p>
+
+<pre><code>$ molecule destroy [-s &lt;senario name&gt;]
 </code></pre>
 
 <h2 id="playbook-のテスト">playbook のテスト</h2>
@@ -180,12 +206,14 @@ molecule は基本的に playbook というより role 用のツールなので�
   ansible.cfg
 </code></pre>
 
-<p>このときに playbook <code>agent.yml</code> のテストがしたいのです。
+<p>このときに playbook <code>agent.yml</code> のテストがしたいとします。
 molecule のためにこの構成を弄ったりは極力したくありません。</p>
 
-<p>playbook のディレクトリで <code>molecule init</code> を実行します。</p>
+<p>playbook のディレクトリで <code>molecule init</code> を実行します。
+default シナリオは必須のようです。</p>
 
-<pre><code>$ molecule init scenario -s agent -r hello-molecule
+<pre><code>$ molecule init scenario -r hello-molecule
+$ molecule init scenario -s agent -r hello-molecule
 </code></pre>
 
 <p>するとこうなります。</p>
@@ -201,6 +229,7 @@ molecule のためにこの構成を弄ったりは極力したくありませ�
   roles.yml
   ansible.cfg
   molecule/
+    default/
     agent/
       molecule.yml
       playbook.yml # これは使わない。消す
@@ -242,7 +271,7 @@ scenario:
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-12-07 00:18:25.993013672 &#43;0000 UTC m=&#43;0.048763745">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-07 10:41:39.457497437 &#43;0000 UTC m=&#43;0.070529492">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

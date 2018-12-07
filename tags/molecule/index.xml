@@ -26,9 +26,9 @@ molecule は ansible 専用の testing ツールです。 基本的に playbook 
  star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。
 それでは使っていきましょう。
 インストール https://molecule.readthedocs.io/en/latest/installation.html
-$ pip install molecule  role のテスト playbookに比べて role のテストは簡単です。
-role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。
-$ molecule init scenario -r &amp;lt;role name&amp;gt;  こうすると molecule ディレクトリが生成されます。</description>
+$ pip install molecule  Docker を使う場合 docker-py も必要です。
+$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。
+role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</description>
     </item>
     
   </channel>
