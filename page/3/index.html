@@ -42,6 +42,20 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 18:52:34 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone exec を並列実行した際のdocker network name の衝突について</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone exec を並列実行すると docker network name が衝突することがあります。
+$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/go-gencfg/" class="catalogue-item">
 				<div>
 					<time datetime="2018-09-06 23:59:35 &#43;0900 &#43;0900" class="catalogue-time">September 6, 2018</time>
@@ -84,7 +98,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-12-17 01:05:59.945703624 &#43;0000 UTC m=&#43;0.046283428">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-25 14:43:08.178195767 &#43;0000 UTC m=&#43;0.048069137">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

@@ -50,7 +50,7 @@
     <item>
       <title>Golang</title>
       <link>https://suzuki-shunsuke.github.io/tags/golang/</link>
-      <pubDate>Tue, 30 Oct 2018 08:35:16 +0900</pubDate>
+      <pubDate>Tue, 25 Dec 2018 21:51:41 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/golang/</guid>
       <description></description>
@@ -80,6 +80,15 @@
       <pubDate>Wed, 10 Oct 2018 21:14:03 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logging</title>
+      <link>https://suzuki-shunsuke.github.io/tags/logging/</link>
+      <pubDate>Tue, 25 Dec 2018 21:51:41 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/logging/</guid>
       <description></description>
     </item>
     

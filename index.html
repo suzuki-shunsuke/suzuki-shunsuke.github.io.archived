@@ -42,6 +42,32 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/" class="catalogue-item">
+				<div>
+					<time datetime="2018-12-25 21:51:41 &#43;0900 &#43;0900" class="catalogue-time">December 25, 2018</time>
+					<h1 class="catalogue-title">Golangにおけるエラーハンドリングとロギングのプラクティス</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
+ 迷いをなくす コードの一貫性を保つ コーディング規約とすることでレビューの品質を上げる(自動化は出来ないけど) コードの品質を上げる(コードがゴチャつかなくなる) 適切にエラーをロギングする(必要十分な情報をログとして残す)  またエラーハンドリングとロギングのためのライブラリを自作しているのでそれも紹介します。
+https://github.com/suzuki-shunsuke/go-errlog
+ロギングに関する関連記事 この記事を書く前に軽くググってみただけでちゃんと読んでないのですが、 興味のある人は読んでみてください。
+ https://logmatic.io/blog/our-guide-to-a-golang-logs-world/ https://www.loggly.com/blog/think-differently-about-what-to-log-in-go-best-practices-examined/ https://dave.cheney.net/2015/11/05/lets-talk-about-logging https://postd.cc/go-best-practices-2016/#logging-and-instrumentation  ログレベルは分ける ログレベルでwarningとかいらないという意見もありますが、自分は必要だと思っています。 自分は以下のログレベルを使い分けます。
+ debug: あまり使わない。調査目的で一時的に埋め込むログ。調査が終わったら出力しないようにする。一時的でないものはinfoにする info: エラーでないログ。イベント、処理の開始時や終了を記録するのに使うことが多い warn: 4xx系のエラー。それが起こっただけではアラートを飛ばさないが、数が通常時より多い場合はバグかUIに問題があってユーザーが間違えやすくなっている可能性があるのでアラートを飛ばす error: 5xx系のエラー。アラートを飛ばす(閾値は調整) fatal: 処理継続が不可能な致命的なエラー。システムを止める  書いてから思いましたが、これに関しては標準的な使い分けのルールがありそうですね(要調査)。。
+logrus を使ってログを構造化する 前提としてwebシステムやバッチシステムなどを想定しています。CLIツールならば話は変わるでしょう。 JSONフォーマットで出力してfluentdでElasticsearchにフォワードするのが個人的によくあるパターンです。
+go-errlogもlogrusの使用を前提としています。
+ロギングのライブラリは他にも色々あるので、logrusで満足できない人は以下から探してみるとよいでしょう。
+https://github.com/avelino/awesome-go#logging
+エラーログは中央集権的に main に近い所で出力する エラーログをどこで出力するかですが、原則中央集権的に main に近い所で出力します。 因みに中央集権的という表現は echo の centralized error handling からもじっています。
+https://echo.labstack.com/guide/error-handling
+error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。 Goでは以下のようなイディオムがよく見られますね。
+if err != nil { return err }  ロギングに必要な情報を戻り値のerrorに含める 上記のコードで問題なのは、エラーに関する情報が欠損することがあることです。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/" class="catalogue-item">
 				<div>
 					<time datetime="2018-12-07 08:22:49 &#43;0900 &#43;0900" class="catalogue-time">December 7, 2018</time>
@@ -240,23 +266,6 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/" class="catalogue-item">
-				<div>
-					<time datetime="2018-10-01 07:23:15 &#43;0900 &#43;0900" class="catalogue-time">October 1, 2018</time>
-					<h1 class="catalogue-title">travis ci から circle ci への移行のすすめ</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						travis ci と circle ci の無償SaaS 版を比較しています。
-OSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。
-Circle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。
-自分の場合 Golang のツールの CI用に Docker Image を用意しています。
-https://hub.docker.com/r/suzukishunsuke/go-ci/
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -271,7 +280,7 @@ https://hub.docker.com/r/suzukishunsuke/go-ci/
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-12-17 01:05:59.944284337 &#43;0000 UTC m=&#43;0.044864157">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-25 14:43:08.175908152 &#43;0000 UTC m=&#43;0.045781524">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
