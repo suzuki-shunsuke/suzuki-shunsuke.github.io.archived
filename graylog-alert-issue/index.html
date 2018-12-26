@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				GraylogのAlertの課題 &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2018-12-19 21:02:11 &#43;0900 &#43;0900">December 19, 2018</time>
+		</div>
+
+		<h1 class="post-title">GraylogのAlertの課題</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。
+自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。
+Graylogのバージョンは 2.5.0 です。
+ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。
+リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、
+リストだけに留めます。</p>
+
+<h2 id="課題リスト">課題リスト</h2>
+
+<ul>
+<li>APIでAlert Condition, Notificationを管理できない
+
+<ul>
+<li>APIがないので terraform でサポートも出来ない</li>
+<li>数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい</li>
+</ul></li>
+<li>Condition, NotificationがStreamに紐づく
+
+<ul>
+<li>ConditionによってNotificationを変えられない</li>
+<li>条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない
+(正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい)</li>
+<li>ConditionやNotificationを複数のStreamで使い回せない</li>
+</ul></li>
+<li>(少なくとも標準機能では)時間帯によってアラートの挙動を変更できない
+
+<ul>
+<li>夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない</li>
+<li><a href="https://github.com/Graylog2/graylog2-server/issues/3182">一時的にアラートを止められない</a></li>
+</ul></li>
+<li>Pluginを使うにしてもどれを使ったら良いか分からない
+
+<ul>
+<li>もっとGraylogがメジャーになれば状況も変わるかもしれない</li>
+</ul></li>
+</ul>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/graylog-terraform-ci/" class="left arrow">&#8592;</a>
+		<a href="/golang-logging-error-handling-practice/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2018-12-26 01:03:22.952030853 &#43;0000 UTC m=&#43;0.042649624">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

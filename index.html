@@ -68,6 +68,20 @@ if err != nil { return err }  ロギングに必要な情報を戻り値のerror
 				</div>
 			</a>
 		
+			<a href="https://suzuki-shunsuke.github.io/graylog-alert-issue/" class="catalogue-item">
+				<div>
+					<time datetime="2018-12-19 21:02:11 &#43;0900 &#43;0900" class="catalogue-time">December 19, 2018</time>
+					<h1 class="catalogue-title">GraylogのAlertの課題</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						 Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
+課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/" class="catalogue-item">
 				<div>
 					<time datetime="2018-12-07 08:22:49 &#43;0900 &#43;0900" class="catalogue-time">December 7, 2018</time>
@@ -251,21 +265,6 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/" class="catalogue-item">
-				<div>
-					<time datetime="2018-10-01 08:04:16 &#43;0900 &#43;0900" class="catalogue-time">October 1, 2018</time>
-					<h1 class="catalogue-title">Hugo製ブログをGitHub PagesへCIでデプロイ</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。
-前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml
---- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &quot;***&quot; - run: git config user.email &quot;***@example.com&quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -280,7 +279,7 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-12-26 00:49:36.953008131 &#43;0000 UTC m=&#43;0.043930352">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-26 01:03:22.957197285 &#43;0000 UTC m=&#43;0.047816162">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
