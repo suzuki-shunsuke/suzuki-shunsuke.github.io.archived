@@ -49,7 +49,10 @@
 					<div class="catalogue-line"></div>
 	
 					<p>
-						Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
+						2018-12-30 追記 この記事を元にドキュメントを書いてみました。
+https://github.com/suzuki-shunsuke/go-error-handling-logging-practice
+追記ここまで
+Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
  迷いをなくす コードの一貫性を保つ コーディング規約とすることでレビューの品質を上げる(自動化は出来ないけど) コードの品質を上げる(コードがゴチャつかなくなる) 適切にエラーをロギングする(必要十分な情報をログとして残す)  またエラーハンドリングとロギングのためのライブラリを自作しているのでそれも紹介します。
 https://github.com/suzuki-shunsuke/go-errlog
 ロギングに関する関連記事 この記事を書く前に軽くググってみただけでちゃんと読んでないのですが、 興味のある人は読んでみてください。
@@ -62,7 +65,7 @@ https://github.com/avelino/awesome-go#logging
 エラーログは中央集権的に main に近い所で出力する エラーログをどこで出力するかですが、原則中央集権的に main に近い所で出力します。 因みに中央集権的という表現は echo の centralized error handling からもじっています。
 https://echo.labstack.com/guide/error-handling
 error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。 Goでは以下のようなイディオムがよく見られますね。
-if err != nil { return err }  ロギングに必要な情報を戻り値のerrorに含める 上記のコードで問題なのは、エラーに関する情報が欠損することがあることです。
+if err !
 					</p>
 	
 				</div>
@@ -279,7 +282,7 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-12-26 01:03:22.957197285 &#43;0000 UTC m=&#43;0.047816162">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-30 08:21:22.724946097 &#43;0000 UTC m=&#43;0.046766387">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
