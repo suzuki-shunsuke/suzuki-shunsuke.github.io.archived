@@ -143,7 +143,7 @@ Graylogには様々なリソースがあります。
 APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
 https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform
 GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
- Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
+ Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
 出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
 terraform を使った管理方法 以下では自分の管理方法を紹介します。
 https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
@@ -283,7 +283,7 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
 
 		<footer>
 			<span>
-			&copy; <time datetime="2018-12-31 09:11:25.320498098 &#43;0000 UTC m=&#43;0.051598705">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-31 09:14:47.532427748 &#43;0000 UTC m=&#43;0.047982050">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

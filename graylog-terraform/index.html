@@ -80,6 +80,8 @@ APIを使ってGraylog用のterraform providerを自作しています。</p>
 <p>GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。</p>
 
 <ul>
+<li>Alert Condition</li>
+<li>Alert Notification (Alarm Callback)</li>
 <li>Input</li>
 <li>User</li>
 <li>Role</li>
@@ -93,7 +95,7 @@ APIを使ってGraylog用のterraform providerを自作しています。</p>
 <p>Role はサポートしているので権限管理は問題なく出来ます。
 Dashboard Widget もサポートしたいです。</p>
 
-<p>出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。</p>
+<p><del>出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。</del></p>
 
 <h2 id="terraform-を使った管理方法">terraform を使った管理方法</h2>
 
@@ -134,7 +136,7 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
 
 <ul>
 <li><del>Stream Rule と Dashboard をサポートできていない</del></li>
-<li>Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできない</li>
+<li><del>Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできない</del></li>
 </ul>
 
 <p>という問題がクリア出来てないので、そこをクリアしたいです。</p>
@@ -155,6 +157,12 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
 <li><a href="/graylog-terraform-ci">terraform を CI で実行するようにしました(気が向いたら記事書きます)</a></li>
 </ul>
 
+<h2 id="2018-12-31-追記">2018-12-31 追記</h2>
+
+<ul>
+<li>Alert Condition, Notification をサポートしました</li>
+</ul>
+
 
 	</div>
 
@@ -166,7 +174,7 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-12-31 09:11:25.314664849 &#43;0000 UTC m=&#43;0.045765434">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-31 09:14:47.527752324 &#43;0000 UTC m=&#43;0.043306625">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
