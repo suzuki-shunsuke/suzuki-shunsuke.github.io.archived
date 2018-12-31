@@ -194,25 +194,25 @@ Stream毎にStream Ruleを定義し、Stream Ruleの条件にマッチしたロ�
 <p>Notification のメッセージのテンプレートは自由に変えられますが、どういったテンプレートが良いかは難しいです。
 自分は次のような感じにしています。</p>
 
-<pre><code>Alert Condition: ${alert_condition.title}
-Messages:
-${foreach backlog message}
-&lt;https://graylog.example.com/messages/&lt;active index&gt;/${message.id} | link&gt; ${message.message} (${message.fields.error})
+<pre><code>${alert_condition.title}
 
+${foreach backlog message}
+&lt;https://graylog.example.com/streams/${stream.id}/search?rangetype=absolute&amp;from=${message.timestamp}&amp;to=${message.timestamp} | link&gt; ${message.message}
 ${end}
 </code></pre>
 
-<p>graylog の URL と <code>&lt;active index&gt;</code> は適宜変更してください。 <code>&lt;active index&gt;</code> は適当に対象のStreamのメッセージ1つ選んでPermalinkのURLを見れば分かります。
+<p>graylog の URL は適宜置き換えてください。
 <code>link</code> の部分を変数(<code>${message.message}</code>とか)にするとリンクが壊れてしまうことがあったので固定文字列にしています。</p>
 
-<p>ここで注意が必要なのが、graylog-plugin-slack の設定で <code>Graylog URL (optional)</code>を設定しないと <code>${stream_url}</code> などが空になってしまうことです。自分は optional なので元々設定していなかったのでハマりました(ググっても分からなかった)。
+<p>graylog-plugin-slack の設定で <code>Graylog URL (optional)</code>を設定しないと <code>${stream_url}</code> などが空になってしまうことに注意してください。
+自分は optional なので元々設定していなかったのでハマりました(ググっても分からなかった)。
 <code>Graylog URL</code>という設定は notification 毎に変えるようなものでもないのでglobalに設定できるとよいのですが、どうも出来なそうです。</p>
 
 <p>また、テンプレート中で使える変数の中にmessageのURLはないそうです。</p>
 
 <p><a href="https://community.graylog.org/t/message-url-in-alert-notification/1916">https://community.graylog.org/t/message-url-in-alert-notification/1916</a></p>
 
-<p><code>&lt;active index&gt;</code> の部分は恐らくESのインデックスが変わると変わってしまう気がする(要検証)ので出来れば変数として参照できるようになってほしいです。</p>
+<p>そのため、message.timestamp を from と to に指定して検索するという回りくどい(?)ことをしています。</p>
 
 <h2 id="ダッシュボードの作成">ダッシュボードの作成</h2>
 
@@ -265,7 +265,7 @@ Graylogは多機能で自分が使っていない、分かっていない機能�
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-12-31 09:02:59.15134452 &#43;0000 UTC m=&#43;0.043893145">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-31 09:11:25.315218565 &#43;0000 UTC m=&#43;0.046319150">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
