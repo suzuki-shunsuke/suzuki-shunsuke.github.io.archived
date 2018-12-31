@@ -58,14 +58,26 @@ Graylogのバージョンは 2.5.0 です。
 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、
 リストだけに留めます。</p>
 
+<h2 id="2018-12-31-追記">2018-12-31 追記</h2>
+
+<p>元々 Alert Condition, Notification の APIがないと勘違いしていたのですが、
+実はちゃんとあったので terraform で管理できるように go-graylog を更新しました。</p>
+
+<ul>
+<li><a href="https://github.com/suzuki-shunsuke/go-graylog/pull/50">https://github.com/suzuki-shunsuke/go-graylog/pull/50</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/go-graylog/pull/52">https://github.com/suzuki-shunsuke/go-graylog/pull/52</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alarm_callback.md">https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alarm_callback.md</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alert_condition.md">https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alert_condition.md</a></li>
+</ul>
+
 <h2 id="課題リスト">課題リスト</h2>
 
 <ul>
-<li>APIでAlert Condition, Notificationを管理できない
+<li><del>APIでAlert Condition, Notificationを管理できない</del>
 
 <ul>
-<li>APIがないので terraform でサポートも出来ない</li>
-<li>数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい</li>
+<li><del>APIがないので terraform でサポートも出来ない</del></li>
+<li><del>数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい</del></li>
 </ul></li>
 <li>Condition, NotificationがStreamに紐づく
 
@@ -99,7 +111,7 @@ Graylogのバージョンは 2.5.0 です。
 	</div>
 </main>		<footer>
 			<span>
-			&copy; <time datetime="2018-12-30 08:21:22.720306508 &#43;0000 UTC m=&#43;0.042126790">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2018-12-31 09:02:59.150627038 &#43;0000 UTC m=&#43;0.043175657">2018</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
