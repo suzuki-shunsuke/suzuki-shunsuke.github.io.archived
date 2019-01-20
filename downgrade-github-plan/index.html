@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				GithubをFree Planにダウングレードした &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2019-01-20 12:27:26 &#43;0900 &#43;0900">January 20, 2019</time>
+		</div>
+
+		<h1 class="post-title">GithubをFree Planにダウングレードした</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。</p>
+
+<p><a href="https://github.blog/2019-01-07-new-year-new-github/">https://github.blog/2019-01-07-new-year-new-github/</a></p>
+
+<p>そこで無料プランにダウングレードすることにしました。</p>
+
+<ul>
+<li><a href="https://help.github.com/articles/downgrading-your-github-billing-plan/">https://help.github.com/articles/downgrading-your-github-billing-plan/</a></li>
+<li><a href="https://blog.jnito.com/entry/2019/01/09/081913">https://blog.jnito.com/entry/2019/01/09/081913</a></li>
+</ul>
+
+<p>無料プランではwikiはpublic repositoryでしか使えないので、
+private repository の wiki を 移行することにしました。</p>
+
+<p>private なソースコード(サービス)のためのwikiではなく、
+個人的なメモが書いてあるだけだったので移行することに特に問題はありませんでした。</p>
+
+<h2 id="全-private-repository-の-wiki-を-clone">全 private repository の wiki を clone</h2>
+
+<p>そこでまずはそういった wiki を clone して一つのリポジトリにまとめることにしました。</p>
+
+<p><a href="https://github.com/suzuki-shunsuke/foo">https://github.com/suzuki-shunsuke/foo</a> の wiki は
+<a href="https://github.com/suzuki-shunsuke/foo.wiki">https://github.com/suzuki-shunsuke/foo.wiki</a> で clone できます。</p>
+
+<p>次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。</p>
+
+<p><a href="https://developer.github.com/v3/repos/#list-your-repositories">https://developer.github.com/v3/repos/#list-your-repositories</a></p>
+
+<pre><code class="language-sh">curl &quot;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&quot; | jq -r '.[].html_url' | xargs -I{} -n 1 git clone {}.wiki
+</code></pre>
+
+<p>wikiが存在しないものに関しては clone に失敗します。
+API で wiki のリストが取得できると良かったんですが、
+wikiに関するAPIはなさそうです。</p>
+
+<p>また <code>/user/repos</code> API のレスポンスの <code>has_wiki</code> はwikiが存在しなくても、wikiが無効化されてなければ true なようです。</p>
+
+<h2 id="wiki-を-notable-に移植">wiki を notable に移植</h2>
+
+<p>clone した wiki を <a href="https://github.com/fabiospampinato/notable">notable</a> に移植します。</p>
+
+<p>notable は <a href="https://www.moongift.jp/2019/01/notable-%E6%B7%BB%E4%BB%98%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%82%E4%BD%BF%E3%81%88%E3%82%8Bmarkdown%E8%A8%98%E6%B3%95%E3%81%AE%E3%83%A1%E3%83%A2/">moon gift で最近紹介されていて良さそうだった</a>ので使ってみます。</p>
+
+<p>Hugo に移植しても良かったのですが notable が気になったので notable にしました。
+notable を使ってみてダメそうだったら Hugo も検討します。</p>
+
+<p>Hugo に比べてnotableが良いところは</p>
+
+<ul>
+<li>シンタクスハイライト</li>
+<li>tagによる絞り込み</li>
+<li>検索</li>
+</ul>
+
+<p>がデフォルトで(特に手を加えたりしなくても)いい感じに使えることです。</p>
+
+<p>notable の data directory を private repository で管理します(Dropbox などのクラウドストレージで管理しても良いと思います)。</p>
+
+<p>専用の private repository を1つ作成し、data directory を作成し、notable の設定で作成したdata directory をnotable の data directory にします。</p>
+
+<p>notable の data directory にはバイナリではなく、plain text として wiki が作られるようなので移植も header の部分を notable に合わせて data directory に放り込むだけで良いので簡単でした。</p>
+
+<p>header はこんな感じです。</p>
+
+<pre><code>---
+title: Ansible action plugin について
+tags: [ansible]
+---
+</code></pre>
+
+<p>意外と移行対象のwikiが少なかったので1, 2時間で終わりました。
+終わったあとプランを無料プランに変更して作業は終了しました。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/golang-logging-error-handling-practice/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 04:07:11.211177196 &#43;0000 UTC m=&#43;0.039912287">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>
