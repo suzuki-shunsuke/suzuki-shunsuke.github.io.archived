@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Terraform Providerで import を実装する方法 &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2019-01-25 22:38:28 &#43;0900 &#43;0900">January 25, 2019</time>
+		</div>
+
+		<h1 class="post-title">Terraform Providerで import を実装する方法</h1>
+		<div class="post-line"></div>
+
+		<p>terraform provider graylog で alert condition と stream rule の import を実装しました。</p>
+
+<ul>
+<li><a href="https://github.com/suzuki-shunsuke/go-graylog/pull/59">https://github.com/suzuki-shunsuke/go-graylog/pull/59</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/go-graylog/pull/60">https://github.com/suzuki-shunsuke/go-graylog/pull/60</a></li>
+</ul>
+
+<p>そこで import を実装する方法を紹介したいと思います。</p>
+
+<p>terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。
+<a href="https://godoc.org/github.com/hashicorp/terraform/helper/schema#Resource">schema.Resource の Importer フィールド</a>ですね。リソースがIDだけでGet出来る場合、<a href="https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough">schema.ImportStatePassthrough</a>を使えば終わりです。
+一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。
+terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。
+そういった場合、次のようにStateFuncを実装すればサポートできます。</p>
+
+<p><a href="https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5">https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5</a></p>
+
+<pre><code># &quot;/&quot; で区切って stream id と ID を渡す
+$ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb
+</code></pre>
+
+<p>区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。</p>
+
+<p><a href="https://www.terraform.io/docs/providers/google/r/spanner_database.html#import">https://www.terraform.io/docs/providers/google/r/spanner_database.html#import</a></p>
+
+<p><a href="https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough">https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough</a> の実装を見てみれば分かりますが、
+StateFunc の中では GET API を叩いてリソースを取得したりはしません。
+<code>terraform import</code> コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。
+StateFunc は *schema.ResourceData の配列を返しますが、これは1度のGETで複数のリソースを取得するようなAPIをサポートするためのようです。</p>
+
+<p>以上、terraform import の実装方法について紹介しました。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/downgrade-github-plan/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2019-01-25 14:05:28.560418657 &#43;0000 UTC m=&#43;0.044849299">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

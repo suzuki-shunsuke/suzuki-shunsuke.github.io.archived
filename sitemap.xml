@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/</loc>
+    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/downgrade-github-plan/</loc>
     <lastmod>2019-01-20T12:27:26+09:00</lastmod>
   </url>
@@ -175,7 +180,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/graylog/</loc>
-    <lastmod>2018-12-19T21:02:11+09:00</lastmod>
+    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -223,7 +228,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/terraform/</loc>
-    <lastmod>2018-12-07T08:22:49+09:00</lastmod>
+    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -235,7 +240,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2019-01-20T12:27:26+09:00</lastmod>
+    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
     <priority>0</priority>
   </url>
   

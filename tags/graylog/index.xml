@@ -6,10 +6,25 @@
     <description>Recent content in Graylog on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Wed, 19 Dec 2018 21:02:11 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 25 Jan 2019 22:38:28 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/graylog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Terraform Providerで import を実装する方法</title>
+      <link>https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/</link>
+      <pubDate>Fri, 25 Jan 2019 22:38:28 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/</guid>
+      <description>terraform provider graylog で alert condition と stream rule の import を実装しました。
+ https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
+terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
+https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5
+# &amp;quot;/&amp;quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb  区切り文字は何でも良いのでしょうが、公式のprovider が &amp;ldquo;/&amp;rdquo; で区切っていたのでそれに従うことにしました。
+https://www.terraform.io/docs/providers/google/r/spanner_database.html#import
+https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.</description>
+    </item>
     
     <item>
       <title>GraylogのAlertの課題</title>
