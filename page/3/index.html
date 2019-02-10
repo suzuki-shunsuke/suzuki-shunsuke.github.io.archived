@@ -42,6 +42,22 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/drone-matrix-build-run-only-27/" class="catalogue-item">
+				<div>
+					<time datetime="2018-09-30 20:26:11 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
+					<h1 class="catalogue-title">drone の matrix build が27個しか実行されない</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						drone 0.8.5 で検証しています。
+matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。
+ https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。
+limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = append(axisList, axis) if p &gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/drone-build-timeout/" class="catalogue-item">
 				<div>
 					<time datetime="2018-09-30 20:16:28 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
@@ -156,7 +172,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-02-10 08:33:11.496977689 &#43;0000 UTC m=&#43;0.047801994">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-02-10 08:33:45.968791686 &#43;0000 UTC m=&#43;0.045933835">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

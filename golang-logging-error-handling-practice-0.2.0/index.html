@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				go-error-handling-logging-practice v0.2 &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2019-02-01 22:26:13 &#43;0900 &#43;0900">February 1, 2019</time>
+		</div>
+
+		<h1 class="post-title">go-error-handling-logging-practice v0.2</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>以前 Golang のロギング・エラーハンドリングについて書きました。</p>
+
+<ul>
+<li><a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/">https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/go-error-handling-logging-practice">https://github.com/suzuki-shunsuke/go-error-handling-logging-practice</a></li>
+</ul>
+
+<p>それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。
+本記事ではその変更点について書きます。</p>
+
+<h2 id="変更点">変更点</h2>
+
+<p><strong>関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。</strong></p>
+
+<p>具体的には元々</p>
+
+<pre><code class="language-go">func createUser(name string, age int) error {
+	return errlog.Wrap(checkName(name), logrus.Fields{&quot;age&quot;: age}, &quot;failed to create a user&quot;)
+}
+</code></pre>
+
+<p>だったものが</p>
+
+<pre><code class="language-go">func createUser(name string, age int) error {
+	return errlog.Wrap(checkName(name), nil, &quot;user name is invalid&quot;)
+}
+</code></pre>
+
+<p>になります。</p>
+
+<h2 id="変更理由">変更理由</h2>
+
+<p>メタ情報のフィールド名はコンテキストに依存します。
+上記の例だとユーザー名というメタ情報のフィールド名は <code>name</code> より <code>user_name</code> や <code>admin_name</code>, <code>owner_name</code> としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。</p>
+
+<p>メッセージに関しても同様のことが言えます。
+また、元々 v0.1 ではユーザーが定義した関数と</p>
+
+<ul>
+<li>標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数</li>
+<li>interface の関数やメソッド</li>
+</ul>
+
+<p>を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。</p>
+
+<p>v0.2 では両者を区別せず、どちらの場合でも呼び出し元に付与させるというふうにすることでよりルールがシンプルになります。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/terraform-provider-graylog-import/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2019-02-10 08:33:45.961561712 &#43;0000 UTC m=&#43;0.038703814">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

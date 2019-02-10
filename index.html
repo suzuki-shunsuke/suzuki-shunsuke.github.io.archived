@@ -42,6 +42,27 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="catalogue-item">
+				<div>
+					<time datetime="2019-02-01 22:26:13 &#43;0900 &#43;0900" class="catalogue-time">February 1, 2019</time>
+					<h1 class="catalogue-title">go-error-handling-logging-practice v0.2</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						以前 Golang のロギング・エラーハンドリングについて書きました。
+ https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。
+変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。
+具体的には元々
+func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&quot;age&quot;: age}, &quot;failed to create a user&quot;) }  だったものが
+func createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &quot;user name is invalid&quot;) }  になります。
+変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。
+メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と
+ 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/" class="catalogue-item">
 				<div>
 					<time datetime="2019-01-25 22:38:28 &#43;0900 &#43;0900" class="catalogue-time">January 25, 2019</time>
@@ -245,28 +266,6 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/gomic/" class="catalogue-item">
-				<div>
-					<time datetime="2018-10-30 08:35:16 &#43;0900 &#43;0900" class="catalogue-time">October 30, 2018</time>
-					<h1 class="catalogue-title">gomic - Goのモックジェネレータ</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						自作のOSS gomic の紹介をします。
- なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
-まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
-Goで書かれています。
-https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。
-同様のツールは幾つかあります。
- https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
-なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
-自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
-// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -281,7 +280,7 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-02-10 08:33:11.494805087 &#43;0000 UTC m=&#43;0.045629373">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-02-10 08:33:45.966931874 &#43;0000 UTC m=&#43;0.044073980">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
