@@ -42,6 +42,30 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/akoi/" class="catalogue-item">
+				<div>
+					<time datetime="2018-10-31 08:56:04 &#43;0900 &#43;0900" class="catalogue-time">October 31, 2018</time>
+					<h1 class="catalogue-title">akoi - binary installer</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						自作のOSS akoi の紹介をします。
+ なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
+まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード  ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)   akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
+分散ダウンロードについては
+https://qiita.com/codehex/items/d0a500ac387d39a34401
+が参考になります。
+Goで書かれています。
+https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウンロードしてインストールできます。
+詳細はREADMEを読んでください。
+なぜ作ったのか サーバにバイナリをインストールする ansible role を書くのが辛かったからです。 最近は色々なソフトウェアがGoで書かれ、バイナリで配布されています。 そういったバイナリをサーバへインストールするのは ansible で行っているという方も少なくないのではないでしょうか？ 有名なソフトウェアをインストールする ansible role は大抵Ansible Galaxy で公開されています。
+しかし、ほとんどの role は「真面目に」バージョン管理していません。 ここでいう「真面目に」とは
+ バージョンを指定できる バージョンを変更できる 指定したバージョンが既にインストールされている場合は無駄にダウンロードしたりしない  といったことです。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/gomic/" class="catalogue-item">
 				<div>
 					<time datetime="2018-10-30 08:35:16 &#43;0900 &#43;0900" class="catalogue-time">October 30, 2018</time>
@@ -213,22 +237,6 @@ when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グ
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/drone-project-visibility/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 20:32:20 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">drone の project visibility とは</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						恐らく公式ドキュメントに説明がない気がするので書いておきます。 と言っても、以下のissueに全部書いてありますが。
-https://github.com/drone/drone/issues/2042
-droneの web ui からリポジトリごとに設定できます。 そのリポジトリが誰に見えるかの設定です。
- public: ログインしていなくても誰でも見れる(publicリポジトリのデフォルト) private: リポジトリにアクセスできる人しか見れない(privateリポジトリのデフォルト) internal: ログインしていれば誰でも見れる  
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -245,7 +253,7 @@ droneの web ui からリポジトリごとに設定できます。 そのリポ
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-02-10 08:33:45.968247932 &#43;0000 UTC m=&#43;0.045390054">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-02-10 09:36:29.507280421 &#43;0000 UTC m=&#43;0.100919731">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

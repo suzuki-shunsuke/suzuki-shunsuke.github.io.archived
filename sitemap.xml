@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/golang-good-point/</loc>
+    <lastmod>2019-02-10T17:49:58+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/</loc>
     <lastmod>2019-02-01T22:26:13+09:00</lastmod>
   </url>
@@ -245,7 +250,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2019-02-01T22:26:13+09:00</lastmod>
+    <lastmod>2019-02-10T17:49:58+09:00</lastmod>
     <priority>0</priority>
   </url>
   
