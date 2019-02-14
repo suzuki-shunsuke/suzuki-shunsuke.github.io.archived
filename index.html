@@ -42,6 +42,28 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/use-npm/" class="catalogue-item">
+				<div>
+					<time datetime="2019-02-14 21:34:22 &#43;0900 &#43;0900" class="catalogue-time">February 14, 2019</time>
+					<h1 class="catalogue-title">JS以外でのnpmの活用</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						npm は Node.js のパッケージマネージャーですが、自分はJS以外のプロジェクトでも使えると思っています。 実際、Goのアプリケーション、OSS、ansible role, playbook など種類を問わず、自分が管理している多くのリポジトリで使っています。 ただ、GoのOSSで npm 使っているのは自分以外で見たことはないですし、 正直あまり賛同はされないかなと思いますが、こういう考え方もあると思っていただけたらと思います。
+npm を使う理由は
+ Node製のツールを使うため npm scripts を使うため (今回書きたいのはこっち)  の2つあります。
+Node製のツール  husky: Git Hookを設定 commitlint: commit メッセージのlint standard-version: コミットログによって Change Log を生成  などを使っています。 Nodeはバージョンの変化が速く、互換性が壊れたりとかも多い印象ですが、 グローバルにインストールしなくてもリポジトリごとに install 出来る(package.jsonで管理できる)のでその点は(特にチーム開発では)良いと思います。
+npm scripts npm scripts によってそのリポジトリの開発に使うコマンド群を管理するということを自分はしています。
+https://github.com/suzuki-shunsuke/gomic/blob/master/package.json
+なにもツールを使わない場合に比べ、こうすることでチーム全体でコマンドを統一できますし、一連のコマンドをスクリプト化して npm scripts で実行できるようにするなど、自動化も促進されます。
+ごく簡単な自動化の例ですが、tag を打つと同時にソースコード中のバージョン番号を更新するのを npm run tag v1.1.0 といったコマンドで出来るようにしています。 こうすることで tag とversionコマンドで出力されるバージョンが違うなんてことを防ぐことが出来ます。
+https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
+また、オプションによって動作が変わるようなコマンドは npm scripts によって実行することでオプションを統一できます。 例えば gofmt は -s オプションの有無で結果が変わります。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="catalogue-item">
 				<div>
 					<time datetime="2019-02-10 17:49:58 &#43;0900 &#43;0900" class="catalogue-time">February 10, 2019</time>
@@ -233,30 +255,6 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/graylog/" class="catalogue-item">
-				<div>
-					<time datetime="2018-11-27 16:40:33 &#43;0900 &#43;0900" class="catalogue-time">November 27, 2018</time>
-					<h1 class="catalogue-title">Graylog で log を管理する</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						Java 製の OSS ログ管理システム Graylog の紹介です。 Graylog については幾つかに分けて記事を書きたいと思います。 今回はGraylogの入門的な内容になります。
-なお、本記事中で「現在」「現時点」といった場合、特に断りがなければ記事執筆時点 2018-11-27 を指します。
-Graylog のバージョン 検証に用いるGraylogのバージョンは 2.4.6 になります。
-OSSバージョンとEnterpriseバージョンがありますが、本記事ではOSSバージョンを使用します。
-Graylog とは  https://www.graylog.org/ https://github.com/Graylog2/graylog2-server  Kibana と Elasticsearch(以下ES) を使ったことがある人は、Kibanaに代わるものだと思っていただくとイメージしやすいかと思います。 ログはGraylogそのものが保持するのではなく、ESにインデキシングされます。 Kibana同様、ESに収集されたログを検索したり、ダッシュボードを作ったり出来ます。 ダッシュボードに関してはKibanaのほうが優れているようにも思えますが、 Graylogは認証・認可によりダッシュボードやログを操作できる人を制限・管理することが出来ます。
-Graylogでログを管理する場合、ユーザーは直接ESにはログを送らず、Graylogを経由して送ります。 ESに対するGraylog以外のアクセスを制限し直接ESにアクセスされるのを防ぐことが出来ます。
-Graylog は多機能なシステムであり、ログを整形したり、アラートを飛ばしたり、他のシステムにログをフォワードしたりすることも出来ます。 marketplace でサードパーティの plugin が公開されており、機能を拡張することが出来ます。 APIも提供されており、ある程度自動化が可能です。
-認証・認可 オンプレミスでログを管理する場合、社外からは勿論社内からのアクセスも制限したいです。 Graylog では LDAP や Active Directory によってアクセスを制限できます。 リソース毎に誰が何を出来るか設定できます。
-http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
-ログの収集 ログの収集をするには Graylog で幾つかのリソースを作成する必要があります。
- Input Index Set Stream Stream Rule  Input はログの入力のフォーマットの設定であり、 どのポートでどういったフォーマットのログを受け付けるかという設定になります。 フォーマットは様々なものがサポートされています。
- AWS Flow Logs AWS Cloud Watch Logs AWS Cloud Trail Beats CEF AMQP CEF Kafka CEF TCP CEF UDP Fake HTTP Message GELF AMQP GELF HTTP GELF Kafka GELF TCP GELF UDP JSON Path NetFlow UDP Raw AMQP Syslog AMQP Syslog Kafka Syslog TCP Syslog UDP  この設定はログを収集するアプリケーションごとに設定するというより、グローバルな設定なので、他のアプリケーションで既に同じ形式でログを収集していたら新たに設定する必要はありません。
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -271,7 +269,7 @@ http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-02-10 09:40:23.15484752 &#43;0000 UTC m=&#43;0.043163910">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-02-14 22:57:36.552087229 &#43;0000 UTC m=&#43;0.076176751">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
