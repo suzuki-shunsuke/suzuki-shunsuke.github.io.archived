@@ -42,6 +42,31 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/graylog-terraform/" class="catalogue-item">
+				<div>
+					<time datetime="2018-12-01 14:56:00 &#43;0900 &#43;0900" class="catalogue-time">December 1, 2018</time>
+					<h1 class="catalogue-title">GraylogをTerraformで管理する</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
+Graylogには様々なリソースがあります。
+ User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
+APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
+https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform
+GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
+ Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
+出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
+terraform を使った管理方法 以下では自分の管理方法を紹介します。
+https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
+にサンプルが置いてあります。
+基本はプロジェクトごとに
+ Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/graylog/" class="catalogue-item">
 				<div>
 					<time datetime="2018-11-27 16:40:33 &#43;0900 &#43;0900" class="catalogue-time">November 27, 2018</time>
@@ -229,21 +254,6 @@ docker API でエラーが出て、コンテナを操作できない これは�
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/drone-cant-use-nonroot-image/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 21:42:16 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">drone で非rootユーザーで実行されるImageを使えない</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。
-/bin/sh: 3: cannot create /root/.netrc: Permission denied  これについては drone の開発者が回答しています。
- https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -260,7 +270,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-02-14 22:57:36.553797478 &#43;0000 UTC m=&#43;0.077887006">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-02-16 12:27:39.101514229 &#43;0000 UTC m=&#43;0.057206021">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
