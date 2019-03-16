@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/</loc>
+    <lastmod>2019-03-16T21:17:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/use-confita/</loc>
     <lastmod>2019-02-16T18:38:45+09:00</lastmod>
   </url>
@@ -247,6 +252,12 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/rancher/</loc>
+    <lastmod>2019-03-16T21:17:05+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/tags/</loc>
     <lastmod>2018-12-06T23:08:04+09:00</lastmod>
     <priority>0</priority>
@@ -266,7 +277,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2019-02-16T18:38:45+09:00</lastmod>
+    <lastmod>2019-03-16T21:17:05+09:00</lastmod>
     <priority>0</priority>
   </url>
   
