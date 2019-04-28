@@ -42,6 +42,21 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/graylog-alert-issue/" class="catalogue-item">
+				<div>
+					<time datetime="2018-12-19 21:02:11 &#43;0900 &#43;0900" class="catalogue-time">December 19, 2018</time>
+					<h1 class="catalogue-title">GraylogのAlertの課題</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						 Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
+2018-12-31 追記 元々 Alert Condition, Notification の APIがないと勘違いしていたのですが、 実はちゃんとあったので terraform で管理できるように go-graylog を更新しました。
+ https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/" class="catalogue-item">
 				<div>
 					<time datetime="2018-12-07 08:22:49 &#43;0900 &#43;0900" class="catalogue-time">December 7, 2018</time>
@@ -240,23 +255,6 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/" class="catalogue-item">
-				<div>
-					<time datetime="2018-10-01 07:23:15 &#43;0900 &#43;0900" class="catalogue-time">October 1, 2018</time>
-					<h1 class="catalogue-title">travis ci から circle ci への移行のすすめ</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						travis ci と circle ci の無償SaaS 版を比較しています。
-OSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。
-Circle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。
-自分の場合 Golang のツールの CI用に Docker Image を用意しています。
-https://hub.docker.com/r/suzukishunsuke/go-ci/
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -273,7 +271,7 @@ https://hub.docker.com/r/suzukishunsuke/go-ci/
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-04-03 01:08:37.627094311 &#43;0000 UTC m=&#43;0.073265039">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-04-28 12:57:15.366023828 &#43;0000 UTC m=&#43;0.074517149">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>

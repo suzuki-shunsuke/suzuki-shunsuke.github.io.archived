@@ -42,6 +42,23 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/" class="catalogue-item">
+				<div>
+					<time datetime="2018-10-01 07:23:15 &#43;0900 &#43;0900" class="catalogue-time">October 1, 2018</time>
+					<h1 class="catalogue-title">travis ci から circle ci への移行のすすめ</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						travis ci と circle ci の無償SaaS 版を比較しています。
+OSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。
+Circle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。
+自分の場合 Golang のツールの CI用に Docker Image を用意しています。
+https://hub.docker.com/r/suzukishunsuke/go-ci/
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/" class="catalogue-item">
 				<div>
 					<time datetime="2018-09-30 22:55:57 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
@@ -205,20 +222,6 @@ circle ci の場合は archive, unarchive する分、volume 共有に比べて�
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 18:52:34 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">drone exec を並列実行した際のdocker network name の衝突について</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone exec を並列実行すると docker network name が衝突することがあります。
-$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -235,7 +238,7 @@ $ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Erro
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-04-03 01:08:37.628018607 &#43;0000 UTC m=&#43;0.074189316">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-04-28 12:57:15.367055552 &#43;0000 UTC m=&#43;0.075548874">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
