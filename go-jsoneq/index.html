@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2019-05-23 11:43:18 &#43;0900 &#43;0900">May 23, 2019</time>
+		</div>
+
+		<h1 class="post-title">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</h1>
+		<div class="post-line"></div>
+
+		<p><a href="https://github.com/suzuki-shunsuke/go-jsoneq">https://github.com/suzuki-shunsuke/go-jsoneq</a></p>
+
+<p>2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。</p>
+
+<p>「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。</p>
+
+<pre><code class="language-go">struct {
+	Foo string `json:&quot;foo&quot;`
+}{
+	Foo: &quot;bar&quot;,
+}
+</code></pre>
+
+<p>と</p>
+
+<pre><code class="language-go">map[string]interface{}{&quot;foo&quot;: &quot;bar&quot;}
+</code></pre>
+
+<p>を JSON に変換したらともに</p>
+
+<pre><code class="language-json">{&quot;foo&quot;: &quot;bar&quot;}
+</code></pre>
+
+<p>になりますね。</p>
+
+<p>json.Marshaler のテストや、
+実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。</p>
+
+<p>jsoneq.Equal でやっていることは単純です。</p>
+
+<ol>
+<li>json.Marshal で []byte に変換</li>
+<li>json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換</li>
+<li>reflect.DeepEqual で比較</li>
+</ol>
+
+<p>引数が []byte の場合は 1 は飛ばします。</p>
+
+<p>GoDoc やサンプルを見れば使い方は簡単にわかると思います。</p>
+
+<p>以上、簡単ですが、自作ライブラリの紹介でした。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/durl/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2019-05-23 03:16:47.897067731 &#43;0000 UTC m=&#43;0.061820949">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

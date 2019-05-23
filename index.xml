@@ -6,10 +6,29 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 28 Apr 2019 21:25:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 23 May 2019 11:43:18 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</title>
+      <link>https://suzuki-shunsuke.github.io/go-jsoneq/</link>
+      <pubDate>Thu, 23 May 2019 11:43:18 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/go-jsoneq/</guid>
+      <description>https://github.com/suzuki-shunsuke/go-jsoneq
+2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。
+「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。
+struct { Foo string `json:&amp;quot;foo&amp;quot;` }{ Foo: &amp;quot;bar&amp;quot;, }  と
+map[string]interface{}{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  を JSON に変換したらともに
+{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  になりますね。
+json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。
+jsoneq.Equal でやっていることは単純です。
+ json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。
+GoDoc やサンプルを見れば使い方は簡単にわかると思います。
+以上、簡単ですが、自作ライブラリの紹介でした。</description>
+    </item>
     
     <item>
       <title>durl - 壊れたURLを検知するCLIツール</title>
