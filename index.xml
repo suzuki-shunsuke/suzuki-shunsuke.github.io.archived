@@ -6,10 +6,25 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 23 May 2019 11:43:18 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 01 Jun 2019 08:34:10 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</title>
+      <link>https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/</link>
+      <pubDate>Sat, 01 Jun 2019 08:34:10 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/</guid>
+      <description>久しぶりに Drone plugin を作ったので紹介します。
+https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
+.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。
+Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
+https://docs.drone.io/user-guide/pipeline/migrating/
+ To simplify your configuration we recommend using jsonnet.
+ $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</description>
+    </item>
     
     <item>
       <title>go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</title>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				.drone.jsonnet と .drone.yml を比較する Drone plugin を作った &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2019-06-01 08:34:10 &#43;0900 &#43;0900">June 1, 2019</time>
+		</div>
+
+		<h1 class="post-title">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</h1>
+		<div class="post-line"></div>
+
+		<p>久しぶりに <a href="https://docs.drone.io/plugins/">Drone plugin</a> を作ったので紹介します。</p>
+
+<p><a href="https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check">https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check</a></p>
+
+<p>.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、
+.drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。</p>
+
+<p>Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。
+matrix builds を <code>drone convert</code> コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。
+そこで公式では <a href="https://jsonnet.org">jsonnet</a> で記述して .drone.yml に変換する方法が推奨されています。</p>
+
+<p><a href="https://docs.drone.io/user-guide/pipeline/migrating/">https://docs.drone.io/user-guide/pipeline/migrating/</a></p>
+
+<blockquote>
+<p>To simplify your configuration we recommend using jsonnet.</p>
+</blockquote>
+
+<pre><code class="language-console">$ drone jsonnet --format --stream
+</code></pre>
+
+<p>jsonnet から yaml への変換は <a href="https://docs.drone.io/extend/config/jsonnet/">Jsonnet extension</a> を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、
+使っていない場合、 .drone.jsonnet と .drone.yml を Git で管理し、自前で変換してコミットする必要があります。
+この作業をなにかしら自動化しないと .drone.jsonnet と .drone.yml に不整合が生じることもあり得ると思います。</p>
+
+<ul>
+<li>.drone.jsonnet を更新したけど .drone.yml を更新し忘れる</li>
+<li>.drone.yml を直接更新してしまった</li>
+</ul>
+
+<p>そこで CI で不整合が生じていないかテストするための plugin を作りました。</p>
+
+<p>最初は plugin ではなく、ただのサンプルコードとして公開しました。</p>
+
+<p><a href="https://github.com/suzuki-shunsuke/drone-jsonnet-convert-test">https://github.com/suzuki-shunsuke/drone-jsonnet-convert-test</a></p>
+
+<p>しかし、折角なので plugin にしました。</p>
+
+<p>やっていることは単純で、 .drone.jsonnet から YAML を生成し、 .drone.yml と diff を取っているだけです。</p>
+
+<p>使い方は README を見れば分かると思いますが、</p>
+
+<p><code>drone jsonnet</code> コマンドのオプションを plugin のパラメータとして渡せます。</p>
+
+<pre><code class="language-jsonnet">{
+  kind: &quot;pipeline&quot;,
+  name: &quot;test&quot;,
+  steps: [
+    {
+      name: &quot;test .drone.yml&quot;,
+      image: &quot;suzukishunsuke/jsonnet-check:v1.1.1-v0.1.0&quot;,
+      settings: {
+        format: true,
+      },
+    },
+  ],
+}
+</code></pre>
+
+<pre><code class="language-console">$ drone exec
+[test .drone.yml:0] + drone jsonnet --format --target /tmp/.drone.yml
+[test .drone.yml:1] + diff .drone.yml /tmp/.drone.yml
+[test .drone.yml:2] --- .drone.yml
+[test .drone.yml:3] +++ /tmp/.drone.yml
+[test .drone.yml:4] @@ -12,5 +12,4 @@
+[test .drone.yml:5]    settings:
+[test .drone.yml:6]      format: true
+[test .drone.yml:7]
+[test .drone.yml:8] -
+[test .drone.yml:9]  ...
+2019/06/01 00:33:27 test .drone.yml : exit code 1
+</code></pre>
+
+<p>シェルスクリプトで実装しました。
+テストでは <a href="https://github.com/bats-core/bats-core">bats</a> を使っています。</p>
+
+<p>以上、簡単ですが、自作 Drone plugin の紹介でした。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/go-jsoneq/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2019-06-01 00:08:48.044750731 &#43;0000 UTC m=&#43;0.234136966">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>
