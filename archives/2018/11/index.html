@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2018/11/index.xml">
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/archives/2018/11/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>2018/11 - melody</title>
+    
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>2018/11</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog/">Graylog で log を管理する</a></h2>
+  </header>
+
+  
+  <div class="summary">Java 製の OSS ログ管理システム Graylog の紹介です。 Graylog については幾つかに分けて記事を書きたいと思います。 今回はGraylogの入門的な内容になります。
+なお、本記事中で「現在」「現時点」といった場合、特に断りがなければ記事執筆時点 2018-11-27 を指します。
+Graylog のバージョン 検証に用いるGraylogのバージョンは 2.4.6 になります。
+OSSバージョンとEnterpriseバージョンがありますが、本記事ではOSSバージョンを使用します。
+Graylog とは  https://www.graylog.org/ https://github.com/Graylog2/graylog2-server  Kibana と Elasticsearch(以下ES) を使ったことがある人は、Kibanaに代わるものだと思っていただくとイメージしやすいかと思います。 ログはGraylogそのものが保持するのではなく、ESにインデキシングされます。 Kibana同様、ESに収集されたログを検索したり、ダッシュボードを作ったり出来ます。 ダッシュボードに関してはKibanaのほうが優れているようにも思えますが、 Graylogは認証・認可によりダッシュボードやログを操作できる人を制限・管理することが出来ます。
+Graylogでログを管理する場合、ユーザーは直接ESにはログを送らず、Graylogを経由して送ります。 ESに対するGraylog以外のアクセスを制限し直接ESにアクセスされるのを防ぐことが出来ます。
+Graylog は多機能なシステムであり、ログを整形したり、アラートを飛ばしたり、他のシステムにログをフォワードしたりすることも出来ます。 marketplace でサードパーティの plugin が公開されており、機能を拡張することが出来ます。 APIも提供されており、ある程度自動化が可能です。
+認証・認可 オンプレミスでログを管理する場合、社外からは勿論社内からのアクセスも制限したいです。 Graylog では LDAP や Active Directory によってアクセスを制限できます。 リソース毎に誰が何を出来るか設定できます。
+http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
+ログの収集 ログの収集をするには Graylog で幾つかのリソースを作成する必要があります。
+ Input Index Set Stream Stream Rule  Input はログの入力のフォーマットの設定であり、 どのポートでどういったフォーマットのログを受け付けるかという設定になります。 フォーマットは様々なものがサポートされています。
+ AWS Flow Logs AWS Cloud Watch Logs AWS Cloud Trail Beats CEF AMQP CEF Kafka CEF TCP CEF UDP Fake HTTP Message GELF AMQP GELF HTTP GELF Kafka GELF TCP GELF UDP JSON Path NetFlow UDP Raw AMQP Syslog AMQP Syslog Kafka Syslog TCP Syslog UDP  この設定はログを収集するアプリケーションごとに設定するというより、グローバルな設定なので、他のアプリケーションで既に同じ形式でログを収集していたら新たに設定する必要はありません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog/" title="Graylog で log を管理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (10)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (8)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (4)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github (1)</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">ARCHIVE</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/04" class="list-group-item">2019/04 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/03" class="list-group-item">2019/03 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/02" class="list-group-item">2019/02 (4)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/01" class="list-group-item">2019/01 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/10" class="list-group-item">2018/10 (6)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/09" class="list-group-item">2018/09 (11)</a>
+      
+    </div>
+  </section>
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
