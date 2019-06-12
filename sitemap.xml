@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/drone-jsonnet-generator/</loc>
+    <lastmod>2019-06-12T07:40:45+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/</loc>
     <lastmod>2019-06-01T08:34:10+09:00</lastmod>
   </url>
@@ -201,7 +206,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/drone/</loc>
-    <lastmod>2019-06-01T08:34:10+09:00</lastmod>
+    <lastmod>2019-06-12T07:40:45+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -261,7 +266,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
-    <lastmod>2019-05-23T11:43:18+09:00</lastmod>
+    <lastmod>2019-06-12T07:40:45+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -297,7 +302,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2019-06-01T08:34:10+09:00</lastmod>
+    <lastmod>2019-06-12T07:40:45+09:00</lastmod>
     <priority>0</priority>
   </url>
   

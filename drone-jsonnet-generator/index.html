@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った &middot; melody
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
+	</head>
+	
+
+  <body>
+		<nav class="nav">
+			<div class="nav-container">
+			<a href="https://suzuki-shunsuke.github.io/">
+				<h2 class="nav-title">melody</h2>
+			</a>
+			<ul>
+				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
+				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
+			</ul>
+			</div>
+		</nav>
+
+
+<main>
+	<div class="post">
+		<div class="post-info">
+		<span>Written by</span>
+			
+			<br>
+			<span>on&nbsp;</span><time datetime="2019-06-12 07:40:45 &#43;0900 &#43;0900">June 12, 2019</time>
+		</div>
+
+		<h1 class="post-title">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</h1>
+		<div class="post-line"></div>
+
+		
+
+<p>Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作ったので紹介します。</p>
+
+<p><a href="https://github.com/suzuki-shunsuke/drone-jsonnet-generator">https://github.com/suzuki-shunsuke/drone-jsonnet-generator</a></p>
+
+<h2 id="背景">背景</h2>
+
+<p><a href="https://docs.drone.io/user-guide/pipeline/migrating/">https://docs.drone.io/user-guide/pipeline/migrating/</a></p>
+
+<p>Drone は v0.8 から v1 で .drone.yml のフォーマットが大きく変わっています。
+Drone v1 ではビルド実行時に自動で変換しているため、v0.8 の .drone.yml でもそのまま動きます(matrix builds も動きます)。</p>
+
+<p>そのため、Drone v0.8 から v1 に移行する際、すぐに .drone.yml を修正しなくても問題ないのですが、
+v1 独自の機能が出てきた場合 v0.8 のフォーマットの場合利用できないかもしれませんし、
+いつまでも古いままだと気持ち悪いので出来るならフォーマットを変換したいです。</p>
+
+<p>drone-cli ではフォーマットを変換する <code>drone convert</code> というコマンドが提供されています。</p>
+
+<p>ただし、 <code>drone convert</code> は matrix build を multiple pipeline に変換するのですが、
+非常に冗長になります。
+そのため、<a href="https://jsonnet.org/">jsonnet</a> を利用することが推奨されています。</p>
+
+<p><a href="https://docs.drone.io/user-guide/pipeline/migrating/">https://docs.drone.io/user-guide/pipeline/migrating/</a></p>
+
+<blockquote>
+<p>The above syntax can be quite verbose if you are testing a large number of variations.
+To simplify your configuration we recommend using jsonnet.</p>
+</blockquote>
+
+<p>この .drone.jsonnet の生成は <code>drone convert</code> では出来ないですし、手作業になるのですが、結構面倒です。
+v0.8 から v1 でフォーマットが変わってますし、jsonnet に馴染みの薄い人も少なくないでしょう。
+移行対象のリポジトリが多い場合、非常に苦行になります。</p>
+
+<p>そこで今回この .drone.jsonnet を生成するツールを開発しました。</p>
+
+<h2 id="使い方">使い方</h2>
+
+<p>非常にシンプルです。</p>
+
+<pre><code class="language-console">$ drone-jsonnet-generator gen [--source .drone.yml] [--target .drone.jsonnet] [--stdout]
+</code></pre>
+
+<p>を実行すると .drone.yml から .drone.jsonnet を生成します。</p>
+
+<p>例えば</p>
+
+<pre><code class="language-yaml">---
+pipeline:
+  build:
+    image: golang:${GO_VERSION}
+    commands:
+    - echo hello
+services:
+  database:
+    image: ${DATABASE}
+matrix:
+  include:
+  - GO_VERSION: 1.4
+    DATABASE: mysql:5.5
+  - GO_VERSION: 1.4
+    DATABASE: mysql:6.5
+  - GO_VERSION: 1.3
+    DATABASE: mysql:5.5
+</code></pre>
+
+<p>から</p>
+
+<pre><code class="language-jsonnet">local pipeline(GO_VERSION, DATABASE) = {
+  &quot;kind&quot;: &quot;pipeline&quot;,
+  &quot;name&quot;: &quot;'GO_VERSION:' + GO_VERSION + ' DATABASE:' + DATABASE&quot;,
+  &quot;platform&quot;: {
+    &quot;arch&quot;: &quot;amd64&quot;,
+    &quot;os&quot;: &quot;linux&quot;
+  },
+  &quot;services&quot;: [
+    {
+      &quot;image&quot;: &quot;${DATABASE}&quot;,
+      &quot;name&quot;: &quot;database&quot;,
+      &quot;pull&quot;: &quot;default&quot;
+    }
+  ],
+  &quot;steps&quot;: [
+    {
+      &quot;commands&quot;: [
+        &quot;echo hello&quot;
+      ],
+      &quot;image&quot;: &quot;golang:${GO_VERSION}&quot;,
+      &quot;name&quot;: &quot;build&quot;,
+      &quot;pull&quot;: &quot;default&quot;
+    }
+  ]
+};
+
+local args = [
+  {
+    &quot;DATABASE&quot;: &quot;mysql:5.5&quot;,
+    &quot;GO_VERSION&quot;: &quot;1.4&quot;
+  },
+  {
+    &quot;DATABASE&quot;: &quot;mysql:6.5&quot;,
+    &quot;GO_VERSION&quot;: &quot;1.4&quot;
+  },
+  {
+    &quot;DATABASE&quot;: &quot;mysql:5.5&quot;,
+    &quot;GO_VERSION&quot;: &quot;1.3&quot;
+  }
+];
+
+[
+  pipeline(arg.GO_VERSION, arg.DATABASE) for arg in args
+]
+</code></pre>
+
+<p><strong>残念ながら生成された jsonnet はそのままでは使えません。修正が必要です。</strong>
+それでも一から .drone.jsonnet を書くよりは圧倒的に効率が良いです。</p>
+
+<ul>
+<li>pipeline 中の変数が <code>${変数名}</code> となっているので直す (<code>&quot;golang:${GO_VERSION}&quot;</code> -&gt; <code>&quot;golang:&quot; + GO_VERSION</code>)</li>
+<li>pipeline name が <code>&quot;</code> で囲まれてるので取り除く (<code>&quot;'GO_VERSION:' + GO_VERSION + ' DATABASE:' + DATABASE&quot;</code> -&gt; <code>'GO_VERSION:' + GO_VERSION + ' DATABASE:' + DATABASE</code>)</li>
+</ul>
+
+<p>あと、一部のコードを JSON として生成しているので、jsonnet としては多少綺麗ではない(フィールドが<code>&quot;</code>で囲まれてたりする)ですが、実用上特に問題ないと思います。</p>
+
+<p>ちなみに上の例では matrix build の <code>include</code> が使われていますが、使っていない場合にも対応してますし、
+<code>include</code> が使われていない場合、若干生成されるコードのテンプレートが違います。</p>
+
+<p>なお、今回のツールの対象になる .drone.yml は matrix build を使っているのが前提になります。
+matrix build が使われていないとエラーを返します。
+matrix build を使っていないのであれば jsonnet を使う必要性が弱いですし、 <code>drone convert</code> で変換すれば良い気がします。</p>
+
+<p>以上、自作のOSSの紹介でした。
+Drone v0.8 から v1 への移行で困っている人は是非使ってみてください。
+快適な Drone ライフを。</p>
+
+
+	</div>
+
+	<div class="pagination">
+		<a href="/drone-plugin-jsonnet-check/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>		<footer>
+			<span>
+			&copy; <time datetime="2019-06-12 02:50:14.216669521 &#43;0000 UTC m=&#43;0.061379296">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			</span>
+		</footer>
+  </body>
+</html>

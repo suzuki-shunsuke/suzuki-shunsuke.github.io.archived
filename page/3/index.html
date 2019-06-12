@@ -42,6 +42,35 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://suzuki-shunsuke.github.io/test-ansible-on-docker/" class="catalogue-item">
+				<div>
+					<time datetime="2018-10-12 21:02:51 &#43;0900 &#43;0900" class="catalogue-time">October 12, 2018</time>
+					<h1 class="catalogue-title">Dockerを使ってansible playbookをテストする</h1>
+					<div class="catalogue-line"></div>
+	
+					<p>
+						ansible playbookを(VMの代わりに)Dockerコンテナに対して実行すると、効率よく動作確認できるというお話です。 ansible playbookの動作確認のためにvagrantでVMを起動したりしていると動作確認に時間がかかるし、容量も喰います。 Dockerコンテナを使って動作確認できればこれらの問題を解決できます。
+ただし、Dockerコンテナの場合、一部のansible のtaskが失敗することがあるので ansible playbookによってはDockerコンテナではテストにならない場合もあるかと思います。
+サンプル https://github.com/suzuki-shunsuke/example/tree/master/ansible/test-on-docker
+簡単なサンプルを用意しました。
+ansible playbookに加え、
+ docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。
+$ bash test_docker.sh  とすることで動作確認できます。
+説明 スクリプトでやっていることは
+ Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。
+Docker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。
+ https://docs.ansible.com/ansible/2.6/plugins/connection.html https://docs.ansible.com/ansible/2.6/plugins/connection/docker.html  また、Docker Hubで公開されている多くのDockerイメージのUSERは root ですが、 ansible playbookの動作確認としては都合が悪かったりします。
+そこで自分は非rootユーザーを作成したDocker Imageを使っています。
+https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
+関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。
+Vagrant Docker Provider https://www.vagrantup.com/docs/docker/
+なんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。
+https://www.vagrantup.com/docs/docker/basics.html#host-vm
+					</p>
+	
+				</div>
+			</a>
+		
 			<a href="https://suzuki-shunsuke.github.io/migrate-to-user-gh-pages/" class="catalogue-item">
 				<div>
 					<time datetime="2018-10-10 21:14:03 &#43;0900 &#43;0900" class="catalogue-time">October 10, 2018</time>
@@ -194,23 +223,6 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
 				</div>
 			</a>
 		
-			<a href="https://suzuki-shunsuke.github.io/drone-build-timeout/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 20:16:28 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">drone の build の timeout が変更できない</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone 0.8.5 で検証しています。
-drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
-ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
-PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
- https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  
-					</p>
-	
-				</div>
-			</a>
-		
 	</div>
 	
 	<div class="pagination">
@@ -227,7 +239,7 @@ PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そ�
 
 		<footer>
 			<span>
-			&copy; <time datetime="2019-06-12 02:45:25.702253262 &#43;0000 UTC m=&#43;0.077159506">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
+			&copy; <time datetime="2019-06-12 02:50:14.23096366 &#43;0000 UTC m=&#43;0.075673445">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
 			</span>
 		</footer>
   </body>
