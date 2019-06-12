@@ -1,55 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
   <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				gomic - Goのモックジェネレータ &middot; melody
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
-	</head>
-	
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/gomic/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>gomic - Goのモックジェネレータ - melody</title>
+    
+<meta name="description" content="自作のOSS gomic の紹介をします。 なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp;amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。Goで書かれています。https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。同様のツールは幾つかあります。 https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &amp;quot;/tmp&amp;quot;, nil }) mock.Getwd() // &amp;quot;/tmp&amp;quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。">
+
+<meta property="og:title" content="gomic - Goのモックジェネレータ - melody">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/gomic/">
+<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:site_name" content="melody">
+<meta property="og:description" content="自作のOSS gomic の紹介をします。 なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp;amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。Goで書かれています。https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。同様のツールは幾つかあります。 https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &amp;quot;/tmp&amp;quot;, nil }) mock.Getwd() // &amp;quot;/tmp&amp;quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="melody">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/gomic/">
+<meta name="twitter:title" content="gomic - Goのモックジェネレータ - melody">
+<meta name="twitter:description" content="自作のOSS gomic の紹介をします。 なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp;amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。Goで書かれています。https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。同様のツールは幾つかあります。 https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &amp;quot;/tmp&amp;quot;, nil }) mock.Getwd() // &amp;quot;/tmp&amp;quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。">
+<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://suzuki-shunsuke.github.io/"
+    },
+    "headline": "gomic - Goのモックジェネレータ - melody",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2018-10-30T08:35:16JST",
+    "dateModified": "2018-10-30T08:35:16JST",
+    "author": {
+      "@type": "Person",
+      "name": "melody"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "melody",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "自作のOSS gomic の紹介をします。
+ なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
+まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
+Goで書かれています。
+https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。
+同様のツールは幾つかあります。
+ https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
+なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
+自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
+// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。"
+  }
+</script>
+
+
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
 
   <body>
-		<nav class="nav">
-			<div class="nav-container">
-			<a href="https://suzuki-shunsuke.github.io/">
-				<h2 class="nav-title">melody</h2>
-			</a>
-			<ul>
-				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
-				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
-			</ul>
-			</div>
-		</nav>
+    
+    
+    
 
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
 
-<main>
-	<div class="post">
-		<div class="post-info">
-		<span>Written by</span>
-			
-			<br>
-			<span>on&nbsp;</span><time datetime="2018-10-30 08:35:16 &#43;0900 &#43;0900">October 30, 2018</time>
-		</div>
+          
 
-		<h1 class="post-title">gomic - Goのモックジェネレータ</h1>
-		<div class="post-line"></div>
+        </div>
+      </nav>
+    </header>
 
-		
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li class="active">gomic - Goのモックジェネレータ</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-30T08:35:16JST">Oct 30, 2018</time></li>
+      
+      
+    </ul>
+
+    <h1 class="title">gomic - Goのモックジェネレータ</h1>
+  </header>
+
+  
+
+  <div class="article-body">
 
 <p>自作のOSS <a href="https://github.com/suzuki-shunsuke/gomic">gomic</a> の紹介をします。</p>
 
@@ -220,20 +306,136 @@ gomic.DefaultCallbackNotImplemented は コンストラクタの第一引数が 
 <p><a href="https://github.com/suzuki-shunsuke/gomic/blob/v0.5.0/examples/os_mock.go#L27-L67">https://github.com/suzuki-shunsuke/gomic/blob/v0.5.0/examples/os_mock.go#L27-L67</a></p>
 
 <p>を見てもらえばわかると思います。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/golang/">golang</a></li>
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/gomic/">gomic</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
 
 
-	</div>
+    
+  </div>
 
-	<div class="pagination">
-		<a href="/test-ansible-on-docker/" class="left arrow">&#8592;</a>
-		<a href="/akoi/" class="right arrow">&#8594;</a>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>		<footer>
-			<span>
-			&copy; <time datetime="2019-06-12 02:50:14.222404236 &#43;0000 UTC m=&#43;0.067114021">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
-			</span>
-		</footer>
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
+

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/golang/index.xml">
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/tags/golang/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Golang - melody</title>
+    
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>Golang</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-16T18:38:45JST">Feb 16, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/use-confita/">Goの設定管理で viper の代わりに confita を使う</a></h2>
+  </header>
+
+  
+  <div class="summary">Golang の設定管理のライブラリといえば viper が有名ですが、 confita も良さそうだったので紹介したいと思います。
+confita の機能としては以下のようなものがあります。
+ 構造体に設定をマッピング flag や環境変数、設定ファイルに対応 複数の設定ファイルに対応  構造体に設定をマッピングすることで、https://github.com/go-playground/validator のようなライブラリを使って設定のバリデーションが出来ます。
+また viper は v1.3.1 の時点で複数の設定ファイルを扱いにくいです。
+ Viper can search multiple paths, but currently a single Viper instance only supports a single configuration file.
+ k8s で ConfigMap と Secret を設定ファイルとして扱う場合、複数のファイルを扱えないと不便です。 その点 confita は複数の設定ファイルを問題なく扱えます。
+以下はフラグで指定した複数の設定ファイルから設定を読み込む簡単なサンプルです。
+import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &quot;github.com/heetch/confita&quot; &quot;github.com/heetch/confita/backend&quot; &quot;github.com/heetch/confita/backend/file&quot; flag &quot;github.com/spf13/pflag&quot; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(&quot;config&quot;, &quot;c&quot;, nil, &quot;configuration file path&quot;) flag.</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/use-confita/" title="Goの設定管理で viper の代わりに confita を使う">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-10T17:49:58JST">Feb 10, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-good-point/">Golang の好きなところ</a></h2>
+  </header>
+
+  
+  <div class="summary">自分は 2017/8頃(曖昧)からメインで書く言語をPythonからGolangに変更しました。 Goを書き始めて割と早い段階でGoが一番好きになりました。 そこでなんで Go が好きなのかということを頑張って言語化しようと思います。
+若干他の言語と比較する部分もありますが、決して他の言語をディスったり、 他の言語より優れているということが言いたいわけではないのでご了承ください。
+ 依存するものが小さく、バイナリ1つインストールするだけで良い  Prometheus の exporter とかインストールするの簡単 Docker Imageも最小限になる  静的型付け  ビルド出来ている時点で一定の信頼性が担保されている よく知らないコードを読んだり修正するときとかだいぶ有り難い  GoDocが素晴らしい  何もしなくてもライブラリのドキュメントが出来上がっている  ライブラリの公開が容易  GitHubに公開するだけ npm や pypi のようなレジストリがないので楽  go test とか go vet, gofmt みたいに標準ツールが揃っている コーディング規約で悩む必要がない lintツールが充実している  gometalinter とか使っておけば OK lintできる環境を構築するのにそこまで頑張らなくて良い  エラーハンドリングが暗黙的に省略できないので信頼性が高い  Goのエラーハンドリング嫌いって人もいるし、v2で改善されるって話も聞くけど、自分はむしろ好き(面倒なのは理解できるけど)  言語仕様がシンプル(客観的な根拠はないし、難しい部分もあるけど、そんな気がする)  メタプログラミング使った、魔術的なコードになりにくい  interface 使ってコードを疎結合にするのが書いてて気持ちいい 並列処理が書きやすい  </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-25T21:51:41JST">Dec 25, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/">Golangにおけるエラーハンドリングとロギングのプラクティス</a></h2>
+  </header>
+
+  
+  <div class="summary">2018-12-30 追記 この記事を元にドキュメントを書いてみました。
+https://github.com/suzuki-shunsuke/go-error-handling-logging-practice
+追記ここまで
+Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
+ 迷いをなくす コードの一貫性を保つ コーディング規約とすることでレビューの品質を上げる(自動化は出来ないけど) コードの品質を上げる(コードがゴチャつかなくなる) 適切にエラーをロギングする(必要十分な情報をログとして残す)  またエラーハンドリングとロギングのためのライブラリを自作しているのでそれも紹介します。
+https://github.com/suzuki-shunsuke/go-errlog
+ロギングに関する関連記事 この記事を書く前に軽くググってみただけでちゃんと読んでないのですが、 興味のある人は読んでみてください。
+ https://logmatic.io/blog/our-guide-to-a-golang-logs-world/ https://www.loggly.com/blog/think-differently-about-what-to-log-in-go-best-practices-examined/ https://dave.cheney.net/2015/11/05/lets-talk-about-logging https://postd.cc/go-best-practices-2016/#logging-and-instrumentation  ログレベルは分ける ログレベルでwarningとかいらないという意見もありますが、自分は必要だと思っています。 自分は以下のログレベルを使い分けます。
+ debug: あまり使わない。調査目的で一時的に埋め込むログ。調査が終わったら出力しないようにする。一時的でないものはinfoにする info: エラーでないログ。イベント、処理の開始時や終了を記録するのに使うことが多い warn: 4xx系のエラー。それが起こっただけではアラートを飛ばさないが、数が通常時より多い場合はバグかUIに問題があってユーザーが間違えやすくなっている可能性があるのでアラートを飛ばす error: 5xx系のエラー。アラートを飛ばす(閾値は調整) fatal: 処理継続が不可能な致命的なエラー。システムを止める  書いてから思いましたが、これに関しては標準的な使い分けのルールがありそうですね(要調査)。。
+logrus を使ってログを構造化する 前提としてwebシステムやバッチシステムなどを想定しています。CLIツールならば話は変わるでしょう。 JSONフォーマットで出力してfluentdでElasticsearchにフォワードするのが個人的によくあるパターンです。
+go-errlogもlogrusの使用を前提としています。
+ロギングのライブラリは他にも色々あるので、logrusで満足できない人は以下から探してみるとよいでしょう。
+https://github.com/avelino/awesome-go#logging
+エラーログは中央集権的に main に近い所で出力する エラーログをどこで出力するかですが、原則中央集権的に main に近い所で出力します。 因みに中央集権的という表現は echo の centralized error handling からもじっています。
+https://echo.labstack.com/guide/error-handling
+error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。 Goでは以下のようなイディオムがよく見られますね。
+if err !</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/" title="Golangにおけるエラーハンドリングとロギングのプラクティス">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-30T08:35:16JST">Oct 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/gomic/">gomic - Goのモックジェネレータ</a></h2>
+  </header>
+
+  
+  <div class="summary">自作のOSS gomic の紹介をします。
+ なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
+まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
+Goで書かれています。
+https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。
+同様のツールは幾つかあります。
+ https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
+なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
+自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
+// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/gomic/" title="gomic - Goのモックジェネレータ">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

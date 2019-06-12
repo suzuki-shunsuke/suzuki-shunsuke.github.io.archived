@@ -1,55 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
   <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Drone と Circle CI の workspace の扱いの違いについて &middot; melody
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
-	</head>
-	
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/drone-circle-volume-difference/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Drone と Circle CI の workspace の扱いの違いについて - melody</title>
+    
+<meta name="description" content="drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。http://docs.drone.io/workspace/circle ci はデフォルトで job 間で workspace を共有しません。 persist_to_workspace を指定することで共有する事ができます。https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobscircle ci の場合は volume を共有するのではなく、指定したディレクトリを archive し、次の job で展開することでファイルを共有するようです。この違いには一長一短があります。circle ci の場合は archive, unarchive する分、volume 共有に比べて時間がかかります。そのため、下手に job を分けるより一つの job で処理したほうが処理時間が短くなる場合がありますが、 build や test といった処理は出来れば別の job として実行したいでしょうし、それでは workflow が使えません。ただし、共有するパスは自由に選べるので必要最小限に抑えることで時間を短縮できます。また、circle ci の場合は archive するパス及び展開先のパスを自由に選べるので自由度が高いです。 drone の場合、 workspace 以外のファイルを共有できません。また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、 circle ci の場合、別のノードでの実行が可能です。 drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。">
+
+<meta property="og:title" content="Drone と Circle CI の workspace の扱いの違いについて - melody">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/drone-circle-volume-difference/">
+<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:site_name" content="melody">
+<meta property="og:description" content="drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。http://docs.drone.io/workspace/circle ci はデフォルトで job 間で workspace を共有しません。 persist_to_workspace を指定することで共有する事ができます。https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobscircle ci の場合は volume を共有するのではなく、指定したディレクトリを archive し、次の job で展開することでファイルを共有するようです。この違いには一長一短があります。circle ci の場合は archive, unarchive する分、volume 共有に比べて時間がかかります。そのため、下手に job を分けるより一つの job で処理したほうが処理時間が短くなる場合がありますが、 build や test といった処理は出来れば別の job として実行したいでしょうし、それでは workflow が使えません。ただし、共有するパスは自由に選べるので必要最小限に抑えることで時間を短縮できます。また、circle ci の場合は archive するパス及び展開先のパスを自由に選べるので自由度が高いです。 drone の場合、 workspace 以外のファイルを共有できません。また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、 circle ci の場合、別のノードでの実行が可能です。 drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="melody">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/drone-circle-volume-difference/">
+<meta name="twitter:title" content="Drone と Circle CI の workspace の扱いの違いについて - melody">
+<meta name="twitter:description" content="drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。http://docs.drone.io/workspace/circle ci はデフォルトで job 間で workspace を共有しません。 persist_to_workspace を指定することで共有する事ができます。https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobscircle ci の場合は volume を共有するのではなく、指定したディレクトリを archive し、次の job で展開することでファイルを共有するようです。この違いには一長一短があります。circle ci の場合は archive, unarchive する分、volume 共有に比べて時間がかかります。そのため、下手に job を分けるより一つの job で処理したほうが処理時間が短くなる場合がありますが、 build や test といった処理は出来れば別の job として実行したいでしょうし、それでは workflow が使えません。ただし、共有するパスは自由に選べるので必要最小限に抑えることで時間を短縮できます。また、circle ci の場合は archive するパス及び展開先のパスを自由に選べるので自由度が高いです。 drone の場合、 workspace 以外のファイルを共有できません。また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、 circle ci の場合、別のノードでの実行が可能です。 drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。">
+<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://suzuki-shunsuke.github.io/"
+    },
+    "headline": "Drone と Circle CI の workspace の扱いの違いについて - melody",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2018-09-30T19:27:59JST",
+    "dateModified": "2018-09-30T19:27:59JST",
+    "author": {
+      "@type": "Person",
+      "name": "melody"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "melody",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。
+http://docs.drone.io/workspace/
+circle ci はデフォルトで job 間で workspace を共有しません。 persist_to_workspace を指定することで共有する事ができます。
+https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+circle ci の場合は volume を共有するのではなく、指定したディレクトリを archive し、次の job で展開することでファイルを共有するようです。
+この違いには一長一短があります。
+circle ci の場合は archive, unarchive する分、volume 共有に比べて時間がかかります。
+そのため、下手に job を分けるより一つの job で処理したほうが処理時間が短くなる場合がありますが、 build や test といった処理は出来れば別の job として実行したいでしょうし、それでは workflow が使えません。
+ただし、共有するパスは自由に選べるので必要最小限に抑えることで時間を短縮できます。
+また、circle ci の場合は archive するパス及び展開先のパスを自由に選べるので自由度が高いです。 drone の場合、 workspace 以外のファイルを共有できません。
+また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、 circle ci の場合、別のノードでの実行が可能です。 drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。"
+  }
+</script>
+
+
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
 
   <body>
-		<nav class="nav">
-			<div class="nav-container">
-			<a href="https://suzuki-shunsuke.github.io/">
-				<h2 class="nav-title">melody</h2>
-			</a>
-			<ul>
-				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
-				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
-			</ul>
-			</div>
-		</nav>
+    
+    
+    
 
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
 
-<main>
-	<div class="post">
-		<div class="post-info">
-		<span>Written by</span>
-			
-			<br>
-			<span>on&nbsp;</span><time datetime="2018-09-30 19:27:59 &#43;0900 &#43;0900">September 30, 2018</time>
-		</div>
+          
 
-		<h1 class="post-title">Drone と Circle CI の workspace の扱いの違いについて</h1>
-		<div class="post-line"></div>
+        </div>
+      </nav>
+    </header>
 
-		
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li class="active">Drone と Circle CI の workspace の扱いの違いについて</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:27:59JST">Sep 30, 2018</time></li>
+      
+      
+    </ul>
+
+    <h1 class="title">Drone と Circle CI の workspace の扱いの違いについて</h1>
+  </header>
+
+  
+
+  <div class="article-body">
 
 <p>drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。</p>
 
@@ -82,20 +169,134 @@ drone の group を使って並列に実行する場合、複数のノードに�
 
 <p>一長一短があると言ったとおり、一概にどっちが良いとは言えませんが、個人的には drone のやり方のほうが直感的だし、
 何より速いので好きです。同じ pipeline の処理を複数のノードに分散させたいことって個人的にはあまりありません。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/drone/">drone</a></li>
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/circleci/">circleci</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
 
 
-	</div>
+    
+  </div>
 
-	<div class="pagination">
-		<a href="/drone-exec-network-name-collision/" class="left arrow">&#8592;</a>
-		<a href="/drone-git-authentication/" class="right arrow">&#8594;</a>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>		<footer>
-			<span>
-			&copy; <time datetime="2019-06-12 02:50:14.224750635 &#43;0000 UTC m=&#43;0.069460460">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
-			</span>
-		</footer>
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
+

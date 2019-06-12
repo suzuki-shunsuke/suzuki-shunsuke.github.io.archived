@@ -1,55 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
   <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				.drone.jsonnet と .drone.yml を比較する Drone plugin を作った &middot; melody
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="melody" />
-	</head>
-	
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>.drone.jsonnet と .drone.yml を比較する Drone plugin を作った - melody</title>
+    
+<meta name="description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
+
+<meta property="og:title" content=".drone.jsonnet と .drone.yml を比較する Drone plugin を作った - melody">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/">
+<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:site_name" content="melody">
+<meta property="og:description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="melody">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/">
+<meta name="twitter:title" content=".drone.jsonnet と .drone.yml を比較する Drone plugin を作った - melody">
+<meta name="twitter:description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
+<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://suzuki-shunsuke.github.io/"
+    },
+    "headline": ".drone.jsonnet と .drone.yml を比較する Drone plugin を作った - melody",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2019-06-01T08:34:10JST",
+    "dateModified": "2019-06-01T08:34:10JST",
+    "author": {
+      "@type": "Person",
+      "name": "melody"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "melody",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "久しぶりに Drone plugin を作ったので紹介します。
+https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
+.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。
+Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
+https://docs.drone.io/user-guide/pipeline/migrating/
+ To simplify your configuration we recommend using jsonnet.
+ $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と ."
+  }
+</script>
+
+
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
 
   <body>
-		<nav class="nav">
-			<div class="nav-container">
-			<a href="https://suzuki-shunsuke.github.io/">
-				<h2 class="nav-title">melody</h2>
-			</a>
-			<ul>
-				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
-				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
-			</ul>
-			</div>
-		</nav>
+    
+    
+    
 
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
 
-<main>
-	<div class="post">
-		<div class="post-info">
-		<span>Written by</span>
-			
-			<br>
-			<span>on&nbsp;</span><time datetime="2019-06-01 08:34:10 &#43;0900 &#43;0900">June 1, 2019</time>
-		</div>
+          
 
-		<h1 class="post-title">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</h1>
-		<div class="post-line"></div>
+        </div>
+      </nav>
+    </header>
 
-		<p>久しぶりに <a href="https://docs.drone.io/plugins/">Drone plugin</a> を作ったので紹介します。</p>
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li class="active">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-01T08:34:10JST">Jun 1, 2019</time></li>
+      
+      
+    </ul>
+
+    <h1 class="title">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</h1>
+  </header>
+
+  
+
+  <div class="article-body"><p>久しぶりに <a href="https://docs.drone.io/plugins/">Drone plugin</a> を作ったので紹介します。</p>
 
 <p><a href="https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check">https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check</a></p>
 
@@ -125,20 +208,132 @@ matrix builds を <code>drone convert</code> コマンドで multiple pipeline �
 テストでは <a href="https://github.com/bats-core/bats-core">bats</a> を使っています。</p>
 
 <p>以上、簡単ですが、自作 Drone plugin の紹介でした。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/drone/">drone</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+    
+  </footer>
+
+</article>
 
 
-	</div>
+    
+  </div>
 
-	<div class="pagination">
-		<a href="/go-jsoneq/" class="left arrow">&#8592;</a>
-		<a href="/drone-jsonnet-generator/" class="right arrow">&#8594;</a>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>		<footer>
-			<span>
-			&copy; <time datetime="2019-06-12 02:50:14.2167651 &#43;0000 UTC m=&#43;0.061474875">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
-			</span>
-		</footer>
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
+

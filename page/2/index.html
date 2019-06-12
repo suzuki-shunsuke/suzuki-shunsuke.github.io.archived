@@ -1,74 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
   <head>
-	<meta name="generator" content="Hugo 0.54.0" />
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta name="description" content="">
-	
-		<title>
-				melody
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
-	
-		
-		<link href="https://suzuki-shunsuke.github.io/index.xml" rel="alternate" type="application/rss+xml" title="melody" />
-	</head>
-	
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/index.xml">
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>melody</title>
+    
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
 
   <body>
-		<nav class="nav">
-			<div class="nav-container">
-			<a href="https://suzuki-shunsuke.github.io/">
-				<h2 class="nav-title">melody</h2>
-			</a>
-			<ul>
-				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
-				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
-			</ul>
-			</div>
-		</nav>
+    
+    
+    
 
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
 
-<main>
-	<div class="catalogue">
-		
-			<a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/" class="catalogue-item">
-				<div>
-					<time datetime="2019-01-25 22:38:28 &#43;0900 &#43;0900" class="catalogue-time">January 25, 2019</time>
-					<h1 class="catalogue-title">Terraform Providerで import を実装する方法</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						terraform provider graylog で alert condition と stream rule の import を実装しました。
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-25T22:38:28JST">Jan 25, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/">Terraform Providerで import を実装する方法</a></h2>
+  </header>
+
+  
+  <div class="summary">terraform provider graylog で alert condition と stream rule の import を実装しました。
  https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
 terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
 https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5
 # &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb  区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
 https://www.terraform.io/docs/providers/google/r/spanner_database.html#import
-https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/downgrade-github-plan/" class="catalogue-item">
-				<div>
-					<time datetime="2019-01-20 12:27:26 &#43;0900 &#43;0900" class="catalogue-time">January 20, 2019</time>
-					<h1 class="catalogue-title">GithubをFree Planにダウングレードした</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。
+https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/" title="Terraform Providerで import を実装する方法">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-20T12:27:26JST">Jan 20, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/downgrade-github-plan/">GithubをFree Planにダウングレードした</a></h2>
+  </header>
+
+  
+  <div class="summary">GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。
 https://github.blog/2019-01-07-new-year-new-github/
 そこで無料プランにダウングレードすることにしました。
  https://help.github.com/articles/downgrading-your-github-billing-plan/ https://blog.jnito.com/entry/2019/01/09/081913  無料プランではwikiはpublic repositoryでしか使えないので、 private repository の wiki を 移行することにしました。
@@ -78,20 +103,28 @@ https://github.com/suzuki-shunsuke/foo の wiki は https://github.com/suzuki-sh
 次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。
 https://developer.github.com/v3/repos/#list-your-repositories
 curl &quot;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&quot; | jq -r '.[].html_url' | xargs -I{} -n 1 git clone {}.wiki  wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。
-また /user/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/" class="catalogue-item">
-				<div>
-					<time datetime="2018-12-25 21:51:41 &#43;0900 &#43;0900" class="catalogue-time">December 25, 2018</time>
-					<h1 class="catalogue-title">Golangにおけるエラーハンドリングとロギングのプラクティス</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						2018-12-30 追記 この記事を元にドキュメントを書いてみました。
+また /user/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/downgrade-github-plan/" title="GithubをFree Planにダウングレードした">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-25T21:51:41JST">Dec 25, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/">Golangにおけるエラーハンドリングとロギングのプラクティス</a></h2>
+  </header>
+
+  
+  <div class="summary">2018-12-30 追記 この記事を元にドキュメントを書いてみました。
 https://github.com/suzuki-shunsuke/go-error-handling-logging-practice
 追記ここまで
 Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
@@ -107,55 +140,75 @@ https://github.com/avelino/awesome-go#logging
 エラーログは中央集権的に main に近い所で出力する エラーログをどこで出力するかですが、原則中央集権的に main に近い所で出力します。 因みに中央集権的という表現は echo の centralized error handling からもじっています。
 https://echo.labstack.com/guide/error-handling
 error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。 Goでは以下のようなイディオムがよく見られますね。
-if err !
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/graylog-alert-issue/" class="catalogue-item">
-				<div>
-					<time datetime="2018-12-19 21:02:11 &#43;0900 &#43;0900" class="catalogue-time">December 19, 2018</time>
-					<h1 class="catalogue-title">GraylogのAlertの課題</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						 Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
+if err !</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/" title="Golangにおけるエラーハンドリングとロギングのプラクティス">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-19T21:02:11JST">Dec 19, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-alert-issue/">GraylogのAlertの課題</a></h2>
+  </header>
+
+  
+  <div class="summary"> Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
 2018-12-31 追記 元々 Alert Condition, Notification の APIがないと勘違いしていたのですが、 実はちゃんとあったので terraform で管理できるように go-graylog を更新しました。
- https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/" class="catalogue-item">
-				<div>
-					<time datetime="2018-12-07 08:22:49 &#43;0900 &#43;0900" class="catalogue-time">December 7, 2018</time>
-					<h1 class="catalogue-title">Graylog の Terraform を CI/CDで実行する</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						以前 Graylog を Terraform で管理する記事を書きました。
+ https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-07T08:22:49JST">Dec 7, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/">Graylog の Terraform を CI/CDで実行する</a></h2>
+  </header>
+
+  
+  <div class="summary">以前 Graylog を Terraform で管理する記事を書きました。
 https://suzuki-shunsuke.github.io/graylog-terraform/
 今回はそれを CI/CD で実行できるようにした話です。
 ただし、今回の内容は Graylog に限らず Terraform を CI/CD で実行する方法として使えると思います。
 今回実現したのは以下のことです。
  PR時にテストをする plan/* tag を push すると terraform plan が実行される apply/* tag を push すると terraform apply が実行され、tfstate がコミット、プッシュされる  ソースコード https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform に置いておきました。
  https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh  CI/CD用の user, role を作成する まずは role を作成します。
-resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] }  permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/ansible-molecule/" class="catalogue-item">
-				<div>
-					<time datetime="2018-12-06 23:08:04 &#43;0900 &#43;0900" class="catalogue-time">December 6, 2018</time>
-					<h1 class="catalogue-title">molecule でansible の role と playbook をテストする</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。
+resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] }  permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/" title="Graylog の Terraform を CI/CDで実行する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-06T23:08:04JST">Dec 6, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/ansible-molecule/">molecule でansible の role と playbook をテストする</a></h2>
+  </header>
+
+  
+  <div class="summary">ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。
 以前 Docker を使って ansible のテストをする方法を紹介しました。
 https://suzuki-shunsuke.github.io/test-ansible-on-docker/
 この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。
@@ -166,20 +219,28 @@ molecule は ansible 専用の testing ツールです。 基本的に playbook 
 インストール https://molecule.readthedocs.io/en/latest/installation.html
 $ pip install molecule  Docker を使う場合 docker-py も必要です。
 $ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。
-role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/graylog-terraform/" class="catalogue-item">
-				<div>
-					<time datetime="2018-12-01 14:56:00 &#43;0900 &#43;0900" class="catalogue-time">December 1, 2018</time>
-					<h1 class="catalogue-title">GraylogをTerraformで管理する</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
+role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/ansible-molecule/" title="molecule でansible の role と playbook をテストする">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-terraform/">GraylogをTerraformで管理する</a></h2>
+  </header>
+
+  
+  <div class="summary">Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
 Graylogには様々なリソースがあります。
  User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
 APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
@@ -191,20 +252,28 @@ terraform を使った管理方法 以下では自分の管理方法を紹介し
 https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
 にサンプルが置いてあります。
 基本はプロジェクトごとに
- Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/graylog/" class="catalogue-item">
-				<div>
-					<time datetime="2018-11-27 16:40:33 &#43;0900 &#43;0900" class="catalogue-time">November 27, 2018</time>
-					<h1 class="catalogue-title">Graylog で log を管理する</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						Java 製の OSS ログ管理システム Graylog の紹介です。 Graylog については幾つかに分けて記事を書きたいと思います。 今回はGraylogの入門的な内容になります。
+ Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog-terraform/" title="GraylogをTerraformで管理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog/">Graylog で log を管理する</a></h2>
+  </header>
+
+  
+  <div class="summary">Java 製の OSS ログ管理システム Graylog の紹介です。 Graylog については幾つかに分けて記事を書きたいと思います。 今回はGraylogの入門的な内容になります。
 なお、本記事中で「現在」「現時点」といった場合、特に断りがなければ記事執筆時点 2018-11-27 を指します。
 Graylog のバージョン 検証に用いるGraylogのバージョンは 2.4.6 になります。
 OSSバージョンとEnterpriseバージョンがありますが、本記事ではOSSバージョンを使用します。
@@ -215,20 +284,28 @@ Graylog は多機能なシステムであり、ログを整形したり、アラ
 http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
 ログの収集 ログの収集をするには Graylog で幾つかのリソースを作成する必要があります。
  Input Index Set Stream Stream Rule  Input はログの入力のフォーマットの設定であり、 どのポートでどういったフォーマットのログを受け付けるかという設定になります。 フォーマットは様々なものがサポートされています。
- AWS Flow Logs AWS Cloud Watch Logs AWS Cloud Trail Beats CEF AMQP CEF Kafka CEF TCP CEF UDP Fake HTTP Message GELF AMQP GELF HTTP GELF Kafka GELF TCP GELF UDP JSON Path NetFlow UDP Raw AMQP Syslog AMQP Syslog Kafka Syslog TCP Syslog UDP  この設定はログを収集するアプリケーションごとに設定するというより、グローバルな設定なので、他のアプリケーションで既に同じ形式でログを収集していたら新たに設定する必要はありません。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/akoi/" class="catalogue-item">
-				<div>
-					<time datetime="2018-10-31 08:56:04 &#43;0900 &#43;0900" class="catalogue-time">October 31, 2018</time>
-					<h1 class="catalogue-title">akoi - binary installer</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						自作のOSS akoi の紹介をします。
+ AWS Flow Logs AWS Cloud Watch Logs AWS Cloud Trail Beats CEF AMQP CEF Kafka CEF TCP CEF UDP Fake HTTP Message GELF AMQP GELF HTTP GELF Kafka GELF TCP GELF UDP JSON Path NetFlow UDP Raw AMQP Syslog AMQP Syslog Kafka Syslog TCP Syslog UDP  この設定はログを収集するアプリケーションごとに設定するというより、グローバルな設定なので、他のアプリケーションで既に同じ形式でログを収集していたら新たに設定する必要はありません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog/" title="Graylog で log を管理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-31T08:56:04JST">Oct 31, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/akoi/">akoi - binary installer</a></h2>
+  </header>
+
+  
+  <div class="summary">自作のOSS akoi の紹介をします。
  なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
 まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード  ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)   akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
 分散ダウンロードについては
@@ -239,20 +316,28 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
 詳細はREADMEを読んでください。
 なぜ作ったのか サーバにバイナリをインストールする ansible role を書くのが辛かったからです。 最近は色々なソフトウェアがGoで書かれ、バイナリで配布されています。 そういったバイナリをサーバへインストールするのは ansible で行っているという方も少なくないのではないでしょうか？ 有名なソフトウェアをインストールする ansible role は大抵Ansible Galaxy で公開されています。
 しかし、ほとんどの role は「真面目に」バージョン管理していません。 ここでいう「真面目に」とは
- バージョンを指定できる バージョンを変更できる 指定したバージョンが既にインストールされている場合は無駄にダウンロードしたりしない  といったことです。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/gomic/" class="catalogue-item">
-				<div>
-					<time datetime="2018-10-30 08:35:16 &#43;0900 &#43;0900" class="catalogue-time">October 30, 2018</time>
-					<h1 class="catalogue-title">gomic - Goのモックジェネレータ</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						自作のOSS gomic の紹介をします。
+ バージョンを指定できる バージョンを変更できる 指定したバージョンが既にインストールされている場合は無駄にダウンロードしたりしない  といったことです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/akoi/" title="akoi - binary installer">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-30T08:35:16JST">Oct 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/gomic/">gomic - Goのモックジェネレータ</a></h2>
+  </header>
+
+  
+  <div class="summary">自作のOSS gomic の紹介をします。
  なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
 まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
 Goで書かれています。
@@ -261,30 +346,132 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
  https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
 なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
 自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
-// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。
-					</p>
-	
-				</div>
-			</a>
-		
-	</div>
-	
-	<div class="pagination">
-		
-			<a href="/" class="left arrow">&#8592;</a>
-		
-		
-			<a href="/page/3/" class="right arrow">&#8594;</a>
-		
-	
-		<span>2</span>
-	</div>
-</main>
+// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</div>
 
-		<footer>
-			<span>
-			&copy; <time datetime="2019-06-12 02:50:14.229890523 &#43;0000 UTC m=&#43;0.074600328">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
-			</span>
-		</footer>
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/gomic/" title="gomic - Goのモックジェネレータ">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/">Previous</a></li>
+    
+
+    
+    <li><a href="/page/3/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
+

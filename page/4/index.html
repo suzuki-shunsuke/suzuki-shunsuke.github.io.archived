@@ -1,90 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
   <head>
-	<meta name="generator" content="Hugo 0.54.0" />
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta name="description" content="">
-	
-		<title>
-				melody
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="https://suzuki-shunsuke.github.io/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="https://suzuki-shunsuke.github.io/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="https://suzuki-shunsuke.github.io/images/apple-touch-icon.png">
-	
-		
-		<link href="https://suzuki-shunsuke.github.io/index.xml" rel="alternate" type="application/rss+xml" title="melody" />
-	</head>
-	
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/index.xml">
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>melody</title>
+    
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
 
   <body>
-		<nav class="nav">
-			<div class="nav-container">
-			<a href="https://suzuki-shunsuke.github.io/">
-				<h2 class="nav-title">melody</h2>
-			</a>
-			<ul>
-				<li><a href="https://suzuki-shunsuke.github.io/about">About</a></li>
-				<li><a href="https://suzuki-shunsuke.github.io/">Posts</a></li>
-			</ul>
-			</div>
-		</nav>
+    
+    
+    
 
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
 
-<main>
-	<div class="catalogue">
-		
-			<a href="https://suzuki-shunsuke.github.io/drone-build-timeout/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 20:16:28 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">drone の build の timeout が変更できない</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone 0.8.5 で検証しています。
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:16:28JST">Sep 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-build-timeout/">drone の build の timeout が変更できない</a></h2>
+  </header>
+
+  
+  <div class="summary">drone 0.8.5 で検証しています。
 drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
 ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
 PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
- https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/drone-git-authentication/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 19:44:27 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">Drone の build 実行時の認証方法</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。 この際に何かしらの方法で認証しているはずです。
+ https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:44:27JST">Sep 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-git-authentication/">Drone の build 実行時の認証方法</a></h2>
+  </header>
+
+  
+  <div class="summary">drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。 この際に何かしらの方法で認証しているはずです。
 結論を言うと、
 あるリポジトリAのbuildでは、 リポジトリAの drone連携を有効化したユーザー Bの access token を .netrc に書き込んで認証しています。 よってユーザーBにcloneする権限があるリポジトリはcloneできるし、 ユーザーBにcloneする権限がないリポジトリはcloneできません。 つまり、 誰が連携を有効化するかが重要 になります(これについては後述します)。 なお、drone連携の有効化はそのリポジトリのowner以上でないと出来ません。
 drone上でリポジトリの連携を有効化すると、 リポジトリのHookが作成されます。 リポジトリの settings &gt; Hooks から確認できます。 この Hook の Payload URL を見ると access_token クエリがあると思います。 JWTのようですね。これはリポジトリの連携を有効化したユーザーのtokenです。
 このtokenが GitHub から drone への webhook のパラメータとして送られてくるので、 drone 側で認証し、認証したユーザーのGitHub のaccess token を取得し、 build 時にコンテナの /root/.netrc に書き込むようです。
-.netrcに書き込まれているのは試しに個人の private repository で .
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/drone-circle-volume-difference/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 19:27:59 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">Drone と Circle CI の workspace の扱いの違いについて</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。
+.netrcに書き込まれているのは試しに個人の private repository で .</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-git-authentication/" title="Drone の build 実行時の認証方法">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:27:59JST">Sep 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-circle-volume-difference/">Drone と Circle CI の workspace の扱いの違いについて</a></h2>
+  </header>
+
+  
+  <div class="summary">drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。
 http://docs.drone.io/workspace/
 circle ci はデフォルトで job 間で workspace を共有しません。 persist_to_workspace を指定することで共有する事ができます。
 https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
@@ -94,70 +123,190 @@ circle ci の場合は archive, unarchive する分、volume 共有に比べて�
 そのため、下手に job を分けるより一つの job で処理したほうが処理時間が短くなる場合がありますが、 build や test といった処理は出来れば別の job として実行したいでしょうし、それでは workflow が使えません。
 ただし、共有するパスは自由に選べるので必要最小限に抑えることで時間を短縮できます。
 また、circle ci の場合は archive するパス及び展開先のパスを自由に選べるので自由度が高いです。 drone の場合、 workspace 以外のファイルを共有できません。
-また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、 circle ci の場合、別のノードでの実行が可能です。 drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-30 18:52:34 &#43;0900 &#43;0900" class="catalogue-time">September 30, 2018</time>
-					<h1 class="catalogue-title">drone exec を並列実行した際のdocker network name の衝突について</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						drone exec を並列実行すると docker network name が衝突することがあります。
-$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/go-gencfg/" class="catalogue-item">
-				<div>
-					<time datetime="2018-09-06 23:59:35 &#43;0900 &#43;0900" class="catalogue-time">September 6, 2018</time>
-					<h1 class="catalogue-title">go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。
-使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。
-https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md
-					</p>
-	
-				</div>
-			</a>
-		
-			<a href="https://suzuki-shunsuke.github.io/about/" class="catalogue-item">
-				<div>
-					<time datetime="0001-01-01 00:00:00 &#43;0000 UTC" class="catalogue-time">January 1, 0001</time>
-					<h1 class="catalogue-title">About</h1>
-					<div class="catalogue-line"></div>
-	
-					<p>
-						 https://github.com/suzuki-shunsuke/profile  
-					</p>
-	
-				</div>
-			</a>
-		
-	</div>
-	
-	<div class="pagination">
-		
-			<a href="/page/3/" class="left arrow">&#8592;</a>
-		
-		
-	
-		<span>4</span>
-	</div>
-</main>
+また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、 circle ci の場合、別のノードでの実行が可能です。 drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。</div>
 
-		<footer>
-			<span>
-			&copy; <time datetime="2019-06-12 02:50:14.231679935 &#43;0000 UTC m=&#43;0.076389741">2019</time> . Made with Hugo using the <a href="https://github.com/EmielH/tale-hugo/">Tale</a> theme.
-			</span>
-		</footer>
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-circle-volume-difference/" title="Drone と Circle CI の workspace の扱いの違いについて">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T18:52:34JST">Sep 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/">drone exec を並列実行した際のdocker network name の衝突について</a></h2>
+  </header>
+
+  
+  <div class="summary">drone exec を並列実行すると docker network name が衝突することがあります。
+$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/" title="drone exec を並列実行した際のdocker network name の衝突について">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-06T23:59:35JST">Sep 6, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-gencfg/">go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ</a></h2>
+  </header>
+
+  
+  <div class="summary">自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。
+使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。
+https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="0001-01-01T00:00:00JST">Jan 1, 0001</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/about/">About</a></h2>
+  </header>
+
+  
+  <div class="summary"> https://github.com/suzuki-shunsuke/profile  </div>
+
+  
+</article>
+</li>
+      
+    </ul>
+
+    
+<nav>
+  <ul class="pager">
+
+    
+    <li><a href="/page/3/">Previous</a></li>
+    
+
+    
+    <li class="disabled"><a href="#">Next</a></li>
+    
+
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
+      
+    </div>
+  </section>
+
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">CATEGORY</div>
+    </div>
+    <div class="list-group">
+      
+    </div>
+  </section>
+  
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github</a>
+      
+    </div>
+  </section>
+  
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
+
