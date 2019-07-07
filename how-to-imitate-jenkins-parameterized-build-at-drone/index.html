@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Drone で「ビルド実行時にパラメータを渡す」っぽいことをする - melody</title>
     
-<meta name="description" content="Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。 Drone では基本的に Git のイベントをフックして動くので同様の機能はありません。自分はこのような機能は特に必要ないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。https://github.com/suzuki-shunsuke/example-drone-build-parameter以下のファイルが必要です。 build_params/params.sh.tpl: ビルドパラメータを記述ファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。$ bash scripts/deploy.sh  するとパラメータを記述するファイルがエディタで開きます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17パラメータを記述し、エディタを閉じます。するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35Drone でタグをフックしてビルドが実行されます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。以上、簡単な tips でした。">
+<meta name="description" content="Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。Drone では基本的に Git のイベントをフックして動くので「ビルドを実行時に手動でパラメータを設定する」ということは出来ません。自分は基本的にできなくても構わないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。https://github.com/suzuki-shunsuke/example-drone-build-parameter以下のファイルが必要です。 build_params/params.sh.tpl: ビルドパラメータを記述するファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。$ bash scripts/deploy.sh  するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17パラメータを記述し、エディタを閉じます。するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35Drone でタグをプッシュするイベントをフックしてビルドが実行されます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。以上、簡単な tips でした。">
 
 <meta property="og:title" content="Drone で「ビルド実行時にパラメータを渡す」っぽいことをする - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。 Drone では基本的に Git のイベントをフックして動くので同様の機能はありません。自分はこのような機能は特に必要ないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。https://github.com/suzuki-shunsuke/example-drone-build-parameter以下のファイルが必要です。 build_params/params.sh.tpl: ビルドパラメータを記述ファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。$ bash scripts/deploy.sh  するとパラメータを記述するファイルがエディタで開きます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17パラメータを記述し、エディタを閉じます。するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35Drone でタグをフックしてビルドが実行されます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。以上、簡単な tips でした。">
+<meta property="og:description" content="Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。Drone では基本的に Git のイベントをフックして動くので「ビルドを実行時に手動でパラメータを設定する」ということは出来ません。自分は基本的にできなくても構わないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。https://github.com/suzuki-shunsuke/example-drone-build-parameter以下のファイルが必要です。 build_params/params.sh.tpl: ビルドパラメータを記述するファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。$ bash scripts/deploy.sh  するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17パラメータを記述し、エディタを閉じます。するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35Drone でタグをプッシュするイベントをフックしてビルドが実行されます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。以上、簡単な tips でした。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/">
 <meta name="twitter:title" content="Drone で「ビルド実行時にパラメータを渡す」っぽいことをする - melody">
-<meta name="twitter:description" content="Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。 Drone では基本的に Git のイベントをフックして動くので同様の機能はありません。自分はこのような機能は特に必要ないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。https://github.com/suzuki-shunsuke/example-drone-build-parameter以下のファイルが必要です。 build_params/params.sh.tpl: ビルドパラメータを記述ファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。$ bash scripts/deploy.sh  するとパラメータを記述するファイルがエディタで開きます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17パラメータを記述し、エディタを閉じます。するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35Drone でタグをフックしてビルドが実行されます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。以上、簡単な tips でした。">
+<meta name="twitter:description" content="Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。Drone では基本的に Git のイベントをフックして動くので「ビルドを実行時に手動でパラメータを設定する」ということは出来ません。自分は基本的にできなくても構わないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。https://github.com/suzuki-shunsuke/example-drone-build-parameter以下のファイルが必要です。 build_params/params.sh.tpl: ビルドパラメータを記述するファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。$ bash scripts/deploy.sh  するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17パラメータを記述し、エディタを閉じます。するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35Drone でタグをプッシュするイベントをフックしてビルドが実行されます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。以上、簡単な tips でした。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,18 +65,19 @@
         "height": 60
       }
     },
-    "description": "Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。 Drone では基本的に Git のイベントをフックして動くので同様の機能はありません。
-自分はこのような機能は特に必要ないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。
+    "description": "Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。
+Drone では基本的に Git のイベントをフックして動くので「ビルドを実行時に手動でパラメータを設定する」ということは出来ません。
+自分は基本的にできなくても構わないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。
 一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。
 https://github.com/suzuki-shunsuke/example-drone-build-parameter
 以下のファイルが必要です。
- build_params/params.sh.tpl: ビルドパラメータを記述ファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。
-$ bash scripts/deploy.sh  するとパラメータを記述するファイルがエディタで開きます。
+ build_params/params.sh.tpl: ビルドパラメータを記述するファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。
+$ bash scripts/deploy.sh  するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。
 https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17
 パラメータを記述し、エディタを閉じます。
 するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。
 https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35
-Drone でタグをフックしてビルドが実行されます。
+Drone でタグをプッシュするイベントをフックしてビルドが実行されます。
 https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17
 ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。
 https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10
@@ -156,10 +157,11 @@ https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/bui
 
   
 
-  <div class="article-body"><p>Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。
-Drone では基本的に Git のイベントをフックして動くので同様の機能はありません。</p>
+  <div class="article-body"><p>Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。</p>
 
-<p>自分はこのような機能は特に必要ないと思っていますが、
+<p>Drone では基本的に Git のイベントをフックして動くので「ビルドを実行時に手動でパラメータを設定する」ということは出来ません。</p>
+
+<p>自分は基本的にできなくても構わないと思っていますが、
 こういった機能がないから Drone を使わないという人も中にはいるので、
 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。</p>
 
@@ -170,7 +172,7 @@ Drone でもちょっとした工夫でそれっぽいことは出来るんじ�
 <p>以下のファイルが必要です。</p>
 
 <ul>
-<li><a href="https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/params.sh.tpl">build_params/params.sh.tpl</a>: ビルドパラメータを記述ファイルのテンプレート</li>
+<li><a href="https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/params.sh.tpl">build_params/params.sh.tpl</a>: ビルドパラメータを記述するファイルのテンプレート</li>
 <li><a href="https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh">scripts/deploy.sh</a>: デプロイ時に実行するスクリプト</li>
 <li><a href="https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml">.drone.yml</a>: Drone の設定ファイル</li>
 </ul>
@@ -180,7 +182,7 @@ Drone でもちょっとした工夫でそれっぽいことは出来るんじ�
 <pre><code class="language-console">$ bash scripts/deploy.sh
 </code></pre>
 
-<p>するとパラメータを記述するファイルがエディタで開きます。</p>
+<p>するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。</p>
 
 <p><a href="https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17">https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17</a></p>
 
@@ -190,7 +192,7 @@ Drone でもちょっとした工夫でそれっぽいことは出来るんじ�
 
 <p><a href="https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35">https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35</a></p>
 
-<p>Drone でタグをフックしてビルドが実行されます。</p>
+<p>Drone でタグをプッシュするイベントをフックしてビルドが実行されます。</p>
 
 <p><a href="https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17">https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17</a></p>
 
