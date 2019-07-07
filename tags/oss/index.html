@@ -62,6 +62,35 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-07T08:20:00JST">Jul 7, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/fagott/">Fagott - Golang HTTP client testing framework</a></h2>
+  </header>
+
+  
+  <div class="summary">Go の HTTP client のテストフレームワークを作ったので紹介します。
+https://github.com/suzuki-shunsuke/fagott
+執筆時点のバージョンは v0.3.0 です。
+ リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。
+比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。
+ https://github.com/suzuki-shunsuke/fagott/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/fagott/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。
+そこで fagott では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。
+例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。
+=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.go:641 client.go:509 create_user.go:45 create_user_test.go:56 Error: Not equal: expected: []string{&quot;token XXXXX&quot;} actual : []string{&quot;token &quot;} Diff: --- Expected +++ Actual @@ -1,3 +1,3 @@ ([]string) (len=1) { - (string) (len=11) &quot;token XXXXX&quot; + (string) (len=6) &quot;token &quot; } Test: TestClient_CreateUser Messages: the request header &quot;Authorization&quot; should match service: http://example.</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/fagott/" title="Fagott - Golang HTTP client testing framework">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-12T07:40:45JST">Jun 12, 2019</time></li>
       
       
@@ -309,6 +338,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Fagott - Golang HTTP client testing framework</a>
+      
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
@@ -327,8 +358,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
       
-      <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/" class="list-group-item">go-error-handling-logging-practice v0.2</a>
-      
     </div>
   </section>
 
@@ -340,11 +369,11 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (10)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (8)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (4)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
@@ -356,7 +385,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/github" class="list-group-item">github (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/fagott" class="list-group-item">fagott (1)</a>
       
     </div>
   </section>
@@ -366,6 +395,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <div class="panel-title">ARCHIVE</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (1)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
       
@@ -384,8 +415,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2018/10" class="list-group-item">2018/10 (6)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2018/09" class="list-group-item">2018/09 (11)</a>
       
     </div>
   </section>
