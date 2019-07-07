@@ -87,6 +87,41 @@ https://github.com/suzuki-shunsuke/fagott
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-20T17:50:11JST">Jun 20, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a></h2>
+  </header>
+
+  
+  <div class="summary">Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。 Drone では基本的に Git のイベントをフックして動くので同様の機能はありません。
+自分はこのような機能は特に必要ないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。
+一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。
+https://github.com/suzuki-shunsuke/example-drone-build-parameter
+以下のファイルが必要です。
+ build_params/params.sh.tpl: ビルドパラメータを記述ファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。
+$ bash scripts/deploy.sh  するとパラメータを記述するファイルがエディタで開きます。
+https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17
+パラメータを記述し、エディタを閉じます。
+するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。
+https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35
+Drone でタグをフックしてビルドが実行されます。
+https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17
+ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。
+https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10
+こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。
+https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh
+上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。
+以上、簡単な tips でした。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-12T07:40:45JST">Jun 12, 2019</time></li>
       
       
@@ -312,25 +347,6 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-10T17:49:58JST">Feb 10, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-good-point/">Golang の好きなところ</a></h2>
-  </header>
-
-  
-  <div class="summary">自分は 2017/8頃(曖昧)からメインで書く言語をPythonからGolangに変更しました。 Goを書き始めて割と早い段階でGoが一番好きになりました。 そこでなんで Go が好きなのかということを頑張って言語化しようと思います。
-若干他の言語と比較する部分もありますが、決して他の言語をディスったり、 他の言語より優れているということが言いたいわけではないのでご了承ください。
- 依存するものが小さく、バイナリ1つインストールするだけで良い  Prometheus の exporter とかインストールするの簡単 Docker Imageも最小限になる  静的型付け  ビルド出来ている時点で一定の信頼性が担保されている よく知らないコードを読んだり修正するときとかだいぶ有り難い  GoDocが素晴らしい  何もしなくてもライブラリのドキュメントが出来上がっている  ライブラリの公開が容易  GitHubに公開するだけ npm や pypi のようなレジストリがないので楽  go test とか go vet, gofmt みたいに標準ツールが揃っている コーディング規約で悩む必要がない lintツールが充実している  gometalinter とか使っておけば OK lintできる環境を構築するのにそこまで頑張らなくて良い  エラーハンドリングが暗黙的に省略できないので信頼性が高い  Goのエラーハンドリング嫌いって人もいるし、v2で改善されるって話も聞くけど、自分はむしろ好き(面倒なのは理解できるけど)  言語仕様がシンプル(客観的な根拠はないし、難しい部分もあるけど、そんな気がする)  メタプログラミング使った、魔術的なコードになりにくい  interface 使ってコードを疎結合にするのが書いてて気持ちいい 並列処理が書きやすい  </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -363,6 +379,8 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
       
       <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Fagott - Golang HTTP client testing framework</a>
       
+      <a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/" class="list-group-item">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a>
+      
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
@@ -379,8 +397,6 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
       
       <a href="https://suzuki-shunsuke.github.io/use-npm/" class="list-group-item">JS以外でのnpmの活用</a>
       
-      <a href="https://suzuki-shunsuke.github.io/golang-good-point/" class="list-group-item">Golang の好きなところ</a>
-      
     </div>
   </section>
 
@@ -390,7 +406,7 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (10)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (11)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
       
