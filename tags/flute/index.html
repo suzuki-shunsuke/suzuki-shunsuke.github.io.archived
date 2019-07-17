@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta name="generator" content="Hugo 0.54.0" />
 
-<link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/fagott/index.xml">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/flute/index.xml">
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/tags/fagott/">
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/tags/flute/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>Fagott - melody</title>
+    <title>Flute - melody</title>
     
     <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
     
@@ -53,7 +53,7 @@
 
     
     <header class="page-header">
-      <h1>Fagott</h1>
+      <h1>Flute</h1>
     </header>
     
 
@@ -66,23 +66,25 @@
       
       
     </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/fagott/">Fagott - Golang HTTP client testing framework</a></h2>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/fagott/">Flute - Golang HTTP client testing framework</a></h2>
   </header>
 
   
-  <div class="summary">Go の HTTP client のテストフレームワークを作ったので紹介します。
-https://github.com/suzuki-shunsuke/fagott
-執筆時点のバージョンは v0.3.0 です。
+  <div class="summary">2019-07-17 追記 プロジェクト名が変わりました
+https://github.com/suzuki-shunsuke/flute/issues/20
+Go の HTTP client のテストフレームワークを作ったので紹介します。
+https://github.com/suzuki-shunsuke/flute
+執筆時点のバージョンは v0.6.0 です。
  リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。
 比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。
- https://github.com/suzuki-shunsuke/fagott/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/fagott/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。
-そこで fagott では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。
+ https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。
+そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。
 例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。
-=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.go:641 client.go:509 create_user.go:45 create_user_test.go:56 Error: Not equal: expected: []string{&quot;token XXXXX&quot;} actual : []string{&quot;token &quot;} Diff: --- Expected +++ Actual @@ -1,3 +1,3 @@ ([]string) (len=1) { - (string) (len=11) &quot;token XXXXX&quot; + (string) (len=6) &quot;token &quot; } Test: TestClient_CreateUser Messages: the request header &quot;Authorization&quot; should match service: http://example.</div>
+=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.</div>
 
   
   <footer>
-    <a href="https://suzuki-shunsuke.github.io/fagott/" title="Fagott - Golang HTTP client testing framework">Read More…</a>
+    <a href="https://suzuki-shunsuke.github.io/fagott/" title="Flute - Golang HTTP client testing framework">Read More…</a>
   </footer>
   
 </article>
@@ -104,7 +106,7 @@ https://github.com/suzuki-shunsuke/fagott
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Fagott - Golang HTTP client testing framework</a>
+      <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
       
       <a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/" class="list-group-item">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a>
       
@@ -151,7 +153,7 @@ https://github.com/suzuki-shunsuke/fagott
       
       <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/fagott" class="list-group-item">fagott (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/flute" class="list-group-item">flute (1)</a>
       
     </div>
   </section>
