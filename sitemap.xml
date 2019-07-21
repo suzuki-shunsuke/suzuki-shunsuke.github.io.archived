@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/</loc>
+    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/fagott/</loc>
     <lastmod>2019-07-07T08:20:00+09:00</lastmod>
   </url>
@@ -249,7 +254,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/archives/2019/07/</loc>
-    <lastmod>2019-07-07T08:20:00+09:00</lastmod>
+    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -296,6 +301,12 @@
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/github/</loc>
     <lastmod>2019-01-20T12:27:26+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/go/</loc>
+    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -385,7 +396,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2019-07-07T08:20:00+09:00</lastmod>
+    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて - melody</title>
+    
+<meta name="description" content="The Top 10 Most Common Mistakes I’ve Seen in Go Projects という記事を読んで面白かったのでメモります。 翻訳ではないです。メモなので、原文を読んでください。 Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う Errors Management Slice Initialization Context Management Not Using the -race Option: go test コマンドでは -race オプションをつけよう Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.">
+
+<meta property="og:title" content="The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて - melody">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/">
+<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:site_name" content="melody">
+<meta property="og:description" content="The Top 10 Most Common Mistakes I’ve Seen in Go Projects という記事を読んで面白かったのでメモります。 翻訳ではないです。メモなので、原文を読んでください。 Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う Errors Management Slice Initialization Context Management Not Using the -race Option: go test コマンドでは -race オプションをつけよう Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="melody">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/">
+<meta name="twitter:title" content="The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて - melody">
+<meta name="twitter:description" content="The Top 10 Most Common Mistakes I’ve Seen in Go Projects という記事を読んで面白かったのでメモります。 翻訳ではないです。メモなので、原文を読んでください。 Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う Errors Management Slice Initialization Context Management Not Using the -race Option: go test コマンドでは -race オプションをつけよう Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.">
+<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://suzuki-shunsuke.github.io/"
+    },
+    "headline": "The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて - melody",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2019-07-21T18:13:53JST",
+    "dateModified": "2019-07-21T18:13:53JST",
+    "author": {
+      "@type": "Person",
+      "name": "melody"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "melody",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "The Top 10 Most Common Mistakes I’ve Seen in Go Projects という記事を読んで面白かったのでメモります。 翻訳ではないです。メモなので、原文を読んでください。
+ Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う Errors Management Slice Initialization Context Management Not Using the -race Option: go test コマンドでは -race オプションをつけよう Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io."
+  }
+</script>
+
+
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li class="active">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-21T18:13:53JST">Jul 21, 2019</time></li>
+      
+      
+    </ul>
+
+    <h1 class="title">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</h1>
+    
+    
+    <section>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/go/">go</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p><a href="https://itnext.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects-4b79d4f6cd65">The Top 10 Most Common Mistakes I’ve Seen in Go Projects</a> という記事を読んで面白かったのでメモります。
+翻訳ではないです。メモなので、原文を読んでください。</p>
+
+<ol>
+<li>Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから</li>
+<li>Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある</li>
+<li>Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う</li>
+<li>Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う</li>
+<li>Errors Management</li>
+<li>Slice Initialization</li>
+<li>Context Management</li>
+<li>Not Using the -race Option: <code>go test</code> コマンドでは <code>-race</code> オプションをつけよう</li>
+<li>Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.Reader や io.Writer を渡そう</li>
+<li>Goroutines and Loop Variables</li>
+</ol>
+
+<h2 id="pointers-pointers-everywhere">Pointers! Pointers Everywhere!</h2>
+
+<p>変数はヒープかスタックに割り当てられる。</p>
+
+<ul>
+<li>スタック: 関数内の変数は、関数が返されると、スタックからポップされる</li>
+<li>ヒープ: 共有変数、グローバル変数</li>
+</ul>
+
+<p>関数で生成した構造体を返すと、スタックで管理され、返された時点でポップされる。
+関数内で生成したポインタを返すと、それは Heap で管理される。
+スタックで管理すると、関数が返された時点でポップされてしまい、関数の外でポインタが指す値にアクセスできなくなるため。</p>
+
+<pre><code class="language-go">func getFooValue() foo {
+	var result foo
+	// Do something
+	return result
+}
+</code></pre>
+
+<pre><code class="language-go">func getFooPointer() *foo {
+	var result foo
+	// Do something
+	return &amp;result
+}
+</code></pre>
+
+<p>スタックのほうが効率が良い理由</p>
+
+<ul>
+<li>ガベージコレクタが不要
+
+<ul>
+<li>関数を抜けた時点でスタックからポップされる</li>
+<li>未使用の変数を回収する複雑な処理が不要</li>
+</ul></li>
+<li>スタックの変数は一つの goroutine に属するため、共有のための同期が不要だから</li>
+</ul>
+
+<p>よって基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う。</p>
+
+<h2 id="error-management">Error Management</h2>
+
+<ul>
+<li>エラーは一回だけハンドリングされるべき。エラーはロギングされるか、プロパゲートされるべき(ロギングしつつプロパゲートはだめ)</li>
+<li>pkg/errors を使うと根本的なエラーの型を見て条件分岐できる
+
+<ul>
+<li>自分が作ってる <a href="https://github.com/suzuki-shunsuke/go-errlog">go-errlog</a> の v0.9.1 だとそれは出来ない。改善すべきか</li>
+</ul></li>
+</ul>
+
+<pre><code class="language-go">switch errors.Cause(err).(type) {
+default:
+	log.WithError(err).Errorf(&quot;unable to server HTTP POST request for customer %s&quot;, customer.ID)
+	return Status{ok: false}
+case *db.DBError:
+	return retry(customer)
+}
+</code></pre>
+
+<h2 id="slice-initialization">Slice Initialization</h2>
+
+<p><a href="https://tour.golang.org/moretypes/11">https://tour.golang.org/moretypes/11</a></p>
+
+<ul>
+<li>slice には length と capacity がある</li>
+<li>length は slice が保持する要素の数</li>
+<li>capacity は slice の裏にある配列の要素数を slice の最初の要素から数えたもの</li>
+</ul>
+
+<p><a href="https://golang.org/ref/spec#Making_slices_maps_and_channels">https://golang.org/ref/spec#Making_slices_maps_and_channels</a></p>
+
+<p>slice の場合</p>
+
+<pre><code class="language-go">make(T, n) // length, capacity 共に n
+make(T, n, m) // length は n, capacity は m
+</code></pre>
+
+<p><a href="https://play.golang.org/p/R1CF1e1K3L6">https://play.golang.org/p/R1CF1e1K3L6</a></p>
+
+<pre><code class="language-go">a := make([]int, 0, 10)
+fmt.Println(len(a), cap(a)) // 0, 10
+a = append(a, 1)
+fmt.Println(len(a), cap(a)) // 1, 10
+</code></pre>
+
+<p><code>append</code> はコストが高いからインデックスを指定したほうが良いというが、
+<code>make</code> でスライスを生成していれば、<code>append</code> してもそこまでコストは高くない。
+若干インデックスを指定したほうが効率が良いが、一貫性という観点では <code>append</code> を使ったほうがよいかもしれない。</p>
+
+<h2 id="goroutines-and-loop-variables">Goroutines and Loop Variables</h2>
+
+<pre><code class="language-go">ints := []int{1, 2, 3}
+for _, i := range ints {
+	go func() {
+		fmt.Printf(&quot;%v\n&quot;, i)
+	}()
+}
+</code></pre>
+
+<p>これだと全ての goroutine で同じ i を共有してしまう。関数の引数として渡すか、for ループ内の変数として定義する。</p>
+
+<pre><code class="language-go">ints := []int{1, 2, 3}
+for _, i := range ints {
+	go func(i int) {
+		fmt.Printf(&quot;%v\n&quot;, i)
+	}(i)
+}
+</code></pre>
+
+<pre><code class="language-go">ints := []int{1, 2, 3}
+for _, i := range ints {
+	i := i // 初見だと奇妙に見えるが、正しい。
+	go func() {
+		fmt.Printf(&quot;%v\n&quot;, i)
+	}()
+}
+</code></pre>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/go/">go</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/" class="list-group-item">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (11)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/flute" class="list-group-item">flute (1)</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">ARCHIVE</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/04" class="list-group-item">2019/04 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/03" class="list-group-item">2019/03 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/02" class="list-group-item">2019/02 (4)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/01" class="list-group-item">2019/01 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/10" class="list-group-item">2018/10 (6)</a>
+      
+    </div>
+  </section>
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
