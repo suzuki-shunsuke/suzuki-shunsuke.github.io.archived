@@ -58,6 +58,29 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-14T20:28:56JST">Aug 14, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-time/">Golang での時刻の扱い方を整理する</a></h2>
+  </header>
+
+  
+  <div class="summary">今更ながら Golang での時刻の扱い方について改めて整理してみました。
+まとめ  DB などには UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location
+ Local represents the system&rsquo;s local time zone.</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/golang-time/" title="Golang での時刻の扱い方を整理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-21T18:13:53JST">Jul 21, 2019</time></li>
       
       
@@ -314,34 +337,6 @@ https://qiita.com/yamamoto-febc/items/498b911611dd25351ad7
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-16T18:38:45JST">Feb 16, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/use-confita/">Goの設定管理で viper の代わりに confita を使う</a></h2>
-  </header>
-
-  
-  <div class="summary">Golang の設定管理のライブラリといえば viper が有名ですが、 confita も良さそうだったので紹介したいと思います。
-confita の機能としては以下のようなものがあります。
- 構造体に設定をマッピング flag や環境変数、設定ファイルに対応 複数の設定ファイルに対応  構造体に設定をマッピングすることで、https://github.com/go-playground/validator のようなライブラリを使って設定のバリデーションが出来ます。
-また viper は v1.3.1 の時点で複数の設定ファイルを扱いにくいです。
- Viper can search multiple paths, but currently a single Viper instance only supports a single configuration file.
- k8s で ConfigMap と Secret を設定ファイルとして扱う場合、複数のファイルを扱えないと不便です。 その点 confita は複数の設定ファイルを問題なく扱えます。
-以下はフラグで指定した複数の設定ファイルから設定を読み込む簡単なサンプルです。
-import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &quot;github.com/heetch/confita&quot; &quot;github.com/heetch/confita/backend&quot; &quot;github.com/heetch/confita/backend/file&quot; flag &quot;github.com/spf13/pflag&quot; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(&quot;config&quot;, &quot;c&quot;, nil, &quot;configuration file path&quot;) flag.</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/use-confita/" title="Goの設定管理で viper の代わりに confita を使う">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -372,6 +367,8 @@ import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &qu
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
+      
       <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
       
       <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
@@ -390,8 +387,6 @@ import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &qu
       
       <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
       
-      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
-      
     </div>
   </section>
 
@@ -405,7 +400,7 @@ import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &qu
       
       <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
@@ -430,6 +425,8 @@ import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &qu
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (1)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
@@ -447,8 +444,6 @@ import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &qu
       <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2018/10" class="list-group-item">2018/10 (6)</a>
       
     </div>
   </section>

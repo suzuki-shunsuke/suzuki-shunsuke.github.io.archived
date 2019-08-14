@@ -58,6 +58,39 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-terraform/">GraylogをTerraformで管理する</a></h2>
+  </header>
+
+  
+  <div class="summary">Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
+Graylogには様々なリソースがあります。
+ User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
+APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
+https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform
+GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
+ Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
+出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
+terraform を使った管理方法 以下では自分の管理方法を紹介します。
+https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
+にサンプルが置いてあります。
+基本はプロジェクトごとに
+ Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog-terraform/" title="GraylogをTerraformで管理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
       
       
@@ -302,25 +335,6 @@ docker API でエラーが出て、コンテナを操作できない これは�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:42:16JST">Sep 30, 2018</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-cant-use-nonroot-image/">drone で非rootユーザーで実行されるImageを使えない</a></h2>
-  </header>
-
-  
-  <div class="summary">drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。
-/bin/sh: 3: cannot create /root/.netrc: Permission denied  これについては drone の開発者が回答しています。
- https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -351,6 +365,8 @@ docker API でエラーが出て、コンテナを操作できない これは�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
+      
       <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
       
       <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
@@ -369,8 +385,6 @@ docker API でエラーが出て、コンテナを操作できない これは�
       
       <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
       
-      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
-      
     </div>
   </section>
 
@@ -384,7 +398,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
       
       <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
@@ -409,6 +423,8 @@ docker API でエラーが出て、コンテナを操作できない これは�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (1)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
@@ -426,8 +442,6 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2018/10" class="list-group-item">2018/10 (6)</a>
       
     </div>
   </section>

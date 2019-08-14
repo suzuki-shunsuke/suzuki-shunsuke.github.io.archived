@@ -62,6 +62,29 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-14T20:28:56JST">Aug 14, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-time/">Golang での時刻の扱い方を整理する</a></h2>
+  </header>
+
+  
+  <div class="summary">今更ながら Golang での時刻の扱い方について改めて整理してみました。
+まとめ  DB などには UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location
+ Local represents the system&rsquo;s local time zone.</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/golang-time/" title="Golang での時刻の扱い方を整理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-07T08:20:00JST">Jul 7, 2019</time></li>
       
       
@@ -220,6 +243,8 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
+      
       <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
       
       <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
@@ -238,8 +263,6 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
       
       <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
       
-      <a href="https://suzuki-shunsuke.github.io/use-confita/" class="list-group-item">Goの設定管理で viper の代わりに confita を使う</a>
-      
     </div>
   </section>
 
@@ -253,7 +276,7 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
       
       <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
@@ -278,6 +301,8 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (1)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
@@ -295,8 +320,6 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
       <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2018/10" class="list-group-item">2018/10 (6)</a>
       
     </div>
   </section>

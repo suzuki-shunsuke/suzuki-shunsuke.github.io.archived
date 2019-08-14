@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/golang-time/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Golang での時刻の扱い方を整理する - melody</title>
+    
+<meta name="description" content="今更ながら Golang での時刻の扱い方について改めて整理してみました。まとめ  DB などには UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location Local represents the system&amp;rsquo;s local time zone.">
+
+<meta property="og:title" content="Golang での時刻の扱い方を整理する - melody">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/golang-time/">
+<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:site_name" content="melody">
+<meta property="og:description" content="今更ながら Golang での時刻の扱い方について改めて整理してみました。まとめ  DB などには UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location Local represents the system&amp;rsquo;s local time zone.">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="melody">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/golang-time/">
+<meta name="twitter:title" content="Golang での時刻の扱い方を整理する - melody">
+<meta name="twitter:description" content="今更ながら Golang での時刻の扱い方について改めて整理してみました。まとめ  DB などには UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location Local represents the system&amp;rsquo;s local time zone.">
+<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://suzuki-shunsuke.github.io/"
+    },
+    "headline": "Golang での時刻の扱い方を整理する - melody",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2019-08-14T20:28:56JST",
+    "dateModified": "2019-08-14T20:28:56JST",
+    "author": {
+      "@type": "Person",
+      "name": "melody"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "melody",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "今更ながら Golang での時刻の扱い方について改めて整理してみました。
+まとめ  DB などには UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location
+ Local represents the system&rsquo;s local time zone."
+  }
+</script>
+
+
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li class="active">Golang での時刻の扱い方を整理する</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-14T20:28:56JST">Aug 14, 2019</time></li>
+      
+      
+    </ul>
+
+    <h1 class="title">Golang での時刻の扱い方を整理する</h1>
+    
+    
+    <section>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/golang/">golang</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>今更ながら Golang での時刻の扱い方について改めて整理してみました。</p>
+
+<h2 id="まとめ">まとめ</h2>
+
+<ul>
+<li>DB などには UTC で永続化する</li>
+<li>出力時に必要になったらタイムゾーンを変更する
+
+<ul>
+<li>location は出力時に問題になるので出力時に location を明示的に指定する</li>
+<li>逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない</li>
+<li>サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要</li>
+</ul></li>
+<li>文字列として時刻の入力を受け付ける場合は location を明示的にセットする</li>
+<li>サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない</li>
+<li>アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する</li>
+<li><code>time.LoadLocation</code> は環境依存なので予め location が分かっているなら使わないほうがよい</li>
+<li>文字列を time.Time に変換する場合、<code>time.ParseInLocation</code> で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する</li>
+<li>time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する</li>
+</ul>
+
+<h2 id="グローバルな-location">グローバルな location</h2>
+
+<p><a href="https://golang.org/pkg/time/#Location">https://golang.org/pkg/time/#Location</a></p>
+
+<blockquote>
+<p>Local represents the system&rsquo;s local time zone.</p>
+</blockquote>
+
+<h2 id="location-を設定する">location を設定する</h2>
+
+<p><a href="https://crieit.net/posts/Go-time-LoadLocation">https://crieit.net/posts/Go-time-LoadLocation</a> に書いてあるとおり、
+<code>time.LoadLocation</code> を下手に呼び出すと環境によっては <code>unknown time zone</code> エラーが起こるため
+次のように time.FixedZone で Location を生成します。</p>
+
+<pre><code class="language-go">jp := time.FixedZone(&quot;Asia/Tokyo&quot;, 9*60*60)
+</code></pre>
+
+<p>FixedZone という関数名が紛らわしい気もしますが、新しい Location を生成しているだけで副作用はありません。</p>
+
+<p>ちなみに time.FixedZone に渡す文字列は &ldquo;foo&rdquo; みたいな適当な文字列でも動くようです。</p>
+
+<p><a href="https://golang.org/pkg/time/#FixedZone">https://golang.org/pkg/time/#FixedZone</a></p>
+
+<p><a href="https://github.com/golang/go/blob/9e277f7d554455e16ba3762541c53e9bfc1d8188/src/time/zoneinfo.go#L263-L308">https://github.com/golang/go/blob/9e277f7d554455e16ba3762541c53e9bfc1d8188/src/time/zoneinfo.go#L263-L308</a></p>
+
+<p>アプリケーションで利用する location が決まっている場合、次のように location を返すヘルパー関数を用意すると良さそうです。</p>
+
+<pre><code class="language-go">package location
+
+import (
+	&quot;time&quot;
+)
+
+var (
+	jp *time.Location
+)
+
+func init() {
+	jp = time.FixedZone(&quot;Asia/Tokyo&quot;, 9*60*60)
+}
+
+func JP() *time.Location {
+	return jp
+}
+</code></pre>
+
+<h2 id="厳密に-utc-な-location-を取得する">厳密に UTC な Location を取得する</h2>
+
+<p>厳密に言うと、<code>time.UTC</code> は変更可能なので UTC だとは限りません。
+そのため、本来 <code>time.UTC</code> はゲッター関数であるべきだったんじゃないかなという気もします。</p>
+
+<p>厳密に UTC な Location を取得するにはヘルパー関数を書くと良さそうです。</p>
+
+<pre><code class="language-go">package location
+
+import (
+	&quot;time&quot;
+)
+
+var (
+	utc *time.Location
+)
+
+func init() {
+	utc = time.FixedZone(&quot;UTC&quot;, 0)
+}
+
+func UTC() *time.Location {
+	return utc
+}
+</code></pre>
+
+<h2 id="動作環境に依存しないコードにするために">動作環境に依存しないコードにするために</h2>
+
+<p>動作環境によって <code>time.Local</code> の値が違うことで結果が変わってしまう場合があります。
+それを防ぐために、プログラムの最初に <code>time.Local</code> を UTC にするという手もありそうです。</p>
+
+<pre><code class="language-go">time.Local = location.UTC()
+</code></pre>
+
+<p>ただし、それでもグローバル変数である以上、行儀の悪いサードパーティのライブラリによって変更されるかもしれませんし、
+必要な箇所で location を明示的に指定してグローバル変数に依存しないようなコードを書くことを心がけたほうが良い気もします。</p>
+
+<h2 id="文字列を-time-time-に変換する">文字列を time.Time に変換する</h2>
+
+<ul>
+<li><a href="https://golang.org/pkg/time/#Parse">https://golang.org/pkg/time/#Parse</a></li>
+<li><a href="https://golang.org/pkg/time/#ParseInLocation">https://golang.org/pkg/time/#ParseInLocation</a></li>
+</ul>
+
+<blockquote>
+<p>ParseInLocation is like Parse but differs in two important ways.
+First, in the absence of time zone information, Parse interprets a time as UTC;
+ParseInLocation interprets the time as in the given location.
+Second, when given a zone offset or abbreviation, Parse tries to match it against the Local location;
+ParseInLocation uses the given location.</p>
+</blockquote>
+
+<p>ParseInLocation と Parse の違い</p>
+
+<ul>
+<li>文字列に location の情報がない場合、 Parse は UTC として扱う</li>
+<li>zone offset が指定された場合、 Parse は Local location からの offset として扱う
+
+<ul>
+<li>ParseInLocation で明示的に Location を指定したほうが良さそう</li>
+</ul></li>
+</ul>
+
+<p>予め location がわかっている場合 time.ParseInLocation で location を指定して time.Time に変換した後 time.Time.In で UTC にするのが良さそうです。</p>
+
+<pre><code class="language-go">t, err := time.ParseInLocation(&quot;2006-01-02T15:04:05&quot;, &quot;2019-08-13T21:30:00&quot;, jp)
+if err != nil {
+	return err
+}
+t = t.UTC()
+</code></pre>
+
+<h2 id="time-time-の-location-を変更する">time.Time の Location を変更する</h2>
+
+<p><a href="https://golang.org/pkg/time/#Time.In">https://golang.org/pkg/time/#Time.In</a></p>
+
+<blockquote>
+<p>In returns a copy of t representing the same time instant,
+but with the copy&rsquo;s location information set to loc for display purposes.</p>
+</blockquote>
+
+<p>time.Time.In は time.Time の Location だけ変更したコピーを返します。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;time&quot;
+)
+
+func main() {
+	time.Local = location.UTC()
+	t := time.Now()
+	fmt.Println(t) // 2019-08-14 12:08:44.150725 +0000 UTC m=+0.000212031
+	t2 := t.In(location.JP())
+	fmt.Println(t2) // 2019-08-14 21:08:44.150725 +0900 Asia/Tokyo
+}
+</code></pre>
+
+<h2 id="time-time-を文字列に変換する">time.Time を文字列に変換する</h2>
+
+<p><a href="https://golang.org/pkg/time/#Time.Format">https://golang.org/pkg/time/#Time.Format</a></p>
+
+<p>time.Time.In で location を変更した後 time.Time.Format で文字列に変換するのが良さそうです。</p>
+
+<h2 id="time-now-の-location">time.Now の location</h2>
+
+<p>Location は <code>time.Local</code> になります。</p>
+
+<p><a href="https://golang.org/pkg/time/#Now">https://golang.org/pkg/time/#Now</a></p>
+
+<h2 id="todo-rdb-での-time-time-の扱い">TODO: RDB での time.Time の扱い</h2>
+
+<p>ちょっと疲れたのであとで調べます。</p>
+
+<ul>
+<li><a href="https://github.com/jinzhu/gorm/wiki/How-To-Do-Time">https://github.com/jinzhu/gorm/wiki/How-To-Do-Time</a></li>
+<li><a href="https://github.com/go-sql-driver/mysql#timetime-support">https://github.com/go-sql-driver/mysql#timetime-support</a></li>
+</ul>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/golang/">golang</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/" class="list-group-item">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (11)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/flute" class="list-group-item">flute (1)</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">ARCHIVE</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/04" class="list-group-item">2019/04 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/03" class="list-group-item">2019/03 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/02" class="list-group-item">2019/02 (4)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/01" class="list-group-item">2019/01 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
+      
+    </div>
+  </section>
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
