@@ -62,6 +62,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:54:23JST">Aug 15, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/">Drone Extension のリスク</a></h2>
+  </header>
+
+  
+  <div class="summary">Drone v1 では Extension という仕組みが導入されました。
+これは文字通り Drone を拡張する仕組みで、仕様に従って作れば自由に Drone を拡張できます。
+https://docs.drone.io/extend/
+全てを本体でやるのではなく、拡張する仕組みを提供し、あとはコミュニティに委ねるというのが Drone の一つの方針とも言えると思います。
+Extension は非常に面白い仕組みだと思いますが、 Drone を運用する立場からすると中々頭が痛い仕組みな気がしてて、 自分は導入に対し慎重な立場です。 単なる杞憂で済めば良いのですが、その懸念について書きたいと思います。
+根本は Drone Extension 固有の問題と言うより、一般的な拡張機構全般に言えることだと思います。 ただし、 Drone Extension は全てのビルドに影響を及ぼす、 CI/CDシステムが動かなくなるとサービスのリリースに影響を及ぼしかねないということからよりリスクの高いものになっています。
+ 本体の drone/drone と比べ、開発は活発ではなく、サードパーティの extension はいつ開発が止まってもおかしくない 本体の drone/drone と比べ、ドキュメントやサポート体制が貧弱だと思われる(drone に関しては https://discourse.drone.io でサポートされているが、サードパーティの extension では難しい) ユーザーからの extension に関する要望を受け付けるようになると、管理者の負担になる extension のクォリティはマチマチであり、例外処理が甘かったり、ちゃんとエラーを吐かないものもあるだろう トラブルシューティングが難しいと思われる extension の仕組み上、extension を必要としないビルドにも影響を及ぼしうる 一度追加し、依存しだすと消すのが難しくなる extension が落ちると全 build に影響するので、耐障害性(冗長化)、モニタリングが必要 etc  勿論、上記の懸念点は Extension によって提供される機能とトレードオフであり、 Extension の導入方針は Drone が運用される環境によって大きく依存すると思います。
+例えば全員が顔見知りのような小さな組織で特定のサービス専用に Drone を使っていてかつ Drone の運用体制(人員)に十分余裕があるなら 積極的に Extension を導入しても問題ないかもしれません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" title="Drone Extension のリスク">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:39:18JST">Aug 15, 2019</time></li>
       
       
@@ -147,6 +175,8 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
+      
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
       
       <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
@@ -165,8 +195,6 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
       
       <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
-      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
-      
     </div>
   </section>
 
@@ -176,7 +204,7 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (13)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
       
@@ -205,7 +233,7 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (3)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       
