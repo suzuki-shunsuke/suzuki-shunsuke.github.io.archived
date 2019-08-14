@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.54.0" />
+
+
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/drone-jsonnet/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>Drone v1 では Jsonnet が extension なしで使える - melody</title>
+    
+<meta name="description" content="Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。https://techblog.szksh.cloud/drone-jsonnet-generator/しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。まず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。 .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main &amp;gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。いつから Jsonnet Extension は不要になったのか  https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0 https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。">
+
+<meta property="og:title" content="Drone v1 では Jsonnet が extension なしで使える - melody">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/drone-jsonnet/">
+<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:site_name" content="melody">
+<meta property="og:description" content="Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。https://techblog.szksh.cloud/drone-jsonnet-generator/しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。まず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。 .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main &amp;gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。いつから Jsonnet Extension は不要になったのか  https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0 https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="melody">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/drone-jsonnet/">
+<meta name="twitter:title" content="Drone v1 では Jsonnet が extension なしで使える - melody">
+<meta name="twitter:description" content="Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。https://techblog.szksh.cloud/drone-jsonnet-generator/しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。まず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。 .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main &amp;gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。いつから Jsonnet Extension は不要になったのか  https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0 https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。">
+<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://suzuki-shunsuke.github.io/"
+    },
+    "headline": "Drone v1 では Jsonnet が extension なしで使える - melody",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2019-08-02T23:02:57JST",
+    "dateModified": "2019-08-02T23:02:57JST",
+    "author": {
+      "@type": "Person",
+      "name": "melody"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "melody",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。
+https://techblog.szksh.cloud/drone-jsonnet-generator/
+しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。
+https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1
+しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。
+まず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。
+そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。
+ .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main &gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。
+いつから Jsonnet Extension は不要になったのか  https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0 https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。"
+  }
+</script>
+
+
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li class="active">Drone v1 では Jsonnet が extension なしで使える</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-02T23:02:57JST">Aug 2, 2019</time></li>
+      
+      
+    </ul>
+
+    <h1 class="title">Drone v1 では Jsonnet が extension なしで使える</h1>
+    
+    
+    <section>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/drone/">drone</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </header>
+
+  
+
+  <div class="article-body">
+
+<p>Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。
+これについては過去のブログでも触れています。</p>
+
+<p><a href="https://techblog.szksh.cloud/drone-jsonnet-generator/">https://techblog.szksh.cloud/drone-jsonnet-generator/</a></p>
+
+<p>しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。</p>
+
+<p><a href="https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1">https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1</a></p>
+
+<p>しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。</p>
+
+<p>まず Drone の管理者側で Drone server に環境変数 <code>DRONE_JSONNET_ENABLED=true</code> を設定する必要があります。</p>
+
+<p>そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。</p>
+
+<ol>
+<li>.drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要)</li>
+<li>各リポジトリの settings の Main &gt; Configuration で設定ファイルのパスを変更する</li>
+</ol>
+
+<p>こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。</p>
+
+<h2 id="いつから-jsonnet-extension-は不要になったのか">いつから Jsonnet Extension は不要になったのか</h2>
+
+<ul>
+<li><a href="https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0">https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0</a></li>
+<li><a href="https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57">https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57</a></li>
+</ul>
+
+<p>v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。</p>
+
+<h2 id="注意点">注意点</h2>
+
+<ul>
+<li>SaaS <a href="https://cloud.drone.io">https://cloud.drone.io</a> は 2019-08-02 時点で未対応</li>
+<li>Jsonnet は pipeline が 1 つでも <code>[]</code> で囲い、配列にする必要がある</li>
+<li>Jsonnet の Imports はサポートしていない</li>
+</ul>
+
+<h2 id="リファレンス">リファレンス</h2>
+
+<ul>
+<li><a href="https://discourse.drone.io/t/how-to-reduce-yaml-boilerplate/3704">https://discourse.drone.io/t/how-to-reduce-yaml-boilerplate/3704</a></li>
+</ul>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/drone/">drone</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet/" class="list-group-item">Drone v1 では Jsonnet が extension なしで使える</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/" class="list-group-item">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/durl/" class="list-group-item">durl - 壊れたURLを検知するCLIツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (12)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/flute" class="list-group-item">flute (1)</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">ARCHIVE</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/04" class="list-group-item">2019/04 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/03" class="list-group-item">2019/03 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/02" class="list-group-item">2019/02 (4)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/01" class="list-group-item">2019/01 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2018/11" class="list-group-item">2018/11 (1)</a>
+      
+    </div>
+  </section>
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

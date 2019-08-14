@@ -82,6 +82,35 @@
 </article>
 </li>
       
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-02T23:02:57JST">Aug 2, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-jsonnet/">Drone v1 では Jsonnet が extension なしで使える</a></h2>
+  </header>
+
+  
+  <div class="summary">Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。
+https://techblog.szksh.cloud/drone-jsonnet-generator/
+しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。
+https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1
+しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。
+まず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。
+そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。
+ .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main &gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。
+いつから Jsonnet Extension は不要になったのか  https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0 https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-jsonnet/" title="Drone v1 では Jsonnet が extension なしで使える">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
     </ul>
 
     
@@ -100,6 +129,8 @@
       
       <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
       
+      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet/" class="list-group-item">Drone v1 では Jsonnet が extension なしで使える</a>
+      
       <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
       
       <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
@@ -116,8 +147,6 @@
       
       <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" class="list-group-item">毎週30分の技術共有会</a>
       
-      <a href="https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/" class="list-group-item">Rancherでusername が重複してログインできなくなった場合の解消方法</a>
-      
     </div>
   </section>
 
@@ -127,7 +156,7 @@
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (11)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (12)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (9)</a>
       
@@ -156,7 +185,7 @@
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       
