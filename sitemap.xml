@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/</loc>
+    <lastmod>2019-08-15T07:39:18+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/golang-time/</loc>
     <lastmod>2019-08-14T20:28:56+09:00</lastmod>
   </url>
@@ -304,7 +309,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/drone/</loc>
-    <lastmod>2019-08-02T23:02:57+09:00</lastmod>
+    <lastmod>2019-08-15T07:39:18+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -341,6 +346,12 @@
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/graylog/</loc>
     <lastmod>2019-01-25T22:38:28+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/grpc/</loc>
+    <lastmod>2019-08-15T07:39:18+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -412,7 +423,7 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2019-08-14T20:28:56+09:00</lastmod>
+    <lastmod>2019-08-15T07:39:18+09:00</lastmod>
     <priority>0</priority>
   </url>
   
