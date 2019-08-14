@@ -320,6 +320,23 @@ func main() {
 
 <p><a href="https://golang.org/pkg/time/#Now">https://golang.org/pkg/time/#Now</a></p>
 
+<h2 id="log-パッケージの時刻">log パッケージの時刻</h2>
+
+<p>log パッケージで出力される時刻のフォーマットと location は log.SetFlags によってある程度変更できます。</p>
+
+<p>デフォルトは 日時を time.Local で出力します。
+log.LUTC をセットすることで UTC になります。</p>
+
+<ul>
+<li><a href="https://golang.org/pkg/log/#SetFlags">https://golang.org/pkg/log/#SetFlags</a></li>
+<li><a href="https://golang.org/pkg/log/#pkg-constants">https://golang.org/pkg/log/#pkg-constants</a></li>
+</ul>
+
+<pre><code class="language-go">log.SetFlags(log.Flags() | log.LUTC)
+</code></pre>
+
+<p>また、<a href="https://github.com/Sirupsen/logrus">logrus</a> のログの時刻の location も time.Local なようです。</p>
+
 <h2 id="todo-rdb-での-time-time-の扱い">TODO: RDB での time.Time の扱い</h2>
 
 <p>ちょっと疲れたのであとで調べます。</p>
@@ -327,6 +344,7 @@ func main() {
 <ul>
 <li><a href="https://github.com/jinzhu/gorm/wiki/How-To-Do-Time">https://github.com/jinzhu/gorm/wiki/How-To-Do-Time</a></li>
 <li><a href="https://github.com/go-sql-driver/mysql#timetime-support">https://github.com/go-sql-driver/mysql#timetime-support</a></li>
+<li><a href="https://www.sambaiz.net/article/189/">https://www.sambaiz.net/article/189/</a></li>
 </ul>
 </div>
 
