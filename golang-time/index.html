@@ -320,7 +320,9 @@ func main() {
 
 <p><a href="https://golang.org/pkg/time/#Now">https://golang.org/pkg/time/#Now</a></p>
 
-<h2 id="log-パッケージの時刻">log パッケージの時刻</h2>
+<h2 id="他のパッケージの-location-の扱い">他のパッケージの location の扱い</h2>
+
+<h3 id="log">log</h3>
 
 <p>log パッケージで出力される時刻のフォーマットと location は log.SetFlags によってある程度変更できます。</p>
 
@@ -335,17 +337,30 @@ log.LUTC をセットすることで UTC になります。</p>
 <pre><code class="language-go">log.SetFlags(log.Flags() | log.LUTC)
 </code></pre>
 
-<p>また、<a href="https://github.com/Sirupsen/logrus">logrus</a> のログの時刻の location も time.Local なようです。</p>
+<h3 id="logrus">logrus</h3>
 
-<h2 id="todo-rdb-での-time-time-の扱い">TODO: RDB での time.Time の扱い</h2>
+<p><a href="https://github.com/Sirupsen/logrus">logrus</a> のログの時刻の location も time.Local なようです。</p>
 
-<p>ちょっと疲れたのであとで調べます。</p>
+<h3 id="robfig-cron">robfig/cron</h3>
+
+<p><a href="https://github.com/robfig/cron">https://github.com/robfig/cron</a></p>
+
+<blockquote>
+<p>All interpretation and scheduling is done in the machine&rsquo;s local time zone (as provided by the Go time package (<a href="http://www.golang.org/pkg/time">http://www.golang.org/pkg/time</a>).</p>
+</blockquote>
+
+<p>time.Local なようです。</p>
+
+<h3 id="go-sql-driver-misql">go-sql-driver/misql</h3>
 
 <ul>
-<li><a href="https://github.com/jinzhu/gorm/wiki/How-To-Do-Time">https://github.com/jinzhu/gorm/wiki/How-To-Do-Time</a></li>
 <li><a href="https://github.com/go-sql-driver/mysql#timetime-support">https://github.com/go-sql-driver/mysql#timetime-support</a></li>
 <li><a href="https://www.sambaiz.net/article/189/">https://www.sambaiz.net/article/189/</a></li>
 </ul>
+
+<h3 id="gorm">gorm</h3>
+
+<p><a href="https://github.com/jinzhu/gorm/wiki/How-To-Do-Time">https://github.com/jinzhu/gorm/wiki/How-To-Do-Time</a></p>
 </div>
 
   <footer class="article-footer">
