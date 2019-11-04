@@ -6,10 +6,19 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 15 Aug 2019 07:54:23 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 23 Aug 2019 11:35:13 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>oss</title>
+      <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
+      <pubDate>Fri, 23 Aug 2019 11:35:13 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/oss/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>drone</title>
@@ -53,15 +62,6 @@
       <pubDate>Sun, 07 Jul 2019 08:20:00 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/flute/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>oss</title>
-      <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
-      <pubDate>Sun, 07 Jul 2019 08:20:00 +0900</pubDate>
-      
-      <guid>https://suzuki-shunsuke.github.io/tags/oss/</guid>
       <description></description>
     </item>
     
