@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://suzuki-shunsuke.github.io/"
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
     "headline": "Flute - Golang HTTP client testing framework - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,22 +60,12 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "2019-07-17 追記 プロジェクト名が変わりました
-https://github.com/suzuki-shunsuke/flute/issues/20
-Go の HTTP client のテストフレームワークを作ったので紹介します。
-https://github.com/suzuki-shunsuke/flute
-執筆時点のバージョンは v0.6.0 です。
- リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。
-比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。
- https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。
-そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。
-例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。
-=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client."
+    "description": "2019-07-17 追記 プロジェクト名が変わりました\nhttps:\/\/github.com\/suzuki-shunsuke\/flute\/issues\/20\nGo の HTTP client のテストフレームワークを作ったので紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/flute\n執筆時点のバージョンは v0.6.0 です。\n リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。\n比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。\n https:\/\/github.com\/suzuki-shunsuke\/flute\/blob\/master\/examples\/create_user.go https:\/\/github.com\/suzuki-shunsuke\/flute\/blob\/master\/examples\/create_user_test.go#L17-L53  元々自分はこの目的のために h2non\/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。\nそこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr\/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。\n例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。\n=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client."
   }
 </script>
 
@@ -301,6 +291,8 @@ matcher でマッチしたリクエストを tester でテストするという�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
+      
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
@@ -318,8 +310,6 @@ matcher でマッチしたリクエストを tester でテストするという�
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
     </div>
   </section>
@@ -359,7 +349,7 @@ matcher でマッチしたリクエストを tester でテストするという�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://suzuki-shunsuke.github.io/"
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
     "headline": "GraylogをTerraformで管理する - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,24 +60,12 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
-Graylogには様々なリソースがあります。
- User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
-APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
-https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform
-GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
- Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
-出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
-terraform を使った管理方法 以下では自分の管理方法を紹介します。
-https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
-にサンプルが置いてあります。
-基本はプロジェクトごとに
- Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。"
+    "description": "Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。\nGraylogには様々なリソースがあります。\n User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。\nAPIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。\nhttps:\/\/github.com\/suzuki-shunsuke\/go-graylog\/tree\/master\/terraform\nGraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。\n Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。\n出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。\nterraform を使った管理方法 以下では自分の管理方法を紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/example\/tree\/master\/graylog-terraform\nにサンプルが置いてあります。\n基本はプロジェクトごとに\n Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。"
   }
 </script>
 
@@ -307,6 +295,8 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
+      
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
@@ -324,8 +314,6 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
     </div>
   </section>
@@ -365,7 +353,7 @@ terraform provider の開発に興味のある方はこの辺を見てみると�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       

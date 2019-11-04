@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://suzuki-shunsuke.github.io/"
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
     "headline": "Drone v1 で gRPC が使われなくなった - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,15 +60,12 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。
-理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
-関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。
- https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。"
+    "description": "v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。\n理由  https:\/\/discourse.drone.io\/t\/curious-about-decision-to-drop-grpc\/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https:\/\/discourse.drone.io\/t\/drone-agents-keep-closing-connections-with-499-code\/5197\/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。\n関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。\n https:\/\/github.com\/drone\/drone\/issues\/2090 https:\/\/github.com\/drone\/drone\/issues\/2246 https:\/\/github.com\/drone\/drone\/pull\/2294 https:\/\/www.reddit.com\/r\/droneci\/comments\/8opifu\/drone_stops_working_after_some_little_time\/e06d1gn\/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。"
   }
 </script>
 
@@ -225,6 +222,8 @@ server - agent 間の TCP connection が切れっぱなしになって戻らく�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
+      
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
@@ -242,8 +241,6 @@ server - agent 間の TCP connection が切れっぱなしになって戻らく�
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
     </div>
   </section>
@@ -283,7 +280,7 @@ server - agent 間の TCP connection が切れっぱなしになって戻らく�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       

@@ -1,6 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/08/</loc>
+    <lastmod>2019-08-23T11:35:13+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/</loc>
+    <lastmod>2019-08-23T11:35:13+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/cmdx/</loc>
+    <lastmod>2019-08-23T11:35:13+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/</loc>
+    <lastmod>2019-08-23T11:35:13+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/drone/</loc>
+    <lastmod>2019-08-15T07:54:23+09:00</lastmod>
+  </url>
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/risk-of-drone-extension/</loc>
@@ -8,8 +33,23 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
+    <lastmod>2019-08-15T07:54:23+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/</loc>
     <lastmod>2019-08-15T07:39:18+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/grpc/</loc>
+    <lastmod>2019-08-15T07:39:18+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/golang/</loc>
+    <lastmod>2019-08-14T20:28:56+09:00</lastmod>
   </url>
   
   <url>
@@ -23,8 +63,23 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/07/</loc>
+    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/go/</loc>
+    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/</loc>
     <lastmod>2019-07-21T18:13:53+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/flute/</loc>
+    <lastmod>2019-07-07T08:20:00+09:00</lastmod>
   </url>
   
   <url>
@@ -33,8 +88,18 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
+    <lastmod>2019-07-07T08:20:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/</loc>
     <lastmod>2019-06-20T17:50:11+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/06/</loc>
+    <lastmod>2019-06-12T07:40:45+09:00</lastmod>
   </url>
   
   <url>
@@ -48,8 +113,18 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/05/</loc>
+    <lastmod>2019-05-23T11:43:18+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/go-jsoneq/</loc>
     <lastmod>2019-05-23T11:43:18+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/04/</loc>
+    <lastmod>2019-04-28T21:25:00+09:00</lastmod>
   </url>
   
   <url>
@@ -58,13 +133,28 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/03/</loc>
+    <lastmod>2019-03-17T13:47:40+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/</loc>
     <lastmod>2019-03-17T13:47:40+09:00</lastmod>
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/rancher/</loc>
+    <lastmod>2019-03-16T21:17:05+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/rancher-duplicated-user-name/</loc>
     <lastmod>2019-03-16T21:17:05+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/02/</loc>
+    <lastmod>2019-02-16T18:38:45+09:00</lastmod>
   </url>
   
   <url>
@@ -74,6 +164,11 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/use-npm/</loc>
+    <lastmod>2019-02-14T21:34:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/npm/</loc>
     <lastmod>2019-02-14T21:34:22+09:00</lastmod>
   </url>
   
@@ -88,8 +183,28 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2019/01/</loc>
+    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/graylog/</loc>
+    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/terraform/</loc>
+    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/</loc>
     <lastmod>2019-01-25T22:38:28+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/github/</loc>
+    <lastmod>2019-01-20T12:27:26+09:00</lastmod>
   </url>
   
   <url>
@@ -98,7 +213,17 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2018/12/</loc>
+    <lastmod>2018-12-25T21:51:41+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/</loc>
+    <lastmod>2018-12-25T21:51:41+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/logging/</loc>
     <lastmod>2018-12-25T21:51:41+09:00</lastmod>
   </url>
   
@@ -108,8 +233,23 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/ci/</loc>
+    <lastmod>2018-12-07T08:22:49+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/graylog-terraform-ci/</loc>
     <lastmod>2018-12-07T08:22:49+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/ansible/</loc>
+    <lastmod>2018-12-06T23:08:04+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/molecule/</loc>
+    <lastmod>2018-12-06T23:08:04+09:00</lastmod>
   </url>
   
   <url>
@@ -123,13 +263,28 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2018/11/</loc>
+    <lastmod>2018-11-27T16:40:33+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/graylog/</loc>
     <lastmod>2018-11-27T16:40:33+09:00</lastmod>
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2018/10/</loc>
+    <lastmod>2018-10-31T08:56:04+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/akoi/</loc>
     <lastmod>2018-10-31T08:56:04+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/gomic/</loc>
+    <lastmod>2018-10-30T08:35:16+09:00</lastmod>
   </url>
   
   <url>
@@ -143,6 +298,11 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/hugo/</loc>
+    <lastmod>2018-10-10T21:14:03+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/migrate-to-user-gh-pages/</loc>
     <lastmod>2018-10-10T21:14:03+09:00</lastmod>
   </url>
@@ -153,8 +313,28 @@
   </url>
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/circleci/</loc>
+    <lastmod>2018-10-01T07:23:15+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/</loc>
     <lastmod>2018-10-01T07:23:15+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/travisci/</loc>
+    <lastmod>2018-10-01T07:23:15+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2018/09/</loc>
+    <lastmod>2018-09-30T22:55:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/metabase/</loc>
+    <lastmod>2018-09-30T22:55:57+09:00</lastmod>
   </url>
   
   <url>
@@ -164,6 +344,11 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/use-portainer-for-drone-admin/</loc>
+    <lastmod>2018-09-30T21:56:42+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/portainer/</loc>
     <lastmod>2018-09-30T21:56:42+09:00</lastmod>
   </url>
   
@@ -213,223 +398,7 @@
   </url>
   
   <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2018/09/</loc>
-    <lastmod>2018-09-30T22:55:57+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2018/10/</loc>
-    <lastmod>2018-10-31T08:56:04+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2018/11/</loc>
-    <lastmod>2018-11-27T16:40:33+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2018/12/</loc>
-    <lastmod>2018-12-25T21:51:41+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/01/</loc>
-    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/02/</loc>
-    <lastmod>2019-02-16T18:38:45+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/03/</loc>
-    <lastmod>2019-03-17T13:47:40+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/04/</loc>
-    <lastmod>2019-04-28T21:25:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/05/</loc>
-    <lastmod>2019-05-23T11:43:18+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/06/</loc>
-    <lastmod>2019-06-12T07:40:45+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/07/</loc>
-    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/2019/08/</loc>
-    <lastmod>2019-08-15T07:54:23+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://suzuki-shunsuke.github.io/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/ansible/</loc>
-    <lastmod>2018-12-06T23:08:04+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/</loc>
-    <lastmod>2018-09-30T22:55:57+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/ci/</loc>
-    <lastmod>2018-12-07T08:22:49+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/circleci/</loc>
-    <lastmod>2018-10-01T07:23:15+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/drone/</loc>
-    <lastmod>2019-08-15T07:54:23+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/flute/</loc>
-    <lastmod>2019-07-07T08:20:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/github/</loc>
-    <lastmod>2019-01-20T12:27:26+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/go/</loc>
-    <lastmod>2019-07-21T18:13:53+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/golang/</loc>
-    <lastmod>2019-08-14T20:28:56+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/gomic/</loc>
-    <lastmod>2018-10-30T08:35:16+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/graylog/</loc>
-    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/grpc/</loc>
-    <lastmod>2019-08-15T07:39:18+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/hugo/</loc>
-    <lastmod>2018-10-10T21:14:03+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/logging/</loc>
-    <lastmod>2018-12-25T21:51:41+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/metabase/</loc>
-    <lastmod>2018-09-30T22:55:57+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/molecule/</loc>
-    <lastmod>2018-12-06T23:08:04+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/npm/</loc>
-    <lastmod>2019-02-14T21:34:22+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
-    <lastmod>2019-07-07T08:20:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/portainer/</loc>
-    <lastmod>2018-09-30T21:56:42+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/rancher/</loc>
-    <lastmod>2019-03-16T21:17:05+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
-    <lastmod>2018-12-06T23:08:04+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/terraform/</loc>
-    <lastmod>2019-01-25T22:38:28+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/travisci/</loc>
-    <lastmod>2018-10-01T07:23:15+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2019-08-15T07:54:23+09:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

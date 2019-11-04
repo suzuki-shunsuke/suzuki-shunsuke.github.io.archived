@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://suzuki-shunsuke.github.io/"
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
     "headline": "Goの設定管理で viper の代わりに confita を使う - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,19 +60,12 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "Golang の設定管理のライブラリといえば viper が有名ですが、 confita も良さそうだったので紹介したいと思います。
-confita の機能としては以下のようなものがあります。
- 構造体に設定をマッピング flag や環境変数、設定ファイルに対応 複数の設定ファイルに対応  構造体に設定をマッピングすることで、https://github.com/go-playground/validator のようなライブラリを使って設定のバリデーションが出来ます。
-また viper は v1.3.1 の時点で複数の設定ファイルを扱いにくいです。
- Viper can search multiple paths, but currently a single Viper instance only supports a single configuration file.
- k8s で ConfigMap と Secret を設定ファイルとして扱う場合、複数のファイルを扱えないと不便です。 その点 confita は複数の設定ファイルを問題なく扱えます。
-以下はフラグで指定した複数の設定ファイルから設定を読み込む簡単なサンプルです。
-import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &quot;github.com/heetch/confita&quot; &quot;github.com/heetch/confita/backend&quot; &quot;github.com/heetch/confita/backend/file&quot; flag &quot;github.com/spf13/pflag&quot; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(&quot;config&quot;, &quot;c&quot;, nil, &quot;configuration file path&quot;) flag."
+    "description": "Golang の設定管理のライブラリといえば viper が有名ですが、 confita も良さそうだったので紹介したいと思います。\nconfita の機能としては以下のようなものがあります。\n 構造体に設定をマッピング flag や環境変数、設定ファイルに対応 複数の設定ファイルに対応  構造体に設定をマッピングすることで、https:\/\/github.com\/go-playground\/validator のようなライブラリを使って設定のバリデーションが出来ます。\nまた viper は v1.3.1 の時点で複数の設定ファイルを扱いにくいです。\n Viper can search multiple paths, but currently a single Viper instance only supports a single configuration file.\n k8s で ConfigMap と Secret を設定ファイルとして扱う場合、複数のファイルを扱えないと不便です。 その点 confita は複数の設定ファイルを問題なく扱えます。\n以下はフラグで指定した複数の設定ファイルから設定を読み込む簡単なサンプルです。\nimport ( \x26quot;context\x26quot; \x26quot;gopkg.in\/go-playground\/validator.v9\x26quot; \x26quot;github.com\/heetch\/confita\x26quot; \x26quot;github.com\/heetch\/confita\/backend\x26quot; \x26quot;github.com\/heetch\/confita\/backend\/file\x26quot; flag \x26quot;github.com\/spf13\/pflag\x26quot; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(\x26quot;config\x26quot;, \x26quot;c\x26quot;, nil, \x26quot;configuration file path\x26quot;) flag."
   }
 </script>
 
@@ -239,6 +232,8 @@ viper 以外のライブラリを探している人は試してみてくださ�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
+      
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
@@ -256,8 +251,6 @@ viper 以外のライブラリを探している人は試してみてくださ�
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
     </div>
   </section>
@@ -297,7 +290,7 @@ viper 以外のライブラリを探している人は試してみてくださ�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       

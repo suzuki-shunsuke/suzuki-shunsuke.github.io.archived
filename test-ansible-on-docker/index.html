@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://suzuki-shunsuke.github.io/"
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
     "headline": "Dockerを使ってansible playbookをテストする - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,28 +60,12 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "ansible playbookを(VMの代わりに)Dockerコンテナに対して実行すると、効率よく動作確認できるというお話です。 ansible playbookの動作確認のためにvagrantでVMを起動したりしていると動作確認に時間がかかるし、容量も喰います。 Dockerコンテナを使って動作確認できればこれらの問題を解決できます。
-ただし、Dockerコンテナの場合、一部のansible のtaskが失敗することがあるので ansible playbookによってはDockerコンテナではテストにならない場合もあるかと思います。
-サンプル https://github.com/suzuki-shunsuke/example/tree/master/ansible/test-on-docker
-簡単なサンプルを用意しました。
-ansible playbookに加え、
- docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。
-$ bash test_docker.sh  とすることで動作確認できます。
-説明 スクリプトでやっていることは
- Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。
-Docker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。
- https://docs.ansible.com/ansible/2.6/plugins/connection.html https://docs.ansible.com/ansible/2.6/plugins/connection/docker.html  また、Docker Hubで公開されている多くのDockerイメージのUSERは root ですが、 ansible playbookの動作確認としては都合が悪かったりします。
-そこで自分は非rootユーザーを作成したDocker Imageを使っています。
-https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
-関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。
-Vagrant Docker Provider https://www.vagrantup.com/docs/docker/
-なんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。
-https://www.vagrantup.com/docs/docker/basics.html#host-vm"
+    "description": "ansible playbookを(VMの代わりに)Dockerコンテナに対して実行すると、効率よく動作確認できるというお話です。 ansible playbookの動作確認のためにvagrantでVMを起動したりしていると動作確認に時間がかかるし、容量も喰います。 Dockerコンテナを使って動作確認できればこれらの問題を解決できます。\nただし、Dockerコンテナの場合、一部のansible のtaskが失敗することがあるので ansible playbookによってはDockerコンテナではテストにならない場合もあるかと思います。\nサンプル https:\/\/github.com\/suzuki-shunsuke\/example\/tree\/master\/ansible\/test-on-docker\n簡単なサンプルを用意しました。\nansible playbookに加え、\n docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。\n$ bash test_docker.sh  とすることで動作確認できます。\n説明 スクリプトでやっていることは\n Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。\nDocker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。\n https:\/\/docs.ansible.com\/ansible\/2.6\/plugins\/connection.html https:\/\/docs.ansible.com\/ansible\/2.6\/plugins\/connection\/docker.html  また、Docker Hubで公開されている多くのDockerイメージのUSERは root ですが、 ansible playbookの動作確認としては都合が悪かったりします。\nそこで自分は非rootユーザーを作成したDocker Imageを使っています。\nhttps:\/\/hub.docker.com\/r\/suzukishunsuke\/ansible-test-centos\/\n関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。\nVagrant Docker Provider https:\/\/www.vagrantup.com\/docs\/docker\/\nなんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。\nhttps:\/\/www.vagrantup.com\/docs\/docker\/basics.html#host-vm"
   }
 </script>
 
@@ -278,6 +262,8 @@ Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフ
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
+      
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
@@ -295,8 +281,6 @@ Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフ
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
     </div>
   </section>
@@ -336,7 +320,7 @@ Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフ
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       

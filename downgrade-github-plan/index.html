@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://suzuki-shunsuke.github.io/"
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
     "headline": "GithubをFree Planにダウングレードした - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,22 +60,12 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。
-https://github.blog/2019-01-07-new-year-new-github/
-そこで無料プランにダウングレードすることにしました。
- https://help.github.com/articles/downgrading-your-github-billing-plan/ https://blog.jnito.com/entry/2019/01/09/081913  無料プランではwikiはpublic repositoryでしか使えないので、 private repository の wiki を 移行することにしました。
-private なソースコード(サービス)のためのwikiではなく、 個人的なメモが書いてあるだけだったので移行することに特に問題はありませんでした。
-全 private repository の wiki を clone そこでまずはそういった wiki を clone して一つのリポジトリにまとめることにしました。
-https://github.com/suzuki-shunsuke/foo の wiki は https://github.com/suzuki-shunsuke/foo.wiki で clone できます。
-次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。
-https://developer.github.com/v3/repos/#list-your-repositories
-curl &quot;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&quot; | jq -r '.[].html_url' | xargs -I{} -n 1 git clone {}.wiki  wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。
-また /user/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。"
+    "description": "GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。\nhttps:\/\/github.blog\/2019-01-07-new-year-new-github\/\nそこで無料プランにダウングレードすることにしました。\n https:\/\/help.github.com\/articles\/downgrading-your-github-billing-plan\/ https:\/\/blog.jnito.com\/entry\/2019\/01\/09\/081913  無料プランではwikiはpublic repositoryでしか使えないので、 private repository の wiki を 移行することにしました。\nprivate なソースコード(サービス)のためのwikiではなく、 個人的なメモが書いてあるだけだったので移行することに特に問題はありませんでした。\n全 private repository の wiki を clone そこでまずはそういった wiki を clone して一つのリポジトリにまとめることにしました。\nhttps:\/\/github.com\/suzuki-shunsuke\/foo の wiki は https:\/\/github.com\/suzuki-shunsuke\/foo.wiki で clone できます。\n次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。\nhttps:\/\/developer.github.com\/v3\/repos\/#list-your-repositories\ncurl \x26quot;https:\/\/api.github.com\/user\/repos?access_token=$GITHUB_TOKEN\x26amp;visibility=private\x26quot; | jq -r \x27.[].html_url\x27 | xargs -I{} -n 1 git clone {}.wiki  wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。\nまた \/user\/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。"
   }
 </script>
 
@@ -258,6 +248,8 @@ tags: [ansible]
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
+      
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
@@ -275,8 +267,6 @@ tags: [ansible]
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
     </div>
   </section>
@@ -316,7 +306,7 @@ tags: [ansible]
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       

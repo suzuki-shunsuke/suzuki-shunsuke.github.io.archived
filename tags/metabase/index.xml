@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Metabase on melody</title>
+    <title>metabase on melody</title>
     <link>https://suzuki-shunsuke.github.io/tags/metabase/</link>
-    <description>Recent content in Metabase on melody</description>
+    <description>Recent content in metabase on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <lastBuildDate>Sun, 30 Sep 2018 22:55:57 +0900</lastBuildDate>

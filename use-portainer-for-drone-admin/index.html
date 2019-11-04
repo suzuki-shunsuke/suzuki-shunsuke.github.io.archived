@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https://suzuki-shunsuke.github.io/"
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
     "headline": "drone の管理のために portainer を導入した - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https://suzuki-shunsuke.github.io/images/default.png",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,23 +60,12 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://suzuki-shunsuke.github.io/images/logo.png",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
         "width": 600,
         "height": 60
       }
     },
-    "description": "drone OSS 0.8.5 で検証しています。
-https://drone.io/ と https://portainer.io/ の話です。
-drone はかなり安定したシステムだと思いますが、 ユーザーが好きなイメージで好きなコマンドを実行できる以上、トラブルが起こることはあります。
-その結果、 特定の build がタイムアウトにならずに延々と実行され続けるなんてことがあります。
-その場合、
- どのノードのどのコンテナでトラブルが起きているのか そのコンテナで何が起こっているのか  というのを知りたいのですが、 drone にはそういった管理機能はありません。
-そこで 複数のサーバで実行されている Docker コンテナを管理できるツールはないかと探したところ、 portainer が良さそうだったので導入しました。
-portainer を使うと複数のサーバのコンテナを一覧で見ることが出来、 コンテナを操作(削除、停止、再起動etc)出来ます。 コンテナのログや簡単なメトリックス(CPU, memory, network usage) が見れます。 コンテナだけでなく、network や volume, image といったリソースも管理できます。
-portainer の導入 公式ドキュメントに書いてありますが、 swarm cluster を構築してそこにデプロイすればよいです。
- https://docs.docker.com/engine/swarm/swarm-tutorial/ https://portainer.readthedocs.io/en/stable/deployment.html#inside-a-swarm-cluster  困っていること 毎回検索で絞り込みしないといけない 検索で絞り込んだ後に特定のコンテナの詳細画面飛んだ後一覧に戻ると 検索がクリアされているのでもう一度検索しないといけないのが面倒です。
-もう少し高度な検索がしたい 自由入力の検索ボックスが1つあるだけで、特にクエリが書けるわけでもなさそうなので、 もう少し高度な検索がしたいです。 例えば Created At で 1時間以上前に特定のノードで作られたコンテナの一覧とか。
-docker API でエラーが出て、コンテナを操作できない これは多分不具合とかではなく自分の設定が良くないのだと思います。 この辺の issue が関係してそうですが、まだ解消できていません。"
+    "description": "drone OSS 0.8.5 で検証しています。\nhttps:\/\/drone.io\/ と https:\/\/portainer.io\/ の話です。\ndrone はかなり安定したシステムだと思いますが、 ユーザーが好きなイメージで好きなコマンドを実行できる以上、トラブルが起こることはあります。\nその結果、 特定の build がタイムアウトにならずに延々と実行され続けるなんてことがあります。\nその場合、\n どのノードのどのコンテナでトラブルが起きているのか そのコンテナで何が起こっているのか  というのを知りたいのですが、 drone にはそういった管理機能はありません。\nそこで 複数のサーバで実行されている Docker コンテナを管理できるツールはないかと探したところ、 portainer が良さそうだったので導入しました。\nportainer を使うと複数のサーバのコンテナを一覧で見ることが出来、 コンテナを操作(削除、停止、再起動etc)出来ます。 コンテナのログや簡単なメトリックス(CPU, memory, network usage) が見れます。 コンテナだけでなく、network や volume, image といったリソースも管理できます。\nportainer の導入 公式ドキュメントに書いてありますが、 swarm cluster を構築してそこにデプロイすればよいです。\n https:\/\/docs.docker.com\/engine\/swarm\/swarm-tutorial\/ https:\/\/portainer.readthedocs.io\/en\/stable\/deployment.html#inside-a-swarm-cluster  困っていること 毎回検索で絞り込みしないといけない 検索で絞り込んだ後に特定のコンテナの詳細画面飛んだ後一覧に戻ると 検索がクリアされているのでもう一度検索しないといけないのが面倒です。\nもう少し高度な検索がしたい 自由入力の検索ボックスが1つあるだけで、特にクエリが書けるわけでもなさそうなので、 もう少し高度な検索がしたいです。 例えば Created At で 1時間以上前に特定のノードで作られたコンテナの一覧とか。\ndocker API でエラーが出て、コンテナを操作できない これは多分不具合とかではなく自分の設定が良くないのだと思います。 この辺の issue が関係してそうですが、まだ解消できていません。"
   }
 </script>
 
@@ -208,8 +197,8 @@ docker API でエラーが出て、コンテナを操作できない これは�
 
 <ul>
 <li><a href="https://github.com/portainer/portainer/issues/831">https://github.com/portainer/portainer/issues/831</a></li>
-<li><a href="https://github.com/portainer/portainer/issues/1897">https://github.com/portainer/portainer/issues/1897</a></li>
-</ul>
+
+<li><p><a href="https://github.com/portainer/portainer/issues/1897">https://github.com/portainer/portainer/issues/1897</a></p>
 
 <pre><code>http error: Unable to proxy the request via the Docker socket (err=context canceled) (code=500)
 </code></pre>
@@ -218,7 +207,8 @@ docker API でエラーが出て、コンテナを操作できない これは�
 </code></pre>
 
 <pre><code>http error: Unable to execute cluster operation (err=Get https://192.160.0.16:9001/volumes: net/http: request canceled (Client.Timeout exceeded while awaiting headers)) (code=500)
-</code></pre>
+</code></pre></li>
+</ul>
 </div>
 
   <footer class="article-footer">
@@ -257,6 +247,8 @@ docker API でエラーが出て、コンテナを操作できない これは�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
+      
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
@@ -274,8 +266,6 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" class="list-group-item">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" class="list-group-item">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/go-jsoneq/" class="list-group-item">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a>
       
     </div>
   </section>
@@ -315,7 +305,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       

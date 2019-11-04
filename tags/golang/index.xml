@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on melody</title>
+    <title>golang on melody</title>
     <link>https://suzuki-shunsuke.github.io/tags/golang/</link>
-    <description>Recent content in Golang on melody</description>
+    <description>Recent content in golang on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <lastBuildDate>Wed, 14 Aug 2019 20:28:56 +0900</lastBuildDate>

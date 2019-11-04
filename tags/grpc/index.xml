@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Grpc on melody</title>
+    <title>grpc on melody</title>
     <link>https://suzuki-shunsuke.github.io/tags/grpc/</link>
-    <description>Recent content in Grpc on melody</description>
+    <description>Recent content in grpc on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <lastBuildDate>Thu, 15 Aug 2019 07:39:18 +0900</lastBuildDate>

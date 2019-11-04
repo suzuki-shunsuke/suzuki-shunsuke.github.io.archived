@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rancher on melody</title>
+    <title>rancher on melody</title>
     <link>https://suzuki-shunsuke.github.io/tags/rancher/</link>
-    <description>Recent content in Rancher on melody</description>
+    <description>Recent content in rancher on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
     <lastBuildDate>Sat, 16 Mar 2019 21:17:05 +0900</lastBuildDate>
