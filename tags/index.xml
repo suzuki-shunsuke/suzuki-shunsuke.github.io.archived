@@ -6,15 +6,24 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Mon, 04 Nov 2019 10:00:21 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2019 13:54:47 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>datadog</title>
+      <link>https://suzuki-shunsuke.github.io/tags/datadog/</link>
+      <pubDate>Sat, 30 Nov 2019 13:54:47 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/datadog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>oss</title>
       <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
-      <pubDate>Mon, 04 Nov 2019 10:00:21 +0900</pubDate>
+      <pubDate>Sat, 30 Nov 2019 13:54:47 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/oss/</guid>
       <description></description>

@@ -6,10 +6,25 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 10 Nov 2019 18:31:05 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 30 Nov 2019 13:54:47 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dd-time - コマンドの実行時間を Datadog に送るツール</title>
+      <link>https://suzuki-shunsuke.github.io/dd-time/</link>
+      <pubDate>Sat, 30 Nov 2019 13:54:47 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/dd-time/</guid>
+      <description>コマンドの実行時間を Datadog に送る dd-time というツールを作りました。
+このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。
+circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。
+dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。
+使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。
+$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。
+メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。</description>
+    </item>
     
     <item>
       <title>モブレビューやっていきたい</title>

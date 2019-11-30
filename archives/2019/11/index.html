@@ -62,6 +62,33 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-30T13:54:47JST">Nov 30, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/dd-time/">dd-time - コマンドの実行時間を Datadog に送るツール</a></h2>
+  </header>
+
+  
+  <div class="summary">コマンドの実行時間を Datadog に送る dd-time というツールを作りました。
+このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。
+circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。
+dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。
+使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。
+$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。
+メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/dd-time/" title="dd-time - コマンドの実行時間を Datadog に送るツール">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-10T18:31:05JST">Nov 10, 2019</time></li>
       
       
@@ -132,6 +159,8 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/dd-time/" class="list-group-item">dd-time - コマンドの実行時間を Datadog に送るツール</a>
+      
       <a href="https://suzuki-shunsuke.github.io/mobreview/" class="list-group-item">モブレビューやっていきたい</a>
       
       <a href="https://suzuki-shunsuke.github.io/go-timeout/" class="list-group-item">go-timeout - command の timeout</a>
@@ -150,8 +179,6 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
       
       <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
       
-      <a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/" class="list-group-item">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a>
-      
     </div>
   </section>
 
@@ -163,7 +190,7 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (11)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (12)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
@@ -179,7 +206,7 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
       
       <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/flute" class="list-group-item">flute (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/datadog" class="list-group-item">datadog (1)</a>
       
     </div>
   </section>
@@ -190,7 +217,7 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (2)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
