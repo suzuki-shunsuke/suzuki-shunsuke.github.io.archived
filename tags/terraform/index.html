@@ -62,6 +62,32 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-10T16:18:05JST">Jan 10, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-state-locking/">Terraform の State Locking の概要</a></h2>
+  </header>
+
+  
+  <div class="summary">Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。
+State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。
+例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で
+ 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。
+そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。
+コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/terraform-state-locking/" title="Terraform の State Locking の概要">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-25T22:38:28JST">Jan 25, 2019</time></li>
       
       
@@ -163,6 +189,8 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/terraform-state-locking/" class="list-group-item">Terraform の State Locking の概要</a>
+      
       <a href="https://suzuki-shunsuke.github.io/dd-time/" class="list-group-item">dd-time - コマンドの実行時間を Datadog に送るツール</a>
       
       <a href="https://suzuki-shunsuke.github.io/mobreview/" class="list-group-item">モブレビューやっていきたい</a>
@@ -181,8 +209,6 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       
       <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
       
-      <a href="https://suzuki-shunsuke.github.io/fagott/" class="list-group-item">Flute - Golang HTTP client testing framework</a>
-      
     </div>
   </section>
 
@@ -200,9 +226,9 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (4)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (3)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (2)</a>
       
@@ -221,6 +247,8 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (1)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
@@ -238,8 +266,6 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       <a href="https://suzuki-shunsuke.github.io/archives/2019/02" class="list-group-item">2019/02 (4)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/01" class="list-group-item">2019/01 (2)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2018/12" class="list-group-item">2018/12 (5)</a>
       
     </div>
   </section>

@@ -6,10 +6,24 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 30 Nov 2019 13:54:47 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jan 2020 16:18:05 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Terraform の State Locking の概要</title>
+      <link>https://suzuki-shunsuke.github.io/terraform-state-locking/</link>
+      <pubDate>Fri, 10 Jan 2020 16:18:05 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/terraform-state-locking/</guid>
+      <description>Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。
+State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。
+例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で
+ 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。
+そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。
+コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。</description>
+    </item>
     
     <item>
       <title>dd-time - コマンドの実行時間を Datadog に送るツール</title>
