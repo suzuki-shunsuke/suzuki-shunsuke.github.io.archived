@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Terraform 入門 - melody</title>
     
-<meta name="description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。用語集 https://www.terraform.io/docs/glossary.htmlProvider https://www.">
+<meta name="description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。">
 
 <meta property="og:title" content="Terraform 入門 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/terraform-getting-started/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。用語集 https://www.terraform.io/docs/glossary.htmlProvider https://www.">
+<meta property="og:description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/terraform-getting-started/">
 <meta name="twitter:title" content="Terraform 入門 - melody">
-<meta name="twitter:description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。用語集 https://www.terraform.io/docs/glossary.htmlProvider https://www.">
+<meta name="twitter:description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  前提  執筆時点 (2020\/01\/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。\nHashicorp という企業がホストしている OSS になります。 Go で書かれています。 https:\/\/github.com\/hashicorp\/terraform\nTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。\nhttps:\/\/www.terraform.io\/downloads.html\ntfenv を使うと管理が楽です。\nhttps:\/\/github.com\/tfutils\/tfenv\ntfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。\n用語集 https:\/\/www.terraform.io\/docs\/glossary.html\nProvider https:\/\/www."
+    "description": "参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。\n前提  執筆時点 (2020\/01\/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。\nHashicorp という企業がホストしている OSS になります。 Go で書かれています。 https:\/\/github.com\/hashicorp\/terraform\nTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。\nhttps:\/\/www.terraform.io\/downloads.html\ntfenv を使うと管理が楽です。\nhttps:\/\/github.com\/tfutils\/tfenv\ntfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。"
   }
 </script>
 
@@ -148,6 +148,8 @@
 <li><a href="https://dev.classmethod.jp/cloud/terraform-getting-started-with-aws/">AWSでTerraformに入門 | Developers.io</a></li>
 <li><a href="https://qiita.com/minamijoyo/items/1f57c62bed781ab8f4d7">Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita</a></li>
 </ul>
+
+<p>手を動かしたい方は <a href="https://techblog.szksh.cloud/terraform-hands-on-with-mysql-provider/">Terraform ハンズオン with MySQL Provider</a> も参考にしてください。</p>
 
 <h2 id="前提">前提</h2>
 
