@@ -58,6 +58,57 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-02T23:02:57JST">Aug 2, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-jsonnet/">Drone v1 では Jsonnet が extension なしで使える</a></h2>
+  </header>
+
+  
+  <div class="summary">Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。
+https://techblog.szksh.cloud/drone-jsonnet-generator/
+しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。
+https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1
+しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。
+まず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。
+そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。
+ .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main &gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。
+いつから Jsonnet Extension は不要になったのか  https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0 https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-jsonnet/" title="Drone v1 では Jsonnet が extension なしで使える">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-21T18:13:53JST">Jul 21, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a></h2>
+  </header>
+
+  
+  <div class="summary">The Top 10 Most Common Mistakes I’ve Seen in Go Projects という記事を読んで面白かったのでメモります。 翻訳ではないです。メモなので、原文を読んでください。
+ Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う Errors Management Slice Initialization Context Management Not Using the -race Option: go test コマンドでは -race オプションをつけよう Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" title="The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-07T08:20:00JST">Jul 7, 2019</time></li>
       
       
@@ -292,64 +343,6 @@ https://qiita.com/yamamoto-febc/items/498b911611dd25351ad7
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-16T18:38:45JST">Feb 16, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/use-confita/">Goの設定管理で viper の代わりに confita を使う</a></h2>
-  </header>
-
-  
-  <div class="summary">Golang の設定管理のライブラリといえば viper が有名ですが、 confita も良さそうだったので紹介したいと思います。
-confita の機能としては以下のようなものがあります。
- 構造体に設定をマッピング flag や環境変数、設定ファイルに対応 複数の設定ファイルに対応  構造体に設定をマッピングすることで、https://github.com/go-playground/validator のようなライブラリを使って設定のバリデーションが出来ます。
-また viper は v1.3.1 の時点で複数の設定ファイルを扱いにくいです。
- Viper can search multiple paths, but currently a single Viper instance only supports a single configuration file.
- k8s で ConfigMap と Secret を設定ファイルとして扱う場合、複数のファイルを扱えないと不便です。 その点 confita は複数の設定ファイルを問題なく扱えます。
-以下はフラグで指定した複数の設定ファイルから設定を読み込む簡単なサンプルです。
-import ( &quot;context&quot; &quot;gopkg.in/go-playground/validator.v9&quot; &quot;github.com/heetch/confita&quot; &quot;github.com/heetch/confita/backend&quot; &quot;github.com/heetch/confita/backend/file&quot; flag &quot;github.com/spf13/pflag&quot; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(&quot;config&quot;, &quot;c&quot;, nil, &quot;configuration file path&quot;) flag.</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/use-confita/" title="Goの設定管理で viper の代わりに confita を使う">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-14T21:34:22JST">Feb 14, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/use-npm/">JS以外でのnpmの活用</a></h2>
-  </header>
-
-  
-  <div class="summary">npm は Node.js のパッケージマネージャーですが、自分はJS以外のプロジェクトでも使えると思っています。 実際、Goのアプリケーション、OSS、ansible role, playbook など種類を問わず、自分が管理している多くのリポジトリで使っています。 ただ、GoのOSSで npm 使っているのは自分以外で見たことはないですし、 正直あまり賛同はされないかなと思いますが、こういう考え方もあると思っていただけたらと思います。
-npm を使う理由は
- Node製のツールを使うため npm scripts を使うため (今回書きたいのはこっち)  の2つあります。
-Node製のツール  husky: Git Hookを設定 commitlint: commit メッセージのlint standard-version: コミットログによって Change Log を生成  などを使っています。 Nodeはバージョンの変化が速く、互換性が壊れたりとかも多い印象ですが、 グローバルにインストールしなくてもリポジトリごとに install 出来る(package.jsonで管理できる)のでその点は(特にチーム開発では)良いと思います。
-npm scripts npm scripts によってそのリポジトリの開発に使うコマンド群を管理するということを自分はしています。
-https://github.com/suzuki-shunsuke/gomic/blob/master/package.json
-なにもツールを使わない場合に比べ、こうすることでチーム全体でコマンドを統一できますし、一連のコマンドをスクリプト化して npm scripts で実行できるようにするなど、自動化も促進されます。
-ごく簡単な自動化の例ですが、tag を打つと同時にソースコード中のバージョン番号を更新するのを npm run tag v1.1.0 といったコマンドで出来るようにしています。 こうすることで tag とversionコマンドで出力されるバージョンが違うなんてことを防ぐことが出来ます。
-https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
-また、オプションによって動作が変わるようなコマンドは npm scripts によって実行することでオプションを統一できます。 例えば gofmt は -s オプションの有無で結果が変わります。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/use-npm/" title="JS以外でのnpmの活用">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -382,6 +375,10 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
       
       <a href="https://suzuki-shunsuke.github.io/terraform-state-locking/" class="list-group-item">Terraform の State Locking の概要</a>
       
+      <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" class="list-group-item">Terraform ハンズオン with MySQL Provider</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/terraform-getting-started/" class="list-group-item">Terraform 入門</a>
+      
       <a href="https://suzuki-shunsuke.github.io/dd-time/" class="list-group-item">dd-time - コマンドの実行時間を Datadog に送るツール</a>
       
       <a href="https://suzuki-shunsuke.github.io/mobreview/" class="list-group-item">モブレビューやっていきたい</a>
@@ -395,10 +392,6 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
       <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
       
       <a href="https://suzuki-shunsuke.github.io/golang-time/" class="list-group-item">Golang での時刻の扱い方を整理する</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/drone-jsonnet/" class="list-group-item">Drone v1 では Jsonnet が extension なしで使える</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" class="list-group-item">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a>
       
     </div>
   </section>
@@ -415,9 +408,9 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
       
       <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
@@ -438,7 +431,7 @@ https://github.com/suzuki-shunsuke/gomic/blob/master/scripts/tag.sh
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       

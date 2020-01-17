@@ -26,6 +26,40 @@ State Locking とは terraform plan などのコマンドは State を変更す�
     </item>
     
     <item>
+      <title>Terraform ハンズオン with MySQL Provider</title>
+      <link>https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/</link>
+      <pubDate>Sun, 05 Jan 2020 18:14:08 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/</guid>
+      <description>Terraform を勉強するには実際に使ってみるのが一番手っ取り早いですが、 では手頃な題材はあるかと言われると少し難しいです。
+公式の Getting Started では AWS が使われていますが、 AWS のアカウントやクレデンシャルが必要ですしお金もかかってしまいます(無料枠はありますが)。 もう少し手軽なものが欲しいところです。
+そこで公式の Provider で丁度いいものはないか探したところ、 MySQL Provider が良さそうでした。 MySQL のユーザーや Database を Terraform で管理したいとは自分は思いませんが、 Terraform の入門で遊ぶにはちょうどよいでしょう。
+ちなみに公式の Provider のリストはこちらです。
+ https://github.com/terraform-providers https://www.terraform.io/docs/providers/index.html  今回の作業用に適当にディレクトリを作成し、そこで作業しましょう。
+以降、コマンドの実行結果は一部省略することがあります。
+$ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terraform を複数人で使う場合、 Terraform のバージョンを揃えるのが重要です。 理由の一つとして、 Terraform の State は State を作成した Terraform のバージョンを記録しており、それより古いバージョンの Terraform で terraform plan などを実行すると失敗するようになっていることが挙げられます(この点については後でも触れます)。 そういう意味では、 tfenv によってバージョン管理するのが良いです。
+.terraform-version を作成します。
+$ echo 0.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 入門</title>
+      <link>https://suzuki-shunsuke.github.io/terraform-getting-started/</link>
+      <pubDate>Sun, 05 Jan 2020 09:25:05 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/terraform-getting-started/</guid>
+      <description>参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。
+Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraform
+Terraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。
+https://www.terraform.io/downloads.html
+tfenv を使うと管理が楽です。
+https://github.com/tfutils/tfenv
+tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。
+用語集 https://www.terraform.io/docs/glossary.html
+Provider https://www.</description>
+    </item>
+    
+    <item>
       <title>Terraform Providerで import を実装する方法</title>
       <link>https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/</link>
       <pubDate>Fri, 25 Jan 2019 22:38:28 +0900</pubDate>
