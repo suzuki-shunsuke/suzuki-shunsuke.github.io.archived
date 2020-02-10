@@ -39,7 +39,7 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
       <guid>https://suzuki-shunsuke.github.io/risk-of-drone-extension/</guid>
       <description>Drone v1 では Extension という仕組みが導入されました。
 これは文字通り Drone を拡張する仕組みで、仕様に従って作れば自由に Drone を拡張できます。
-https://docs.drone.io/extend/
+https://docs.drone.io/extensions/overview/
 全てを本体でやるのではなく、拡張する仕組みを提供し、あとはコミュニティに委ねるというのが Drone の一つの方針とも言えると思います。
 Extension は非常に面白い仕組みだと思いますが、 Drone を運用する立場からすると中々頭が痛い仕組みな気がしてて、 自分は導入に対し慎重な立場です。 単なる杞憂で済めば良いのですが、その懸念について書きたいと思います。
 根本は Drone Extension 固有の問題と言うより、一般的な拡張機構全般に言えることだと思います。 ただし、 Drone Extension は全てのビルドに影響を及ぼす、 CI/CDシステムが動かなくなるとサービスのリリースに影響を及ぼしかねないということからよりリスクの高いものになっています。

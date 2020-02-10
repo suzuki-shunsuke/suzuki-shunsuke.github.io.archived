@@ -211,7 +211,7 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
 Graylogには様々なリソースがあります。
  User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
 APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
-https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform
+https://github.com/suzuki-shunsuke/go-graylog
 GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
  Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
 出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。

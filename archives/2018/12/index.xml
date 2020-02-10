@@ -24,7 +24,7 @@ Golang でエラーハンドリングとロギングをしてきて自分の中�
  迷いをなくす コードの一貫性を保つ コーディング規約とすることでレビューの品質を上げる(自動化は出来ないけど) コードの品質を上げる(コードがゴチャつかなくなる) 適切にエラーをロギングする(必要十分な情報をログとして残す)  またエラーハンドリングとロギングのためのライブラリを自作しているのでそれも紹介します。
 https://github.com/suzuki-shunsuke/go-errlog
 ロギングに関する関連記事 この記事を書く前に軽くググってみただけでちゃんと読んでないのですが、 興味のある人は読んでみてください。
- https://logmatic.io/blog/our-guide-to-a-golang-logs-world/ https://www.loggly.com/blog/think-differently-about-what-to-log-in-go-best-practices-examined/ https://dave.cheney.net/2015/11/05/lets-talk-about-logging https://postd.cc/go-best-practices-2016/#logging-and-instrumentation  ログレベルは分ける ログレベルでwarningとかいらないという意見もありますが、自分は必要だと思っています。 自分は以下のログレベルを使い分けます。
+ https://www.loggly.com/blog/think-differently-about-what-to-log-in-go-best-practices-examined/ https://dave.cheney.net/2015/11/05/lets-talk-about-logging https://postd.cc/go-best-practices-2016/#logging-and-instrumentation  ログレベルは分ける ログレベルでwarningとかいらないという意見もありますが、自分は必要だと思っています。 自分は以下のログレベルを使い分けます。
  debug: あまり使わない。調査目的で一時的に埋め込むログ。調査が終わったら出力しないようにする。一時的でないものはinfoにする info: エラーでないログ。イベント、処理の開始時や終了を記録するのに使うことが多い warn: 4xx系のエラー。それが起こっただけではアラートを飛ばさないが、数が通常時より多い場合はバグかUIに問題があってユーザーが間違えやすくなっている可能性があるのでアラートを飛ばす error: 5xx系のエラー。アラートを飛ばす(閾値は調整) fatal: 処理継続が不可能な致命的なエラー。システムを止める  書いてから思いましたが、これに関しては標準的な使い分けのルールがありそうですね(要調査)。。
 logrus を使ってログを構造化する 前提としてwebシステムやバッチシステムなどを想定しています。CLIツールならば話は変わるでしょう。 JSONフォーマットで出力してfluentdでElasticsearchにフォワードするのが個人的によくあるパターンです。
 go-errlogもlogrusの使用を前提としています。
@@ -33,7 +33,7 @@ https://github.com/avelino/awesome-go#logging
 エラーログは中央集権的に main に近い所で出力する エラーログをどこで出力するかですが、原則中央集権的に main に近い所で出力します。 因みに中央集権的という表現は echo の centralized error handling からもじっています。
 https://echo.labstack.com/guide/error-handling
 error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。 Goでは以下のようなイディオムがよく見られますね。
-if err !</description>
+if err != nil { return err }  ロギングに必要な情報を戻り値のerrorに含める 上記のコードで問題なのは、エラーに関する情報が欠損することがあることです。</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@ if err !</description>
       <guid>https://suzuki-shunsuke.github.io/graylog-alert-issue/</guid>
       <description> Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
 2018-12-31 追記 元々 Alert Condition, Notification の APIがないと勘違いしていたのですが、 実はちゃんとあったので terraform で管理できるように go-graylog を更新しました。
- https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/master/terraform/docs/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   </description>
+ https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   </description>
     </item>
     
     <item>
@@ -93,7 +93,7 @@ role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移
 Graylogには様々なリソースがあります。
  User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
 APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
-https://github.com/suzuki-shunsuke/go-graylog/tree/master/terraform
+https://github.com/suzuki-shunsuke/go-graylog
 GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
  Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
 出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
