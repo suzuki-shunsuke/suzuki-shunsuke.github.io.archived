@@ -58,6 +58,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-03-17T13:47:40JST">Mar 17, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/">毎週30分の技術共有会</a></h2>
+  </header>
+
+  
+  <div class="summary">自分が最近職場で行っている技術共有の取り組みについて紹介したいと思います。
+背景 これまで自分は積極的に自分にとって新しい技術を取り入れてサービスの品質の向上に繋げてきました。 ただし、それらの技術に関して周りに十分に共有できていなかった側面がありました。
+やっていること 毎週30分決まった時間にスライドを使って発表しています。 対象は同じ部署の希望者です。 枠は30分ですが、実質話しているのは20分くらいな気がします。 k8sのハンズオン的なこともやりました(そのときは30分で終わらないので2回に分けてやりました)。
+話したいことはたくさんあるのですが、とりあえず大きなトピックとして以下の3つに絞っています。
+ k8s(Rancher): オーケストレーション (いまここ) Drone: CI/CD Graylog: ログ収集  これまで話したこと・話す予定のこと k8s の初心者が k8s を本番運用を視野に入れつつ検証環境で使ってみるところまでを目指して話しています。
+ なぜ k8s を使うのか(部署のコンテキストに合わせて導入意義を説明) k8s のリソース(Pod, Service, Deployment, etc) について k8s, Rancher ハンズオン(2回) 簡単なアプリケーションをデプロイしてみたり Logging (いまここ) モニタリング IP制限のかかった外部サービスへアクセスする方法  毎週30分というペース感について 以下のようなことを配慮しました。
+ 集中力が続くこと  60分は長すぎる  持続可能であること  1, 2 回やっただけでは意味がない 30分だけなら参加しやすい 準備のコストも現実的な範囲 30分と短めなので毎週やる。隔週とかだと頻度が少なすぎるし、1回飛ぶと1ヶ月空いてしまう   これまでの結果 特に大きな成果があるわけではないですが、 k8sに興味を持ちk8sを検証環境で使ってくれる人が出てきました。 共有会がk8s を触るきっかけになったのだとしたらそれだけでもやってよかったと思います。
+また、自分自身学ぶこともありました。 Logging に関して自分は今まで Sidecar pattern を使っていたのですが、Cluster Level Logging への移行を検討するきっかけになりました。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/" title="毎週30分の技術共有会">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-03-16T21:17:05JST">Mar 16, 2019</time></li>
       
       
@@ -302,34 +330,6 @@ if err != nil { return err }  ロギングに必要な情報を戻り値のerror
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-07T08:22:49JST">Dec 7, 2018</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/">Graylog の Terraform を CI/CDで実行する</a></h2>
-  </header>
-
-  
-  <div class="summary">以前 Graylog を Terraform で管理する記事を書きました。
-https://suzuki-shunsuke.github.io/graylog-terraform/
-今回はそれを CI/CD で実行できるようにした話です。
-ただし、今回の内容は Graylog に限らず Terraform を CI/CD で実行する方法として使えると思います。
-今回実現したのは以下のことです。
- PR時にテストをする plan/* tag を push すると terraform plan が実行される apply/* tag を push すると terraform apply が実行され、tfstate がコミット、プッシュされる  ソースコード https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform に置いておきました。
- https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh  CI/CD用の user, role を作成する まずは role を作成します。
-resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] }  permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/" title="Graylog の Terraform を CI/CDで実行する">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -360,6 +360,8 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" class="list-group-item">CircleCI の checkout の注意点</a>
+      
       <a href="https://suzuki-shunsuke.github.io/skaffold-generator/" class="list-group-item">Skaffold で特定のサービスだけ動かすためのツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" class="list-group-item">Terraform ハンズオン with MySQL Provider</a>
@@ -377,8 +379,6 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
       <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
       
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
       
     </div>
   </section>
@@ -401,7 +401,7 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (2)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
       
@@ -418,7 +418,7 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
       

@@ -6,10 +6,19 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 05 Apr 2020 18:53:25 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2020 16:53:01 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>circleci</title>
+      <link>https://suzuki-shunsuke.github.io/tags/circleci/</link>
+      <pubDate>Fri, 24 Apr 2020 16:53:01 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/circleci/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>k8s</title>
@@ -197,15 +206,6 @@
       <pubDate>Wed, 10 Oct 2018 21:14:03 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>circleci</title>
-      <link>https://suzuki-shunsuke.github.io/tags/circleci/</link>
-      <pubDate>Mon, 01 Oct 2018 07:23:15 +0900</pubDate>
-      
-      <guid>https://suzuki-shunsuke.github.io/tags/circleci/</guid>
       <description></description>
     </item>
     

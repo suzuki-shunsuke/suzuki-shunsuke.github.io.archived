@@ -62,6 +62,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-24T16:53:01JST">Apr 24, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/">CircleCI の checkout の注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">CircleCI の組み込みの command checkout の注意点について書きます。
+なお、ここに書かれている内容は 2020/04/24 時点のものであり、予測なしに checkout の挙動が変わる可能性があります。
+また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。
+最初に結論 先に結論を書くと
+ CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &lt;デフォルトブランチ&gt; origin/&lt;デフォルトブランチ&gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
+サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96
+ここでは checkout の全てについては触れません。一部抜粋します。
+elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&quot; git checkout -q -B &quot;$CIRCLE_BRANCH&quot; fi  git reset --hard などをしています。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" title="CircleCI の checkout の注意点">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-05T18:53:25JST">Apr 5, 2020</time></li>
       
       
@@ -101,6 +129,8 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" class="list-group-item">CircleCI の checkout の注意点</a>
+      
       <a href="https://suzuki-shunsuke.github.io/skaffold-generator/" class="list-group-item">Skaffold で特定のサービスだけ動かすためのツールを作った</a>
       
       <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" class="list-group-item">Terraform ハンズオン with MySQL Provider</a>
@@ -118,8 +148,6 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
       <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
       
       <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" class="list-group-item">Drone Extension のリスク</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/" class="list-group-item">Drone v1 で gRPC が使われなくなった</a>
       
     </div>
   </section>
@@ -142,7 +170,7 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (2)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
       
@@ -159,7 +187,7 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
       
