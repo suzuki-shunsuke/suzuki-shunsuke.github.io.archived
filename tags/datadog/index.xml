@@ -26,7 +26,7 @@ $ curl https://example.com/install.sh | dd-time -m dd_time.execution_time -- sh 
 $ curl https://example.com/setup.py | dd-time -m dd_time.execution_time -- python  CircleCI の run では shell オプションで shell を指定できます。
 https://circleci.com/docs/2.0/configuration-reference/#run
 なので command 全体の時間を計測したい場合は、 shell を次のようにします。
-- run: name: test dd-time shell: /usr/local/bin/dd-time --metric-name dd_time.</description>
+- run: name: test dd-time shell: /usr/local/bin/dd-time -m dd_time.</description>
     </item>
     
     <item>
