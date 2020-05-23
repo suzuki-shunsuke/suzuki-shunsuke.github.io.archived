@@ -6,7 +6,7 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Fri, 24 Apr 2020 16:53:01 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2020 14:20:53 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title>circleci</title>
       <link>https://suzuki-shunsuke.github.io/tags/circleci/</link>
-      <pubDate>Fri, 24 Apr 2020 16:53:01 +0900</pubDate>
+      <pubDate>Sat, 23 May 2020 14:20:53 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/circleci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>datadog</title>
+      <link>https://suzuki-shunsuke.github.io/tags/datadog/</link>
+      <pubDate>Sat, 23 May 2020 14:20:53 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/datadog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dd-time</title>
+      <link>https://suzuki-shunsuke.github.io/tags/dd-time/</link>
+      <pubDate>Sat, 23 May 2020 14:20:53 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/dd-time/</guid>
       <description></description>
     </item>
     
@@ -62,15 +80,6 @@
       <pubDate>Fri, 17 Jan 2020 09:14:08 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/terraform/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>datadog</title>
-      <link>https://suzuki-shunsuke.github.io/tags/datadog/</link>
-      <pubDate>Sat, 30 Nov 2019 13:54:47 +0900</pubDate>
-      
-      <guid>https://suzuki-shunsuke.github.io/tags/datadog/</guid>
       <description></description>
     </item>
     
