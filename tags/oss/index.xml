@@ -6,10 +6,28 @@
     <description>Recent content in oss on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 05 Apr 2020 18:53:25 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2020 16:52:58 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>clap - 簡単にツールをインストールするためのツールを作った</title>
+      <link>https://suzuki-shunsuke.github.io/clap/</link>
+      <pubDate>Mon, 06 Jul 2020 16:52:58 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/clap/</guid>
+      <description>多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。
+https://github.com/suzuki-shunsuke/clap
+Go で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。
+CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。
+このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。
+使い方は以下のようになっています。
+$ clap &amp;lt;URL&amp;gt; &amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt; [&amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt;...]  例えば conftest を /usr/local/bin にインストールする場合次のようになります。
+CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a+x /usr/local/bin/conftest  パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。
+上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。
+#!/usr/bin/env bash set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &amp;quot;$dirpath&amp;quot; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a+x /usr/local/bin/conftest popd rm -R &amp;quot;$dirpath&amp;quot;  地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。</description>
+    </item>
     
     <item>
       <title>Skaffold で特定のサービスだけ動かすためのツールを作った</title>

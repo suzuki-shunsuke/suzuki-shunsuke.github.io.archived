@@ -58,6 +58,43 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-25T21:51:41JST">Dec 25, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/">Golangにおけるエラーハンドリングとロギングのプラクティス</a></h2>
+  </header>
+
+  
+  <div class="summary">2018-12-30 追記 この記事を元にドキュメントを書いてみました。
+https://github.com/suzuki-shunsuke/go-error-handling-logging-practice
+追記ここまで
+Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
+ 迷いをなくす コードの一貫性を保つ コーディング規約とすることでレビューの品質を上げる(自動化は出来ないけど) コードの品質を上げる(コードがゴチャつかなくなる) 適切にエラーをロギングする(必要十分な情報をログとして残す)  またエラーハンドリングとロギングのためのライブラリを自作しているのでそれも紹介します。
+https://github.com/suzuki-shunsuke/go-errlog
+ロギングに関する関連記事 この記事を書く前に軽くググってみただけでちゃんと読んでないのですが、 興味のある人は読んでみてください。
+ https://www.loggly.com/blog/think-differently-about-what-to-log-in-go-best-practices-examined/ https://dave.cheney.net/2015/11/05/lets-talk-about-logging https://postd.cc/go-best-practices-2016/#logging-and-instrumentation  ログレベルは分ける ログレベルでwarningとかいらないという意見もありますが、自分は必要だと思っています。 自分は以下のログレベルを使い分けます。
+ debug: あまり使わない。調査目的で一時的に埋め込むログ。調査が終わったら出力しないようにする。一時的でないものはinfoにする info: エラーでないログ。イベント、処理の開始時や終了を記録するのに使うことが多い warn: 4xx系のエラー。それが起こっただけではアラートを飛ばさないが、数が通常時より多い場合はバグかUIに問題があってユーザーが間違えやすくなっている可能性があるのでアラートを飛ばす error: 5xx系のエラー。アラートを飛ばす(閾値は調整) fatal: 処理継続が不可能な致命的なエラー。システムを止める  書いてから思いましたが、これに関しては標準的な使い分けのルールがありそうですね(要調査)。。
+logrus を使ってログを構造化する 前提としてwebシステムやバッチシステムなどを想定しています。CLIツールならば話は変わるでしょう。 JSONフォーマットで出力してfluentdでElasticsearchにフォワードするのが個人的によくあるパターンです。
+go-errlogもlogrusの使用を前提としています。
+ロギングのライブラリは他にも色々あるので、logrusで満足できない人は以下から探してみるとよいでしょう。
+https://github.com/avelino/awesome-go#logging
+エラーログは中央集権的に main に近い所で出力する エラーログをどこで出力するかですが、原則中央集権的に main に近い所で出力します。 因みに中央集権的という表現は echo の centralized error handling からもじっています。
+https://echo.labstack.com/guide/error-handling
+error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。 Goでは以下のようなイディオムがよく見られますね。
+if err != nil { return err }  ロギングに必要な情報を戻り値のerrorに含める 上記のコードで問題なのは、エラーに関する情報が欠損することがあることです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/" title="Golangにおけるエラーハンドリングとロギングのプラクティス">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-19T21:02:11JST">Dec 19, 2018</time></li>
       
       
@@ -317,29 +354,6 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-01T08:04:16JST">Oct 1, 2018</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/">Hugo製ブログをGitHub PagesへCIでデプロイ</a></h2>
-  </header>
-
-  
-  <div class="summary">https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。
-前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml
---- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &quot;***&quot; - run: git config user.email &quot;***@example.com&quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/" title="Hugo製ブログをGitHub PagesへCIでデプロイ">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -370,6 +384,8 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/clap/" class="list-group-item">clap - 簡単にツールをインストールするためのツールを作った</a>
+      
       <a href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/" class="list-group-item">CircleCI の run の実行時間を DataDog に送る</a>
       
       <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" class="list-group-item">CircleCI の checkout の注意点</a>
@@ -388,8 +404,6 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
       
       <a href="https://suzuki-shunsuke.github.io/go-timeout/" class="list-group-item">go-timeout - command の timeout</a>
       
-      <a href="https://suzuki-shunsuke.github.io/cmdx/" class="list-group-item">cmdx - task runner</a>
-      
     </div>
   </section>
 
@@ -401,7 +415,7 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (13)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (14)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
@@ -428,6 +442,8 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/07" class="list-group-item">2020/07 (1)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/archives/2020/05" class="list-group-item">2020/05 (1)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
@@ -445,8 +461,6 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
       <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/04" class="list-group-item">2019/04 (1)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/03" class="list-group-item">2019/03 (2)</a>
       
     </div>
   </section>

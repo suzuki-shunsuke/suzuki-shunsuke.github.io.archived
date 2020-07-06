@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.59.1" />
+
+
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/clap/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>clap - 簡単にツールをインストールするためのツールを作った - melody</title>
+    
+<meta name="description" content="多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。https://github.com/suzuki-shunsuke/clapGo で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。使い方は以下のようになっています。$ clap &amp;lt;URL&amp;gt; &amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt; [&amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt;...]  例えば conftest を /usr/local/bin にインストールする場合次のようになります。CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a&#43;x /usr/local/bin/conftest  パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。#!/usr/bin/env bash set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &amp;quot;$dirpath&amp;quot; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a&#43;x /usr/local/bin/conftest popd rm -R &amp;quot;$dirpath&amp;quot;  地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。">
+
+<meta property="og:title" content="clap - 簡単にツールをインストールするためのツールを作った - melody">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/clap/">
+<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:site_name" content="melody">
+<meta property="og:description" content="多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。https://github.com/suzuki-shunsuke/clapGo で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。使い方は以下のようになっています。$ clap &amp;lt;URL&amp;gt; &amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt; [&amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt;...]  例えば conftest を /usr/local/bin にインストールする場合次のようになります。CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a&#43;x /usr/local/bin/conftest  パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。#!/usr/bin/env bash set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &amp;quot;$dirpath&amp;quot; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a&#43;x /usr/local/bin/conftest popd rm -R &amp;quot;$dirpath&amp;quot;  地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="melody">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/clap/">
+<meta name="twitter:title" content="clap - 簡単にツールをインストールするためのツールを作った - melody">
+<meta name="twitter:description" content="多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。https://github.com/suzuki-shunsuke/clapGo で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。使い方は以下のようになっています。$ clap &amp;lt;URL&amp;gt; &amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt; [&amp;lt;インストールするファイルのアーカイブ内での相対パス&amp;gt;:&amp;lt;インストール先&amp;gt;...]  例えば conftest を /usr/local/bin にインストールする場合次のようになります。CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a&#43;x /usr/local/bin/conftest  パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。#!/usr/bin/env bash set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &amp;quot;$dirpath&amp;quot; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a&#43;x /usr/local/bin/conftest popd rm -R &amp;quot;$dirpath&amp;quot;  地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。">
+<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
+    },
+    "headline": "clap - 簡単にツールをインストールするためのツールを作った - melody",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2020-07-06T16:52:58JST",
+    "dateModified": "2020-07-06T16:52:58JST",
+    "author": {
+      "@type": "Person",
+      "name": "melody"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "melody",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。\nhttps:\/\/github.com\/suzuki-shunsuke\/clap\nGo で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。\nCI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。\nこのブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。\n使い方は以下のようになっています。\n$ clap \x26lt;URL\x26gt; \x26lt;インストールするファイルのアーカイブ内での相対パス\x26gt;:\x26lt;インストール先\x26gt; [\x26lt;インストールするファイルのアーカイブ内での相対パス\x26gt;:\x26lt;インストール先\x26gt;...]  例えば conftest を \/usr\/local\/bin にインストールする場合次のようになります。\nCONFTEST_VERSION=0.18.2 clap install https:\/\/github.com\/instrumenta\/conftest\/releases\/download\/v${CONFTEST_VERSION}\/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:\/usr\/local\/bin\/conftest chmod a\x2bx \/usr\/local\/bin\/conftest  パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。\n上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。\n#!\/usr\/bin\/env bash set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd \x26quot;$dirpath\x26quot; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https:\/\/github.com\/instrumenta\/conftest\/releases\/download\/v${CONFTEST_VERSION}\/${TARFILE} tar xvzf $TARFILE mv conftest \/usr\/local\/bin\/conftest chmod a\x2bx \/usr\/local\/bin\/conftest popd rm -R \x26quot;$dirpath\x26quot;  地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。"
+  }
+</script>
+
+
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    <nav class="p-crumb">
+      <ol class="breadcrumb">
+        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        
+        <li class="active">clap - 簡単にツールをインストールするためのツールを作った</li>
+      </ol>
+    </nav>
+
+    <article class="single">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-06T16:52:58JST">Jul 6, 2020</time></li>
+      
+      
+    </ul>
+
+    <h1 class="title">clap - 簡単にツールをインストールするためのツールを作った</h1>
+    
+    
+    <section>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </header>
+
+  
+
+  <div class="article-body"><p>多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。
+tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。</p>
+
+<p><a href="https://github.com/suzuki-shunsuke/clap">https://github.com/suzuki-shunsuke/clap</a></p>
+
+<p>Go で書かれています。
+ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。</p>
+
+<p>CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。</p>
+
+<p>このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。</p>
+
+<p>使い方は以下のようになっています。</p>
+
+<pre><code>$ clap &lt;URL&gt; &lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt; [&lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt;...]
+</code></pre>
+
+<p>例えば <a href="https://github.com/open-policy-agent/conftest">conftest</a> を /usr/local/bin にインストールする場合次のようになります。</p>
+
+<pre><code class="language-sh">CONFTEST_VERSION=0.18.2
+clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest
+chmod a+x /usr/local/bin/conftest
+</code></pre>
+
+<p>パーミッションの付与はやってくれないので必要に応じてやってください。
+ファイルの圧縮形式は URL から自動で判別してくれます。</p>
+
+<p>上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。</p>
+
+<pre><code class="language-sh">#!/usr/bin/env bash
+
+set -eu
+
+CONFTEST_VERSION=0.18.2
+
+dirpath=$(mktemp -d)
+pushd &quot;$dirpath&quot;
+TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz
+curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE}
+tar xvzf $TARFILE
+mv conftest /usr/local/bin/conftest
+chmod a+x /usr/local/bin/conftest
+popd
+rm -R &quot;$dirpath&quot;
+</code></pre>
+
+<p>地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。</p>
+
+<p>clap 自体のインストールはどうするかというと、 <a href="https://github.com/suzuki-shunsuke/clap/releases">GitHub Releases で tarball の他にバイナリ単体でも配布</a>しているので簡単にインストールできます。</p>
+
+<pre><code>CLAP_VERSION=0.1.0-1
+curl -L -o /usr/local/bin/clap https://github.com/suzuki-shunsuke/clap/releases/download/v${CLAP_VERSION}/clap_${CLAP_VERSION}_linux_amd64
+chmod a+x /usr/local/bin/clap
+</code></pre>
+
+<p>以上、簡単な紹介でした。</p>
+</div>
+
+  <footer class="article-footer">
+    
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
+          
+        </ul>
+      </div>
+    </section>
+    
+  </footer>
+
+</article>
+
+
+    
+  </div>
+
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/clap/" class="list-group-item">clap - 簡単にツールをインストールするためのツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/" class="list-group-item">CircleCI の run の実行時間を DataDog に送る</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" class="list-group-item">CircleCI の checkout の注意点</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/skaffold-generator/" class="list-group-item">Skaffold で特定のサービスだけ動かすためのツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" class="list-group-item">Terraform ハンズオン with MySQL Provider</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/terraform-getting-started/" class="list-group-item">Terraform 入門</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/terraform-state-locking/" class="list-group-item">Terraform の State Locking の概要</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/dd-time/" class="list-group-item">dd-time - コマンドの実行時間を Datadog に送るツール</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/mobreview/" class="list-group-item">モブレビューやっていきたい</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/go-timeout/" class="list-group-item">go-timeout - command の timeout</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (14)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (6)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (4)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/datadog" class="list-group-item">datadog (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">ARCHIVE</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/07" class="list-group-item">2020/07 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/05" class="list-group-item">2020/05 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/04" class="list-group-item">2019/04 (1)</a>
+      
+    </div>
+  </section>
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
