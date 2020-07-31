@@ -6,10 +6,28 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Mon, 06 Jul 2020 16:52:58 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2020 20:42:54 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>github-comment - GitHub にコメントを投稿する CLI</title>
+      <link>https://suzuki-shunsuke.github.io/github-comment/</link>
+      <pubDate>Fri, 31 Jul 2020 20:42:54 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/github-comment/</guid>
+      <description>GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。
+https://github.com/suzuki-shunsuke/github-comment
+このブログの執筆時点で最新は v1.5.0 です。
+Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。
+想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。
+github-comment には
+ init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。
+コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。
+$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。
+$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</description>
+    </item>
     
     <item>
       <title>clap - 簡単にツールをインストールするためのツールを作った</title>
