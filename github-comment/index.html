@@ -467,6 +467,16 @@ The output of String may vary across Go releases.</p>
 
 <p>設定ファイルのパスは <code>--config -c</code> オプションで指定できます。
 何も指定しない場合、カレントディレクトリからルートディレクトリに向かって <code>.github-comment.yml</code>, <code>.github-comment.yaml</code> を探索し、最初に見つかったものを使います。</p>
+
+<h2 id="設定ファイルで-org-repo-を指定する">設定ファイルで .Org, .Repo を指定する</h2>
+
+<p>設定ファイルでコメント先のリポジトリを指定できます。
+Platform で補完される場合や、明示的にパラメータで指定する場合は不要です。</p>
+
+<pre><code class="language-yaml">base:
+  org: suzuki-shunsuke
+  repo: github-comment
+</code></pre>
 </div>
 
   <footer class="article-footer">
