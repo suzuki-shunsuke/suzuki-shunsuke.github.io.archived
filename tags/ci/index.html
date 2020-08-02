@@ -62,6 +62,32 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-08-02T13:21:37JST">Aug 2, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/codebuild-1/">AWS CodeBuild 良さそう</a></h2>
+  </header>
+
+  
+  <div class="summary">AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。
+一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。
+なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。
+特徴としては
+ Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。
+変更検知について 上記の特徴についてはだいたい「まぁそうだね」というふうに思ってもらえるのではないかと思いますが、変更検知の部分について補足します。 monorepo をやっているとサービス A 関連のジョブはサービス A 関連のコードが変更された場合のみ実行したいというのがあります。 なのですが、 CircleCI だと自分の知る限りそれはできません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/codebuild-1/" title="AWS CodeBuild 良さそう">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-07T08:22:49JST">Dec 7, 2018</time></li>
       
       
@@ -103,6 +129,8 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/codebuild-1/" class="list-group-item">AWS CodeBuild 良さそう</a>
+      
       <a href="https://suzuki-shunsuke.github.io/github-comment/" class="list-group-item">github-comment - GitHub にコメントを投稿する CLI</a>
       
       <a href="https://suzuki-shunsuke.github.io/clap/" class="list-group-item">clap - 簡単にツールをインストールするためのツールを作った</a>
@@ -120,8 +148,6 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
       <a href="https://suzuki-shunsuke.github.io/terraform-state-locking/" class="list-group-item">Terraform の State Locking の概要</a>
       
       <a href="https://suzuki-shunsuke.github.io/dd-time/" class="list-group-item">dd-time - コマンドの実行時間を Datadog に送るツール</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/mobreview/" class="list-group-item">モブレビューやっていきたい</a>
       
     </div>
   </section>
@@ -146,11 +172,11 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/tags/datadog" class="list-group-item">datadog (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (1)</a>
       
     </div>
   </section>
@@ -160,6 +186,8 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
       <div class="panel-title">ARCHIVE</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/08" class="list-group-item">2020/08 (1)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/07" class="list-group-item">2020/07 (2)</a>
       
@@ -178,8 +206,6 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
       <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/04" class="list-group-item">2019/04 (1)</a>
       
     </div>
   </section>

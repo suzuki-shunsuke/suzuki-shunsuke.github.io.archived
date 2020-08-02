@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/aws/index.xml">
+
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/tags/aws/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>aws - melody</title>
+    
+    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+    
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>aws</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-08-02T13:21:37JST">Aug 2, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/codebuild-1/">AWS CodeBuild 良さそう</a></h2>
+  </header>
+
+  
+  <div class="summary">AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。
+一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。
+なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。
+特徴としては
+ Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。
+変更検知について 上記の特徴についてはだいたい「まぁそうだね」というふうに思ってもらえるのではないかと思いますが、変更検知の部分について補足します。 monorepo をやっているとサービス A 関連のジョブはサービス A 関連のコードが変更された場合のみ実行したいというのがあります。 なのですが、 CircleCI だと自分の知る限りそれはできません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/codebuild-1/" title="AWS CodeBuild 良さそう">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/codebuild-1/" class="list-group-item">AWS CodeBuild 良さそう</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/github-comment/" class="list-group-item">github-comment - GitHub にコメントを投稿する CLI</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/clap/" class="list-group-item">clap - 簡単にツールをインストールするためのツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/" class="list-group-item">CircleCI の run の実行時間を DataDog に送る</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" class="list-group-item">CircleCI の checkout の注意点</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/skaffold-generator/" class="list-group-item">Skaffold で特定のサービスだけ動かすためのツールを作った</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" class="list-group-item">Terraform ハンズオン with MySQL Provider</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/terraform-getting-started/" class="list-group-item">Terraform 入門</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/terraform-state-locking/" class="list-group-item">Terraform の State Locking の概要</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/dd-time/" class="list-group-item">dd-time - コマンドの実行時間を Datadog に送るツール</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (15)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (6)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (4)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/datadog" class="list-group-item">datadog (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">ARCHIVE</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/08" class="list-group-item">2020/08 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/07" class="list-group-item">2020/07 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/05" class="list-group-item">2020/05 (1)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/06" class="list-group-item">2019/06 (2)</a>
+      
+      <a href="https://suzuki-shunsuke.github.io/archives/2019/05" class="list-group-item">2019/05 (1)</a>
+      
+    </div>
+  </section>
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
