@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>AWS CodeBuild 良さそう - melody</title>
     
-<meta name="description" content="AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。特徴としては Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。変更検知について 上記の特徴についてはだいたい「まぁそうだね」というふうに思ってもらえるのではないかと思いますが、変更検知の部分について補足します。 monorepo をやっているとサービス A 関連のジョブはサービス A 関連のコードが変更された場合のみ実行したいというのがあります。 なのですが、 CircleCI だと自分の知る限りそれはできません。">
+<meta name="description" content="AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。特徴としては Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想 Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。">
 
 <meta property="og:title" content="AWS CodeBuild 良さそう - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/codebuild-1/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。特徴としては Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。変更検知について 上記の特徴についてはだいたい「まぁそうだね」というふうに思ってもらえるのではないかと思いますが、変更検知の部分について補足します。 monorepo をやっているとサービス A 関連のジョブはサービス A 関連のコードが変更された場合のみ実行したいというのがあります。 なのですが、 CircleCI だと自分の知る限りそれはできません。">
+<meta property="og:description" content="AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。特徴としては Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想 Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/codebuild-1/">
 <meta name="twitter:title" content="AWS CodeBuild 良さそう - melody">
-<meta name="twitter:description" content="AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。特徴としては Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。変更検知について 上記の特徴についてはだいたい「まぁそうだね」というふうに思ってもらえるのではないかと思いますが、変更検知の部分について補足します。 monorepo をやっているとサービス A 関連のジョブはサービス A 関連のコードが変更された場合のみ実行したいというのがあります。 なのですが、 CircleCI だと自分の知る限りそれはできません。">
+<meta name="twitter:description" content="AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。特徴としては Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想 Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI\/CD を一部移行したいなと思いました。\n一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。\nなお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。\n特徴としては\n Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。\n変更検知について 上記の特徴についてはだいたい「まぁそうだね」というふうに思ってもらえるのではないかと思いますが、変更検知の部分について補足します。 monorepo をやっているとサービス A 関連のジョブはサービス A 関連のコードが変更された場合のみ実行したいというのがあります。 なのですが、 CircleCI だと自分の知る限りそれはできません。"
+    "description": "AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI\/CD を一部移行したいなと思いました。\n一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。\nなお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。\n特徴としては\n Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想 Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。"
   }
 </script>
 
@@ -162,6 +162,7 @@
 <ul>
 <li>Secret を AWS Secrets Manager で管理できる</li>
 <li>Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想</li>
+<li>Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心</li>
 </ul></li>
 <li>VPC 内で実行できる</li>
 <li>GitHub 連携も簡単
