@@ -6,10 +6,37 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 02 Aug 2020 13:21:37 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 12 Sep 2020 08:05:59 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>github-comment</title>
+      <link>https://suzuki-shunsuke.github.io/tags/github-comment/</link>
+      <pubDate>Sat, 12 Sep 2020 08:05:59 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/github-comment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>terraform</title>
+      <link>https://suzuki-shunsuke.github.io/tags/terraform/</link>
+      <pubDate>Sat, 12 Sep 2020 08:05:59 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tfnotify</title>
+      <link>https://suzuki-shunsuke.github.io/tags/tfnotify/</link>
+      <pubDate>Sat, 12 Sep 2020 08:05:59 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/tfnotify/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>aws</title>
@@ -107,15 +134,6 @@
       <pubDate>Sun, 05 Apr 2020 18:53:25 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/skaffold-generator/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>terraform</title>
-      <link>https://suzuki-shunsuke.github.io/tags/terraform/</link>
-      <pubDate>Fri, 17 Jan 2020 09:14:08 +0900</pubDate>
-      
-      <guid>https://suzuki-shunsuke.github.io/tags/terraform/</guid>
       <description></description>
     </item>
     

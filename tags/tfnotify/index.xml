@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tfnotify on melody</title>
+    <link>https://suzuki-shunsuke.github.io/tags/tfnotify/</link>
+    <description>Recent content in tfnotify on melody</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language>
+    <lastBuildDate>Sat, 12 Sep 2020 08:05:59 +0900</lastBuildDate>
+    
+	<atom:link href="https://suzuki-shunsuke.github.io/tags/tfnotify/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>tfnotify の parse error を通知する</title>
+      <link>https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/</link>
+      <pubDate>Sat, 12 Sep 2020 08:05:59 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/</guid>
+      <description>tfnotify が terraform の標準出力のパースに失敗してコメントを投稿できないことがあります。
+コメントを投稿できなくてもビルドのログには残るのですが、やはりコメントを投稿できると便利なので、tfnotify がパースエラーでコメントの投稿に失敗したら、 github-comment でコメントを投稿するようにしました。
+なお、この記事を書いている時点のバージョンは tfnotify v0.7.0, github-comment v1.9.0 です。
+例えば tfnotify plan がパースエラーになった場合、 cannot parse plan result というメッセージが標準エラー出力されます。 そこで標準エラー出力に cannot parse plan result が含まれていたら github-comment でコメントするようにします。
+terraform plan | github-comment exec -k plan -- tfnotify plan  .github-comment.yml
+# 細かく template を分けているが、別に分けなくてもよい templates: # header は CodeBuild の場合 header: &#39;{{Env &amp;quot;TARGET&amp;quot;}} [Build link]({{Env &amp;quot;CODEBUILD_BUILD_URL&amp;quot;}})&#39; exit_code: &#39;:{{if eq .ExitCode 0}}white_check_mark{{else}}x{{end}}: Exit Code {{.ExitCode}}&#39; join_command: | ``` $ {{.</description>
+    </item>
+    
+  </channel>
+</rss>
