@@ -58,6 +58,33 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-30T13:54:47JST">Nov 30, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/dd-time/">dd-time - コマンドの実行時間を Datadog に送るツール</a></h2>
+  </header>
+
+  
+  <div class="summary">コマンドの実行時間を Datadog に送る dd-time というツールを作りました。
+このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。
+circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。
+dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。
+使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。
+$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。
+メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/dd-time/" title="dd-time - コマンドの実行時間を Datadog に送るツール">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-10T18:31:05JST">Nov 10, 2019</time></li>
       
       
@@ -296,42 +323,6 @@ https://github.com/suzuki-shunsuke/flute
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-20T17:50:11JST">Jun 20, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a></h2>
-  </header>
-
-  
-  <div class="summary">Jenkins では parameterized build という機能で、ビルド実行時に Web UI からパラメータを指定することができます。
-Drone では基本的に Git のイベントをフックして動くので「ビルドを実行時に手動でパラメータを設定する」ということは出来ません。
-自分は基本的にできなくても構わないと思っていますが、 こういった機能がないから Drone を使わないという人も中にはいるので、 Drone でもちょっとした工夫でそれっぽいことは出来るんじゃないかと思い、簡単なサンプルを書いてみました。
-一応言っておくと、 Jenkins の parameterized build を完全に代替するようなものではありません。
-https://github.com/suzuki-shunsuke/example-drone-build-parameter
-以下のファイルが必要です。
- build_params/params.sh.tpl: ビルドパラメータを記述するファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。
-$ bash scripts/deploy.sh  するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。
-https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17
-パラメータを記述し、エディタを閉じます。
-するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。
-https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L27-L35
-Drone でタグをプッシュするイベントをフックしてビルドが実行されます。
-https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L13-L17
-ビルドではコミットされたパラメータの設定ファイルを読み込むことでビルドにパラメータを渡せます。
-https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/.drone.yml#L10
-こうすることでビルドにパラメータを渡すことができます。 パラメータの設定ファイルはコミットされるので Git で管理できるというのも特徴です。
-https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/build_params/2019-07-07T10-04-02JST/params.sh
-上記のスクリプトではパラメータの設定ファイルとしてシェルスクリプトで環境変数を定義していますが、 シェルスクリプトである必要性はなく、例えば JSON ファイルを記述してビルドで JSON ファイルを読み込んでもよいし、 パラメータを選択させるようなことがしたければ fzf のようなものを使ってもよいし、 いくらでも改善できます。
-以上、簡単な tips でした。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -362,6 +353,8 @@ https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/bui
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
@@ -380,8 +373,6 @@ https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/bui
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
-      <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
-      
     </div>
   </section>
 
@@ -391,11 +382,11 @@ https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/bui
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (24)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (25)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -420,7 +411,7 @@ https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/bui
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

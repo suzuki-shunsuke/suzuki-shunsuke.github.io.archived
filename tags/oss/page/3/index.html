@@ -62,6 +62,39 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-terraform/">GraylogをTerraformで管理する</a></h2>
+  </header>
+
+  
+  <div class="summary">Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
+Graylogには様々なリソースがあります。
+ User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
+APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
+https://github.com/suzuki-shunsuke/go-graylog
+GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
+ Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
+出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
+terraform を使った管理方法 以下では自分の管理方法を紹介します。
+https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
+にサンプルが置いてあります。
+基本はプロジェクトごとに
+ Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog-terraform/" title="GraylogをTerraformで管理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
       
       
@@ -202,6 +235,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
@@ -220,8 +255,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
-      <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
-      
     </div>
   </section>
 
@@ -231,11 +264,11 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (24)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (25)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -260,7 +293,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

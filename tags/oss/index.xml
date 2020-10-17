@@ -6,10 +6,27 @@
     <description>Recent content in oss on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 17 Oct 2020 22:35:56 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2020 08:13:48 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>buildflow が自動で取得する Pull Request の情報</title>
+      <link>https://suzuki-shunsuke.github.io/buildflow-pr-info/</link>
+      <pubDate>Sun, 18 Oct 2020 08:13:48 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/buildflow-pr-info/</guid>
+      <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では buildflow が自動で Pull Request (以下 PR) の情報を取得してくる機能について説明します。
+この機能は GitHub のみサポートしています。 GitLab や BitBucket はサポートしていません。 これは単純に自分が GitHub しか使わないからです。
+PR の CI では
+ 変更されたものだけテストする 特定の PR ラベルがついていたら実行する 特定のユーザーの PR だけ処理を変える(bot とか)  のように PR の情報に基づいて挙動を変えたくなったりします。
+シェルスクリプトで GitHub API 叩いて情報とってきて jq でパースしてとか、頑張れば別にできるんですが、 毎回そういうコードを書きたくないなと感じていました。
+なお、 PR の情報をとってくる機能はデフォルトで無効化されています(GitHub Access Token 必要ですしね)。 設定で pr: true を指定してください。
+PR の情報をとってくるには、以下の情報が必要です。
+ repository owner: 設定ファイルで owner を設定するか、自動取得。 owner を設定してある場合はそちらが優先される repository name: 設定ファイルで repo を設定するか、自動取得。 repo を設定してある場合はそちらが優先される pull request number: 自動取得 GitHub Access Token: 環境変数 GITHUB_TOKEN または GITHUB_ACCESS_TOKEN を指定してください  取得される情報 以下のパラメータがテンプレートや Tengo script に渡されます。</description>
+    </item>
     
     <item>
       <title>buildflow ではなぜ Tengo を採用しているのか</title>

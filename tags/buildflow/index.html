@@ -62,6 +62,35 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:13:48JST">Oct 18, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/">buildflow が自動で取得する Pull Request の情報</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では buildflow が自動で Pull Request (以下 PR) の情報を取得してくる機能について説明します。
+この機能は GitHub のみサポートしています。 GitLab や BitBucket はサポートしていません。 これは単純に自分が GitHub しか使わないからです。
+PR の CI では
+ 変更されたものだけテストする 特定の PR ラベルがついていたら実行する 特定のユーザーの PR だけ処理を変える(bot とか)  のように PR の情報に基づいて挙動を変えたくなったりします。
+シェルスクリプトで GitHub API 叩いて情報とってきて jq でパースしてとか、頑張れば別にできるんですが、 毎回そういうコードを書きたくないなと感じていました。
+なお、 PR の情報をとってくる機能はデフォルトで無効化されています(GitHub Access Token 必要ですしね)。 設定で pr: true を指定してください。
+PR の情報をとってくるには、以下の情報が必要です。
+ repository owner: 設定ファイルで owner を設定するか、自動取得。 owner を設定してある場合はそちらが優先される repository name: 設定ファイルで repo を設定するか、自動取得。 repo を設定してある場合はそちらが優先される pull request number: 自動取得 GitHub Access Token: 環境変数 GITHUB_TOKEN または GITHUB_ACCESS_TOKEN を指定してください  取得される情報 以下のパラメータがテンプレートや Tengo script に渡されます。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" title="buildflow が自動で取得する Pull Request の情報">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T22:35:56JST">Oct 17, 2020</time></li>
       
       
@@ -302,6 +331,8 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
@@ -320,8 +351,6 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
-      <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
-      
     </div>
   </section>
 
@@ -331,11 +360,11 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (24)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (25)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -360,7 +389,7 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

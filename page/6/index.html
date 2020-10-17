@@ -58,6 +58,36 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-30T08:35:16JST">Oct 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/gomic/">gomic - Goのモックジェネレータ</a></h2>
+  </header>
+
+  
+  <div class="summary">自作のOSS gomic の紹介をします。
+ なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
+まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
+Goで書かれています。
+https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。
+同様のツールは幾つかあります。
+ https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
+なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
+自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
+// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/gomic/" title="gomic - Goのモックジェネレータ">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-12T21:02:51JST">Oct 12, 2018</time></li>
       
       
@@ -268,26 +298,6 @@ droneの web ui からリポジトリごとに設定できます。 そのリポ
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:26:11JST">Sep 30, 2018</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-matrix-build-run-only-27/">drone の matrix build が27個しか実行されない</a></h2>
-  </header>
-
-  
-  <div class="summary">drone 0.8.5 で検証しています。
-matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。
- https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。
-limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = append(axisList, axis) if p &gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -318,6 +328,8 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
@@ -336,8 +348,6 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
-      <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
-      
     </div>
   </section>
 
@@ -347,11 +357,11 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (24)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (25)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -376,7 +386,7 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

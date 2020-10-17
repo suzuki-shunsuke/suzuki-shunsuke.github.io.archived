@@ -58,6 +58,26 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:26:11JST">Sep 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-matrix-build-run-only-27/">drone の matrix build が27個しか実行されない</a></h2>
+  </header>
+
+  
+  <div class="summary">drone 0.8.5 で検証しています。
+matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。
+ https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。
+limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = append(axisList, axis) if p &gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:16:28JST">Sep 30, 2018</time></li>
       
       
@@ -221,6 +241,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
@@ -239,8 +261,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
-      <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
-      
     </div>
   </section>
 
@@ -250,11 +270,11 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (24)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (25)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -279,7 +299,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (9)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (10)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
