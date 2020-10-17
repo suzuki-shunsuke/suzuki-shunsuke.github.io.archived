@@ -62,6 +62,32 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の概念である build, phase, task について書きたいと思います。
+buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
+$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
+設定ファイルでは phases, tasks をそれぞれ配列で指定します。
+--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" title="buildflow の build, phase, task について">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T16:06:31JST">Oct 17, 2020</time></li>
       
       
@@ -322,33 +348,6 @@ https://docs.drone.io/user-guide/pipeline/migrating/
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-jsoneq/">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a></h2>
-  </header>
-
-  
-  <div class="summary">https://github.com/suzuki-shunsuke/go-jsoneq
-2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。
-「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。
-struct { Foo string `json:&quot;foo&quot;` }{ Foo: &quot;bar&quot;, }  と
-map[string]interface{}{&quot;foo&quot;: &quot;bar&quot;}  を JSON に変換したらともに
-{&quot;foo&quot;: &quot;bar&quot;}  になりますね。
-json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。
-jsoneq.Equal でやっていることは単純です。
- json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。
-GoDoc やサンプルを見れば使い方は簡単にわかると思います。
-以上、簡単ですが、自作ライブラリの紹介でした。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -379,6 +378,8 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" class="list-group-item">buildflow の build, phase, task について</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
       <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
@@ -397,8 +398,6 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
       
       <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" class="list-group-item">Terraform ハンズオン with MySQL Provider</a>
       
-      <a href="https://suzuki-shunsuke.github.io/terraform-getting-started/" class="list-group-item">Terraform 入門</a>
-      
     </div>
   </section>
 
@@ -408,7 +407,7 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (16)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (17)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -422,11 +421,11 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (2)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/datadog" class="list-group-item">datadog (2)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/tags/hugo" class="list-group-item">hugo (2)</a>
       
     </div>
   </section>
@@ -437,7 +436,7 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
