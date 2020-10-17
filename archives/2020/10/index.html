@@ -62,6 +62,28 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T20:49:28JST">Oct 17, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-split-files/">buildflow で設定ファイルを分割する</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
+この記事では buildflow の設定ファイルを分割する方法について説明します。
+buildflow では一部の設定項目について他のファイルのパスを指定して読み込むということが出来ます。 1 つのファイルに全部の設定を書いていると、ファイルが大きくなってメンテナンス性が悪くなったり、 コードオーナーが曖昧になったりするので、そういう場合は分割すると良いでしょう。 コードオーナーが異なる複数のサービスで共通の設定ファイルを用いる場合、ファイルを分割して GitHub の CODEOWNERS を設定するのもよいでしょう。 あまりないかもしれませんが、ファイルを分割すると同じファイルを読み込んで再利用も出来ます。
+また、 Tengo script を独立したファイルに分割すると、 test が可能になります。 Tengo script をテストするためのツールとして tengo-tester というツールも開発しているので、そちらをお使いください。
+以下のようなファイル読み込みの設定があります。
+ phase.import task.import: task.input_file task.output_file task.when_file command.command_file command.env[].value_file write_file.template_file  ファイルのパスは、絶対パスか、実行中の build の設定ファイルが存在するディレクトリからの相対パスになります。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
       
       
@@ -202,6 +224,8 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-split-files/" class="list-group-item">buildflow で設定ファイルを分割する</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-parameter/" class="list-group-item">buildflow の script や template に渡される parameter</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-task/" class="list-group-item">buildflow の task の設定項目</a>
@@ -220,8 +244,6 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
       
       <a href="https://suzuki-shunsuke.github.io/clap/" class="list-group-item">clap - 簡単にツールをインストールするためのツールを作った</a>
       
-      <a href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/" class="list-group-item">CircleCI の run の実行時間を DataDog に送る</a>
-      
     </div>
   </section>
 
@@ -231,15 +253,15 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (20)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (21)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
@@ -260,7 +282,7 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (6)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

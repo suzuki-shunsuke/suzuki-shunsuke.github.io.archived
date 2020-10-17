@@ -58,6 +58,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:54:23JST">Aug 15, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/">Drone Extension のリスク</a></h2>
+  </header>
+
+  
+  <div class="summary">Drone v1 では Extension という仕組みが導入されました。
+これは文字通り Drone を拡張する仕組みで、仕様に従って作れば自由に Drone を拡張できます。
+https://docs.drone.io/extensions/overview/
+全てを本体でやるのではなく、拡張する仕組みを提供し、あとはコミュニティに委ねるというのが Drone の一つの方針とも言えると思います。
+Extension は非常に面白い仕組みだと思いますが、 Drone を運用する立場からすると中々頭が痛い仕組みな気がしてて、 自分は導入に対し慎重な立場です。 単なる杞憂で済めば良いのですが、その懸念について書きたいと思います。
+根本は Drone Extension 固有の問題と言うより、一般的な拡張機構全般に言えることだと思います。 ただし、 Drone Extension は全てのビルドに影響を及ぼす、 CI/CDシステムが動かなくなるとサービスのリリースに影響を及ぼしかねないということからよりリスクの高いものになっています。
+ 本体の drone/drone と比べ、開発は活発ではなく、サードパーティの extension はいつ開発が止まってもおかしくない 本体の drone/drone と比べ、ドキュメントやサポート体制が貧弱だと思われる(drone に関しては https://discourse.drone.io でサポートされているが、サードパーティの extension では難しい) ユーザーからの extension に関する要望を受け付けるようになると、管理者の負担になる extension のクォリティはマチマチであり、例外処理が甘かったり、ちゃんとエラーを吐かないものもあるだろう トラブルシューティングが難しいと思われる extension の仕組み上、extension を必要としないビルドにも影響を及ぼしうる 一度追加し、依存しだすと消すのが難しくなる extension が落ちると全 build に影響するので、耐障害性(冗長化)、モニタリングが必要 etc  勿論、上記の懸念点は Extension によって提供される機能とトレードオフであり、 Extension の導入方針は Drone が運用される環境によって大きく依存すると思います。
+例えば全員が顔見知りのような小さな組織で特定のサービス専用に Drone を使っていてかつ Drone の運用体制(人員)に十分余裕があるなら 積極的に Extension を導入しても問題ないかもしれません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/" title="Drone Extension のリスク">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:39:18JST">Aug 15, 2019</time></li>
       
       
@@ -298,38 +326,6 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-04-28T21:25:00JST">Apr 28, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/durl/">durl - 壊れたURLを検知するCLIツール</a></h2>
-  </header>
-
-  
-  <div class="summary">結構前に開発したツールですが、まだ記事にしてなかったので紹介します。
-https://github.com/suzuki-shunsuke/durl
-ファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。
-なお、ページ内リンク(アンカー)が壊れているものについては検知できません。
-インストール Go製で、バイナリを GitHub Releases で公開しています。
-https://github.com/suzuki-shunsuke/durl/releases
-Docker イメージ https://quay.io/repository/suzuki_shunsuke/durl
-busybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。
-使い方 durl init で設定ファイル .durl.yml を生成します。
-$ durl init  durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。
-https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9
-find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/durl/" title="durl - 壊れたURLを検知するCLIツール">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -360,6 +356,8 @@ find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-split-files/" class="list-group-item">buildflow で設定ファイルを分割する</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-parameter/" class="list-group-item">buildflow の script や template に渡される parameter</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-task/" class="list-group-item">buildflow の task の設定項目</a>
@@ -378,8 +376,6 @@ find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -
       
       <a href="https://suzuki-shunsuke.github.io/clap/" class="list-group-item">clap - 簡単にツールをインストールするためのツールを作った</a>
       
-      <a href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/" class="list-group-item">CircleCI の run の実行時間を DataDog に送る</a>
-      
     </div>
   </section>
 
@@ -389,15 +385,15 @@ find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (20)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (21)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
@@ -418,7 +414,7 @@ find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (6)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
