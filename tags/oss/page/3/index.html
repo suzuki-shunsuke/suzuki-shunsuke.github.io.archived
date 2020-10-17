@@ -62,6 +62,38 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog/">Graylog で log を管理する</a></h2>
+  </header>
+
+  
+  <div class="summary">Java 製の OSS ログ管理システム Graylog の紹介です。 Graylog については幾つかに分けて記事を書きたいと思います。 今回はGraylogの入門的な内容になります。
+なお、本記事中で「現在」「現時点」といった場合、特に断りがなければ記事執筆時点 2018-11-27 を指します。
+Graylog のバージョン 検証に用いるGraylogのバージョンは 2.4.6 になります。
+OSSバージョンとEnterpriseバージョンがありますが、本記事ではOSSバージョンを使用します。
+Graylog とは  https://www.graylog.org/ https://github.com/Graylog2/graylog2-server  Kibana と Elasticsearch(以下ES) を使ったことがある人は、Kibanaに代わるものだと思っていただくとイメージしやすいかと思います。 ログはGraylogそのものが保持するのではなく、ESにインデキシングされます。 Kibana同様、ESに収集されたログを検索したり、ダッシュボードを作ったり出来ます。 ダッシュボードに関してはKibanaのほうが優れているようにも思えますが、 Graylogは認証・認可によりダッシュボードやログを操作できる人を制限・管理することが出来ます。
+Graylogでログを管理する場合、ユーザーは直接ESにはログを送らず、Graylogを経由して送ります。 ESに対するGraylog以外のアクセスを制限し直接ESにアクセスされるのを防ぐことが出来ます。
+Graylog は多機能なシステムであり、ログを整形したり、アラートを飛ばしたり、他のシステムにログをフォワードしたりすることも出来ます。 marketplace でサードパーティの plugin が公開されており、機能を拡張することが出来ます。 APIも提供されており、ある程度自動化が可能です。
+認証・認可 オンプレミスでログを管理する場合、社外からは勿論社内からのアクセスも制限したいです。 Graylog では LDAP や Active Directory によってアクセスを制限できます。 リソース毎に誰が何を出来るか設定できます。
+http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
+ログの収集 ログの収集をするには Graylog で幾つかのリソースを作成する必要があります。
+ Input Index Set Stream Stream Rule  Input はログの入力のフォーマットの設定であり、 どのポートでどういったフォーマットのログを受け付けるかという設定になります。 フォーマットは様々なものがサポートされています。
+ AWS Flow Logs AWS Cloud Watch Logs AWS Cloud Trail Beats CEF AMQP CEF Kafka CEF TCP CEF UDP Fake HTTP Message GELF AMQP GELF HTTP GELF Kafka GELF TCP GELF UDP JSON Path NetFlow UDP Raw AMQP Syslog AMQP Syslog Kafka Syslog TCP Syslog UDP  この設定はログを収集するアプリケーションごとに設定するというより、グローバルな設定なので、他のアプリケーションで既に同じ形式でログを収集していたら新たに設定する必要はありません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog/" title="Graylog で log を管理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-31T08:56:04JST">Oct 31, 2018</time></li>
       
       
@@ -170,6 +202,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-input-output/" class="list-group-item">buildflow の task の input, output という機能</a>
@@ -188,8 +222,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
       
-      <a href="https://suzuki-shunsuke.github.io/codebuild-1/" class="list-group-item">AWS CodeBuild 良さそう</a>
-      
     </div>
   </section>
 
@@ -199,11 +231,11 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (23)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (24)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (8)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (9)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -228,7 +260,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (8)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (9)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
