@@ -58,6 +58,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-24T16:53:01JST">Apr 24, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/">CircleCI の checkout の注意点</a></h2>
+  </header>
+
+  
+  <div class="summary">CircleCI の組み込みの command checkout の注意点について書きます。
+なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。
+また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。
+最初に結論 先に結論を書くと
+ CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &lt;デフォルトブランチ&gt; origin/&lt;デフォルトブランチ&gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
+サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96
+ここでは checkout の全てについては触れません。一部抜粋します。
+elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&quot; git checkout -q -B &quot;$CIRCLE_BRANCH&quot; fi  git reset --hard などをしています。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" title="CircleCI の checkout の注意点">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-05T18:53:25JST">Apr 5, 2020</time></li>
       
       
@@ -307,26 +335,6 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:39:18JST">Aug 15, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/">Drone v1 で gRPC が使われなくなった</a></h2>
-  </header>
-
-  
-  <div class="summary">v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。
-理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
-関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。
- https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -363,6 +371,8 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" class="list-group-item">buildflow の build, phase, task について</a>
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-tengo/" class="list-group-item">buildflow での Tengo の使い方</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
       <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
@@ -375,8 +385,6 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       
       <a href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/" class="list-group-item">CircleCI の run の実行時間を DataDog に送る</a>
       
-      <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" class="list-group-item">CircleCI の checkout の注意点</a>
-      
     </div>
   </section>
 
@@ -386,7 +394,7 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (19)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (20)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -394,9 +402,9 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       
       <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (4)</a>
       
@@ -415,7 +423,7 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

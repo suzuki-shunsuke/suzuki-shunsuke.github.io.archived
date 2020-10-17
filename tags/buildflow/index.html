@@ -137,6 +137,28 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-tengo/">buildflow での Tengo の使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
+この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。
+https://github.com/d5/tengo
+buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。
+result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
+--- phases: - name: main tasks: - name: hello input: | result := { foo: &quot;bar&quot; } command: command: 'echo &quot;{{.Task.Input.foo}}&quot;' when: &quot;result := true&quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T16:06:31JST">Oct 17, 2020</time></li>
       
       
@@ -186,6 +208,8 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" class="list-group-item">buildflow の build, phase, task について</a>
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-tengo/" class="list-group-item">buildflow での Tengo の使い方</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
       
       <a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/" class="list-group-item">tfnotify の parse error を通知する</a>
@@ -198,8 +222,6 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
       
       <a href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/" class="list-group-item">CircleCI の run の実行時間を DataDog に送る</a>
       
-      <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" class="list-group-item">CircleCI の checkout の注意点</a>
-      
     </div>
   </section>
 
@@ -209,7 +231,7 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (19)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (20)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -217,9 +239,9 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
       
       <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (4)</a>
       
@@ -238,7 +260,7 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

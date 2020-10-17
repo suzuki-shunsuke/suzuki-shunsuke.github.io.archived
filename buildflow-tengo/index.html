@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/buildflow-parameter/">
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/buildflow-tengo/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>buildflow の script や template に渡される parameter - melody</title>
+    <title>buildflow での Tengo の使い方 - melody</title>
     
-<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。 PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task">
+<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: | result := { foo: &amp;quot;bar&amp;quot; } command: command: &#39;echo &amp;quot;{{.Task.Input.foo}}&amp;quot;&#39; when: &amp;quot;result := true&amp;quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
 
-<meta property="og:title" content="buildflow の script や template に渡される parameter - melody">
+<meta property="og:title" content="buildflow での Tengo の使い方 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-parameter/">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-tengo/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。 PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task">
+<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: | result := { foo: &amp;quot;bar&amp;quot; } command: command: &#39;echo &amp;quot;{{.Task.Input.foo}}&amp;quot;&#39; when: &amp;quot;result := true&amp;quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-parameter/">
-<meta name="twitter:title" content="buildflow の script や template に渡される parameter - melody">
-<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。 PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-tengo/">
+<meta name="twitter:title" content="buildflow での Tengo の使い方 - melody">
+<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: | result := { foo: &amp;quot;bar&amp;quot; } command: command: &#39;echo &amp;quot;{{.Task.Input.foo}}&amp;quot;&#39; when: &amp;quot;result := true&amp;quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
-    "headline": "buildflow の script や template に渡される parameter - melody",
+    "headline": "buildflow での Tengo の使い方 - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2020-10-17T19:44:39JST",
-    "dateModified": "2020-10-17T19:44:39JST",
+    "datePublished": "2020-10-17T17:18:34JST",
+    "dateModified": "2020-10-17T17:18:34JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。\nこの記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。\nbuildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。\n PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase\n Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task"
+    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。\nこの記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。\nhttps:\/\/github.com\/d5\/tengo\nbuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。\nresult := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。\n--- phases: - name: main tasks: - name: hello input: | result := { foo: \x26quot;bar\x26quot; } command: command: \x27echo \x26quot;{{.Task.Input.foo}}\x26quot;\x27 when: \x26quot;result := true\x26quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。"
   }
 </script>
 
@@ -109,19 +109,19 @@
       <ol class="breadcrumb">
         <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">buildflow の script や template に渡される parameter</li>
+        <li class="active">buildflow での Tengo の使い方</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
       
       
     </ul>
 
-    <h1 class="title">buildflow の script や template に渡される parameter</h1>
+    <h1 class="title">buildflow での Tengo の使い方</h1>
     
     
     <section>
@@ -142,129 +142,41 @@
 
   <div class="article-body">
 
-<p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうと思います。</p>
+<p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうかなと思います。</p>
 
-<p>この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。</p>
+<p>この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。</p>
 
-<p>buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。</p>
+<p><a href="https://github.com/d5/tengo">https://github.com/d5/tengo</a></p>
 
-<ul>
-<li>PR: Pull Request の情報: <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#get-a-pull-request">GitHub API</a> のレスポンス body</li>
-<li>Files: Pull Request で更新されたファイルの一覧: <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#list-pull-requests-files">GitHub API</a> のレスポンス body</li>
-<li>Phases: 対象の Phase よりも前の Phase の結果</li>
-<li>Phase: 対象の Phase</li>
-<li>Tasks: 対象の Phase の Task の結果</li>
-<li>Task: 対象の Task</li>
-<li>Item: dynamic task のパラメータとして渡される</li>
-<li>Meta: 設定 meta</li>
-</ul>
+<p>buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、
+1 つの共通のルールがあります。
+<code>result</code> という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。
+これは Tengo の仕様とかではなく、 buildflow 特有のルールです。
+もっとも単純な例だと次のような感じです。</p>
 
-<p>Phase</p>
+<pre><code>result := true
+</code></pre>
 
-<ul>
-<li>Status: Phase の実行結果
-
-<ul>
-<li>succeeded</li>
-<li>failed</li>
-<li>skipped</li>
-</ul></li>
-<li>Tasks: Phase の task の実行結果</li>
-<li>Meta: phase の 設定 meta</li>
-</ul>
-
-<p>Task</p>
-
-<p>type によらず共通</p>
-
-<ul>
-<li>Type: task の type</li>
-<li>Name: task 名</li>
-<li>Status: Task の実行結果
-
-<ul>
-<li>queue</li>
-<li>running</li>
-<li>succeeded</li>
-<li>failed</li>
-<li>skipped</li>
-</ul></li>
-<li>Meta: task の meta の設定</li>
-<li>Input:</li>
-<li>Output:</li>
-</ul>
-
-<p>command</p>
-
-<ul>
-<li>ExitCode</li>
-<li>StdOut</li>
-<li>StdErr</li>
-<li>CombinedOutput</li>
-</ul>
-
-<p>read_file</p>
-
-<ul>
-<li>File
-
-<ul>
-<li>Text: ファイルの内容</li>
-<li>Data: read_file の format を指定した場合、パースされた結果</li>
-</ul></li>
-</ul>
-
-<p>write_file</p>
-
-<ul>
-<li>File
-
-<ul>
-<li>Text: ファイルの内容</li>
-</ul></li>
-</ul>
-
-<h2 id="template-でパラメータを参照する">Template でパラメータを参照する</h2>
-
-<p>例えば command の場合</p>
+<p>task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。</p>
 
 <pre><code class="language-yaml">---
 phases:
 - name: main
   tasks:
   - name: hello
-    command:
-      command: 'echo &quot;{{.Task.Name}}&quot;'
-</code></pre>
-
-<h2 id="tengo-script-でパラメータを参照する">Tengo script でパラメータを参照する</h2>
-
-<p>例えば task foo が成功した場合のみ、 task bar を実行したい場合</p>
-
-<pre><code class="language-yaml">---
-phases:
-- name: main
-  tasks:
-  - name: foo
-    command:
-      command: echo hello
-  - name: bar
-    command:
-      command: echo hello
-    dependency:
-    - foo
-    when: |
-      task := {}
-      for t in Tasks {
-        if t.Name == &quot;foo&quot; {
-          task = t
-          break
-        }
+    input: |
+      result := {
+        foo: &quot;bar&quot;
       }
-      result := task.Status == &quot;succeeded&quot;
+    command:
+      command: 'echo &quot;{{.Task.Input.foo}}&quot;'
+    when: &quot;result := true&quot;
 </code></pre>
 
-<p>このように他の task の実行結果や PR の情報などを使ってビルドの挙動を変えることが出来ます。</p>
+<h2 id="tengo-の標準ライブラリ">Tengo の標準ライブラリ</h2>
+
+<p>Tengo には<a href="https://github.com/d5/tengo/blob/master/docs/stdlib.md">標準ライブラリ</a>があります。
+buildflow では全ての標準ライブラリが使えます。</p>
 </div>
 
   <footer class="article-footer">
