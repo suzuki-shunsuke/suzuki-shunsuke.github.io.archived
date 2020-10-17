@@ -62,6 +62,38 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-31T08:56:04JST">Oct 31, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/akoi/">akoi - binary installer</a></h2>
+  </header>
+
+  
+  <div class="summary">自作のOSS akoi の紹介をします。
+ なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
+まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード  ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)   akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
+分散ダウンロードについては
+https://qiita.com/codehex/items/d0a500ac387d39a34401
+が参考になります。
+Goで書かれています。
+https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウンロードしてインストールできます。
+詳細はREADMEを読んでください。
+なぜ作ったのか サーバにバイナリをインストールする ansible role を書くのが辛かったからです。 最近は色々なソフトウェアがGoで書かれ、バイナリで配布されています。 そういったバイナリをサーバへインストールするのは ansible で行っているという方も少なくないのではないでしょうか？ 有名なソフトウェアをインストールする ansible role は大抵Ansible Galaxy で公開されています。
+しかし、ほとんどの role は「真面目に」バージョン管理していません。 ここでいう「真面目に」とは
+ バージョンを指定できる バージョンを変更できる 指定したバージョンが既にインストールされている場合は無駄にダウンロードしたりしない  といったことです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/akoi/" title="akoi - binary installer">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-30T08:35:16JST">Oct 30, 2018</time></li>
       
       
@@ -138,6 +170,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-input-output/" class="list-group-item">buildflow の task の input, output という機能</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-split-files/" class="list-group-item">buildflow で設定ファイルを分割する</a>
@@ -156,8 +190,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://suzuki-shunsuke.github.io/codebuild-1/" class="list-group-item">AWS CodeBuild 良さそう</a>
       
-      <a href="https://suzuki-shunsuke.github.io/github-comment/" class="list-group-item">github-comment - GitHub にコメントを投稿する CLI</a>
-      
     </div>
   </section>
 
@@ -167,11 +199,11 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (22)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (23)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (7)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (8)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -196,7 +228,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (7)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (8)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

@@ -6,10 +6,22 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 17 Oct 2020 21:05:41 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2020 21:29:51 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>buildflow の dynamic task</title>
+      <link>https://suzuki-shunsuke.github.io/buildflow-dynamic-task/</link>
+      <pubDate>Sat, 17 Oct 2020 21:29:51 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/buildflow-dynamic-task/</guid>
+      <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。
+--- phases: - name: main tasks: - name: &amp;quot;list {{.Item.Key}} {{.Item.Value.name}}&amp;quot; command: command: &amp;quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;quot; items: - name: foo age: 10 - name: bar age: 20  上記の設定は dynamic task を使わないとこうなります。
+--- phases: - name: main tasks: - name: &amp;quot;list 0 foo&amp;quot; command: command: &amp;quot;echo 0 foo 10&amp;quot; - name: &amp;quot;list 1 bar&amp;quot; command: command: &amp;quot;echo 1 bar 20&amp;quot;  パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。</description>
+    </item>
     
     <item>
       <title>buildflow の task の input, output という機能</title>

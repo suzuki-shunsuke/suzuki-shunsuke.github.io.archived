@@ -58,6 +58,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:29:51JST">Oct 17, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/">buildflow の dynamic task</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。
+--- phases: - name: main tasks: - name: &quot;list {{.Item.Key}} {{.Item.Value.name}}&quot; command: command: &quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&quot; items: - name: foo age: 10 - name: bar age: 20  上記の設定は dynamic task を使わないとこうなります。
+--- phases: - name: main tasks: - name: &quot;list 0 foo&quot; command: command: &quot;echo 0 foo 10&quot; - name: &quot;list 1 bar&quot; command: command: &quot;echo 1 bar 20&quot;  パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" title="buildflow の dynamic task">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:05:41JST">Oct 17, 2020</time></li>
       
       
@@ -277,36 +301,6 @@ terraform plan | github-comment exec -k plan -- tfnotify plan  .github-comment.y
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-31T20:42:54JST">Jul 31, 2020</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/github-comment/">github-comment - GitHub にコメントを投稿する CLI</a></h2>
-  </header>
-
-  
-  <div class="summary">GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。
-https://github.com/suzuki-shunsuke/github-comment
-このブログの執筆時点で最新は v1.5.0 です。
-Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。
-想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。
-github-comment には
- init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。
-コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。
-$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。
-$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/github-comment/" title="github-comment - GitHub にコメントを投稿する CLI">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -337,6 +331,8 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-input-output/" class="list-group-item">buildflow の task の input, output という機能</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-split-files/" class="list-group-item">buildflow で設定ファイルを分割する</a>
@@ -355,8 +351,6 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
       
       <a href="https://suzuki-shunsuke.github.io/codebuild-1/" class="list-group-item">AWS CodeBuild 良さそう</a>
       
-      <a href="https://suzuki-shunsuke.github.io/github-comment/" class="list-group-item">github-comment - GitHub にコメントを投稿する CLI</a>
-      
     </div>
   </section>
 
@@ -366,11 +360,11 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (22)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (23)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (7)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (8)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -395,7 +389,7 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (7)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (8)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
