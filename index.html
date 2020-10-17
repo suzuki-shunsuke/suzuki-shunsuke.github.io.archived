@@ -58,6 +58,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:26:57JST">Oct 17, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-task/">buildflow の task の設定項目</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。
+task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。
+ name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/buildflow-task/" title="buildflow の task の設定項目">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
       
       
@@ -306,34 +330,6 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-17T09:14:08JST">Jan 17, 2020</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/">Terraform ハンズオン with MySQL Provider</a></h2>
-  </header>
-
-  
-  <div class="summary">Terraform を勉強するには実際に使ってみるのが一番手っ取り早いですが、 では手頃な題材はあるかと言われると少し難しいです。
-公式の Getting Started では AWS が使われていますが、 AWS のアカウントやクレデンシャルが必要ですしお金もかかってしまいます(無料枠はありますが)。 もう少し手軽なものが欲しいところです。
-そこで公式の Provider で丁度いいものはないか探したところ、 MySQL Provider が良さそうでした。 MySQL のユーザーや Database を Terraform で管理したいとは自分は思いませんが、 Terraform の入門で遊ぶにはちょうどよいでしょう。
-ちなみに公式の Provider のリストはこちらです。
- https://github.com/terraform-providers https://www.terraform.io/docs/providers/index.html  また、 Terraform に関しては Terraform 入門 も参照してください。
-今回の作業用に適当にディレクトリを作成し、そこで作業しましょう。
-以降、コマンドの実行結果は一部省略することがあります。
-$ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terraform を複数人で使う場合、 Terraform のバージョンを揃えるのが重要です。 理由の一つとして、 Terraform の State は State を作成した Terraform のバージョンを記録しており、それより古いバージョンの Terraform で terraform plan などを実行すると失敗するようになっていることが挙げられます(この点については後でも触れます)。 そういう意味では、 tfenv によってバージョン管理するのが良いです。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" title="Terraform ハンズオン with MySQL Provider">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -364,6 +360,8 @@ $ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terrafor
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-task/" class="list-group-item">buildflow の task の設定項目</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" class="list-group-item">buildflow の build, phase, task について</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-1/" class="list-group-item">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</a>
@@ -382,8 +380,6 @@ $ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terrafor
       
       <a href="https://suzuki-shunsuke.github.io/skaffold-generator/" class="list-group-item">Skaffold で特定のサービスだけ動かすためのツールを作った</a>
       
-      <a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/" class="list-group-item">Terraform ハンズオン with MySQL Provider</a>
-      
     </div>
   </section>
 
@@ -393,7 +389,7 @@ $ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terrafor
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (17)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (18)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -407,7 +403,7 @@ $ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terrafor
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (2)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
       
@@ -422,7 +418,7 @@ $ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terrafor
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (2)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

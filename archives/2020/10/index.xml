@@ -6,10 +6,22 @@
     <description>Recent content in 2020/10 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 17 Oct 2020 18:09:19 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2020 18:26:57 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/archives/2020/10/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>buildflow の task の設定項目</title>
+      <link>https://suzuki-shunsuke.github.io/buildflow-task/</link>
+      <pubDate>Sat, 17 Oct 2020 18:26:57 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/buildflow-task/</guid>
+      <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。
+task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。
+ name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。</description>
+    </item>
     
     <item>
       <title>buildflow の build, phase, task について</title>

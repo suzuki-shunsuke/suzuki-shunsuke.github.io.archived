@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/buildflow-task/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>buildflow の build, phase, task について - melody</title>
+    <title>buildflow の task の設定項目 - melody</title>
     
-<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
+<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
 
-<meta property="og:title" content="buildflow の build, phase, task について - melody">
+<meta property="og:title" content="buildflow の task の設定項目 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-task/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
+<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">
-<meta name="twitter:title" content="buildflow の build, phase, task について - melody">
-<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-task/">
+<meta name="twitter:title" content="buildflow の task の設定項目 - melody">
+<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
-    "headline": "buildflow の build, phase, task について - melody",
+    "headline": "buildflow の task の設定項目 - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2020-10-17T18:09:19JST",
-    "dateModified": "2020-10-17T18:09:19JST",
+    "datePublished": "2020-10-17T18:26:57JST",
+    "dateModified": "2020-10-17T18:26:57JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。\nこの記事では buildflow の概念である build, phase, task について書きたいと思います。\nbuildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。\n$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。\n設定ファイルでは phases, tasks をそれぞれ配列で指定します。\n--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。"
+    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。\nこの記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。\ntask には幾つか type がありますが、全ての type に共通するパラメータが以下になります。\n name: task 名。 unique である必要はない。 Go の text\/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。"
   }
 </script>
 
@@ -109,19 +109,19 @@
       <ol class="breadcrumb">
         <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">buildflow の build, phase, task について</li>
+        <li class="active">buildflow の task の設定項目</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:26:57JST">Oct 17, 2020</time></li>
       
       
     </ul>
 
-    <h1 class="title">buildflow の build, phase, task について</h1>
+    <h1 class="title">buildflow の task の設定項目</h1>
     
     
     <section>
@@ -142,54 +142,81 @@
 
   <div class="article-body"><p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうと思います。</p>
 
-<p>この記事では buildflow の概念である build, phase, task について書きたいと思います。</p>
+<p>この記事では buildflow の task の基本的な設定項目などについて説明します。
+数が多いので、個々の設定の詳細はまた別の記事に書きます。</p>
 
-<p>buildflow には Build, Phase, Task という概念があります。
-CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。</p>
+<p>task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。</p>
 
-<pre><code>$ buildflow run
-</code></pre>
+<ul>
+<li>name: task 名。 unique である必要はない。 Go の text/template が使える</li>
+<li>when: task を実行するか否か。 真偽値か Tengo script
 
-<p>で 1 つの build が実行されます。
-build は複数の phase からなり、 phase が 1 つずつ順に実行されます。
-phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。
-task は並列に実行したり、依存関係を定義したりできます。
-task では外部コマンドを実行したりできます。</p>
+<ul>
+<li>when_file で外部ファイルを読み込める</li>
+</ul></li>
+<li>dependency: task の依存関係の定義。 task 名のリストか、 Tengo script</li>
+<li>items: dynamic task の設定。 loop を使って複数の task を動的に生成できる
 
-<p>設定ファイルでは phases, tasks をそれぞれ配列で指定します。</p>
+<ul>
+<li>任意の list か map か、 Tengo script</li>
+</ul></li>
+<li>input: Tengo script で task のコマンドのパラメータを生成できる
 
-<pre><code class="language-yaml">---
-phases:
-- name: setup
-  tasks:
-  - name: hello
-    command:
-      command: echo hello
-  - name: foo
-    command:
-      command: echo foo
-- name: build
-  tasks:
-  - name: hello
-    command:
-      command: echo hello
-  - name: foo
-    command:
-      command: echo foo
-    dependency:
-    - hello
-- name: post build
-  tasks:
-  - name: hello
-    command:
-      command: echo hello
-</code></pre>
+<ul>
+<li>input_file で外部ファイルを読み込める</li>
+</ul></li>
+<li>output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる
 
-<p>上の例では 3 つの phase setup, build, post build が順に実行されます。
-デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</p>
+<ul>
+<li>output_file で外部ファイルを読み込める</li>
+</ul></li>
+<li>meta: ユーザーが自由にパラメータを定義できる map</li>
+</ul>
 
-<p>task も phase 同様配列で指定しますが、配列の順序に意味はありません。
-依存関係がない限り、並列で実行されますし、実行順序は不定です。</p>
+<p>上記の設定は name 以外はオプションです。</p>
+
+<p>task の type としては以下のものがあります。</p>
+
+<ul>
+<li>command: 外部コマンドを実行</li>
+<li>read_file: ファイルを読み込む。ファイルの内容を他の task で参照できる</li>
+<li>write_file: ファイルを書き込む</li>
+</ul>
+
+<p>command の設定</p>
+
+<ul>
+<li>shell, shell_opts: コマンドの実行シェル。デフォルトは <code>/bin/sh -c</code></li>
+<li>command: コマンド。 Go の text/template で処理される
+
+<ul>
+<li>command_file で外部ファイルを読み込める</li>
+</ul></li>
+<li>stdin: コマンドの標準入力。 Go の text/template で処理される
+
+<ul>
+<li>stdin_file で外部ファイルを読み込める</li>
+</ul></li>
+<li>env: 環境変数。環境変数名と値は Go の text/template で処理される</li>
+</ul>
+
+<p>read_file の設定</p>
+
+<ul>
+<li>path: ファイルのパス。Go の text/template で処理される</li>
+<li>format: ファイルのフォーマット。オプション。 json と yaml をサポート。指定するとパースした結果を他の task が参照できる</li>
+</ul>
+
+<p>write_file の設定</p>
+
+<ul>
+<li>path: ファイルのパス。Go の text/template で処理される</li>
+<li>template: ファイルの内容。Go の text/template で処理される
+
+<ul>
+<li>template_file で外部ファイルを読み込める</li>
+</ul></li>
+</ul>
 </div>
 
   <footer class="article-footer">
