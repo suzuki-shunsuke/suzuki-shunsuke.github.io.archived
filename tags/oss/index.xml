@@ -6,10 +6,23 @@
     <description>Recent content in oss on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 17 Oct 2020 18:26:57 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2020 19:44:39 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>buildflow の script や template に渡される parameter</title>
+      <link>https://suzuki-shunsuke.github.io/buildflow-parameter/</link>
+      <pubDate>Sat, 17 Oct 2020 19:44:39 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/buildflow-parameter/</guid>
+      <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。
+buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。
+ PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase
+ Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</description>
+    </item>
     
     <item>
       <title>buildflow の task の設定項目</title>
