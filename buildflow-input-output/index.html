@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/">
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/buildflow-input-output/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>travis ci から circle ci への移行のすすめ - melody</title>
+    <title>buildflow の task の input, output という機能 - melody</title>
     
-<meta name="description" content="travis ci と circle ci の無償SaaS 版を比較しています。OSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。Circle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。自分の場合 Golang のツールの CI用に Docker Image を用意しています。https://hub.docker.com/r/suzukishunsuke/go-ci/">
+<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の task の input, output という機能について説明します。 task の input, output は Tengo script で task のパラメータを整形する機能です。task の command.command や write_file.template など、幾つかの設定では Go の text/template が使えますが、 text/template は複雑なロジックを記述したりするのには向いていません。 そこで task の input で Tengo script を使って必要なデータの整形を行うことで、 template は比較的きれいな状態に保つことが出来ます。これは MVC モデルで View とロジックを分離するみたいな考え方と似ているかもしれません。output ではコマンドの実行結果を整形することが出来ます。 例えばコマンドの標準出力をユニークな文字列のリストにしたり出来ます。task.input は task.when が評価されたあと、 task の command などが実行される前に評価されます。 つまり、 task.when や task.dependency で同じ task の input の結果を参照は出来ません。">
 
-<meta property="og:title" content="travis ci から circle ci への移行のすすめ - melody">
+<meta property="og:title" content="buildflow の task の input, output という機能 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-input-output/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="travis ci と circle ci の無償SaaS 版を比較しています。OSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。Circle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。自分の場合 Golang のツールの CI用に Docker Image を用意しています。https://hub.docker.com/r/suzukishunsuke/go-ci/">
+<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の task の input, output という機能について説明します。 task の input, output は Tengo script で task のパラメータを整形する機能です。task の command.command や write_file.template など、幾つかの設定では Go の text/template が使えますが、 text/template は複雑なロジックを記述したりするのには向いていません。 そこで task の input で Tengo script を使って必要なデータの整形を行うことで、 template は比較的きれいな状態に保つことが出来ます。これは MVC モデルで View とロジックを分離するみたいな考え方と似ているかもしれません。output ではコマンドの実行結果を整形することが出来ます。 例えばコマンドの標準出力をユニークな文字列のリストにしたり出来ます。task.input は task.when が評価されたあと、 task の command などが実行される前に評価されます。 つまり、 task.when や task.dependency で同じ task の input の結果を参照は出来ません。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/">
-<meta name="twitter:title" content="travis ci から circle ci への移行のすすめ - melody">
-<meta name="twitter:description" content="travis ci と circle ci の無償SaaS 版を比較しています。OSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。Circle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。自分の場合 Golang のツールの CI用に Docker Image を用意しています。https://hub.docker.com/r/suzukishunsuke/go-ci/">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-input-output/">
+<meta name="twitter:title" content="buildflow の task の input, output という機能 - melody">
+<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の task の input, output という機能について説明します。 task の input, output は Tengo script で task のパラメータを整形する機能です。task の command.command や write_file.template など、幾つかの設定では Go の text/template が使えますが、 text/template は複雑なロジックを記述したりするのには向いていません。 そこで task の input で Tengo script を使って必要なデータの整形を行うことで、 template は比較的きれいな状態に保つことが出来ます。これは MVC モデルで View とロジックを分離するみたいな考え方と似ているかもしれません。output ではコマンドの実行結果を整形することが出来ます。 例えばコマンドの標準出力をユニークな文字列のリストにしたり出来ます。task.input は task.when が評価されたあと、 task の command などが実行される前に評価されます。 つまり、 task.when や task.dependency で同じ task の input の結果を参照は出来ません。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
-    "headline": "travis ci から circle ci への移行のすすめ - melody",
+    "headline": "buildflow の task の input, output という機能 - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2018-10-01T07:23:15JST",
-    "dateModified": "2018-10-01T07:23:15JST",
+    "datePublished": "2020-10-17T21:05:41JST",
+    "dateModified": "2020-10-17T21:05:41JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "travis ci と circle ci の無償SaaS 版を比較しています。\nOSS の CI では travis ci がよく使われる印象がありますが、 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、 travis でやったほうが速いかもしれません。\nCircle CI の良いところ  好きな Docker Image が使える ローカルでテストが出来る Pending 時間が travis ci に比べて短い気がする(主観) private repository の CI も出来る  好きな Docker Image が使えるのが大きいですね。 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。\n自分の場合 Golang のツールの CI用に Docker Image を用意しています。\nhttps:\/\/hub.docker.com\/r\/suzukishunsuke\/go-ci\/"
+    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。\nこの記事では buildflow の task の input, output という機能について説明します。 task の input, output は Tengo script で task のパラメータを整形する機能です。\ntask の command.command や write_file.template など、幾つかの設定では Go の text\/template が使えますが、 text\/template は複雑なロジックを記述したりするのには向いていません。 そこで task の input で Tengo script を使って必要なデータの整形を行うことで、 template は比較的きれいな状態に保つことが出来ます。\nこれは MVC モデルで View とロジックを分離するみたいな考え方と似ているかもしれません。\noutput ではコマンドの実行結果を整形することが出来ます。 例えばコマンドの標準出力をユニークな文字列のリストにしたり出来ます。\ntask.input は task.when が評価されたあと、 task の command などが実行される前に評価されます。 つまり、 task.when や task.dependency で同じ task の input の結果を参照は出来ません。"
   }
 </script>
 
@@ -109,28 +109,28 @@
       <ol class="breadcrumb">
         <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">travis ci から circle ci への移行のすすめ</li>
+        <li class="active">buildflow の task の input, output という機能</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-01T07:23:15JST">Oct 1, 2018</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:05:41JST">Oct 17, 2020</time></li>
       
       
     </ul>
 
-    <h1 class="title">travis ci から circle ci への移行のすすめ</h1>
+    <h1 class="title">buildflow の task の input, output という機能</h1>
     
     
     <section>
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/circleci/">circleci</a></li>
+          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/travisci/">travisci</a></li>
+          <li><a href="https://suzuki-shunsuke.github.io/tags/buildflow/">buildflow</a></li>
           
         </ul>
       </div>
@@ -140,32 +140,22 @@
 
   
 
-  <div class="article-body">
+  <div class="article-body"><p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書きます。</p>
 
-<p>travis ci と circle ci の無償SaaS 版を比較しています。</p>
+<p>この記事では buildflow の task の input, output という機能について説明します。
+task の input, output は Tengo script で task のパラメータを整形する機能です。</p>
 
-<p>OSS の CI では travis ci がよく使われる印象がありますが、
-場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。
-ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、
-travis でやったほうが速いかもしれません。</p>
+<p>task の command.command や write_file.template など、幾つかの設定では Go の text/template が使えますが、 text/template は複雑なロジックを記述したりするのには向いていません。
+そこで task の input で Tengo script を使って必要なデータの整形を行うことで、
+template は比較的きれいな状態に保つことが出来ます。</p>
 
-<h2 id="circle-ci-の良いところ">Circle CI の良いところ</h2>
+<p>これは MVC モデルで View とロジックを分離するみたいな考え方と似ているかもしれません。</p>
 
-<ul>
-<li>好きな Docker Image が使える</li>
-<li>ローカルでテストが出来る</li>
-<li>Pending 時間が travis ci に比べて短い気がする(主観)</li>
-<li>private repository の CI も出来る</li>
-</ul>
+<p>output ではコマンドの実行結果を整形することが出来ます。
+例えばコマンドの標準出力をユニークな文字列のリストにしたり出来ます。</p>
 
-<p>好きな Docker Image が使えるのが大きいですね。
-予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、
-ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。
-同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。</p>
-
-<p>自分の場合 Golang のツールの CI用に Docker Image を用意しています。</p>
-
-<p><a href="https://hub.docker.com/r/suzukishunsuke/go-ci/">https://hub.docker.com/r/suzukishunsuke/go-ci/</a></p>
+<p>task.input は task.when が評価されたあと、 task の command などが実行される前に評価されます。
+つまり、 task.when や task.dependency で同じ task の input の結果を参照は出来ません。</p>
 </div>
 
   <footer class="article-footer">
@@ -178,9 +168,9 @@ travis でやったほうが速いかもしれません。</p>
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/circleci/">circleci</a></li>
+          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/travisci/">travisci</a></li>
+          <li><a href="https://suzuki-shunsuke.github.io/tags/buildflow/">buildflow</a></li>
           
         </ul>
       </div>
