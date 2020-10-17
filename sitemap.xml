@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2020/10/</loc>
+    <lastmod>2020-10-17T16:06:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/</loc>
+    <lastmod>2020-10-17T16:06:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/buildflow/</loc>
+    <lastmod>2020-10-17T16:06:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/buildflow-1/</loc>
+    <lastmod>2020-10-17T16:06:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/</loc>
+    <lastmod>2020-10-17T16:06:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
+    <lastmod>2020-10-17T16:06:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
+    <lastmod>2020-10-17T16:06:31+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/archives/2020/09/</loc>
     <lastmod>2020-09-12T08:05:59+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://suzuki-shunsuke.github.io/archives/</loc>
-    <lastmod>2020-09-12T08:05:59+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suzuki-shunsuke.github.io/tags/github-comment/</loc>
-    <lastmod>2020-09-12T08:05:59+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2020-09-12T08:05:59+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
     <lastmod>2020-09-12T08:05:59+09:00</lastmod>
   </url>
   
@@ -79,11 +99,6 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/github-comment/</loc>
-    <lastmod>2020-07-31T20:42:54+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
     <lastmod>2020-07-31T20:42:54+09:00</lastmod>
   </url>
   
