@@ -58,6 +58,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-16T09:25:05JST">Jan 16, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-getting-started/">Terraform 入門</a></h2>
+  </header>
+
+  
+  <div class="summary">参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。
+前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。
+Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraform
+Terraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。
+https://www.terraform.io/downloads.html
+tfenv を使うと管理が楽です。
+https://github.com/tfutils/tfenv
+tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/terraform-getting-started/" title="Terraform 入門">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-10T16:18:05JST">Jan 10, 2020</time></li>
       
       
@@ -296,28 +324,6 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-21T18:13:53JST">Jul 21, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a></h2>
-  </header>
-
-  
-  <div class="summary">The Top 10 Most Common Mistakes I’ve Seen in Go Projects という記事を読んで面白かったのでメモります。 翻訳ではないです。メモなので、原文を読んでください。
- Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う Errors Management Slice Initialization Context Management Not Using the -race Option: go test コマンドでは -race オプションをつけよう Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" title="The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -348,6 +354,8 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-goal/" class="list-group-item">なぜ buildflow を作ったのか</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-result-output/" class="list-group-item">buildflow の実行結果の出力形式</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
@@ -366,8 +374,6 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" class="list-group-item">buildflow の build, phase, task について</a>
       
-      <a href="https://suzuki-shunsuke.github.io/buildflow-tengo/" class="list-group-item">buildflow での Tengo の使い方</a>
-      
     </div>
   </section>
 
@@ -377,11 +383,11 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (26)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (27)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (11)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -406,7 +412,7 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (11)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (12)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       

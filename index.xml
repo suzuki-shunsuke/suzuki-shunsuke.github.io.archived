@@ -6,10 +6,24 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 18 Oct 2020 08:36:09 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2020 09:53:08 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>なぜ buildflow を作ったのか</title>
+      <link>https://suzuki-shunsuke.github.io/buildflow-goal/</link>
+      <pubDate>Sun, 18 Oct 2020 09:53:08 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/buildflow-goal/</guid>
+      <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では なぜ buildflow を作ったのかについて説明します。 開発者である自分の好みや置かれた環境などが所々に反映された内容になっています。
+解決したい課題 自分は CI/CD の DX の改善に業務として取り組んでいます。 リポジトリはたくさんあり、横断的にメンテナンスしています。 幾つかのリポジトリはモノレポになっており、 CI の複雑さが増していたり、 CI の実行時間が長かったりします。
+現在の CI/CD には以下のような問題があると感じています(他にもあるんですが、 buildflow と関係ないので割愛)。
+ 実行時間が長い  PR とは関係ない処理(test, build, etc) が実行されている  金銭的に高い  実行時間が長いので無駄にお金がかかっている CI サービスによっては並列度を上げることで実行時間が縮む場合があるが、それでもその分お金がかかる  PR とは直接関係ないところで失敗する  PR とは関係ない処理(test, build, etc) が実行されていて、それらが flaky で失敗する  メンテナンス性が悪い  属人化気味 何をやっているのか分かりにくい  同じような機能を複数のリポジトリで実装・メンテしたくない  これらの問題を解決するために buildflow を開発しました。
+buildflow で必要な処理だけを実行する buildflow では PR の情報を自動で取得し、それらに応じて実行する処理を変更できます。 変更されたファイルに応じてだけでなく、 label や PR の author などでも変更できます。 Tengo script を用いて柔軟なロジックを実装できます。 JSON や YAML の読み込みもサポートしているので、依存関係などの設定を別ファイルで管理することも出来ます。</description>
+    </item>
     
     <item>
       <title>buildflow の実行結果の出力形式</title>

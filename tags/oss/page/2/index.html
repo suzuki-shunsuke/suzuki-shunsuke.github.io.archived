@@ -62,6 +62,28 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-tengo/">buildflow での Tengo の使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
+この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。
+https://github.com/d5/tengo
+buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。
+result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
+--- phases: - name: main tasks: - name: hello input: | result := { foo: &quot;bar&quot; } command: command: 'echo &quot;{{.Task.Input.foo}}&quot;' when: &quot;result := true&quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T16:06:31JST">Oct 17, 2020</time></li>
       
       
@@ -322,33 +344,6 @@ https://docs.drone.io/user-guide/pipeline/migrating/
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-jsoneq/">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a></h2>
-  </header>
-
-  
-  <div class="summary">https://github.com/suzuki-shunsuke/go-jsoneq
-2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。
-「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。
-struct { Foo string `json:&quot;foo&quot;` }{ Foo: &quot;bar&quot;, }  と
-map[string]interface{}{&quot;foo&quot;: &quot;bar&quot;}  を JSON に変換したらともに
-{&quot;foo&quot;: &quot;bar&quot;}  になりますね。
-json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。
-jsoneq.Equal でやっていることは単純です。
- json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。
-GoDoc やサンプルを見れば使い方は簡単にわかると思います。
-以上、簡単ですが、自作ライブラリの紹介でした。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -379,6 +374,8 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/buildflow-goal/" class="list-group-item">なぜ buildflow を作ったのか</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-result-output/" class="list-group-item">buildflow の実行結果の出力形式</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
@@ -397,8 +394,6 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" class="list-group-item">buildflow の build, phase, task について</a>
       
-      <a href="https://suzuki-shunsuke.github.io/buildflow-tengo/" class="list-group-item">buildflow での Tengo の使い方</a>
-      
     </div>
   </section>
 
@@ -408,11 +403,11 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (26)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (27)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (11)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
       
@@ -437,7 +432,7 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (11)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (12)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
