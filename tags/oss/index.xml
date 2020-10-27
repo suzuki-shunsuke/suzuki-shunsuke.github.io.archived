@@ -6,10 +6,29 @@
     <description>Recent content in oss on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 18 Oct 2020 09:53:08 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2020 19:39:44 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</title>
+      <link>https://suzuki-shunsuke.github.io/matchfile/</link>
+      <pubDate>Tue, 27 Oct 2020 19:39:44 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/matchfile/</guid>
+      <description>自作の CLI ツール matchfile について紹介します。
+https://github.com/suzuki-shunsuke/matchfile
+変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。
+Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。
+そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。
+ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。
+matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。
+PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。
+タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。
+matchfile の使い方としては
+$ matchfile run &amp;lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&amp;gt; &amp;lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&amp;gt;  で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。</description>
+    </item>
     
     <item>
       <title>なぜ buildflow を作ったのか</title>

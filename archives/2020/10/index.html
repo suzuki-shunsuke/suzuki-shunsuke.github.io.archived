@@ -62,6 +62,37 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-27T19:39:44JST">Oct 27, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/matchfile/">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a></h2>
+  </header>
+
+  
+  <div class="summary">自作の CLI ツール matchfile について紹介します。
+https://github.com/suzuki-shunsuke/matchfile
+変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。
+Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。
+そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。
+ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。
+matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。
+PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。
+タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。
+matchfile の使い方としては
+$ matchfile run &lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&gt; &lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&gt;  で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/matchfile/" title="matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T09:53:08JST">Oct 18, 2020</time></li>
       
       
@@ -288,32 +319,6 @@ task には幾つか type がありますが、全ての type に共通するパ
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
-この記事では buildflow の概念である build, phase, task について書きたいと思います。
-buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
-$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
-設定ファイルでは phases, tasks をそれぞれ配列で指定します。
---- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" title="buildflow の build, phase, task について">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -344,6 +349,8 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/matchfile/" class="list-group-item">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a>
+      
       <a href="https://suzuki-shunsuke.github.io/buildflow-goal/" class="list-group-item">なぜ buildflow を作ったのか</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-result-output/" class="list-group-item">buildflow の実行結果の出力形式</a>
@@ -362,8 +369,6 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-task/" class="list-group-item">buildflow の task の設定項目</a>
       
-      <a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/" class="list-group-item">buildflow の build, phase, task について</a>
-      
     </div>
   </section>
 
@@ -373,7 +378,7 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (27)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (28)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -402,7 +407,7 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (12)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
