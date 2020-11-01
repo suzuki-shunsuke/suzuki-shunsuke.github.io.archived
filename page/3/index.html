@@ -58,6 +58,32 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-05T18:53:25JST">Apr 5, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/skaffold-generator/">Skaffold で特定のサービスだけ動かすためのツールを作った</a></h2>
+  </header>
+
+  
+  <div class="summary">自作の CLI ツール skaffold-generator の紹介です。 プロトタイピングみたいなノリで半日くらいで割と手早く作れました。 名前が長くて適当なのでもっと良い名前ないかなと思ってます。
+Skaffold に欲しい機能がないので補完する感じで作ったのですが、「それ〇〇で出来るよ」とかあったら(GitHub issue とか Twitter で)教えていただけると幸いです。
+どんなツールか 設定ファイル skaffold-generator.yaml を監視して変更があったら skaffold.yaml を生成するツールです。設定ファイルでサービスの依存関係を定義できたり、コマンドライン引数で指定したサービス及びそれが依存するサービスに関連した設定だけを使って skaffold.yaml を更新します。 このツールは skaffold.yaml を生成するだけなので実際にアプリケーションをビルド・デプロイするには skaffold と組み合わせて使います。
+なぜ作ったか 元々ローカルでアプリケーションを動かしながら開発するために Docker Compose を使ってるリポジトリがあるのですが、それを skaffold に移行出来ないか検証しています。 まだ skaffold を触り始めたばかりで理解が浅いのですが、 本番環境は k8s で動いてるからローカルも k8s で動かせるといいかなと思ったり、あとは変更を検知して自動でビルド・デプロイしてくれたりして便利そうかなと思いました。 まぁ結果的に移行しないことになったとしても、 Skaffold と現状の仕組みについて理解が深まればいいかなくらいのつもりです。
+検証の過程で、 以下のようなことが Docker Compose だと出来るけど Skaffold だと難しそうだと思いました。
+ サービスの依存関係を定義すること  Skaffold というより k8s の問題かとは思いますが Docker Compose だと依存するものを自動で起動してくれて便利  コマンドライン引数で指定したサービスだけ起動すること  Skaffold だと skafffold.yaml で定義したものすべてがビルド・デプロイされるという認識   サービスの数が少なければ全部ビルド・デプロイでもいいですが、 マイクロサービスをモノレポで管理しているような場合、 すべてのマイクロサービスをビルド・デプロイするのは無駄が大きかったりします。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/skaffold-generator/" title="Skaffold で特定のサービスだけ動かすためのツールを作った">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-17T09:14:08JST">Jan 17, 2020</time></li>
       
       
@@ -301,28 +327,6 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-14T20:28:56JST">Aug 14, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-time/">Golang での時刻の扱い方を整理する</a></h2>
-  </header>
-
-  
-  <div class="summary">今更ながら Golang での時刻の扱い方について改めて整理してみました。
-まとめ  time.Local は明示的に設定する(基本UTC) DB などには 基本UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/golang-time/" title="Golang での時刻の扱い方を整理する">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -353,6 +357,8 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/github-ci-monitor/" class="list-group-item">github-ci-monitor: CI のステータスを DataDog で監視</a>
+      
       <a href="https://suzuki-shunsuke.github.io/matchfile/" class="list-group-item">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-goal/" class="list-group-item">なぜ buildflow を作ったのか</a>
@@ -371,8 +377,6 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-parameter/" class="list-group-item">buildflow の script や template に渡される parameter</a>
       
-      <a href="https://suzuki-shunsuke.github.io/buildflow-task/" class="list-group-item">buildflow の task の設定項目</a>
-      
     </div>
   </section>
 
@@ -382,7 +386,7 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (28)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (29)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -411,6 +415,8 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (1)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
@@ -428,8 +434,6 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/07" class="list-group-item">2019/07 (2)</a>
       
     </div>
   </section>

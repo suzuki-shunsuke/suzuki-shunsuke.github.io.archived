@@ -6,10 +6,26 @@
     <description>Recent content in oss on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Tue, 27 Oct 2020 19:39:44 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2020 17:51:44 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>github-ci-monitor: CI のステータスを DataDog で監視</title>
+      <link>https://suzuki-shunsuke.github.io/github-ci-monitor/</link>
+      <pubDate>Sun, 01 Nov 2020 17:51:44 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/github-ci-monitor/</guid>
+      <description>自作の OSS github-ci-monitor の紹介です。
+GitHub リポジトリの CI のステータスを定期的に取得し、 DataDog に送ることで、 CI のステータスを監視するツールです。 現状は AWS Lambda で動かすことを想定していますが、他の方法でも動かせるようにするつもりです。
+Motivation モチベーションは、 PR をマージしたあとに CI がこけた場合に通知が欲しいというものです。 マージしたあとに CI が一瞬で終わるなら無事終わるのを見届けてもいいんですが、 数分かかると待ってるのも時間がもったいないです。 しばらくしたあとに結果を確認すればいいんですが、それも面倒くさいですし、普通に忘れます。 そうするとデプロイしたつもりが実は CI がこけてたなんてことが普通にあります。
+そういうことにすぐ気づけるよう、 Slack に通知がほしいと思っていました。
+仕組み 仕組みは単純です。
+GitHub API で各リポジトリのステータスを取得し、 DataDog API でステータスを送信しています。 DataDog API は Service Check API を使っています。 status は以下のようになります。
+ 0: 正常 1: 異常 3: ステータスの取得に失敗  また以下の tag が付きます。
+ owner: リポジトリのオーナー repo: リポジトリ名 ref: ブランチ名  各リポジトリのステータスは現状 3 つをサポートしています。</description>
+    </item>
     
     <item>
       <title>matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</title>
