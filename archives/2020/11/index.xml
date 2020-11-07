@@ -6,10 +6,20 @@
     <description>Recent content in 2020/11 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 01 Nov 2020 17:51:44 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2020 14:43:10 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/archives/2020/11/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Splitting .circleci/config.yml</title>
+      <link>https://suzuki-shunsuke.github.io/splitting-circleci-config/</link>
+      <pubDate>Sat, 07 Nov 2020 14:43:10 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/splitting-circleci-config/</guid>
+      <description>In this post I introduce how to split a huge .circleci/config.yml.
+CircleCI doesn&amp;rsquo;t support to split .circleci/config.yml, so we manage all workflows and jobs configuration into one file .circleci/config.yml. If the repository is Monorepo, the more the number of services increases, the more the size of .circleci/config.yml becomes large and it&amp;rsquo;s hard to maintain .circleci/config.yml. By splitting .circleci/config.yml per service, it makes easy to maintain .circleci/config.yml and we can configure split file&amp;rsquo;s CODEOWNERS.</description>
+    </item>
     
     <item>
       <title>github-ci-monitor: CI のステータスを DataDog で監視</title>

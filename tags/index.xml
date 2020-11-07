@@ -6,15 +6,24 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 01 Nov 2020 17:51:44 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2020 14:43:10 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>circleci</title>
+      <link>https://suzuki-shunsuke.github.io/tags/circleci/</link>
+      <pubDate>Sat, 07 Nov 2020 14:43:10 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/tags/circleci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>oss</title>
       <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
-      <pubDate>Sun, 01 Nov 2020 17:51:44 +0900</pubDate>
+      <pubDate>Sat, 07 Nov 2020 14:43:10 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/oss/</guid>
       <description></description>
@@ -89,15 +98,6 @@
       <pubDate>Sun, 02 Aug 2020 13:21:37 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/tags/job/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>circleci</title>
-      <link>https://suzuki-shunsuke.github.io/tags/circleci/</link>
-      <pubDate>Sat, 23 May 2020 14:20:53 +0900</pubDate>
-      
-      <guid>https://suzuki-shunsuke.github.io/tags/circleci/</guid>
       <description></description>
     </item>
     

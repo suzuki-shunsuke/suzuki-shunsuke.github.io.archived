@@ -58,6 +58,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-parameter/">buildflow の script や template に渡される parameter</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。
+buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。
+ PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase
+ Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/buildflow-parameter/" title="buildflow の script や template に渡される parameter">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:26:57JST">Oct 17, 2020</time></li>
       
       
@@ -298,34 +323,6 @@ https://circleci.com/docs/2.0/configuration-reference/#run
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-24T16:53:01JST">Apr 24, 2020</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/">CircleCI の checkout の注意点</a></h2>
-  </header>
-
-  
-  <div class="summary">CircleCI の組み込みの command checkout の注意点について書きます。
-なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。
-また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。
-最初に結論 先に結論を書くと
- CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &lt;デフォルトブランチ&gt; origin/&lt;デフォルトブランチ&gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
-サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96
-ここでは checkout の全てについては触れません。一部抜粋します。
-elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&quot; git checkout -q -B &quot;$CIRCLE_BRANCH&quot; fi  git reset --hard などをしています。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/" title="CircleCI の checkout の注意点">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -356,6 +353,8 @@ elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/splitting-circleci-config/" class="list-group-item">Splitting .circleci/config.yml</a>
+      
       <a href="https://suzuki-shunsuke.github.io/github-ci-monitor/" class="list-group-item">github-ci-monitor: CI のステータスを DataDog で監視</a>
       
       <a href="https://suzuki-shunsuke.github.io/matchfile/" class="list-group-item">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a>
@@ -374,8 +373,6 @@ elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-split-files/" class="list-group-item">buildflow で設定ファイルを分割する</a>
       
-      <a href="https://suzuki-shunsuke.github.io/buildflow-parameter/" class="list-group-item">buildflow の script や template に渡される parameter</a>
-      
     </div>
   </section>
 
@@ -385,7 +382,7 @@ elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (29)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (30)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -395,9 +392,9 @@ elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&
       
       <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (4)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
@@ -414,7 +411,7 @@ elif [ -n &quot;$CIRCLE_BRANCH&quot; ] then git reset --hard &quot;$CIRCLE_SHA1&
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
