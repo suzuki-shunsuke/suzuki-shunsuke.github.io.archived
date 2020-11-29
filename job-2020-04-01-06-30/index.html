@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/go-jsoneq/">
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ - melody</title>
+    <title>仕事でやったこと 2020-04-01 ~ 2020-06-30 - melody</title>
     
-<meta name="description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;quot;foo&amp;quot;` }{ Foo: &amp;quot;bar&amp;quot;, }  とmap[string]interface{}{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  を JSON に変換したらともに{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
+<meta name="description" content="2020-04-01 から 2020-06-30 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Monorepo  CI で kustomize build の diff を PR にコメント Conftest で k8s manifest の validation の導入 Go で書かれた差分検知のコードのリファクタリング CI の高速化・コスト削減  GitOps  GitOps を導入するためのツールの開発のサポート  Terraform  input variables を local value に置き換え  GuardDuty の導入  Terraform で IaC False Positive なアラートが多くてハンドリングできてない  ブログの執筆  CI の修正をリリース前に本番と同じ条件下で検証出来る仕組みを構築した話  Argo Workflows の検証 MongoDB Atlas への移行サポート  Go で Restore Job の開発 オペレーション   ">
 
-<meta property="og:title" content="go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ - melody">
+<meta property="og:title" content="仕事でやったこと 2020-04-01 ~ 2020-06-30 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/go-jsoneq/">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;quot;foo&amp;quot;` }{ Foo: &amp;quot;bar&amp;quot;, }  とmap[string]interface{}{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  を JSON に変換したらともに{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
+<meta property="og:description" content="2020-04-01 から 2020-06-30 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Monorepo  CI で kustomize build の diff を PR にコメント Conftest で k8s manifest の validation の導入 Go で書かれた差分検知のコードのリファクタリング CI の高速化・コスト削減  GitOps  GitOps を導入するためのツールの開発のサポート  Terraform  input variables を local value に置き換え  GuardDuty の導入  Terraform で IaC False Positive なアラートが多くてハンドリングできてない  ブログの執筆  CI の修正をリリース前に本番と同じ条件下で検証出来る仕組みを構築した話  Argo Workflows の検証 MongoDB Atlas への移行サポート  Go で Restore Job の開発 オペレーション   ">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/go-jsoneq/">
-<meta name="twitter:title" content="go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ - melody">
-<meta name="twitter:description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;quot;foo&amp;quot;` }{ Foo: &amp;quot;bar&amp;quot;, }  とmap[string]interface{}{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  を JSON に変換したらともに{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/">
+<meta name="twitter:title" content="仕事でやったこと 2020-04-01 ~ 2020-06-30 - melody">
+<meta name="twitter:description" content="2020-04-01 から 2020-06-30 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Monorepo  CI で kustomize build の diff を PR にコメント Conftest で k8s manifest の validation の導入 Go で書かれた差分検知のコードのリファクタリング CI の高速化・コスト削減  GitOps  GitOps を導入するためのツールの開発のサポート  Terraform  input variables を local value に置き換え  GuardDuty の導入  Terraform で IaC False Positive なアラートが多くてハンドリングできてない  ブログの執筆  CI の修正をリリース前に本番と同じ条件下で検証出来る仕組みを構築した話  Argo Workflows の検証 MongoDB Atlas への移行サポート  Go で Restore Job の開発 オペレーション   ">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
-    "headline": "go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ - melody",
+    "headline": "仕事でやったこと 2020-04-01 ~ 2020-06-30 - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2019-05-23T11:43:18JST",
-    "dateModified": "2019-05-23T11:43:18JST",
+    "datePublished": "2020-11-29T11:20:07JST",
+    "dateModified": "2020-11-29T11:20:07JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "https:\/\/github.com\/suzuki-shunsuke\/go-jsoneq\n2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。\n「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。\nstruct { Foo string `json:\x26quot;foo\x26quot;` }{ Foo: \x26quot;bar\x26quot;, }  と\nmap[string]interface{}{\x26quot;foo\x26quot;: \x26quot;bar\x26quot;}  を JSON に変換したらともに\n{\x26quot;foo\x26quot;: \x26quot;bar\x26quot;}  になりますね。\njson.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。\njsoneq.Equal でやっていることは単純です。\n json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。\nGoDoc やサンプルを見れば使い方は簡単にわかると思います。\n以上、簡単ですが、自作ライブラリの紹介でした。"
+    "description": "2020-04-01 から 2020-06-30 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。\n Monorepo  CI で kustomize build の diff を PR にコメント Conftest で k8s manifest の validation の導入 Go で書かれた差分検知のコードのリファクタリング CI の高速化・コスト削減  GitOps  GitOps を導入するためのツールの開発のサポート  Terraform  input variables を local value に置き換え  GuardDuty の導入  Terraform で IaC False Positive なアラートが多くてハンドリングできてない  ブログの執筆  CI の修正をリリース前に本番と同じ条件下で検証出来る仕組みを構築した話  Argo Workflows の検証 MongoDB Atlas への移行サポート  Go で Restore Job の開発 オペレーション   "
   }
 </script>
 
@@ -109,93 +109,70 @@
       <ol class="breadcrumb">
         <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</li>
+        <li class="active">仕事でやったこと 2020-04-01 ~ 2020-06-30</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-29T11:20:07JST">Nov 29, 2020</time></li>
       
       
     </ul>
 
-    <h1 class="title">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</h1>
+    <h1 class="title">仕事でやったこと 2020-04-01 ~ 2020-06-30</h1>
     
-    
-    <section>
-      <div>
-        <ul class="p-terms">
-          
-          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
-          
-        </ul>
-      </div>
-    </section>
     
   </header>
 
   
 
-  <div class="article-body"><p><a href="https://github.com/suzuki-shunsuke/go-jsoneq">https://github.com/suzuki-shunsuke/go-jsoneq</a></p>
+  <div class="article-body"><p>2020-04-01 から 2020-06-30 にかけて仕事でやったことを書きます。
+勿論全部は書けないのでいくつかピックアップして書きます。</p>
 
-<p>2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。</p>
+<ul>
+<li>Monorepo
 
-<p>「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。</p>
+<ul>
+<li>CI で <code>kustomize build</code> の diff を PR にコメント</li>
+<li>Conftest で k8s manifest の validation の導入</li>
+<li>Go で書かれた差分検知のコードのリファクタリング</li>
+<li>CI の高速化・コスト削減</li>
+</ul></li>
+<li>GitOps
 
-<pre><code class="language-go">struct {
-	Foo string `json:&quot;foo&quot;`
-}{
-	Foo: &quot;bar&quot;,
-}
-</code></pre>
+<ul>
+<li>GitOps を導入するためのツールの開発のサポート</li>
+</ul></li>
+<li>Terraform
 
-<p>と</p>
+<ul>
+<li>input variables を local value に置き換え</li>
+</ul></li>
+<li>GuardDuty の導入
 
-<pre><code class="language-go">map[string]interface{}{&quot;foo&quot;: &quot;bar&quot;}
-</code></pre>
+<ul>
+<li>Terraform で IaC</li>
+<li>False Positive なアラートが多くてハンドリングできてない</li>
+</ul></li>
+<li>ブログの執筆
 
-<p>を JSON に変換したらともに</p>
+<ul>
+<li><a href="https://quipper.hatenablog.com/entry/2020/04/06/080000">CI の修正をリリース前に本番と同じ条件下で検証出来る仕組みを構築した話</a></li>
+</ul></li>
+<li>Argo Workflows の検証</li>
+<li>MongoDB Atlas への移行サポート
 
-<pre><code class="language-json">{&quot;foo&quot;: &quot;bar&quot;}
-</code></pre>
-
-<p>になりますね。</p>
-
-<p>json.Marshaler のテストや、
-実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。</p>
-
-<p>jsoneq.Equal でやっていることは単純です。</p>
-
-<ol>
-<li>json.Marshal で []byte に変換</li>
-<li>json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換</li>
-<li>reflect.DeepEqual で比較</li>
-</ol>
-
-<p>引数が []byte の場合は 1 は飛ばします。</p>
-
-<p>GoDoc やサンプルを見れば使い方は簡単にわかると思います。</p>
-
-<p>以上、簡単ですが、自作ライブラリの紹介でした。</p>
+<ul>
+<li>Go で Restore Job の開発</li>
+<li>オペレーション</li>
+</ul></li>
+</ul>
 </div>
 
   <footer class="article-footer">
     
-    
-    <section class="bordered">
-      <header>
-        <div class="panel-title">TAGS</div>
-      </header>
-      <div>
-        <ul class="p-terms">
-          
-          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
-          
-        </ul>
-      </div>
-    </section>
     
   </footer>
 

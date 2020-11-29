@@ -58,6 +58,33 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-01T08:34:10JST">Jun 1, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a></h2>
+  </header>
+
+  
+  <div class="summary">久しぶりに Drone plugin を作ったので紹介します。
+https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
+.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。
+Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
+https://docs.drone.io/user-guide/pipeline/migrating/
+ To simplify your configuration we recommend using jsonnet.
+ $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/" title=".drone.jsonnet と .drone.yml を比較する Drone plugin を作った">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
       
       
@@ -302,37 +329,6 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-20T12:27:26JST">Jan 20, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/downgrade-github-plan/">GithubをFree Planにダウングレードした</a></h2>
-  </header>
-
-  
-  <div class="summary">GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。
-https://github.blog/2019-01-07-new-year-new-github/
-そこで無料プランにダウングレードすることにしました。
- https://help.github.com/articles/downgrading-your-github-billing-plan/ https://blog.jnito.com/entry/2019/01/09/081913  無料プランではwikiはpublic repositoryでしか使えないので、 private repository の wiki を 移行することにしました。
-private なソースコード(サービス)のためのwikiではなく、 個人的なメモが書いてあるだけだったので移行することに特に問題はありませんでした。
-全 private repository の wiki を clone そこでまずはそういった wiki を clone して一つのリポジトリにまとめることにしました。
-https://github.com/suzuki-shunsuke/foo の wiki は https://github.com/suzuki-shunsuke/foo.wiki で clone できます。
-次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。
-https://developer.github.com/v3/repos/#list-your-repositories
-curl &quot;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&quot; | jq -r '.[].html_url' | xargs -I{} -n 1 git clone {}.wiki  wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。
-また /user/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/downgrade-github-plan/" title="GithubをFree Planにダウングレードした">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -363,6 +359,8 @@ curl &quot;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visi
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
+      
       <a href="https://suzuki-shunsuke.github.io/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
       <a href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
@@ -380,8 +378,6 @@ curl &quot;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visi
       <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
       
     </div>
   </section>

@@ -58,6 +58,36 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-31T20:42:54JST">Jul 31, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/github-comment/">github-comment - GitHub にコメントを投稿する CLI</a></h2>
+  </header>
+
+  
+  <div class="summary">GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。
+https://github.com/suzuki-shunsuke/github-comment
+このブログの執筆時点で最新は v1.5.0 です。
+Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。
+想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。
+github-comment には
+ init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。
+コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。
+$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。
+$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/github-comment/" title="github-comment - GitHub にコメントを投稿する CLI">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-06T16:52:58JST">Jul 6, 2020</time></li>
       
       
@@ -307,34 +337,6 @@ $ dd-time -t command:docker-build -- docker build .  Datadog の API key を環�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-04T10:00:21JST">Nov 4, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-timeout/">go-timeout - command の timeout</a></h2>
-  </header>
-
-  
-  <div class="summary">作ったのは 2ヶ月くらい前の話ですが、 Go の command の timeout を実装するためのライブラリを作ったので紹介します。
-https://github.com/suzuki-shunsuke/go-timeout
-基本的には https://github.com/Songmu/timeout をオススメしますが、これだと上手くいかないパターンがあったので自作しました。
-Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon2019-spring/#24 がとても参考になります。
-上記のスライドでは
- 標準ライブラリの exec.CommandContext でも停止できるが、 SIGKILL で強制的に停止することになる  子プロセスが停止しない  公式見解 では、SIGKILL 以外は標準ライブラリではサポートしない。サードパーティでやればよい Songmu/timeout 使えば SIGKILL 以外でより安全に停止できる  ということが丁寧に説明されています。
-自分は cmdx という task runner を開発していてその中で task の実行時に timeout を設定出来るようにしました。 当初 Songmu/timeout を使って実装したのですが、問題があることに気づきました。 それは、 command の中で fzf を使うと、上手く動かないというものでした。
- https://github.com/suzuki-shunsuke/cmdx/issues/52 https://twitter.com/szkdash/status/1165529415238815745  正直この辺の挙動はちゃんと理解できていないのですが、 調べてみると Songmu/timeout だと syscall.SysProcAttr の Setpgid を true に設定していて、そうすると fzf が上手く動かないようでした。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/go-timeout/" title="go-timeout - command の timeout">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -365,6 +367,8 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
+      
       <a href="https://suzuki-shunsuke.github.io/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
       <a href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
@@ -382,8 +386,6 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
       <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
       
     </div>
   </section>
