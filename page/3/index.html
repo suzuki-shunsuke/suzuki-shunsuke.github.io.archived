@@ -58,6 +58,36 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-06T16:52:58JST">Jul 6, 2020</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/clap/">clap - 簡単にツールをインストールするためのツールを作った</a></h2>
+  </header>
+
+  
+  <div class="summary">多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。
+https://github.com/suzuki-shunsuke/clap
+Go で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。
+CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。
+このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。
+使い方は以下のようになっています。
+$ clap &lt;URL&gt; &lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt; [&lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt;...]  例えば conftest を /usr/local/bin にインストールする場合次のようになります。
+CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a+x /usr/local/bin/conftest  パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。
+上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。
+#!/usr/bin/env bash set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &quot;$dirpath&quot; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a+x /usr/local/bin/conftest popd rm -R &quot;$dirpath&quot;  地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/clap/" title="clap - 簡単にツールをインストールするためのツールを作った">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-05-23T14:20:53JST">May 23, 2020</time></li>
       
       
@@ -305,38 +335,6 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-23T11:35:13JST">Aug 23, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/cmdx/">cmdx - task runner</a></h2>
-  </header>
-
-  
-  <div class="summary">最近自作した OSS, cmdx の紹介です。
-https://github.com/suzuki-shunsuke/cmdx
-cmdx は task runner です。
-task runner の定義はググってもわからなかったので、 cmdx を task runner と呼ぶのが適切かわかりませんが、 ここではプロジェクト固有のタスク
- 依存するライブラリのインストール ビルド テスト コード整形 lint etc  などを管理するものとします。
-類似するものとしては以下のようなものがあります。
- Make npm scripts Task tj/robo mumoshu/variant  使い方 詳細は README を読んでください。
-$ cmdx -i  で設定ファイルの雛形を生成します。
-そして設定ファイルに task を定義していきます。 設定に関しては README を参照してください。
-そうすると cmdx -l でタスクの一覧とその説明が見れます。
-例えば次は cmdx のリポジトリでの実行結果です。
-$ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is required) test, t - test fmt - format the go code vet, v - go vet lint, l - lint the go code release, r - release the new version durl - check dead links (durl is required) ci-local - run the Drone pipeline at localhost (drone-cli is required)  これにより新しくプロジェクトに参画した人もどのような task があるのか直ぐわかります。 例えば test を実行したければ cmdx t を実行すればいいことがわかります。 cmdx help test とすればここのタスクのより詳細なヘルプが見れます。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/cmdx/" title="cmdx - task runner">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -367,6 +365,8 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
+      
       <a href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
       
       <a href="https://suzuki-shunsuke.github.io/splitting-circleci-config/" class="list-group-item">Splitting .circleci/config.yml</a>
@@ -384,8 +384,6 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
       <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/buildflow-input-output/" class="list-group-item">buildflow の task の input, output という機能</a>
       
     </div>
   </section>
