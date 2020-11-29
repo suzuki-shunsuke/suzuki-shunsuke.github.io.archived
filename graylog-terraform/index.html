@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -77,8 +77,6 @@
 
   <body>
     
-    
-    
 
     <header class="l-header">
       <nav class="navbar navbar-default">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
       
       
+      <li>137 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">GraylogをTerraformで管理する</h1>
@@ -142,13 +143,9 @@
 
   
 
-  <div class="article-body">
-
-<p>Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。
+  <div class="article-body"><p>Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。
 <a href="https://www.graylog.org/">Graylog</a>とは何かは<a href="/graylog/">こちら</a>を読んでください。</p>
-
 <p>Graylogには様々なリソースがあります。</p>
-
 <ul>
 <li>User</li>
 <li>Role</li>
@@ -160,18 +157,13 @@
 <li>Alert</li>
 <li>etc</li>
 </ul>
-
 <p>これらのリソースはWeb UIから作成したり出来るわけですが、
 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。
 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。</p>
-
 <p>APIを使って管理できるツールを探したものの見つからなかったので、
 APIを使ってGraylog用のterraform providerを自作しています。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/go-graylog">https://github.com/suzuki-shunsuke/go-graylog</a></p>
-
 <p>GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。</p>
-
 <ul>
 <li>Alert Condition</li>
 <li>Alert Notification (Alarm Callback)</li>
@@ -184,74 +176,49 @@ APIを使ってGraylog用のterraform providerを自作しています。</p>
 <li>Dashboard</li>
 <li>Ldap Setting</li>
 </ul>
-
 <p>Role はサポートしているので権限管理は問題なく出来ます。
 Dashboard Widget もサポートしたいです。</p>
-
 <p><del>出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。</del></p>
-
 <h2 id="terraform-を使った管理方法">terraform を使った管理方法</h2>
-
 <p>以下では自分の管理方法を紹介します。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform">https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform</a></p>
-
 <p>にサンプルが置いてあります。</p>
-
 <p>基本はプロジェクトごとに</p>
-
 <ol>
 <li>Index Set, Stream, Role といったリソースを作成</li>
 <li>User に Role を付与</li>
 </ol>
-
 <p>という流れになります。</p>
-
 <p>1のプロジェクトごとの設定は <a href="https://www.terraform.io/docs/modules/index.html">terraform の module</a> という形でまとめてしまい、プロジェクトごとにディレクトリを作成しています。</p>
-
 <h2 id="terraform-provider-の開発について">terraform provider の開発について</h2>
-
 <p>terraform provider の開発はドキュメントが少なく動かしつつ手探りで書いていたりしています。
 terraform provider の開発に興味のある方はこの辺を見てみると良いと思います。</p>
-
 <ul>
 <li><a href="https://www.terraform.io/docs/plugins/provider.html">https://www.terraform.io/docs/plugins/provider.html</a></li>
 <li><a href="https://www.terraform.io/guides/writing-custom-terraform-providers.html">https://www.terraform.io/guides/writing-custom-terraform-providers.html</a></li>
 <li><a href="https://godoc.org/github.com/hashicorp/terraform/helper/schema">https://godoc.org/github.com/hashicorp/terraform/helper/schema</a></li>
 <li><a href="https://godoc.org/github.com/hashicorp/terraform/helper/resource#TestCase">https://godoc.org/github.com/hashicorp/terraform/helper/resource#TestCase</a></li>
 </ul>
-
 <p>あとは <a href="https://github.com/terraform-providers/terraform-provider-google">https://github.com/terraform-providers/terraform-provider-google</a> のような公式の provider のソースコードも参考になります。</p>
-
 <h2 id="最後に">最後に</h2>
-
 <p>API を使って terraform provider を開発することで、Infrastructure as Code をある程度実現できました。</p>
-
 <ul>
 <li><del>Stream Rule と Dashboard をサポートできていない</del></li>
 <li><del>Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできない</del></li>
 </ul>
-
 <p>という問題がクリア出来てないので、そこをクリアしたいです。</p>
-
 <p>また、</p>
-
 <ul>
 <li><del>まだ terraform を CI で出来ていない(ローカルから実行している)</del></li>
 <li>新しいプロジェクトやユーザーの追加の際に雛形を自動生成できるツールを作りたい(特に、新しく参画した人のためにあると良い)</li>
 </ul>
-
 <p>といった点も改善したいです(出来たら記事にしたいと思います)。</p>
-
 <h2 id="2018-12-03-追記">2018-12-03 追記</h2>
-
 <ul>
 <li>Stream Rule サポートしました</li>
 <li><a href="/graylog-terraform-ci">terraform を CI で実行するようにしました(気が向いたら記事書きます)</a></li>
 </ul>
-
 <h2 id="2018-12-31-追記">2018-12-31 追記</h2>
-
 <ul>
 <li>Alert Condition, Notification をサポートしました</li>
 </ul>

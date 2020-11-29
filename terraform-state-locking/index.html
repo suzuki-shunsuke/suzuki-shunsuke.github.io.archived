@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Terraform の State Locking の概要 - melody</title>
     
-<meta name="description" content="Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。">
+<meta name="description" content="Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。 例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。 そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。">
 
 <meta property="og:title" content="Terraform の State Locking の概要 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/terraform-state-locking/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。">
+<meta property="og:description" content="Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。 例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。 そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/terraform-state-locking/">
 <meta name="twitter:title" content="Terraform の State Locking の概要 - melody">
-<meta name="twitter:description" content="Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。">
+<meta name="twitter:description" content="Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。 例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。 そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。\nState Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。\n例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で\n 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。\nそこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。\nコマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。"
+    "description": "Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。\nState Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。\n 例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で\n 現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。\n そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。\nコマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-10T16:18:05JST">Jan 10, 2020</time></li>
       
       
+      <li>450 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Terraform の State Locking の概要</h1>
@@ -138,61 +139,36 @@
 
   
 
-  <div class="article-body">
-
-<p>Terraform の <a href="https://www.terraform.io/docs/state/locking.html">State Locking</a> という機能の概要について説明します。
+  <div class="article-body"><p>Terraform の <a href="https://www.terraform.io/docs/state/locking.html">State Locking</a> という機能の概要について説明します。
 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。
 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。</p>
-
 <h2 id="state-locking-とは">State Locking とは</h2>
-
 <p><code>terraform plan</code> などのコマンドは State を変更する場合があります。
 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。</p>
-
-<hr />
-
+<hr>
 <p>例えば S3 backend の state を state rm で更新する場合を考えます。
 これはコマンド内部で</p>
-
 <ol>
 <li>現在の State を取得する (READ)</li>
 <li>修正した State を S3 に push する (WRITE)</li>
 </ol>
-
 <p>という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。</p>
-
-<hr />
-
+<hr>
 <p>そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。</p>
-
 <h2 id="コマンドラインオプション">コマンドラインオプション</h2>
-
 <p>plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。</p>
-
 <pre><code>-lock=true          Lock the state file when locking is supported.
 -lock-timeout=0s    Duration to retry a state lock.
-</code></pre>
-
-<p><code>-lock</code> はデフォルトで true なので State Locking のことを知らなくても実は State Locking 使ってたということもありえますが、 Backend type によっては State Locking のための設定をしていないと State Locking が無効になっている可能性があります。</p>
-
+</code></pre><p><code>-lock</code> はデフォルトで true なので State Locking のことを知らなくても実は State Locking 使ってたということもありえますが、 Backend type によっては State Locking のための設定をしていないと State Locking が無効になっている可能性があります。</p>
 <p>例えば S3 backend で State Locking をするには DynamoDB が必要であり、 DynamoDB の設定 <code>dynamodb_table</code> が設定されていないと State Locking は無効になります。</p>
-
 <p>また、<code>-lock=false</code> で無効化できますが、公式的に非推奨になります。</p>
-
 <p><code>-lock-timeout</code> は lock の取得に失敗した場合に何秒後にリトライするかの設定になります。</p>
-
 <h2 id="force-unlock">force-unlock</h2>
-
 <p>lock の解放に失敗した場合のために、 <a href="https://www.terraform.io/docs/commands/force-unlock.html">force-unlock</a> というコマンドがあります。
 何らかのトラブルで lock が解放されない場合に使います。</p>
-
 <pre><code>$ terraform force-unlock LOCK_ID
-</code></pre>
-
-<p>例えば plan を実行中にキャンセルすると lock が解放されないことがあるようです。</p>
-
+</code></pre><p>例えば plan を実行中にキャンセルすると lock が解放されないことがあるようです。</p>
 <p>lock が解放されていない状態で plan などを実行すると lock の取得に失敗し、次のようなエラーが起こります。</p>
-
 <pre><code>Acquiring state lock. This may take a few moments...
 Error: Error locking state: Error acquiring the state lock: ConditionalCheckFailedException: The conditional request failed
 	status code: 400, request id: xxx
@@ -208,10 +184,7 @@ Terraform acquires a state lock to protect the state from being written
 by multiple users at the same time. Please resolve the issue above and try
 again. For most commands, you can disable locking with the &quot;-lock=false&quot;
 flag, but this is not recommended.
-</code></pre>
-
-<p>ここで出力される ID を force-unlock の引数として指定します。</p>
-
+</code></pre><p>ここで出力される ID を force-unlock の引数として指定します。</p>
 <pre><code>$ terraform force-unlock xxx
 Do you really want to force-unlock?
   Terraform will remove the lock on the remote state.
@@ -221,48 +194,32 @@ Do you really want to force-unlock?
 Terraform state has been successfully unlocked!
 The state has been unlocked, and Terraform commands should now be able to
 obtain a new lock on the remote state.
-</code></pre>
-
-<h2 id="s3-backend">S3 backend</h2>
-
+</code></pre><h2 id="s3-backend">S3 backend</h2>
 <p>State Locking をサポートしているかは Backend type によりますが、 S3 の場合、 DynamoDB を使えばできます。</p>
-
 <p><a href="https://www.terraform.io/docs/backends/types/s3.html#configuration-variables">https://www.terraform.io/docs/backends/types/s3.html#configuration-variables</a></p>
-
 <p>backend の設定で <code>dynamodb_table</code> を設定する必要があります。</p>
-
 <p><a href="https://www.terraform.io/docs/backends/types/s3.html#dynamodb_table">https://www.terraform.io/docs/backends/types/s3.html#dynamodb_table</a></p>
-
 <blockquote>
 <p>dynamodb_table - (Optional) The name of a DynamoDB table to use for state locking and consistency. The table must have a primary key named LockID. If not present, locking will be disabled.</p>
 </blockquote>
-
-<pre><code class="language-hcl">data &quot;terraform_remote_state&quot; &quot;network&quot; {
-  backend = &quot;s3&quot;
-  config = {
-    bucket = &quot;terraform-state-prod&quot;
-    key    = &quot;network/terraform.tfstate&quot;
-    region = &quot;us-east-1&quot;
-
-    # state locking の設定
-    dynamodb_table = &quot;???&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">data</span> <span style="color:#e6db74">&#34;terraform_remote_state&#34; &#34;network&#34;</span> {
+  backend <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;s3&#34;</span>
+  config <span style="color:#f92672">=</span> {
+    bucket <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;terraform-state-prod&#34;</span>
+    key    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;network/terraform.tfstate&#34;</span>
+    region <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">    # state locking の設定
+</span><span style="color:#75715e"></span>    dynamodb_table <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;???&#34;</span>
   }
 }
-</code></pre>
-
-<p>IAMの権限としては <a href="https://www.terraform.io/docs/backends/types/s3.html#dynamodb-table-permissions">https://www.terraform.io/docs/backends/types/s3.html#dynamodb-table-permissions</a> が必要です。</p>
-
+</code></pre></div><p>IAMの権限としては <a href="https://www.terraform.io/docs/backends/types/s3.html#dynamodb-table-permissions">https://www.terraform.io/docs/backends/types/s3.html#dynamodb-table-permissions</a> が必要です。</p>
 <p>DynamoDB のテーブルには <code>LockID</code> という Primary Key が必要です。 型は <code>文字列</code> です。</p>
-
 <p>そして State Locking を有効にした状態で plan などを実行すると
 DynamoDB のテーブルにレコードが State ごとに作られるようです。</p>
-
-<h2 id="state-locking-をすれば安全-というわけではない">State Locking をすれば安全、というわけではない</h2>
-
+<h2 id="state-locking-をすれば安全というわけではない">State Locking をすれば安全、というわけではない</h2>
 <p>State Locking 自体は安全性に寄与する仕組みではありますが、 State Locking さえすれば安全かというとそうではないと思います。</p>
-
 <p>複数人が同時に plan や apply などを実行する環境では、別のロック機構も必要だと思います。</p>
-
 <p>詳細はまた別途書こうと思いますが、CI/CD で plan, apply などを実行する場合、 apply 実行中はそれが終わるまで他の plan や apply の実行を wait するような仕組みがないと危険です。</p>
 </div>
 

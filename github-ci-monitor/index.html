@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -77,8 +77,6 @@
 
   <body>
     
-    
-    
 
     <header class="l-header">
       <nav class="navbar navbar-default">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-01T17:51:44JST">Nov 1, 2020</time></li>
       
       
+      <li>229 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">github-ci-monitor: CI のステータスを DataDog で監視</h1>
@@ -138,106 +139,76 @@
 
   
 
-  <div class="article-body">
-
-<p>自作の OSS <a href="https://github.com/suzuki-shunsuke/github-ci-monitor">github-ci-monitor</a> の紹介です。</p>
-
+  <div class="article-body"><p>自作の OSS <a href="https://github.com/suzuki-shunsuke/github-ci-monitor">github-ci-monitor</a> の紹介です。</p>
 <p>GitHub リポジトリの CI のステータスを定期的に取得し、 DataDog に送ることで、 CI のステータスを監視するツールです。
 現状は AWS Lambda で動かすことを想定していますが、他の方法でも動かせるようにするつもりです。</p>
-
 <h2 id="motivation">Motivation</h2>
-
 <p>モチベーションは、 PR をマージしたあとに CI がこけた場合に通知が欲しいというものです。
 マージしたあとに CI が一瞬で終わるなら無事終わるのを見届けてもいいんですが、
 数分かかると待ってるのも時間がもったいないです。
 しばらくしたあとに結果を確認すればいいんですが、それも面倒くさいですし、普通に忘れます。
 そうするとデプロイしたつもりが実は CI がこけてたなんてことが普通にあります。</p>
-
 <p>そういうことにすぐ気づけるよう、 Slack に通知がほしいと思っていました。</p>
-
 <h2 id="仕組み">仕組み</h2>
-
 <p>仕組みは単純です。</p>
-
 <p>GitHub API で各リポジトリのステータスを取得し、 DataDog API でステータスを送信しています。
 DataDog API は <a href="https://docs.datadoghq.com/ja/api/v1/service-checks/">Service Check API</a> を使っています。
 status は以下のようになります。</p>
-
 <ul>
 <li>0: 正常</li>
 <li>1: 異常</li>
 <li>3: ステータスの取得に失敗</li>
 </ul>
-
 <p>また以下の tag が付きます。</p>
-
 <ul>
 <li>owner: リポジトリのオーナー</li>
 <li>repo: リポジトリ名</li>
 <li>ref: ブランチ名</li>
 </ul>
-
 <p>各リポジトリのステータスは現状 3 つをサポートしています。</p>
-
 <ul>
 <li>Commit Status: <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-combined-status-for-a-specific-reference">Get the combined status for a specific reference</a></li>
 <li>Check API:
-
 <ul>
 <li>Check Run: <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/checks#list-check-runs-for-a-git-reference">List check runs for a Git reference</a></li>
 <li>Check Suite: <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/checks#list-check-suites-for-a-git-reference">List check suites for a Git reference</a></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>それぞれ on/off を設定でき、複数指定した場合は、どれか 1 つでも失敗していたら status が 1 になります。</p>
-
 <h2 id="lambda-で動かす場合のアーキテクチャ">Lambda で動かす場合のアーキテクチャ</h2>
-
 <p>CloudWatch Events で定期的(5分毎とか)に Lambda Function を実行します。
 リポジトリのリストなどの設定は環境変数で渡し、 GitHub Access Token などのクレデンシャルは AWS Secrets Manager 経由で渡します。</p>
-
 <h2 id="実装方針">実装方針</h2>
-
 <p>CI がこけたら通知してほしいという要件を満たす方法は色々あると思います。</p>
-
 <p>まず CI の中でこけた場合に通知を飛ばすようにすることが考えられます。
 以下のようなメリットがあります(書いてみたら結構ありますね)。</p>
-
 <ul>
 <li>ツールをどっかで動かしたりツール自体を監視したりする必要がない</li>
 <li>より詳細なメッセージを送れる
-
 <ul>
 <li>コマンドの標準エラー出力を含めたり</li>
 <li>CI のリンク貼ったり、 PR の author をメンションしたりもしやすい</li>
-</ul></li>
+</ul>
+</li>
 <li>CI がこけたらリアルタイムで通知できる</li>
 <li>ポーリングと違い、無駄に API を叩く必要がない</li>
 </ul>
-
 <p>一方で、これを漏れなく実装するのはけっこう大変だと思います。
 例えば CircleCI だと全ての Job でちゃんとハンドリングしないといけなかったりすると思います。
 リポジトリが 1 個だけならそれでもいいですが、何十個もあるとなるとだいぶ大変だと思います。</p>
-
 <p>今回のツールのような方式だと対象のリポジトリの CI に一切手を加えずに実装できるのが大きいです。</p>
-
 <p>また、 CI の結果を取得する API として CI サービスが提供する API を使って取得することも考えられます。
 しかし、 GitHub API を使えば CI サービス毎に実装したりする必要がなくて楽です。</p>
-
 <p>Slack API を使ってメッセージを投稿するようなことも一瞬考えましたが、 DataDog を使うことで以下のメリットがあります。</p>
-
 <ul>
 <li>送信先やメッセージのテンプレートとかをツールで管理しなくて良い</li>
 <li>何度もメッセージを送らないように状態を DB で持たなくて良い</li>
 <li>アラートを一時的に止めたりするのも簡単</li>
 </ul>
-
 <p>また、時間軸でどれだけ CI が壊れた状態だったか、復旧するのにどのくらい時間がかかったか分かるのもなにかに使えるかもしれません。</p>
-
 <p>今回のツールに限らず、 Slack に直接通知するより DataDog や Sentry を経由したほうが上手くいくことも結構あると思っています。</p>
-
 <p>また、定期実行する方法としては Lambda 以外にも</p>
-
 <ul>
 <li>Jenkins</li>
 <li>適当なサーバで cron</li>
@@ -245,10 +216,8 @@ status は以下のようになります。</p>
 <li>k8s の CronJob</li>
 <li>k8s の Deployment</li>
 </ul>
-
 <p>など色々あると思います。そういう風にも実行できるようにバイナリを今後提供したいと思っています。
 Lambda を使うとインフラを管理しなくて良いのがメリットだと思います。</p>
-
 <p>また、 DataDog API で結果を送る push 型のアーキテクチャとは別に、
 DataDog Agent + Prometheus Exporter の pull 型もあるんじゃないかなと思います。
 そうするとツール側で DataDog API Key が不要になるというメリットがあります。

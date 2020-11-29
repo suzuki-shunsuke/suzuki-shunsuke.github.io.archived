@@ -6,18 +6,14 @@
     <description>Recent content in metabase on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 30 Sep 2018 22:55:57 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/metabase/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 30 Sep 2018 22:55:57 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/metabase/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>metabase を使って drone の利用状況を可視化する</title>
       <link>https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/</link>
       <pubDate>Sun, 30 Sep 2018 22:55:57 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/</guid>
-      <description> drone OSS 0.8.5 で検証しています。
+      <description>drone OSS 0.8.5 で検証しています。
 https://drone.io/ と https://www.metabase.com/ の話です。
 drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
 どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。

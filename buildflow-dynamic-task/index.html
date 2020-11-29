@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>buildflow の dynamic task - melody</title>
     
-<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。--- phases: - name: main tasks: - name: &amp;quot;list {{.Item.Key}} {{.Item.Value.name}}&amp;quot; command: command: &amp;quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;quot; items: - name: foo age: 10 - name: bar age: 20  上記の設定は dynamic task を使わないとこうなります。--- phases: - name: main tasks: - name: &amp;quot;list 0 foo&amp;quot; command: command: &amp;quot;echo 0 foo 10&amp;quot; - name: &amp;quot;list 1 bar&amp;quot; command: command: &amp;quot;echo 1 bar 20&amp;quot;  パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。">
+<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。--- phases: - name: main tasks: - name: &amp;#34;list {{.Item.Key}} {{.Item.Value.name}}&amp;#34; command: command: &amp;#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;#34; items: - name: foo age: 10 - name: bar age: 20 上記の設定は dynamic task を使わないとこうなります。--- phases: - name: main tasks: - name: &amp;#34;list 0 foo&amp;#34; command: command: &amp;#34;echo 0 foo 10&amp;#34; - name: &amp;#34;list 1 bar&amp;#34; command: command: &amp;#34;echo 1 bar 20&amp;#34; パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。">
 
 <meta property="og:title" content="buildflow の dynamic task - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。--- phases: - name: main tasks: - name: &amp;quot;list {{.Item.Key}} {{.Item.Value.name}}&amp;quot; command: command: &amp;quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;quot; items: - name: foo age: 10 - name: bar age: 20  上記の設定は dynamic task を使わないとこうなります。--- phases: - name: main tasks: - name: &amp;quot;list 0 foo&amp;quot; command: command: &amp;quot;echo 0 foo 10&amp;quot; - name: &amp;quot;list 1 bar&amp;quot; command: command: &amp;quot;echo 1 bar 20&amp;quot;  パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。">
+<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。--- phases: - name: main tasks: - name: &amp;#34;list {{.Item.Key}} {{.Item.Value.name}}&amp;#34; command: command: &amp;#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;#34; items: - name: foo age: 10 - name: bar age: 20 上記の設定は dynamic task を使わないとこうなります。--- phases: - name: main tasks: - name: &amp;#34;list 0 foo&amp;#34; command: command: &amp;#34;echo 0 foo 10&amp;#34; - name: &amp;#34;list 1 bar&amp;#34; command: command: &amp;#34;echo 1 bar 20&amp;#34; パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/">
 <meta name="twitter:title" content="buildflow の dynamic task - melody">
-<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。--- phases: - name: main tasks: - name: &amp;quot;list {{.Item.Key}} {{.Item.Value.name}}&amp;quot; command: command: &amp;quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;quot; items: - name: foo age: 10 - name: bar age: 20  上記の設定は dynamic task を使わないとこうなります。--- phases: - name: main tasks: - name: &amp;quot;list 0 foo&amp;quot; command: command: &amp;quot;echo 0 foo 10&amp;quot; - name: &amp;quot;list 1 bar&amp;quot; command: command: &amp;quot;echo 1 bar 20&amp;quot;  パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。">
+<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。--- phases: - name: main tasks: - name: &amp;#34;list {{.Item.Key}} {{.Item.Value.name}}&amp;#34; command: command: &amp;#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;#34; items: - name: foo age: 10 - name: bar age: 20 上記の設定は dynamic task を使わないとこうなります。--- phases: - name: main tasks: - name: &amp;#34;list 0 foo&amp;#34; command: command: &amp;#34;echo 0 foo 10&amp;#34; - name: &amp;#34;list 1 bar&amp;#34; command: command: &amp;#34;echo 1 bar 20&amp;#34; パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。\nこの記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。\n--- phases: - name: main tasks: - name: \x26quot;list {{.Item.Key}} {{.Item.Value.name}}\x26quot; command: command: \x26quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}\x26quot; items: - name: foo age: 10 - name: bar age: 20  上記の設定は dynamic task を使わないとこうなります。\n--- phases: - name: main tasks: - name: \x26quot;list 0 foo\x26quot; command: command: \x26quot;echo 0 foo 10\x26quot; - name: \x26quot;list 1 bar\x26quot; command: command: \x26quot;echo 1 bar 20\x26quot;  パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。"
+    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。\nこの記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。\n--- phases: - name: main tasks: - name: \u0026#34;list {{.Item.Key}} {{.Item.Value.name}}\u0026#34; command: command: \u0026#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}\u0026#34; items: - name: foo age: 10 - name: bar age: 20 上記の設定は dynamic task を使わないとこうなります。\n--- phases: - name: main tasks: - name: \u0026#34;list 0 foo\u0026#34; command: command: \u0026#34;echo 0 foo 10\u0026#34; - name: \u0026#34;list 1 bar\u0026#34; command: command: \u0026#34;echo 1 bar 20\u0026#34; パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:29:51JST">Oct 17, 2020</time></li>
       
       
+      <li>152 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">buildflow の dynamic task</h1>
@@ -140,58 +141,43 @@
 
   
 
-  <div class="article-body">
-
-<p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書きます。</p>
-
+  <div class="article-body"><p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書きます。</p>
 <p>この記事では buildflow の dynamic task という機能について説明します。
 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。
 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。
 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。</p>
-
-<pre><code class="language-yaml">---
-phases:
-- name: main
-  tasks:
-  - name: &quot;list {{.Item.Key}} {{.Item.Value.name}}&quot;
-    command:
-      command: &quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&quot;
-    items:
-    - name: foo
-      age: 10
-    - name: bar
-      age: 20
-</code></pre>
-
-<p>上記の設定は dynamic task を使わないとこうなります。</p>
-
-<pre><code class="language-yaml">---
-phases:
-- name: main
-  tasks:
-  - name: &quot;list 0 foo&quot;
-    command:
-      command: &quot;echo 0 foo 10&quot;
-  - name: &quot;list 1 bar&quot;
-    command:
-      command: &quot;echo 1 bar 20&quot;
-</code></pre>
-
-<p>パラメータ <code>Item</code> は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">phases</span>:
+- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">tasks</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;list {{.Item.Key}} {{.Item.Value.name}}&#34;</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&#34;</span>
+    <span style="color:#f92672">items</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foo</span>
+      <span style="color:#f92672">age</span>: <span style="color:#ae81ff">10</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">bar</span>
+      <span style="color:#f92672">age</span>: <span style="color:#ae81ff">20</span>
+</code></pre></div><p>上記の設定は dynamic task を使わないとこうなります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">phases</span>:
+- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">tasks</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;list 0 foo&#34;</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#34;echo 0 foo 10&#34;</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;list 1 bar&#34;</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#34;echo 1 bar 20&#34;</span>
+</code></pre></div><p>パラメータ <code>Item</code> は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。</p>
 <p>上記の例は単純すぎてイマイチかもしれませんが、
 例えばファイルなどの一覧を返すコマンドの実行結果を元に
 dynamic task でファイルごとに別の task で並列に処理するとかが考えられそうです。</p>
-
 <h2 id="制約">制約</h2>
-
 <p>task.items は phase の最初に評価されます。
 つまり同じ phase の task の結果を参照したり出来ません。</p>
-
 <p>これは task.dependency の評価時に、 task のリストが定まっていないと評価できないためです。</p>
-
 <p>ただし、前の phase 及び phase の task の実行結果は参照できるため、 items で特定の task の実行結果を参照したい場合は、phase を分けることになります。</p>
-
 <p>実は dynamic task を実現する上で上記の問題をクリアするために phase という概念を導入したという経緯があったります。</p>
 </div>
 

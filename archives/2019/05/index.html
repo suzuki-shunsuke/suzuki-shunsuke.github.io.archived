@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2019/05/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
       
       
+      <li>51 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-jsoneq/">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a></h2>
   </header>
@@ -73,9 +74,9 @@
   <div class="summary">https://github.com/suzuki-shunsuke/go-jsoneq
 2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。
 「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。
-struct { Foo string `json:&quot;foo&quot;` }{ Foo: &quot;bar&quot;, }  と
-map[string]interface{}{&quot;foo&quot;: &quot;bar&quot;}  を JSON に変換したらともに
-{&quot;foo&quot;: &quot;bar&quot;}  になりますね。
+struct { Foo string `json:&#34;foo&#34;` }{ Foo: &#34;bar&#34;, } と
+map[string]interface{}{&#34;foo&#34;: &#34;bar&#34;} を JSON に変換したらともに
+{&#34;foo&#34;: &#34;bar&#34;} になりますね。
 json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。
 jsoneq.Equal でやっていることは単純です。
  json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。

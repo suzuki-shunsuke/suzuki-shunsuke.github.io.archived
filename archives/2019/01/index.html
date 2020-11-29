@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2019/01/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-25T22:38:28JST">Jan 25, 2019</time></li>
       
       
+      <li>73 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/">Terraform Providerで import を実装する方法</a></h2>
   </header>
@@ -74,7 +75,7 @@
  https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
 terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
 https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5
-# &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb  区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
+# &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb 区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
 https://www.terraform.io/docs/providers/google/r/spanner_database.html#import
 https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.</div>
 
@@ -92,6 +93,9 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-20T12:27:26JST">Jan 20, 2019</time></li>
       
       
+      <li>154 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/downgrade-github-plan/">GithubをFree Planにダウングレードした</a></h2>
   </header>
@@ -106,7 +110,7 @@ private なソースコード(サービス)のためのwikiではなく、 個�
 https://github.com/suzuki-shunsuke/foo の wiki は https://github.com/suzuki-shunsuke/foo.wiki で clone できます。
 次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。
 https://developer.github.com/v3/repos/#list-your-repositories
-curl &quot;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&quot; | jq -r '.[].html_url' | xargs -I{} -n 1 git clone {}.wiki  wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。
+curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&#34; | jq -r &#39;.[].html_url&#39; | xargs -I{} -n 1 git clone {}.wiki wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。
 また /user/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。</div>
 
   

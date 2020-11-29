@@ -6,11 +6,7 @@
     <description>Recent content in drone on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 15 Aug 2019 07:54:23 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/drone/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 15 Aug 2019 07:54:23 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/drone/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Drone Extension のリスク</title>
       <link>https://suzuki-shunsuke.github.io/risk-of-drone-extension/</link>
@@ -34,7 +30,7 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       
       <guid>https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/</guid>
       <description>v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。
-理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
+理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた    v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)     自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
 関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。
  https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。</description>
     </item>
@@ -69,7 +65,7 @@ Drone では基本的に Git のイベントをフックして動くので「ビ
 https://github.com/suzuki-shunsuke/example-drone-build-parameter
 以下のファイルが必要です。
  build_params/params.sh.tpl: ビルドパラメータを記述するファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。
-$ bash scripts/deploy.sh  するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。
+$ bash scripts/deploy.sh するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。
 https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17
 パラメータを記述し、エディタを閉じます。
 するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。
@@ -113,7 +109,7 @@ https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
 Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
 https://docs.drone.io/user-guide/pipeline/migrating/
  To simplify your configuration we recommend using jsonnet.
- $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</description>
+ $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</description>
     </item>
     
     <item>
@@ -122,7 +118,7 @@ https://docs.drone.io/user-guide/pipeline/migrating/
       <pubDate>Sun, 30 Sep 2018 22:55:57 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/</guid>
-      <description> drone OSS 0.8.5 で検証しています。
+      <description>drone OSS 0.8.5 で検証しています。
 https://drone.io/ と https://www.metabase.com/ の話です。
 drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
 どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。
@@ -157,7 +153,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <guid>https://suzuki-shunsuke.github.io/drone-tag-conditional-step/</guid>
       <description>drone 0.8.5 で検証しています。
 tag 名による判定方法はドキュメントには書いてないので書いておきます。
-when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グロブ * には / は含まれないことには注意してください。
+when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。
 上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。
  https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  </description>
     </item>
@@ -183,7 +179,7 @@ droneの web ui からリポジトリごとに設定できます。 そのリポ
       <description>drone 0.8.5 で検証しています。
 drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
 ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
-PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
+PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
  https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  </description>
     </item>
     
@@ -227,7 +223,7 @@ circle ci の場合は archive, unarchive する分、volume 共有に比べて�
       
       <guid>https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/</guid>
       <description>drone exec を並列実行すると docker network name が衝突することがあります。
-$ drone exec --local &amp;amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &amp;quot;/drone_step_0&amp;quot; is already in use by container &amp;quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&amp;quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</description>
+$ drone exec --local &amp;amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &amp;quot;/drone_step_0&amp;quot; is already in use by container &amp;quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&amp;quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</description>
     </item>
     
   </channel>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -77,8 +77,6 @@
 
   <body>
     
-    
-    
 
     <header class="l-header">
       <nav class="navbar navbar-default">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:13:48JST">Oct 18, 2020</time></li>
       
       
+      <li>139 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">buildflow が自動で取得する Pull Request の情報</h1>
@@ -140,62 +141,41 @@
 
   
 
-  <div class="article-body">
-
-<p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書きます。</p>
-
+  <div class="article-body"><p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書きます。</p>
 <p>この記事では buildflow が自動で Pull Request (以下 PR) の情報を取得してくる機能について説明します。</p>
-
 <p>この機能は GitHub のみサポートしています。 GitLab や BitBucket はサポートしていません。
 これは単純に自分が GitHub しか使わないからです。</p>
-
 <p>PR の CI では</p>
-
 <ul>
 <li>変更されたものだけテストする</li>
 <li>特定の PR ラベルがついていたら実行する</li>
 <li>特定のユーザーの PR だけ処理を変える(bot とか)</li>
 </ul>
-
 <p>のように PR の情報に基づいて挙動を変えたくなったりします。</p>
-
 <p>シェルスクリプトで GitHub API 叩いて情報とってきて jq でパースしてとか、頑張れば別にできるんですが、
 毎回そういうコードを書きたくないなと感じていました。</p>
-
 <p>なお、 PR の情報をとってくる機能はデフォルトで無効化されています(GitHub Access Token 必要ですしね)。
 設定で <code>pr: true</code> を指定してください。</p>
-
 <p>PR の情報をとってくるには、以下の情報が必要です。</p>
-
 <ul>
 <li>repository owner: 設定ファイルで <code>owner</code> を設定するか、自動取得。 <code>owner</code> を設定してある場合はそちらが優先される</li>
 <li>repository name: 設定ファイルで <code>repo</code> を設定するか、自動取得。 <code>repo</code> を設定してある場合はそちらが優先される</li>
 <li>pull request number: 自動取得</li>
 <li>GitHub Access Token: 環境変数 <code>GITHUB_TOKEN</code> または <code>GITHUB_ACCESS_TOKEN</code> を指定してください</li>
 </ul>
-
 <h2 id="取得される情報">取得される情報</h2>
-
 <p>以下のパラメータがテンプレートや Tengo script に渡されます。</p>
-
 <ul>
 <li>PR: PR の情報: <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#get-a-pull-request">GitHub API</a> のレスポンス body</li>
 <li>Files: PR で更新されたファイルの一覧: <a href="https://docs.github.com/en/free-pro-team@latest/rest/reference/pulls#list-pull-requests-files">GitHub API</a> のレスポンス body</li>
 </ul>
-
 <p>Files に関してはページネーションされていても全てのファイルが取得できるまで繰り返し API を叩いています。</p>
-
 <h2 id="自動取得の仕組み">自動取得の仕組み</h2>
-
 <p>各種 CI サービスの組み込みの環境変数からそれらの情報を自動で取得してくれます。</p>
-
 <p>内部的には go-ci-env を使っているので、 PR 情報の自動取得をサポートしている CI サービスは以下のとおりです。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/go-ci-env#supported-ci-services">https://github.com/suzuki-shunsuke/go-ci-env#supported-ci-services</a></p>
-
 <p>PR 番号が環境変数から取得できない場合、 revision から関連する PR のリストを取得し、一番最初の PR とみなします。
 これは PR のマージコミットの CI ではマージされた PR の情報を取得することを意図しています。</p>
-
 <p>関連する PR が存在しない場合は取得されるパラメータが <code>nil</code> になるだけで、 buildflow は異常終了したりせずに処理を続行します。</p>
 </div>
 

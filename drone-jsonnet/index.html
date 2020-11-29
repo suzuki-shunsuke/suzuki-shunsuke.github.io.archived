@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。\nhttps:\/\/techblog.szksh.cloud\/drone-jsonnet-generator\/\nしかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。\nhttps:\/\/engineering.linecorp.com\/ja\/blog\/go-oss-ci-cd-platform-drone-1-0-0-rc-1\/#title7-1\nしかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。\nまず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。\nそうしたら、ユーザー側は次のようにすることで jsonnet が使えます。\n .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main \x26gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。\nいつから Jsonnet Extension は不要になったのか  https:\/\/github.com\/drone\/drone\/compare\/v1.0.0-rc.6...v1.0.0 https:\/\/github.com\/drone\/drone\/commit\/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。"
+    "description": "Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。\nhttps:\/\/techblog.szksh.cloud\/drone-jsonnet-generator\/\nしかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。\nhttps:\/\/engineering.linecorp.com\/ja\/blog\/go-oss-ci-cd-platform-drone-1-0-0-rc-1\/#title7-1\nしかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。\nまず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。\nそうしたら、ユーザー側は次のようにすることで jsonnet が使えます。\n .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main \u0026gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。\nいつから Jsonnet Extension は不要になったのか  https:\/\/github.com\/drone\/drone\/compare\/v1.0.0-rc.6...v1.0.0 https:\/\/github.com\/drone\/drone\/commit\/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-02T23:02:57JST">Aug 2, 2019</time></li>
       
       
+      <li>93 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Drone v1 では Jsonnet が extension なしで使える</h1>
@@ -138,49 +139,32 @@
 
   
 
-  <div class="article-body">
-
-<p>Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。
+  <div class="article-body"><p>Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。
 これについては過去のブログでも触れています。</p>
-
 <p><a href="https://techblog.szksh.cloud/drone-jsonnet-generator/">https://techblog.szksh.cloud/drone-jsonnet-generator/</a></p>
-
 <p>しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。</p>
-
 <p><a href="https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1">https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1</a></p>
-
 <p>しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。</p>
-
 <p>まず Drone の管理者側で Drone server に環境変数 <code>DRONE_JSONNET_ENABLED=true</code> を設定する必要があります。</p>
-
 <p>そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。</p>
-
 <ol>
 <li>.drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要)</li>
 <li>各リポジトリの settings の Main &gt; Configuration で設定ファイルのパスを変更する</li>
 </ol>
-
 <p>こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。</p>
-
 <h2 id="いつから-jsonnet-extension-は不要になったのか">いつから Jsonnet Extension は不要になったのか</h2>
-
 <ul>
 <li><a href="https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0">https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0</a></li>
 <li><a href="https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57">https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57</a></li>
 </ul>
-
 <p>v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。</p>
-
 <h2 id="注意点">注意点</h2>
-
 <ul>
 <li>SaaS <a href="https://cloud.drone.io">https://cloud.drone.io</a> は 2019-08-02 時点で未対応</li>
 <li>Jsonnet は pipeline が 1 つでも <code>[]</code> で囲い、配列にする必要がある</li>
 <li>Jsonnet の Imports はサポートしていない</li>
 </ul>
-
 <h2 id="リファレンス">リファレンス</h2>
-
 <ul>
 <li><a href="https://discourse.drone.io/t/how-to-reduce-yaml-boilerplate/3704">https://discourse.drone.io/t/how-to-reduce-yaml-boilerplate/3704</a></li>
 </ul>

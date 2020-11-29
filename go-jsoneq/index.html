@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ - melody</title>
     
-<meta name="description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;quot;foo&amp;quot;` }{ Foo: &amp;quot;bar&amp;quot;, }  とmap[string]interface{}{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  を JSON に変換したらともに{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
+<meta name="description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;#34;foo&amp;#34;` }{ Foo: &amp;#34;bar&amp;#34;, } とmap[string]interface{}{&amp;#34;foo&amp;#34;: &amp;#34;bar&amp;#34;} を JSON に変換したらともに{&amp;#34;foo&amp;#34;: &amp;#34;bar&amp;#34;} になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
 
 <meta property="og:title" content="go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/go-jsoneq/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;quot;foo&amp;quot;` }{ Foo: &amp;quot;bar&amp;quot;, }  とmap[string]interface{}{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  を JSON に変換したらともに{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
+<meta property="og:description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;#34;foo&amp;#34;` }{ Foo: &amp;#34;bar&amp;#34;, } とmap[string]interface{}{&amp;#34;foo&amp;#34;: &amp;#34;bar&amp;#34;} を JSON に変換したらともに{&amp;#34;foo&amp;#34;: &amp;#34;bar&amp;#34;} になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/go-jsoneq/">
 <meta name="twitter:title" content="go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ - melody">
-<meta name="twitter:description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;quot;foo&amp;quot;` }{ Foo: &amp;quot;bar&amp;quot;, }  とmap[string]interface{}{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  を JSON に変換したらともに{&amp;quot;foo&amp;quot;: &amp;quot;bar&amp;quot;}  になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
+<meta name="twitter:description" content="https://github.com/suzuki-shunsuke/go-jsoneq2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。struct { Foo string `json:&amp;#34;foo&amp;#34;` }{ Foo: &amp;#34;bar&amp;#34;, } とmap[string]interface{}{&amp;#34;foo&amp;#34;: &amp;#34;bar&amp;#34;} を JSON に変換したらともに{&amp;#34;foo&amp;#34;: &amp;#34;bar&amp;#34;} になりますね。json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。jsoneq.Equal でやっていることは単純です。 json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。GoDoc やサンプルを見れば使い方は簡単にわかると思います。以上、簡単ですが、自作ライブラリの紹介でした。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "https:\/\/github.com\/suzuki-shunsuke\/go-jsoneq\n2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。\n「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。\nstruct { Foo string `json:\x26quot;foo\x26quot;` }{ Foo: \x26quot;bar\x26quot;, }  と\nmap[string]interface{}{\x26quot;foo\x26quot;: \x26quot;bar\x26quot;}  を JSON に変換したらともに\n{\x26quot;foo\x26quot;: \x26quot;bar\x26quot;}  になりますね。\njson.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。\njsoneq.Equal でやっていることは単純です。\n json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。\nGoDoc やサンプルを見れば使い方は簡単にわかると思います。\n以上、簡単ですが、自作ライブラリの紹介でした。"
+    "description": "https:\/\/github.com\/suzuki-shunsuke\/go-jsoneq\n2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。\n「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。\nstruct { Foo string `json:\u0026#34;foo\u0026#34;` }{ Foo: \u0026#34;bar\u0026#34;, } と\nmap[string]interface{}{\u0026#34;foo\u0026#34;: \u0026#34;bar\u0026#34;} を JSON に変換したらともに\n{\u0026#34;foo\u0026#34;: \u0026#34;bar\u0026#34;} になりますね。\njson.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。\njsoneq.Equal でやっていることは単純です。\n json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。\nGoDoc やサンプルを見れば使い方は簡単にわかると思います。\n以上、簡単ですが、自作ライブラリの紹介でした。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
       
       
+      <li>51 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</h1>
@@ -139,45 +140,28 @@
   
 
   <div class="article-body"><p><a href="https://github.com/suzuki-shunsuke/go-jsoneq">https://github.com/suzuki-shunsuke/go-jsoneq</a></p>
-
 <p>2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。</p>
-
 <p>「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。</p>
-
-<pre><code class="language-go">struct {
-	Foo string `json:&quot;foo&quot;`
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;foo&#34;`</span>
 }{
-	Foo: &quot;bar&quot;,
+	<span style="color:#a6e22e">Foo</span>: <span style="color:#e6db74">&#34;bar&#34;</span>,
 }
-</code></pre>
-
-<p>と</p>
-
-<pre><code class="language-go">map[string]interface{}{&quot;foo&quot;: &quot;bar&quot;}
-</code></pre>
-
-<p>を JSON に変換したらともに</p>
-
-<pre><code class="language-json">{&quot;foo&quot;: &quot;bar&quot;}
-</code></pre>
-
-<p>になりますね。</p>
-
+</code></pre></div><p>と</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{<span style="color:#e6db74">&#34;foo&#34;</span>: <span style="color:#e6db74">&#34;bar&#34;</span>}
+</code></pre></div><p>を JSON に変換したらともに</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;foo&#34;</span>: <span style="color:#e6db74">&#34;bar&#34;</span>}
+</code></pre></div><p>になりますね。</p>
 <p>json.Marshaler のテストや、
 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。</p>
-
 <p>jsoneq.Equal でやっていることは単純です。</p>
-
 <ol>
 <li>json.Marshal で []byte に変換</li>
 <li>json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換</li>
 <li>reflect.DeepEqual で比較</li>
 </ol>
-
 <p>引数が []byte の場合は 1 は飛ばします。</p>
-
 <p>GoDoc やサンプルを見れば使い方は簡単にわかると思います。</p>
-
 <p>以上、簡単ですが、自作ライブラリの紹介でした。</p>
 </div>
 

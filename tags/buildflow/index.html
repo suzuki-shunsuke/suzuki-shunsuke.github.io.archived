@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/buildflow/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T09:53:08JST">Oct 18, 2020</time></li>
       
       
+      <li>262 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-goal/">なぜ buildflow を作ったのか</a></h2>
   </header>
@@ -74,7 +75,7 @@
 この記事では なぜ buildflow を作ったのかについて説明します。 開発者である自分の好みや置かれた環境などが所々に反映された内容になっています。
 解決したい課題 自分は CI/CD の DX の改善に業務として取り組んでいます。 リポジトリはたくさんあり、横断的にメンテナンスしています。 幾つかのリポジトリはモノレポになっており、 CI の複雑さが増していたり、 CI の実行時間が長かったりします。
 現在の CI/CD には以下のような問題があると感じています(他にもあるんですが、 buildflow と関係ないので割愛)。
- 実行時間が長い  PR とは関係ない処理(test, build, etc) が実行されている  金銭的に高い  実行時間が長いので無駄にお金がかかっている CI サービスによっては並列度を上げることで実行時間が縮む場合があるが、それでもその分お金がかかる  PR とは直接関係ないところで失敗する  PR とは関係ない処理(test, build, etc) が実行されていて、それらが flaky で失敗する  メンテナンス性が悪い  属人化気味 何をやっているのか分かりにくい  同じような機能を複数のリポジトリで実装・メンテしたくない  これらの問題を解決するために buildflow を開発しました。
+ 実行時間が長い  PR とは関係ない処理(test, build, etc) が実行されている   金銭的に高い  実行時間が長いので無駄にお金がかかっている CI サービスによっては並列度を上げることで実行時間が縮む場合があるが、それでもその分お金がかかる   PR とは直接関係ないところで失敗する  PR とは関係ない処理(test, build, etc) が実行されていて、それらが flaky で失敗する   メンテナンス性が悪い  属人化気味 何をやっているのか分かりにくい   同じような機能を複数のリポジトリで実装・メンテしたくない  これらの問題を解決するために buildflow を開発しました。
 buildflow で必要な処理だけを実行する buildflow では PR の情報を自動で取得し、それらに応じて実行する処理を変更できます。 変更されたファイルに応じてだけでなく、 label や PR の author などでも変更できます。 Tengo script を用いて柔軟なロジックを実装できます。 JSON や YAML の読み込みもサポートしているので、依存関係などの設定を別ファイルで管理することも出来ます。</div>
 
   
@@ -91,6 +92,9 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:36:09JST">Oct 18, 2020</time></li>
       
       
+      <li>121 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-result-output/">buildflow の実行結果の出力形式</a></h2>
   </header>
@@ -99,7 +103,7 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
   <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では buildflow の実行結果の出力フォーマットなどについて説明します。
 ちょっと出力はわかりにくいかもしれません。 改善したいと思いつつ、どうあるべきなのかまだ見えてないのでこんな感じになっています。
-task の標準出力、標準エラー出力はリアルタイムで出力されます。 また、複数のタスクを並列実行できます。 複数のタスクのログをリアルタイムで出力すると当然混じるので、区別がつくように各行の prefix に timestamp | task name | をつけて出力します。 それでも混じるとわかりにくいので、 phase が完了後に、 phase の全 task のログを混ざらないようにそれぞれ標準エラー出力します。 つまり同じログが 2 回出力されますが 2 回実行されているわけではないです。
+task の標準出力、標準エラー出力はリアルタイムで出力されます。 また、複数のタスクを並列実行できます。 複数のタスクのログをリアルタイムで出力すると当然混じるので、区別がつくように各行の prefix に timestamp | task name |  をつけて出力します。 それでも混じるとわかりにくいので、 phase が完了後に、 phase の全 task のログを混ざらないようにそれぞれ標準エラー出力します。 つまり同じログが 2 回出力されますが 2 回実行されているわけではないです。
 ============== = Phase: phase 名 = ============== 10:47:54UTC | task A | + /bin/sh -c echo hello # 実行されるコマンド 10:47:54UTC | task B | + /bin/sh -c echo foo 10:47:54UTC | task A | hello # コマンドの標準(エラー)出力 10:47:54UTC | task A | .</div>
 
   
@@ -114,6 +118,9 @@ task の標準出力、標準エラー出力はリアルタイムで出力され
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:13:48JST">Oct 18, 2020</time></li>
+      
+      
+      <li>139 Words</li>
       
       
     </ul>
@@ -145,6 +152,9 @@ PR の情報をとってくるには、以下の情報が必要です。
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T22:35:56JST">Oct 17, 2020</time></li>
       
       
+      <li>133 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/">buildflow ではなぜ Tengo を採用しているのか</a></h2>
   </header>
@@ -158,7 +168,7 @@ Tengo に関しては https://techblog.szksh.cloud/buildflow-1/ でも多少触�
  なぜスクリプト言語を採用しているのか なぜ他の言語ではなく Tengo なのか  の 2 つの観点で話します。
 なぜスクリプト言語を採用しているのか 逆にスクリプト言語を採用しない方法としては、 YAML などで独自 DSL のようなものを定義する方法があります。 DSL と言うと大げさかもしれませんが、 AND, OR, NOT といった論理を YAML のようなデータ記述言語で表現しようと思うとそんな感じになると思います。
 この方法は扱いたいロジックが単純なものに限られるのであれば問題ないですが、 より柔軟なロジックを表現したいとなった場合に、無理があります。
- どうやって表現すればいいのか自分で考えないといけない  どう頑張っても独自ルールになるため、ユーザーにとって直感的とは言えない  正しく実装しないといけない 仕様をドキュメント化しないといけない  一方、 Go では幾つかのスクリプト言語がサードパーティのライブラリとして実装されており、 buildflow のようなツールに組み込むことが出来ます。
+ どうやって表現すればいいのか自分で考えないといけない  どう頑張っても独自ルールになるため、ユーザーにとって直感的とは言えない   正しく実装しないといけない 仕様をドキュメント化しないといけない  一方、 Go では幾つかのスクリプト言語がサードパーティのライブラリとして実装されており、 buildflow のようなツールに組み込むことが出来ます。
 https://github.com/avelino/awesome-go#embeddable-scripting-languages
 これらを活用すれば上記の問題は解決できるうえに、非常に柔軟にロジックを実装できます(勿論言語によりますが)。
 なぜ他の言語ではなく Tengo なのか 単純に https://github.com/avelino/awesome-go#embeddable-scripting-languages で紹介されているライブラリの中で一番要件にマッチしてそうだったからです。 といっても全てをちゃんとチェックしたわけではありませんが。 Lua とかもあるのでそれでも良かったかもですが、自分は Lua を全然知りません。 あとちゃんとバージョンニングされていたのも理由の一つです。 Tengo より人気のある言語もありましたが、バージョニングされてないという理由で見送ったりしました。</div>
@@ -177,6 +187,9 @@ https://github.com/avelino/awesome-go#embeddable-scripting-languages
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:29:51JST">Oct 17, 2020</time></li>
       
       
+      <li>152 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/">buildflow の dynamic task</a></h2>
   </header>
@@ -184,8 +197,8 @@ https://github.com/avelino/awesome-go#embeddable-scripting-languages
   
   <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。
---- phases: - name: main tasks: - name: &quot;list {{.Item.Key}} {{.Item.Value.name}}&quot; command: command: &quot;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&quot; items: - name: foo age: 10 - name: bar age: 20  上記の設定は dynamic task を使わないとこうなります。
---- phases: - name: main tasks: - name: &quot;list 0 foo&quot; command: command: &quot;echo 0 foo 10&quot; - name: &quot;list 1 bar&quot; command: command: &quot;echo 1 bar 20&quot;  パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。</div>
+--- phases: - name: main tasks: - name: &#34;list {{.Item.Key}} {{.Item.Value.name}}&#34; command: command: &#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&#34; items: - name: foo age: 10 - name: bar age: 20 上記の設定は dynamic task を使わないとこうなります。
+--- phases: - name: main tasks: - name: &#34;list 0 foo&#34; command: command: &#34;echo 0 foo 10&#34; - name: &#34;list 1 bar&#34; command: command: &#34;echo 1 bar 20&#34; パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。</div>
 
   
   <footer>
@@ -199,6 +212,9 @@ https://github.com/avelino/awesome-go#embeddable-scripting-languages
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:05:41JST">Oct 17, 2020</time></li>
+      
+      
+      <li>69 Words</li>
       
       
     </ul>
@@ -223,6 +239,9 @@ task.input は task.when が評価されたあと、 task の command などが�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T20:49:28JST">Oct 17, 2020</time></li>
       
       
+      <li>41 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-split-files/">buildflow で設定ファイルを分割する</a></h2>
   </header>
@@ -245,6 +264,9 @@ buildflow では一部の設定項目について他のファイルのパスを�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
       
       
+      <li>197 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-parameter/">buildflow の script や template に渡される parameter</a></h2>
   </header>
@@ -254,7 +276,7 @@ buildflow では一部の設定項目について他のファイルのパスを�
 この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。
 buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。
  PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase
- Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</div>
+ Status: Phase の実行結果  succeeded failed skipped   Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</div>
 
   
   <footer>
@@ -270,6 +292,9 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:26:57JST">Oct 17, 2020</time></li>
       
       
+      <li>149 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-task/">buildflow の task の設定項目</a></h2>
   </header>
@@ -278,7 +303,7 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
   <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。
 task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。
- name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。</div>
+ name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める   dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script   input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める   output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める   meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。</div>
 
   
   <footer>
@@ -294,6 +319,9 @@ task には幾つか type がありますが、全ての type に共通するパ
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
       
       
+      <li>127 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
   </header>
@@ -302,9 +330,9 @@ task には幾つか type がありますが、全ての type に共通するパ
   <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の概念である build, phase, task について書きたいと思います。
 buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
-$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
+$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
 設定ファイルでは phases, tasks をそれぞれ配列で指定します。
---- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
+--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
 
   
   <footer>

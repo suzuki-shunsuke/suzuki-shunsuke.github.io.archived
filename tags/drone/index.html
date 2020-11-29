@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/drone/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:54:23JST">Aug 15, 2019</time></li>
       
       
+      <li>79 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/risk-of-drone-extension/">Drone Extension のリスク</a></h2>
   </header>
@@ -93,13 +94,16 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:39:18JST">Aug 15, 2019</time></li>
       
       
+      <li>61 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/">Drone v1 で gRPC が使われなくなった</a></h2>
   </header>
 
   
   <div class="summary">v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。
-理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
+理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた    v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)     自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
 関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。
  https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。</div>
 
@@ -111,6 +115,9 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-02T23:02:57JST">Aug 2, 2019</time></li>
+      
+      
+      <li>93 Words</li>
       
       
     </ul>
@@ -142,6 +149,9 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-20T17:50:11JST">Jun 20, 2019</time></li>
       
       
+      <li>65 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/how-to-imitate-jenkins-parameterized-build-at-drone/">Drone で「ビルド実行時にパラメータを渡す」っぽいことをする</a></h2>
   </header>
@@ -154,7 +164,7 @@ Drone では基本的に Git のイベントをフックして動くので「ビ
 https://github.com/suzuki-shunsuke/example-drone-build-parameter
 以下のファイルが必要です。
  build_params/params.sh.tpl: ビルドパラメータを記述するファイルのテンプレート scripts/deploy.sh: デプロイ時に実行するスクリプト .drone.yml: Drone の設定ファイル  スクリプトを実行してデプロイします。
-$ bash scripts/deploy.sh  するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。
+$ bash scripts/deploy.sh するとパラメータを記述するファイルがテンプレートから作成され、エディタで開きます。
 https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/scripts/deploy.sh#L12-L17
 パラメータを記述し、エディタを閉じます。
 するとそのファイルがコミットされ、新しいタグが作成され、コミットとタグがリモートにプッシュされます。
@@ -176,6 +186,9 @@ https://github.com/suzuki-shunsuke/example-drone-build-parameter/blob/master/bui
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-12T07:40:45JST">Jun 12, 2019</time></li>
+      
+      
+      <li>302 Words</li>
       
       
     </ul>
@@ -207,6 +220,9 @@ https://docs.drone.io/user-guide/pipeline/migrating/
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-01T08:34:10JST">Jun 1, 2019</time></li>
       
       
+      <li>195 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a></h2>
   </header>
@@ -218,7 +234,7 @@ https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
 Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
 https://docs.drone.io/user-guide/pipeline/migrating/
  To simplify your configuration we recommend using jsonnet.
- $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</div>
+ $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</div>
 
   
   <footer>
@@ -234,12 +250,15 @@ https://docs.drone.io/user-guide/pipeline/migrating/
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T22:55:57JST">Sep 30, 2018</time></li>
       
       
+      <li>31 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/">metabase を使って drone の利用状況を可視化する</a></h2>
   </header>
 
   
-  <div class="summary"> drone OSS 0.8.5 で検証しています。
+  <div class="summary">drone OSS 0.8.5 で検証しています。
 https://drone.io/ と https://www.metabase.com/ の話です。
 drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
 どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。
@@ -253,6 +272,9 @@ drone の利用状況を可視化したかったので、 drone の DB(MySQL) �
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:56:42JST">Sep 30, 2018</time></li>
+      
+      
+      <li>121 Words</li>
       
       
     </ul>
@@ -287,6 +309,9 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:30:06JST">Sep 30, 2018</time></li>
       
       
+      <li>28 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-tag-conditional-step/">drone の step を実行するか否かをタグ名で判定する方法</a></h2>
   </header>
@@ -294,7 +319,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
   
   <div class="summary">drone 0.8.5 で検証しています。
 tag 名による判定方法はドキュメントには書いてないので書いておきます。
-when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グロブ * には / は含まれないことには注意してください。
+when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。
 上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。
  https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  </div>
 
@@ -306,6 +331,9 @@ when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グ
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:32:20JST">Sep 30, 2018</time></li>
+      
+      
+      <li>14 Words</li>
       
       
     </ul>

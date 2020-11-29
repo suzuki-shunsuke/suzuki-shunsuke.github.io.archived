@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>.drone.jsonnet と .drone.yml を比較する Drone plugin を作った - melody</title>
     
-<meta name="description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
+<meta name="description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
 
 <meta property="og:title" content=".drone.jsonnet と .drone.yml を比較する Drone plugin を作った - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
+<meta property="og:description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/drone-plugin-jsonnet-check/">
 <meta name="twitter:title" content=".drone.jsonnet と .drone.yml を比較する Drone plugin を作った - melody">
-<meta name="twitter:description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
+<meta name="twitter:description" content="久しぶりに Drone plugin を作ったので紹介します。https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。https://docs.drone.io/user-guide/pipeline/migrating/ To simplify your configuration we recommend using jsonnet. $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "久しぶりに Drone plugin を作ったので紹介します。\nhttps:\/\/www.github.com\/suzuki-shunsuke\/drone-plugin-jsonnet-check\n.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。\nDrone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。\nhttps:\/\/docs.drone.io\/user-guide\/pipeline\/migrating\/\n To simplify your configuration we recommend using jsonnet.\n $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と ."
+    "description": "久しぶりに Drone plugin を作ったので紹介します。\nhttps:\/\/www.github.com\/suzuki-shunsuke\/drone-plugin-jsonnet-check\n.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。\nDrone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。\nhttps:\/\/docs.drone.io\/user-guide\/pipeline\/migrating\/\n To simplify your configuration we recommend using jsonnet.\n $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と ."
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-01T08:34:10JST">Jun 1, 2019</time></li>
       
       
+      <li>195 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</h1>
@@ -139,49 +140,32 @@
   
 
   <div class="article-body"><p>久しぶりに <a href="https://docs.drone.io/plugins/">Drone plugin</a> を作ったので紹介します。</p>
-
 <p><a href="https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check">https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check</a></p>
-
 <p>.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、
 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。</p>
-
 <p>Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。
 matrix builds を <code>drone convert</code> コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。
 そこで公式では <a href="https://jsonnet.org">jsonnet</a> で記述して .drone.yml に変換する方法が推奨されています。</p>
-
 <p><a href="https://docs.drone.io/user-guide/pipeline/migrating/">https://docs.drone.io/user-guide/pipeline/migrating/</a></p>
-
 <blockquote>
 <p>To simplify your configuration we recommend using jsonnet.</p>
 </blockquote>
-
-<pre><code class="language-console">$ drone jsonnet --format --stream
-</code></pre>
-
-<p>jsonnet から yaml への変換は <a href="https://docs.drone.io/extend/config/jsonnet/">Jsonnet extension</a> を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、
+<pre><code class="language-console" data-lang="console">$ drone jsonnet --format --stream
+</code></pre><p>jsonnet から yaml への変換は <a href="https://docs.drone.io/extend/config/jsonnet/">Jsonnet extension</a> を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、
 使っていない場合、 .drone.jsonnet と .drone.yml を Git で管理し、自前で変換してコミットする必要があります。
 この作業をなにかしら自動化しないと .drone.jsonnet と .drone.yml に不整合が生じることもあり得ると思います。</p>
-
 <ul>
 <li>.drone.jsonnet を更新したけど .drone.yml を更新し忘れる</li>
 <li>.drone.yml を直接更新してしまった</li>
 </ul>
-
 <p>そこで CI で不整合が生じていないかテストするための plugin を作りました。</p>
-
 <p>最初は plugin ではなく、ただのサンプルコードとして公開しました。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/drone-jsonnet-convert-test">https://github.com/suzuki-shunsuke/drone-jsonnet-convert-test</a></p>
-
 <p>しかし、折角なので plugin にしました。</p>
-
 <p>やっていることは単純で、 .drone.jsonnet から YAML を生成し、 .drone.yml と diff を取っているだけです。</p>
-
 <p>使い方は README を見れば分かると思いますが、</p>
-
 <p><code>drone jsonnet</code> コマンドのオプションを plugin のパラメータとして渡せます。</p>
-
-<pre><code class="language-jsonnet">{
+<pre><code class="language-jsonnet" data-lang="jsonnet">{
   kind: &quot;pipeline&quot;,
   name: &quot;test&quot;,
   steps: [
@@ -194,9 +178,7 @@ matrix builds を <code>drone convert</code> コマンドで multiple pipeline �
     },
   ],
 }
-</code></pre>
-
-<pre><code class="language-console">$ drone exec
+</code></pre><pre><code class="language-console" data-lang="console">$ drone exec
 [test .drone.yml:0] + drone jsonnet --format --target /tmp/.drone.yml
 [test .drone.yml:1] + diff .drone.yml /tmp/.drone.yml
 [test .drone.yml:2] --- .drone.yml
@@ -208,11 +190,8 @@ matrix builds を <code>drone convert</code> コマンドで multiple pipeline �
 [test .drone.yml:8] -
 [test .drone.yml:9]  ...
 2019/06/01 00:33:27 test .drone.yml : exit code 1
-</code></pre>
-
-<p>シェルスクリプトで実装しました。
+</code></pre><p>シェルスクリプトで実装しました。
 テストでは <a href="https://github.com/bats-core/bats-core">bats</a> を使っています。</p>
-
 <p>以上、簡単ですが、自作 Drone plugin の紹介でした。</p>
 </div>
 

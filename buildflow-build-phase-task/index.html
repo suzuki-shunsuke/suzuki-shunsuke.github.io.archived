@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>buildflow の build, phase, task について - melody</title>
     
-<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
+<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
 
 <meta property="og:title" content="buildflow の build, phase, task について - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
+<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">
 <meta name="twitter:title" content="buildflow の build, phase, task について - melody">
-<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
+<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の概念である build, phase, task について書きたいと思います。buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。設定ファイルでは phases, tasks をそれぞれ配列で指定します。--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。\nこの記事では buildflow の概念である build, phase, task について書きたいと思います。\nbuildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。\n$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。\n設定ファイルでは phases, tasks をそれぞれ配列で指定します。\n--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。"
+    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。\nこの記事では buildflow の概念である build, phase, task について書きたいと思います。\nbuildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。\n$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。\n設定ファイルでは phases, tasks をそれぞれ配列で指定します。\n--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
       
       
+      <li>127 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">buildflow の build, phase, task について</h1>
@@ -141,53 +142,43 @@
   
 
   <div class="article-body"><p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうと思います。</p>
-
 <p>この記事では buildflow の概念である build, phase, task について書きたいと思います。</p>
-
 <p>buildflow には Build, Phase, Task という概念があります。
 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。</p>
-
 <pre><code>$ buildflow run
-</code></pre>
-
-<p>で 1 つの build が実行されます。
+</code></pre><p>で 1 つの build が実行されます。
 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。
 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。
 task は並列に実行したり、依存関係を定義したりできます。
 task では外部コマンドを実行したりできます。</p>
-
 <p>設定ファイルでは phases, tasks をそれぞれ配列で指定します。</p>
-
-<pre><code class="language-yaml">---
-phases:
-- name: setup
-  tasks:
-  - name: hello
-    command:
-      command: echo hello
-  - name: foo
-    command:
-      command: echo foo
-- name: build
-  tasks:
-  - name: hello
-    command:
-      command: echo hello
-  - name: foo
-    command:
-      command: echo foo
-    dependency:
-    - hello
-- name: post build
-  tasks:
-  - name: hello
-    command:
-      command: echo hello
-</code></pre>
-
-<p>上の例では 3 つの phase setup, build, post build が順に実行されます。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">phases</span>:
+- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">setup</span>
+  <span style="color:#f92672">tasks</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#ae81ff">echo hello</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foo</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#ae81ff">echo foo</span>
+- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">build</span>
+  <span style="color:#f92672">tasks</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#ae81ff">echo hello</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foo</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#ae81ff">echo foo</span>
+    <span style="color:#f92672">dependency</span>:
+    - <span style="color:#ae81ff">hello</span>
+- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">post build</span>
+  <span style="color:#f92672">tasks</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#ae81ff">echo hello</span>
+</code></pre></div><p>上の例では 3 つの phase setup, build, post build が順に実行されます。
 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</p>
-
 <p>task も phase 同様配列で指定しますが、配列の順序に意味はありません。
 依存関係がない限り、並列で実行されますし、実行順序は不定です。</p>
 </div>

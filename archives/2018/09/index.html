@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2018/09/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,12 +63,15 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T22:55:57JST">Sep 30, 2018</time></li>
       
       
+      <li>31 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/">metabase を使って drone の利用状況を可視化する</a></h2>
   </header>
 
   
-  <div class="summary"> drone OSS 0.8.5 で検証しています。
+  <div class="summary">drone OSS 0.8.5 で検証しています。
 https://drone.io/ と https://www.metabase.com/ の話です。
 drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
 どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。
@@ -84,6 +85,9 @@ drone の利用状況を可視化したかったので、 drone の DB(MySQL) �
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:56:42JST">Sep 30, 2018</time></li>
+      
+      
+      <li>121 Words</li>
       
       
     </ul>
@@ -118,13 +122,16 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:42:16JST">Sep 30, 2018</time></li>
       
       
+      <li>18 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-cant-use-nonroot-image/">drone で非rootユーザーで実行されるImageを使えない</a></h2>
   </header>
 
   
   <div class="summary">drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。
-/bin/sh: 3: cannot create /root/.netrc: Permission denied  これについては drone の開発者が回答しています。
+/bin/sh: 3: cannot create /root/.netrc: Permission denied これについては drone の開発者が回答しています。
  https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。</div>
 
   
@@ -137,6 +144,9 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:30:06JST">Sep 30, 2018</time></li>
       
       
+      <li>28 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-tag-conditional-step/">drone の step を実行するか否かをタグ名で判定する方法</a></h2>
   </header>
@@ -144,7 +154,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
   
   <div class="summary">drone 0.8.5 で検証しています。
 tag 名による判定方法はドキュメントには書いてないので書いておきます。
-when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グロブ * には / は含まれないことには注意してください。
+when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。
 上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。
  https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  </div>
 
@@ -156,6 +166,9 @@ when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グ
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:32:20JST">Sep 30, 2018</time></li>
+      
+      
+      <li>14 Words</li>
       
       
     </ul>
@@ -178,15 +191,18 @@ droneの web ui からリポジトリごとに設定できます。 そのリポ
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:26:11JST">Sep 30, 2018</time></li>
       
       
+      <li>88 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-matrix-build-run-only-27/">drone の matrix build が27個しか実行されない</a></h2>
   </header>
 
   
   <div class="summary">drone 0.8.5 で検証しています。
-matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。
+matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2 上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。
  https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。
-limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = append(axisList, axis) if p &gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。</div>
+limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = append(axisList, axis) if p &gt; limitAxis { break } } 制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。</div>
 
   
 </article>
@@ -198,6 +214,9 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:16:28JST">Sep 30, 2018</time></li>
       
       
+      <li>23 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-build-timeout/">drone の build の timeout が変更できない</a></h2>
   </header>
@@ -206,7 +225,7 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
   <div class="summary">drone 0.8.5 で検証しています。
 drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
 ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
-PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
+PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
  https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  </div>
 
   
@@ -217,6 +236,9 @@ PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そ�
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:44:27JST">Sep 30, 2018</time></li>
+      
+      
+      <li>139 Words</li>
       
       
     </ul>
@@ -243,6 +265,9 @@ drone上でリポジトリの連携を有効化すると、 リポジトリのHo
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:27:59JST">Sep 30, 2018</time></li>
+      
+      
+      <li>90 Words</li>
       
       
     </ul>
@@ -276,13 +301,16 @@ circle ci の場合は archive, unarchive する分、volume 共有に比べて�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T18:52:34JST">Sep 30, 2018</time></li>
       
       
+      <li>131 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/">drone exec を並列実行した際のdocker network name の衝突について</a></h2>
   </header>
 
   
   <div class="summary">drone exec を並列実行すると docker network name が衝突することがあります。
-$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</div>
+$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</div>
 
   
   <footer>

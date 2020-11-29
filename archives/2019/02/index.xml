@@ -5,12 +5,7 @@
     <link>https://suzuki-shunsuke.github.io/archives/2019/02/</link>
     <description>Recent content in 2019/02 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language>
-    <lastBuildDate>Sat, 16 Feb 2019 18:38:45 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/archives/2019/02/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>jp</language><atom:link href="https://suzuki-shunsuke.github.io/archives/2019/02/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Goの設定管理で viper の代わりに confita を使う</title>
       <link>https://suzuki-shunsuke.github.io/use-confita/</link>
@@ -24,7 +19,7 @@ confita の機能としては以下のようなものがあります。
  Viper can search multiple paths, but currently a single Viper instance only supports a single configuration file.
  k8s で ConfigMap と Secret を設定ファイルとして扱う場合、複数のファイルを扱えないと不便です。 その点 confita は複数の設定ファイルを問題なく扱えます。
 以下はフラグで指定した複数の設定ファイルから設定を読み込む簡単なサンプルです。
-import ( &amp;quot;context&amp;quot; &amp;quot;gopkg.in/go-playground/validator.v9&amp;quot; &amp;quot;github.com/heetch/confita&amp;quot; &amp;quot;github.com/heetch/confita/backend&amp;quot; &amp;quot;github.com/heetch/confita/backend/file&amp;quot; flag &amp;quot;github.com/spf13/pflag&amp;quot; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(&amp;quot;config&amp;quot;, &amp;quot;c&amp;quot;, nil, &amp;quot;configuration file path&amp;quot;) flag.</description>
+import ( &amp;#34;context&amp;#34; &amp;#34;gopkg.in/go-playground/validator.v9&amp;#34; &amp;#34;github.com/heetch/confita&amp;#34; &amp;#34;github.com/heetch/confita/backend&amp;#34; &amp;#34;github.com/heetch/confita/backend/file&amp;#34; flag &amp;#34;github.com/spf13/pflag&amp;#34; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(&amp;#34;config&amp;#34;, &amp;#34;c&amp;#34;, nil, &amp;#34;configuration file path&amp;#34;) flag.</description>
     </item>
     
     <item>
@@ -53,7 +48,7 @@ https://github.com/suzuki-shunsuke/gomic/blob/v0.5.7/scripts/tag.sh
       <guid>https://suzuki-shunsuke.github.io/golang-good-point/</guid>
       <description>自分は 2017/8頃(曖昧)からメインで書く言語をPythonからGolangに変更しました。 Goを書き始めて割と早い段階でGoが一番好きになりました。 そこでなんで Go が好きなのかということを頑張って言語化しようと思います。
 若干他の言語と比較する部分もありますが、決して他の言語をディスったり、 他の言語より優れているということが言いたいわけではないのでご了承ください。
- 依存するものが小さく、バイナリ1つインストールするだけで良い  Prometheus の exporter とかインストールするの簡単 Docker Imageも最小限になる  静的型付け  ビルド出来ている時点で一定の信頼性が担保されている よく知らないコードを読んだり修正するときとかだいぶ有り難い  GoDocが素晴らしい  何もしなくてもライブラリのドキュメントが出来上がっている  ライブラリの公開が容易  GitHubに公開するだけ npm や pypi のようなレジストリがないので楽  go test とか go vet, gofmt みたいに標準ツールが揃っている コーディング規約で悩む必要がない lintツールが充実している  gometalinter とか使っておけば OK lintできる環境を構築するのにそこまで頑張らなくて良い  エラーハンドリングが暗黙的に省略できないので信頼性が高い  Goのエラーハンドリング嫌いって人もいるし、v2で改善されるって話も聞くけど、自分はむしろ好き(面倒なのは理解できるけど)  言語仕様がシンプル(客観的な根拠はないし、難しい部分もあるけど、そんな気がする)  メタプログラミング使った、魔術的なコードになりにくい  interface 使ってコードを疎結合にするのが書いてて気持ちいい 並列処理が書きやすい  </description>
+ 依存するものが小さく、バイナリ1つインストールするだけで良い  Prometheus の exporter とかインストールするの簡単 Docker Imageも最小限になる   静的型付け  ビルド出来ている時点で一定の信頼性が担保されている よく知らないコードを読んだり修正するときとかだいぶ有り難い   GoDocが素晴らしい  何もしなくてもライブラリのドキュメントが出来上がっている   ライブラリの公開が容易  GitHubに公開するだけ npm や pypi のようなレジストリがないので楽   go test とか go vet, gofmt みたいに標準ツールが揃っている コーディング規約で悩む必要がない lintツールが充実している  gometalinter とか使っておけば OK lintできる環境を構築するのにそこまで頑張らなくて良い   エラーハンドリングが暗黙的に省略できないので信頼性が高い  Goのエラーハンドリング嫌いって人もいるし、v2で改善されるって話も聞くけど、自分はむしろ好き(面倒なのは理解できるけど)   言語仕様がシンプル(客観的な根拠はないし、難しい部分もあるけど、そんな気がする)  メタプログラミング使った、魔術的なコードになりにくい   interface 使ってコードを疎結合にするのが書いてて気持ちいい 並列処理が書きやすい  </description>
     </item>
     
     <item>
@@ -66,8 +61,8 @@ https://github.com/suzuki-shunsuke/gomic/blob/v0.5.7/scripts/tag.sh
  https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。
 変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。
 具体的には元々
-func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;quot;age&amp;quot;: age}, &amp;quot;failed to create a user&amp;quot;) }  だったものが
-func createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;quot;user name is invalid&amp;quot;) }  になります。
+func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;#34;age&amp;#34;: age}, &amp;#34;failed to create a user&amp;#34;) } だったものが
+func createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;#34;user name is invalid&amp;#34;) } になります。
 変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。
 メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と
  標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。</description>

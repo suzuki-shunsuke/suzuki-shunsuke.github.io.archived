@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/drone/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:16:28JST">Sep 30, 2018</time></li>
       
       
+      <li>23 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-build-timeout/">drone の build の timeout が変更できない</a></h2>
   </header>
@@ -73,7 +74,7 @@
   <div class="summary">drone 0.8.5 で検証しています。
 drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
 ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
-PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
+PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
  https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  </div>
 
   
@@ -84,6 +85,9 @@ PATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そ�
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:44:27JST">Sep 30, 2018</time></li>
+      
+      
+      <li>139 Words</li>
       
       
     </ul>
@@ -110,6 +114,9 @@ drone上でリポジトリの連携を有効化すると、 リポジトリのHo
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:27:59JST">Sep 30, 2018</time></li>
+      
+      
+      <li>90 Words</li>
       
       
     </ul>
@@ -143,13 +150,16 @@ circle ci の場合は archive, unarchive する分、volume 共有に比べて�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T18:52:34JST">Sep 30, 2018</time></li>
       
       
+      <li>131 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/">drone exec を並列実行した際のdocker network name の衝突について</a></h2>
   </header>
 
   
   <div class="summary">drone exec を並列実行すると docker network name が衝突することがあります。
-$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</div>
+$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</div>
 
   
   <footer>

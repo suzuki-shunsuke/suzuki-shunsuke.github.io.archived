@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/ansible/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-06T23:08:04JST">Dec 6, 2018</time></li>
       
       
+      <li>359 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/ansible-molecule/">molecule でansible の role と playbook をテストする</a></h2>
   </header>
@@ -79,9 +80,10 @@ molecule は ansible 専用の testing ツールです。 基本的に playbook 
  star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。
 それでは使っていきましょう。
 インストール https://molecule.readthedocs.io/en/latest/installation.html
-$ pip install molecule  Docker を使う場合 docker-py も必要です。
-$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。
-role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</div>
+$ pip install molecule Docker を使う場合 docker-py も必要です。
+$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。
+role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。
+$ molecule init scenario -r &lt;role name&gt; こうすると molecule ディレクトリが生成されます。</div>
 
   
   <footer>
@@ -97,6 +99,9 @@ role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-31T08:56:04JST">Oct 31, 2018</time></li>
       
       
+      <li>156 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/akoi/">akoi - binary installer</a></h2>
   </header>
@@ -104,7 +109,7 @@ role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移
   
   <div class="summary">自作のOSS akoi の紹介をします。
  なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
-まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード  ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)   akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
+まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード   ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)    akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
 分散ダウンロードについては
 https://qiita.com/codehex/items/d0a500ac387d39a34401
 が参考になります。
@@ -129,6 +134,9 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-12T21:02:51JST">Oct 12, 2018</time></li>
       
       
+      <li>92 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/test-ansible-on-docker/">Dockerを使ってansible playbookをテストする</a></h2>
   </header>
@@ -140,7 +148,7 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
 簡単なサンプルを用意しました。
 ansible playbookに加え、
  docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。
-$ bash test_docker.sh  とすることで動作確認できます。
+$ bash test_docker.sh とすることで動作確認できます。
 説明 スクリプトでやっていることは
  Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。
 Docker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。
@@ -150,7 +158,8 @@ https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
 関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。
 Vagrant Docker Provider https://www.vagrantup.com/docs/docker/
 なんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。
-https://www.vagrantup.com/docs/docker/basics.html#host-vm</div>
+https://www.vagrantup.com/docs/docker/basics.html#host-vm
+ By default, the host VM Vagrant spins up is backed by boot2docker, because it launches quickly and uses little resources.</div>
 
   
   <footer>

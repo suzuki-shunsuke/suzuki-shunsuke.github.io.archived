@@ -5,12 +5,7 @@
     <link>https://suzuki-shunsuke.github.io/archives/2018/12/</link>
     <description>Recent content in 2018/12 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language>
-    <lastBuildDate>Tue, 25 Dec 2018 21:51:41 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/archives/2018/12/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>jp</language><atom:link href="https://suzuki-shunsuke.github.io/archives/2018/12/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golangにおけるエラーハンドリングとロギングのプラクティス</title>
       <link>https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/</link>
@@ -20,7 +15,7 @@
       <description>2018-12-30 追記 この記事を元にドキュメントを書いてみました。
 https://github.com/suzuki-shunsuke/go-error-handling-logging-practice
 追記ここまで
-Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
+ Golang でエラーハンドリングとロギングをしてきて自分の中で固まりつつあるプラクティスを明文化します。 明文化することで以下のことを目指します。
  迷いをなくす コードの一貫性を保つ コーディング規約とすることでレビューの品質を上げる(自動化は出来ないけど) コードの品質を上げる(コードがゴチャつかなくなる) 適切にエラーをロギングする(必要十分な情報をログとして残す)  またエラーハンドリングとロギングのためのライブラリを自作しているのでそれも紹介します。
 https://github.com/suzuki-shunsuke/go-errlog
 ロギングに関する関連記事 この記事を書く前に軽くググってみただけでちゃんと読んでないのですが、 興味のある人は読んでみてください。
@@ -33,7 +28,7 @@ https://github.com/avelino/awesome-go#logging
 エラーログは中央集権的に main に近い所で出力する エラーログをどこで出力するかですが、原則中央集権的に main に近い所で出力します。 因みに中央集権的という表現は echo の centralized error handling からもじっています。
 https://echo.labstack.com/guide/error-handling
 error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。 Goでは以下のようなイディオムがよく見られますね。
-if err != nil { return err }  ロギングに必要な情報を戻り値のerrorに含める 上記のコードで問題なのは、エラーに関する情報が欠損することがあることです。</description>
+if err != nil { return err } ロギングに必要な情報を戻り値のerrorに含める 上記のコードで問題なのは、エラーに関する情報が欠損することがあることです。</description>
     </item>
     
     <item>
@@ -42,9 +37,9 @@ if err != nil { return err }  ロギングに必要な情報を戻り値のerror
       <pubDate>Wed, 19 Dec 2018 21:02:11 +0900</pubDate>
       
       <guid>https://suzuki-shunsuke.github.io/graylog-alert-issue/</guid>
-      <description> Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
+      <description>Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
 2018-12-31 追記 元々 Alert Condition, Notification の APIがないと勘違いしていたのですが、 実はちゃんとあったので terraform で管理できるように go-graylog を更新しました。
- https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   </description>
+ https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい   Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない  条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい)   ConditionやNotificationを複数のStreamで使い回せない   (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない   Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない    </description>
     </item>
     
     <item>
@@ -60,7 +55,7 @@ https://suzuki-shunsuke.github.io/graylog-terraform/
 今回実現したのは以下のことです。
  PR時にテストをする plan/* tag を push すると terraform plan が実行される apply/* tag を push すると terraform apply が実行され、tfstate がコミット、プッシュされる  ソースコード https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform に置いておきました。
  https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh  CI/CD用の user, role を作成する まずは role を作成します。
-resource &amp;quot;graylog_role&amp;quot; &amp;quot;terraform&amp;quot; { name = &amp;quot;terraform&amp;quot; description = &amp;quot;terraform&amp;quot; permissions = [ &amp;quot;dashboards:*&amp;quot;, &amp;quot;indexsets:*&amp;quot;, &amp;quot;inputs:*&amp;quot;, &amp;quot;roles:*&amp;quot;, &amp;quot;streams:*&amp;quot;, &amp;quot;users:*&amp;quot;, ] }  permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</description>
+resource &amp;quot;graylog_role&amp;quot; &amp;quot;terraform&amp;quot; { name = &amp;quot;terraform&amp;quot; description = &amp;quot;terraform&amp;quot; permissions = [ &amp;quot;dashboards:*&amp;quot;, &amp;quot;indexsets:*&amp;quot;, &amp;quot;inputs:*&amp;quot;, &amp;quot;roles:*&amp;quot;, &amp;quot;streams:*&amp;quot;, &amp;quot;users:*&amp;quot;, ] } permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</description>
     </item>
     
     <item>
@@ -78,9 +73,10 @@ molecule は ansible 専用の testing ツールです。 基本的に playbook 
  star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。
 それでは使っていきましょう。
 インストール https://molecule.readthedocs.io/en/latest/installation.html
-$ pip install molecule  Docker を使う場合 docker-py も必要です。
-$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。
-role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</description>
+$ pip install molecule Docker を使う場合 docker-py も必要です。
+$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。
+role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。
+$ molecule init scenario -r &amp;lt;role name&amp;gt; こうすると molecule ディレクトリが生成されます。</description>
     </item>
     
     <item>

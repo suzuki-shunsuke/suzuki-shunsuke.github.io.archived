@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -77,8 +77,6 @@
 
   <body>
     
-    
-    
 
     <header class="l-header">
       <nav class="navbar navbar-default">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:27:59JST">Sep 30, 2018</time></li>
       
       
+      <li>90 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Drone と Circle CI の workspace の扱いの違いについて</h1>
@@ -140,37 +141,23 @@
 
   
 
-  <div class="article-body">
-
-<p>drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。</p>
-
+  <div class="article-body"><p>drone は同じ pipeline の step 間で同じ workspace を docker の volume としてマウントすることで workspace を共有します。</p>
 <p><a href="http://docs.drone.io/workspace/">http://docs.drone.io/workspace/</a></p>
-
 <p>circle ci はデフォルトで job 間で workspace を共有しません。
 persist_to_workspace を指定することで共有する事ができます。</p>
-
 <p><a href="https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs">https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs</a></p>
-
 <p>circle ci の場合は volume を共有するのではなく、指定したディレクトリを archive し、次の job で展開することでファイルを共有するようです。</p>
-
 <p>この違いには一長一短があります。</p>
-
 <p>circle ci の場合は archive, unarchive する分、volume 共有に比べて時間がかかります。</p>
-
 <p>そのため、下手に job を分けるより一つの job で処理したほうが処理時間が短くなる場合がありますが、
 build や test といった処理は出来れば別の job として実行したいでしょうし、それでは workflow が使えません。</p>
-
 <p>ただし、共有するパスは自由に選べるので必要最小限に抑えることで時間を短縮できます。</p>
-
 <p>また、circle ci の場合は archive するパス及び展開先のパスを自由に選べるので自由度が高いです。
 drone の場合、 workspace 以外のファイルを共有できません。</p>
-
 <p>また、drone の場合 volume を共有するので同じ pipeline の step は同じノードで実行されるという制約がありますが、
 circle ci の場合、別のノードでの実行が可能です。
 drone の group を使って並列に実行する場合、複数のノードに分散できませんが、 circle ci の場合分散できるのでよりスケールしやすいと言えるでしょう。</p>
-
 <h2 id="結局どっちのほうがいいのか">結局どっちのほうがいいのか</h2>
-
 <p>一長一短があると言ったとおり、一概にどっちが良いとは言えませんが、個人的には drone のやり方のほうが直感的だし、
 何より速いので好きです。同じ pipeline の処理を複数のノードに分散させたいことって個人的にはあまりありません。</p>
 </div>

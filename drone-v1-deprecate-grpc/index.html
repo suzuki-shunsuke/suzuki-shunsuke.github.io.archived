@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Drone v1 で gRPC が使われなくなった - melody</title>
     
-<meta name="description" content="v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。 https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。">
+<meta name="description" content="v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた    v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)     自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。 https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。">
 
 <meta property="og:title" content="Drone v1 で gRPC が使われなくなった - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。 https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。">
+<meta property="og:description" content="v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた    v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)     自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。 https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/">
 <meta name="twitter:title" content="Drone v1 で gRPC が使われなくなった - melody">
-<meta name="twitter:description" content="v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。 https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。">
+<meta name="twitter:description" content="v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた    v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)     自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。 https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。\n理由  https:\/\/discourse.drone.io\/t\/curious-about-decision-to-drop-grpc\/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https:\/\/discourse.drone.io\/t\/drone-agents-keep-closing-connections-with-499-code\/5197\/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。\n関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。\n https:\/\/github.com\/drone\/drone\/issues\/2090 https:\/\/github.com\/drone\/drone\/issues\/2246 https:\/\/github.com\/drone\/drone\/pull\/2294 https:\/\/www.reddit.com\/r\/droneci\/comments\/8opifu\/drone_stops_working_after_some_little_time\/e06d1gn\/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。"
+    "description": "v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。\n理由  https:\/\/discourse.drone.io\/t\/curious-about-decision-to-drop-grpc\/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた    v1 での通信方法  https:\/\/discourse.drone.io\/t\/drone-agents-keep-closing-connections-with-499-code\/5197\/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)     自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。\n関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。\n https:\/\/github.com\/drone\/drone\/issues\/2090 https:\/\/github.com\/drone\/drone\/issues\/2246 https:\/\/github.com\/drone\/drone\/pull\/2294 https:\/\/www.reddit.com\/r\/droneci\/comments\/8opifu\/drone_stops_working_after_some_little_time\/e06d1gn\/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:39:18JST">Aug 15, 2019</time></li>
       
       
+      <li>61 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Drone v1 で gRPC が使われなくなった</h1>
@@ -140,48 +141,37 @@
 
   
 
-  <div class="article-body">
-
-<p>v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。</p>
-
+  <div class="article-body"><p>v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。</p>
 <h2 id="理由">理由</h2>
-
 <ul>
 <li><a href="https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987">https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987</a>
-
 <ul>
 <li>gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="v1-での通信方法">v1 での通信方法</h2>
-
 <ul>
 <li><a href="https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2">https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2</a>
-
 <ul>
 <li>agent がロングポーリングしている</li>
 <li>30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)</li>
-</ul></li>
 </ul>
-
-<hr />
-
+</li>
+</ul>
+<hr>
 <p>自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、
 v0.8 では gRPC 関連のトラブルが頻発していました。
 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、
 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり
 ビルドが pending のままになったり、色々ありました。</p>
-
 <p>関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。</p>
-
 <ul>
 <li><a href="https://github.com/drone/drone/issues/2090">https://github.com/drone/drone/issues/2090</a></li>
 <li><a href="https://github.com/drone/drone/issues/2246">https://github.com/drone/drone/issues/2246</a></li>
 <li><a href="https://github.com/drone/drone/pull/2294">https://github.com/drone/drone/pull/2294</a></li>
 <li><a href="https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/">https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/</a></li>
 </ul>
-
 <p>それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。
 管理者的にはアップグレードして一番嬉しい点ですね。</p>
 </div>

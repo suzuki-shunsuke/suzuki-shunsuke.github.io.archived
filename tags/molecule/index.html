@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/molecule/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-06T23:08:04JST">Dec 6, 2018</time></li>
       
       
+      <li>359 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/ansible-molecule/">molecule でansible の role と playbook をテストする</a></h2>
   </header>
@@ -79,9 +80,10 @@ molecule は ansible 専用の testing ツールです。 基本的に playbook 
  star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。
 それでは使っていきましょう。
 インストール https://molecule.readthedocs.io/en/latest/installation.html
-$ pip install molecule  Docker を使う場合 docker-py も必要です。
-$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。
-role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</div>
+$ pip install molecule Docker を使う場合 docker-py も必要です。
+$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。
+role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。
+$ molecule init scenario -r &lt;role name&gt; こうすると molecule ディレクトリが生成されます。</div>
 
   
   <footer>

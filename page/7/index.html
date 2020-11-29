@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -61,6 +59,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-30T08:35:16JST">Oct 30, 2018</time></li>
       
       
+      <li>209 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/gomic/">gomic - Goのモックジェネレータ</a></h2>
   </header>
@@ -68,14 +69,14 @@
   
   <div class="summary">自作のOSS gomic の紹介をします。
  なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
-まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
+まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき   設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
 Goで書かれています。
 https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。
 同様のツールは幾つかあります。
  https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
 なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
 自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
-// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</div>
+// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &#34;/tmp&#34;, nil }) mock.Getwd() // &#34;/tmp&#34;, nil これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</div>
 
   
   <footer>
@@ -91,6 +92,9 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-12T21:02:51JST">Oct 12, 2018</time></li>
       
       
+      <li>92 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/test-ansible-on-docker/">Dockerを使ってansible playbookをテストする</a></h2>
   </header>
@@ -102,7 +106,7 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
 簡単なサンプルを用意しました。
 ansible playbookに加え、
  docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。
-$ bash test_docker.sh  とすることで動作確認できます。
+$ bash test_docker.sh とすることで動作確認できます。
 説明 スクリプトでやっていることは
  Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。
 Docker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。
@@ -112,7 +116,8 @@ https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
 関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。
 Vagrant Docker Provider https://www.vagrantup.com/docs/docker/
 なんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。
-https://www.vagrantup.com/docs/docker/basics.html#host-vm</div>
+https://www.vagrantup.com/docs/docker/basics.html#host-vm
+ By default, the host VM Vagrant spins up is backed by boot2docker, because it launches quickly and uses little resources.</div>
 
   
   <footer>
@@ -126,6 +131,9 @@ https://www.vagrantup.com/docs/docker/basics.html#host-vm</div>
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-10T21:14:03JST">Oct 10, 2018</time></li>
+      
+      
+      <li>20 Words</li>
       
       
     </ul>
@@ -147,6 +155,9 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-01T08:04:16JST">Oct 1, 2018</time></li>
       
       
+      <li>143 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/">Hugo製ブログをGitHub PagesへCIでデプロイ</a></h2>
   </header>
@@ -154,7 +165,7 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
   
   <div class="summary">https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。
 前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml
---- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &quot;***&quot; - run: git config user.email &quot;***@example.com&quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.</div>
+--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &#34;***&#34; - run: git config user.email &#34;***@example.com&#34; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master release.</div>
 
   
   <footer>
@@ -168,6 +179,9 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-01T07:23:15JST">Oct 1, 2018</time></li>
+      
+      
+      <li>60 Words</li>
       
       
     </ul>
@@ -191,12 +205,15 @@ https://hub.docker.com/r/suzukishunsuke/go-ci/</div>
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T22:55:57JST">Sep 30, 2018</time></li>
       
       
+      <li>31 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/visualize-drone-usage-by-metabase/">metabase を使って drone の利用状況を可視化する</a></h2>
   </header>
 
   
-  <div class="summary"> drone OSS 0.8.5 で検証しています。
+  <div class="summary">drone OSS 0.8.5 で検証しています。
 https://drone.io/ と https://www.metabase.com/ の話です。
 drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
 どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。
@@ -210,6 +227,9 @@ drone の利用状況を可視化したかったので、 drone の DB(MySQL) �
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:56:42JST">Sep 30, 2018</time></li>
+      
+      
+      <li>121 Words</li>
       
       
     </ul>
@@ -244,13 +264,16 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:42:16JST">Sep 30, 2018</time></li>
       
       
+      <li>18 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-cant-use-nonroot-image/">drone で非rootユーザーで実行されるImageを使えない</a></h2>
   </header>
 
   
   <div class="summary">drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。
-/bin/sh: 3: cannot create /root/.netrc: Permission denied  これについては drone の開発者が回答しています。
+/bin/sh: 3: cannot create /root/.netrc: Permission denied これについては drone の開発者が回答しています。
  https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。</div>
 
   
@@ -263,6 +286,9 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:30:06JST">Sep 30, 2018</time></li>
       
       
+      <li>28 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-tag-conditional-step/">drone の step を実行するか否かをタグ名で判定する方法</a></h2>
   </header>
@@ -270,7 +296,7 @@ docker API でエラーが出て、コンテナを操作できない これは�
   
   <div class="summary">drone 0.8.5 で検証しています。
 tag 名による判定方法はドキュメントには書いてないので書いておきます。
-when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グロブ * には / は含まれないことには注意してください。
+when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。
 上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。
  https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  </div>
 
@@ -282,6 +308,9 @@ when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行  グ
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:32:20JST">Sep 30, 2018</time></li>
+      
+      
+      <li>14 Words</li>
       
       
     </ul>

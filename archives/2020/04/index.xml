@@ -5,12 +5,7 @@
     <link>https://suzuki-shunsuke.github.io/archives/2020/04/</link>
     <description>Recent content in 2020/04 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language>
-    <lastBuildDate>Fri, 24 Apr 2020 16:53:01 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/archives/2020/04/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>jp</language><atom:link href="https://suzuki-shunsuke.github.io/archives/2020/04/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CircleCI の checkout の注意点</title>
       <link>https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/</link>
@@ -21,10 +16,10 @@
 なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。
 また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。
 最初に結論 先に結論を書くと
- CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
+ CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため   代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
 サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96
 ここでは checkout の全てについては触れません。一部抜粋します。
-elif [ -n &amp;quot;$CIRCLE_BRANCH&amp;quot; ] then git reset --hard &amp;quot;$CIRCLE_SHA1&amp;quot; git checkout -q -B &amp;quot;$CIRCLE_BRANCH&amp;quot; fi  git reset --hard などをしています。</description>
+elif [ -n &amp;#34;$CIRCLE_BRANCH&amp;#34; ] then git reset --hard &amp;#34;$CIRCLE_SHA1&amp;#34; git checkout -q -B &amp;#34;$CIRCLE_BRANCH&amp;#34; fi git reset --hard などをしています。</description>
     </item>
     
     <item>
@@ -38,7 +33,7 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
 どんなツールか 設定ファイル skaffold-generator.yaml を監視して変更があったら skaffold.yaml を生成するツールです。設定ファイルでサービスの依存関係を定義できたり、コマンドライン引数で指定したサービス及びそれが依存するサービスに関連した設定だけを使って skaffold.yaml を更新します。 このツールは skaffold.yaml を生成するだけなので実際にアプリケーションをビルド・デプロイするには skaffold と組み合わせて使います。
 なぜ作ったか 元々ローカルでアプリケーションを動かしながら開発するために Docker Compose を使ってるリポジトリがあるのですが、それを skaffold に移行出来ないか検証しています。 まだ skaffold を触り始めたばかりで理解が浅いのですが、 本番環境は k8s で動いてるからローカルも k8s で動かせるといいかなと思ったり、あとは変更を検知して自動でビルド・デプロイしてくれたりして便利そうかなと思いました。 まぁ結果的に移行しないことになったとしても、 Skaffold と現状の仕組みについて理解が深まればいいかなくらいのつもりです。
 検証の過程で、 以下のようなことが Docker Compose だと出来るけど Skaffold だと難しそうだと思いました。
- サービスの依存関係を定義すること  Skaffold というより k8s の問題かとは思いますが Docker Compose だと依存するものを自動で起動してくれて便利  コマンドライン引数で指定したサービスだけ起動すること  Skaffold だと skafffold.yaml で定義したものすべてがビルド・デプロイされるという認識   サービスの数が少なければ全部ビルド・デプロイでもいいですが、 マイクロサービスをモノレポで管理しているような場合、 すべてのマイクロサービスをビルド・デプロイするのは無駄が大きかったりします。</description>
+ サービスの依存関係を定義すること  Skaffold というより k8s の問題かとは思いますが Docker Compose だと依存するものを自動で起動してくれて便利   コマンドライン引数で指定したサービスだけ起動すること  Skaffold だと skafffold.yaml で定義したものすべてがビルド・デプロイされるという認識    サービスの数が少なければ全部ビルド・デプロイでもいいですが、 マイクロサービスをモノレポで管理しているような場合、 すべてのマイクロサービスをビルド・デプロイするのは無駄が大きかったりします。</description>
     </item>
     
   </channel>

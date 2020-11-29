@@ -6,11 +6,7 @@
     <description>Recent content in hugo on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Wed, 10 Oct 2018 21:14:03 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 10 Oct 2018 21:14:03 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Project site を User site に移行しました (GitHub Pages)</title>
       <link>https://suzuki-shunsuke.github.io/migrate-to-user-gh-pages/</link>
@@ -30,7 +26,7 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
       <guid>https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/</guid>
       <description>https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。
 前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml
---- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;quot;***&amp;quot; - run: git config user.email &amp;quot;***@example.com&amp;quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.</description>
+--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;#34;***&amp;#34; - run: git config user.email &amp;#34;***@example.com&amp;#34; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master release.</description>
     </item>
     
   </channel>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/ci/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-08-02T13:21:37JST">Aug 2, 2020</time></li>
       
       
+      <li>159 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/codebuild-1/">AWS CodeBuild 良さそう</a></h2>
   </header>
@@ -74,7 +75,7 @@
 一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。
 なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。
 特徴としては
- Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想 Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心  VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い  変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。</div>
+ Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想 Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心   VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い   変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。</div>
 
   
   <footer>
@@ -90,6 +91,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-07T08:22:49JST">Dec 7, 2018</time></li>
       
       
+      <li>569 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-terraform-ci/">Graylog の Terraform を CI/CDで実行する</a></h2>
   </header>
@@ -102,7 +106,7 @@ https://suzuki-shunsuke.github.io/graylog-terraform/
 今回実現したのは以下のことです。
  PR時にテストをする plan/* tag を push すると terraform plan が実行される apply/* tag を push すると terraform apply が実行され、tfstate がコミット、プッシュされる  ソースコード https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform に置いておきました。
  https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh  CI/CD用の user, role を作成する まずは role を作成します。
-resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] }  permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</div>
+resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] } permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</div>
 
   
   <footer>

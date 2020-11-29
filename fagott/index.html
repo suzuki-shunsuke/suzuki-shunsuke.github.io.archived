@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Flute - Golang HTTP client testing framework - melody</title>
     
-<meta name="description" content="2019-07-17 追記 プロジェクト名が変わりましたhttps://github.com/suzuki-shunsuke/flute/issues/20Go の HTTP client のテストフレームワークを作ったので紹介します。https://github.com/suzuki-shunsuke/flute執筆時点のバージョンは v0.6.0 です。 リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。 https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.">
+<meta name="description" content="2019-07-17 追記 プロジェクト名が変わりましたhttps://github.com/suzuki-shunsuke/flute/issues/20 Go の HTTP client のテストフレームワークを作ったので紹介します。https://github.com/suzuki-shunsuke/flute執筆時点のバージョンは v0.6.0 です。 リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。 https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.">
 
 <meta property="og:title" content="Flute - Golang HTTP client testing framework - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/fagott/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="2019-07-17 追記 プロジェクト名が変わりましたhttps://github.com/suzuki-shunsuke/flute/issues/20Go の HTTP client のテストフレームワークを作ったので紹介します。https://github.com/suzuki-shunsuke/flute執筆時点のバージョンは v0.6.0 です。 リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。 https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.">
+<meta property="og:description" content="2019-07-17 追記 プロジェクト名が変わりましたhttps://github.com/suzuki-shunsuke/flute/issues/20 Go の HTTP client のテストフレームワークを作ったので紹介します。https://github.com/suzuki-shunsuke/flute執筆時点のバージョンは v0.6.0 です。 リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。 https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/fagott/">
 <meta name="twitter:title" content="Flute - Golang HTTP client testing framework - melody">
-<meta name="twitter:description" content="2019-07-17 追記 プロジェクト名が変わりましたhttps://github.com/suzuki-shunsuke/flute/issues/20Go の HTTP client のテストフレームワークを作ったので紹介します。https://github.com/suzuki-shunsuke/flute執筆時点のバージョンは v0.6.0 です。 リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。 https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.">
+<meta name="twitter:description" content="2019-07-17 追記 プロジェクト名が変わりましたhttps://github.com/suzuki-shunsuke/flute/issues/20 Go の HTTP client のテストフレームワークを作ったので紹介します。https://github.com/suzuki-shunsuke/flute執筆時点のバージョンは v0.6.0 です。 リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。 https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53  元々自分はこの目的のために h2non/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。そこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client.">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "2019-07-17 追記 プロジェクト名が変わりました\nhttps:\/\/github.com\/suzuki-shunsuke\/flute\/issues\/20\nGo の HTTP client のテストフレームワークを作ったので紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/flute\n執筆時点のバージョンは v0.6.0 です。\n リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。\n比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。\n https:\/\/github.com\/suzuki-shunsuke\/flute\/blob\/master\/examples\/create_user.go https:\/\/github.com\/suzuki-shunsuke\/flute\/blob\/master\/examples\/create_user_test.go#L17-L53  元々自分はこの目的のために h2non\/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。\nそこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr\/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。\n例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。\n=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client."
+    "description": "2019-07-17 追記 プロジェクト名が変わりました\nhttps:\/\/github.com\/suzuki-shunsuke\/flute\/issues\/20\n Go の HTTP client のテストフレームワークを作ったので紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/flute\n執筆時点のバージョンは v0.6.0 です。\n リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。\n比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。\n https:\/\/github.com\/suzuki-shunsuke\/flute\/blob\/master\/examples\/create_user.go https:\/\/github.com\/suzuki-shunsuke\/flute\/blob\/master\/examples\/create_user_test.go#L17-L53  元々自分はこの目的のために h2non\/gock を使っていました。 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。\nそこで flute では request に対し、matcher と tester という概念を導入し、 matcher でマッチしたリクエストを tester でテストするというふうにしました。 テストでは内部で stretchr\/testify の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。\n例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。\n=== RUN TestClient_CreateUser --- FAIL: TestClient_CreateUser (0.00s) tester.go:168: Error Trace: tester.go:168 tester.go:32 transport.go:25 client.go:250 client.go:174 client."
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-07T08:20:00JST">Jul 7, 2019</time></li>
       
       
+      <li>173 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Flute - Golang HTTP client testing framework</h1>
@@ -142,46 +143,30 @@
 
   
 
-  <div class="article-body">
-
-<h2 id="2019-07-17-追記">2019-07-17 追記</h2>
-
+  <div class="article-body"><h2 id="2019-07-17-追記">2019-07-17 追記</h2>
 <p>プロジェクト名が変わりました</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/flute/issues/20">https://github.com/suzuki-shunsuke/flute/issues/20</a></p>
-
-<hr />
-
+<hr>
 <p>Go の HTTP client のテストフレームワークを作ったので紹介します。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/flute">https://github.com/suzuki-shunsuke/flute</a></p>
-
 <p>執筆時点のバージョンは v0.6.0 です。</p>
-
 <ul>
 <li>リクエストパラメータのテスト</li>
 <li>HTTP サーバのモッキング</li>
 </ul>
-
 <p>を目的としています。</p>
-
 <p>比較的実践的なサンプルとして、ユーザーを作成する簡単な API client とそのテストを書いたので参考にしてください。</p>
-
 <ul>
 <li><a href="https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go">https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user.go</a></li>
 <li><a href="https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53">https://github.com/suzuki-shunsuke/flute/blob/master/examples/create_user_test.go#L17-L53</a></li>
 </ul>
-
 <p>元々自分はこの目的のために <a href="https://github.com/h2non/gock">h2non/gock</a> を使っていました。
 ただ、 gock だとリクエストがマッチしなかったときに、なぜマッチしないのかがわからず、調査に困るという問題がありました。</p>
-
 <p>そこで flute では request に対し、matcher と tester という概念を導入し、
 matcher でマッチしたリクエストを tester でテストするというふうにしました。
 テストでは内部で <a href="https://github.com/stretchr/testify">stretchr/testify</a> の assert を使っており、テストに失敗したときになぜ失敗したのかが分かりやすく出力されるようになっています。</p>
-
 <p>例えば以下の例は、リクエストの Authorization header にトークンがセットされていなかった場合のエラーメッセージです。</p>
-
-<pre><code class="language-console">=== RUN   TestClient_CreateUser
+<pre><code class="language-console" data-lang="console">=== RUN   TestClient_CreateUser
 --- FAIL: TestClient_CreateUser (0.00s)
     tester.go:168:
                 Error Trace:    tester.go:168
@@ -209,47 +194,37 @@ matcher でマッチしたリクエストを tester でテストするという�
                 Messages:       the request header &quot;Authorization&quot; should match
                                 service: http://example.com
                                 request name: create a user
-</code></pre>
-
-<p>また、当たり前かもしれませんが、モックとしてレスポンスも返します。</p>
-
+</code></pre><p>また、当たり前かもしれませんが、モックとしてレスポンスも返します。</p>
 <p>マッチングやテストで使える項目としては</p>
-
 <ul>
 <li>リクエストパス (ex. &ldquo;/users&rdquo;)</li>
 <li>method (ex. &ldquo;GET&rdquo;, &ldquo;POST&rdquo;)</li>
 <li>クエリパラメータ(パラメータの有無、値)</li>
 <li>ヘッダー(ヘッダーの有無、値)</li>
 <li>リクエストボディ
-
 <ul>
 <li>文字列完全一致</li>
 <li>JSONとしての等価性</li>
-</ul></li>
+</ul>
+</li>
 <li>ユーザー定義のカスタム関数</li>
 </ul>
-
 <p>などがあります。</p>
-
 <p>詳細は コード中にコメントを入れているので <a href="https://godoc.org/github.com/suzuki-shunsuke/flute/flute">godoc</a> を読んでください。</p>
-
 <p>技術的には <a href="https://golang.org/pkg/net/http/#Client">*http.Client</a> の Transport に *flute.Transport を設定することで HTTP サーバのモッキングをしています。</p>
-
 <p>API のデザイン面で考慮したこととしては、
 グローバル変数である http.DefaultClient の変更をライブラリ側でやらないことです。
 あくまで http.RoundTripper の実装を提供するだけで、それを http.DefaultClient に設定する場合、それのコントロールはユーザーに任せています。</p>
-
 <ul>
 <li>ライブラリでグローバル変数の変更を隠蔽し、ユーザーが無意識のうちに変更してたりするのは良くない
-
 <ul>
 <li>gock では http.DefaultClient を変更しているが、それを理解しないまま使っているユーザーもいるはず</li>
 <li>グローバル変数の変更には副作用もあるので、ユーザーが理解した上で明示的に行うべきである</li>
 <li>明示的に <code>http.DefaultClient = client</code> のようにユーザーに書かせれば、理解しないまま使うことはないはず</li>
-</ul></li>
+</ul>
+</li>
 <li>ライブラリの外からも変更できるグローバル変数をライブラリで完全に管理するのは不可能なので、ユーザーに任せる</li>
 </ul>
-
 <p>以上、簡単ですが自作の OSS <a href="https://github.com/suzuki-shunsuke/flute">flute</a> の紹介でした。</p>
 </div>
 

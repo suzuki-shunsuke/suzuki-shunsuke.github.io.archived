@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>dd-time - コマンドの実行時間を Datadog に送るツール - melody</title>
     
-<meta name="description" content="コマンドの実行時間を Datadog に送る dd-time というツールを作りました。このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。">
+<meta name="description" content="コマンドの実行時間を Datadog に送る dd-time というツールを作りました。このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。$ dd-time -t command:docker-build -- docker build . Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag として勝手に設定されますが、 CircleCI 以外でも使えます。">
 
 <meta property="og:title" content="dd-time - コマンドの実行時間を Datadog に送るツール - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/dd-time/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="コマンドの実行時間を Datadog に送る dd-time というツールを作りました。このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。">
+<meta property="og:description" content="コマンドの実行時間を Datadog に送る dd-time というツールを作りました。このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。$ dd-time -t command:docker-build -- docker build . Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag として勝手に設定されますが、 CircleCI 以外でも使えます。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/dd-time/">
 <meta name="twitter:title" content="dd-time - コマンドの実行時間を Datadog に送るツール - melody">
-<meta name="twitter:description" content="コマンドの実行時間を Datadog に送る dd-time というツールを作りました。このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。">
+<meta name="twitter:description" content="コマンドの実行時間を Datadog に送る dd-time というツールを作りました。このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。$ dd-time -t command:docker-build -- docker build . Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag として勝手に設定されますが、 CircleCI 以外でも使えます。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "コマンドの実行時間を Datadog に送る dd-time というツールを作りました。\nこのツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。\ncircle-dd-bench については circle-dd-bench の作者が書いたブログ https:\/\/blog.yuyat.jp\/post\/circle-dd-bench\/ も参考にしてください。\ndd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。\n使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。\n$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。\nメトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。"
+    "description": "コマンドの実行時間を Datadog に送る dd-time というツールを作りました。\nこのツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。\ncircle-dd-bench については circle-dd-bench の作者が書いたブログ https:\/\/blog.yuyat.jp\/post\/circle-dd-bench\/ も参考にしてください。\ndd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。\n使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。\n$ dd-time -t command:docker-build -- docker build . Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。\nメトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。\nCircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag として勝手に設定されますが、 CircleCI 以外でも使えます。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-30T13:54:47JST">Nov 30, 2019</time></li>
       
       
+      <li>120 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">dd-time - コマンドの実行時間を Datadog に送るツール</h1>
@@ -141,30 +142,19 @@
   
 
   <div class="article-body"><p>コマンドの実行時間を Datadog に送る <a href="https://github.com/suzuki-shunsuke/dd-time">dd-time</a> というツールを作りました。</p>
-
 <p>このツールは <a href="https://github.com/yuya-takeyama/circle-dd-bench">circle-dd-bench</a> にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。</p>
-
 <p>circle-dd-bench については circle-dd-bench の作者が書いたブログ <a href="https://blog.yuyat.jp/post/circle-dd-bench/">https://blog.yuyat.jp/post/circle-dd-bench/</a> も参考にしてください。</p>
-
 <p>dd-time は Go 製なので <a href="https://github.com/suzuki-shunsuke/dd-time/releases">GitHub Releases</a> からバイナリをダウンロードしてインストールすれば使えます。</p>
-
 <p>使い方はシンプルで実行時間を計測したいコマンドの前に <code>dd-time --</code> をつけるだけです。
 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。</p>
-
 <pre><code>$ dd-time -t command:docker-build -- docker build .
-</code></pre>
-
-<p>Datadog の API key を環境変数 <code>DATADOG_API_KEY</code> として設定する必要があります。
+</code></pre><p>Datadog の API key を環境変数 <code>DATADOG_API_KEY</code> として設定する必要があります。
 こうすると <a href="https://docs.datadoghq.com/api/?lang=python#post-timeseries-points">Datadog の Post timeseries points API</a> を使い、<code>command_execution_time</code> というメトリックス名(変更可能)でコマンドの実行時間が送られます。</p>
-
 <p>メトリックスの名前や host, tags はそれぞれ <code>--metric-name (-m)</code>, <code>--host</code>, <code>--tag (-t)</code> で指定できます。
 <code>--tag</code> は複数回指定可能で、 <code>key:value</code> というフォーマットで指定します。</p>
-
 <p>CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag として勝手に設定されますが、 CircleCI 以外でも使えます。</p>
-
 <p>dd-time を作る上で意識したことは、<code>透過的にする(元のコードにほとんど影響を与えずに使えるようにする)</code>ということです。
 具体的には以下のような点です。</p>
-
 <ul>
 <li>標準入力をそのままコマンドに渡す</li>
 <li>コマンドの標準出力・標準エラー出力をそのまま出力する</li>
@@ -172,14 +162,13 @@
 <li>Datadog への送信に失敗しても dd-time の exit code は 0 とする
 (option で non zero にもできるようにするのもありだが、現状はそうしてない)</li>
 <li>Datadog への送信に失敗した場合のエラーメッセージをファイルに吐き出せる(コマンドの出力と混ざらないようにできる)
-
 <ul>
 <li>デフォルトは標準エラー出力だが、 <code>--output (-o)</code> と <code>--apend (-a)</code> オプションで変更できる</li>
 <li><code>--append</code> を指定すると追記モードで出力できる</li>
-</ul></li>
+</ul>
+</li>
 <li>適切にシグナルハンドリングする(本当に適切と言えるかは分かりませんが)</li>
 </ul>
-
 <p>以上、簡単ですが dd-time の紹介でした。</p>
 </div>
 

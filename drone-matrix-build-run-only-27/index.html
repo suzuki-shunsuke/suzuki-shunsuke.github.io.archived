@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>drone の matrix build が27個しか実行されない - melody</title>
     
-<meta name="description" content="drone 0.8.5 で検証しています。matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。limitAxis = 25 axisList := []Axis{} for p := 0; p &amp;lt; perm; p&#43;&#43; { axisList = append(axisList, axis) if p &amp;gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。">
+<meta name="description" content="drone 0.8.5 で検証しています。matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2 上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。limitAxis = 25 axisList := []Axis{} for p := 0; p &amp;lt; perm; p&#43;&#43; { axisList = append(axisList, axis) if p &amp;gt; limitAxis { break } } 制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。">
 
 <meta property="og:title" content="drone の matrix build が27個しか実行されない - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/drone-matrix-build-run-only-27/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="drone 0.8.5 で検証しています。matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。limitAxis = 25 axisList := []Axis{} for p := 0; p &amp;lt; perm; p&#43;&#43; { axisList = append(axisList, axis) if p &amp;gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。">
+<meta property="og:description" content="drone 0.8.5 で検証しています。matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2 上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。limitAxis = 25 axisList := []Axis{} for p := 0; p &amp;lt; perm; p&#43;&#43; { axisList = append(axisList, axis) if p &amp;gt; limitAxis { break } } 制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/drone-matrix-build-run-only-27/">
 <meta name="twitter:title" content="drone の matrix build が27個しか実行されない - melody">
-<meta name="twitter:description" content="drone 0.8.5 で検証しています。matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。limitAxis = 25 axisList := []Axis{} for p := 0; p &amp;lt; perm; p&#43;&#43; { axisList = append(axisList, axis) if p &amp;gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。">
+<meta name="twitter:description" content="drone 0.8.5 で検証しています。matrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2 上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11 https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。limitAxis = 25 axisList := []Axis{} for p := 0; p &amp;lt; perm; p&#43;&#43; { axisList = append(axisList, axis) if p &amp;gt; limitAxis { break } } 制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "drone 0.8.5 で検証しています。\nmatrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2  上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。\n https:\/\/github.com\/cncd\/pipeline\/blob\/d4e09fd3021a16408bc3ebdd3500efd28f51e72c\/pipeline\/frontend\/yaml\/matrix\/matrix.go#L11 https:\/\/github.com\/cncd\/pipeline\/blob\/d4e09fd3021a16408bc3ebdd3500efd28f51e72c\/pipeline\/frontend\/yaml\/matrix\/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。\nlimitAxis = 25 axisList := []Axis{} for p := 0; p \x26lt; perm; p\x2b\x2b { axisList = append(axisList, axis) if p \x26gt; limitAxis { break } }  制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。"
+    "description": "drone 0.8.5 で検証しています。\nmatrix: ZOO: - 1 - 2 - 3 - 4 FOO: - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 BAR: - 1 - 2 上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、 27個しか実行されないようにハードコードされていました。\n https:\/\/github.com\/cncd\/pipeline\/blob\/d4e09fd3021a16408bc3ebdd3500efd28f51e72c\/pipeline\/frontend\/yaml\/matrix\/matrix.go#L11 https:\/\/github.com\/cncd\/pipeline\/blob\/d4e09fd3021a16408bc3ebdd3500efd28f51e72c\/pipeline\/frontend\/yaml\/matrix\/matrix.go#L93  関係ある部分だけ抽出すると以下のような感じになります。\nlimitAxis = 25 axisList := []Axis{} for p := 0; p \u0026lt; perm; p\u002b\u002b { axisList = append(axisList, axis) if p \u0026gt; limitAxis { break } } 制限をかけるのは仕方ないですが、 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので ユーザーとしては混乱しますね。 build の結果の画面の上の方に warning があると嬉しいです。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:26:11JST">Sep 30, 2018</time></li>
       
       
+      <li>88 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">drone の matrix build が27個しか実行されない</h1>
@@ -129,49 +130,41 @@
   
 
   <div class="article-body"><p>drone 0.8.5 で検証しています。</p>
-
-<pre><code class="language-yaml">matrix:
-  ZOO:
-  - 1
-  - 2
-  - 3
-  - 4
-  FOO:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  BAR:
-  - 1
-  - 2
-</code></pre>
-
-<p>上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">matrix</span>:
+  <span style="color:#f92672">ZOO</span>:
+  - <span style="color:#ae81ff">1</span>
+  - <span style="color:#ae81ff">2</span>
+  - <span style="color:#ae81ff">3</span>
+  - <span style="color:#ae81ff">4</span>
+  <span style="color:#f92672">FOO</span>:
+  - <span style="color:#ae81ff">1</span>
+  - <span style="color:#ae81ff">2</span>
+  - <span style="color:#ae81ff">3</span>
+  - <span style="color:#ae81ff">4</span>
+  - <span style="color:#ae81ff">5</span>
+  - <span style="color:#ae81ff">6</span>
+  - <span style="color:#ae81ff">7</span>
+  - <span style="color:#ae81ff">8</span>
+  <span style="color:#f92672">BAR</span>:
+  - <span style="color:#ae81ff">1</span>
+  - <span style="color:#ae81ff">2</span>
+</code></pre></div><p>上記の場合、本来 4 * 8 * 2 = 64 個実行されるはずのmatrix builds が27個しか実行されなかったのでソースコードを確認したところ、
 27個しか実行されないようにハードコードされていました。</p>
-
 <ul>
 <li><a href="https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11">https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L11</a></li>
 <li><a href="https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93">https://github.com/cncd/pipeline/blob/d4e09fd3021a16408bc3ebdd3500efd28f51e72c/pipeline/frontend/yaml/matrix/matrix.go#L93</a></li>
 </ul>
-
 <p>関係ある部分だけ抽出すると以下のような感じになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">limitAxis</span> = <span style="color:#ae81ff">25</span>
 
-<pre><code class="language-go">limitAxis = 25
-
-axisList := []Axis{}
-for p := 0; p &lt; perm; p++ {
-	axisList = append(axisList, axis)
-	if p &gt; limitAxis {
-		break
+<span style="color:#a6e22e">axisList</span> <span style="color:#f92672">:=</span> []<span style="color:#a6e22e">Axis</span>{}
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">p</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">p</span> &lt; <span style="color:#a6e22e">perm</span>; <span style="color:#a6e22e">p</span><span style="color:#f92672">++</span> {
+	<span style="color:#a6e22e">axisList</span> = append(<span style="color:#a6e22e">axisList</span>, <span style="color:#a6e22e">axis</span>)
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">p</span> &gt; <span style="color:#a6e22e">limitAxis</span> {
+		<span style="color:#66d9ef">break</span>
 	}
 }
-</code></pre>
-
-<p>制限をかけるのは仕方ないですが、
+</code></pre></div><p>制限をかけるのは仕方ないですが、
 エラーも warning もなく正常終了し、でもよく見ると 27 個しか実行されていないので
 ユーザーとしては混乱しますね。
 build の結果の画面の上の方に warning があると嬉しいです。</p>

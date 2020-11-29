@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>durl - 壊れたURLを検知するCLIツール - melody</title>
     
-<meta name="description" content="結構前に開発したツールですが、まだ記事にしてなかったので紹介します。https://github.com/suzuki-shunsuke/durlファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。なお、ページ内リンク(アンカー)が壊れているものについては検知できません。インストール Go製で、バイナリを GitHub Releases で公開しています。https://github.com/suzuki-shunsuke/durl/releasesDocker イメージ https://quay.io/repository/suzuki_shunsuke/durlbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。使い方 durl init で設定ファイル .durl.yml を生成します。$ durl init  durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.">
+<meta name="description" content="結構前に開発したツールですが、まだ記事にしてなかったので紹介します。https://github.com/suzuki-shunsuke/durlファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。なお、ページ内リンク(アンカー)が壊れているものについては検知できません。インストール Go製で、バイナリを GitHub Releases で公開しています。https://github.com/suzuki-shunsuke/durl/releasesDocker イメージ https://quay.io/repository/suzuki_shunsuke/durlbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。使い方 durl init で設定ファイル .durl.yml を生成します。$ durl init durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.">
 
 <meta property="og:title" content="durl - 壊れたURLを検知するCLIツール - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/durl/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="結構前に開発したツールですが、まだ記事にしてなかったので紹介します。https://github.com/suzuki-shunsuke/durlファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。なお、ページ内リンク(アンカー)が壊れているものについては検知できません。インストール Go製で、バイナリを GitHub Releases で公開しています。https://github.com/suzuki-shunsuke/durl/releasesDocker イメージ https://quay.io/repository/suzuki_shunsuke/durlbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。使い方 durl init で設定ファイル .durl.yml を生成します。$ durl init  durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.">
+<meta property="og:description" content="結構前に開発したツールですが、まだ記事にしてなかったので紹介します。https://github.com/suzuki-shunsuke/durlファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。なお、ページ内リンク(アンカー)が壊れているものについては検知できません。インストール Go製で、バイナリを GitHub Releases で公開しています。https://github.com/suzuki-shunsuke/durl/releasesDocker イメージ https://quay.io/repository/suzuki_shunsuke/durlbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。使い方 durl init で設定ファイル .durl.yml を生成します。$ durl init durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/durl/">
 <meta name="twitter:title" content="durl - 壊れたURLを検知するCLIツール - melody">
-<meta name="twitter:description" content="結構前に開発したツールですが、まだ記事にしてなかったので紹介します。https://github.com/suzuki-shunsuke/durlファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。なお、ページ内リンク(アンカー)が壊れているものについては検知できません。インストール Go製で、バイナリを GitHub Releases で公開しています。https://github.com/suzuki-shunsuke/durl/releasesDocker イメージ https://quay.io/repository/suzuki_shunsuke/durlbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。使い方 durl init で設定ファイル .durl.yml を生成します。$ durl init  durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.">
+<meta name="twitter:description" content="結構前に開発したツールですが、まだ記事にしてなかったので紹介します。https://github.com/suzuki-shunsuke/durlファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。なお、ページ内リンク(アンカー)が壊れているものについては検知できません。インストール Go製で、バイナリを GitHub Releases で公開しています。https://github.com/suzuki-shunsuke/durl/releasesDocker イメージ https://quay.io/repository/suzuki_shunsuke/durlbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。使い方 durl init で設定ファイル .durl.yml を生成します。$ durl init durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "結構前に開発したツールですが、まだ記事にしてなかったので紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/durl\nファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。\nなお、ページ内リンク(アンカー)が壊れているものについては検知できません。\nインストール Go製で、バイナリを GitHub Releases で公開しています。\nhttps:\/\/github.com\/suzuki-shunsuke\/durl\/releases\nDocker イメージ https:\/\/quay.io\/repository\/suzuki_shunsuke\/durl\nbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。\n使い方 durl init で設定ファイル .durl.yml を生成します。\n$ durl init  durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。\nhttps:\/\/github.com\/suzuki-shunsuke\/go-errlog\/blob\/v0.9.0\/scripts\/durl.sh#L9\nfind . \\ -type d -name node_modules -prune -o \\ -type d -name .git -prune -o \\ -type d -name vendor -prune -o \\ -type f -print | \\ grep -v package-lock."
+    "description": "結構前に開発したツールですが、まだ記事にしてなかったので紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/durl\nファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。\nなお、ページ内リンク(アンカー)が壊れているものについては検知できません。\nインストール Go製で、バイナリを GitHub Releases で公開しています。\nhttps:\/\/github.com\/suzuki-shunsuke\/durl\/releases\nDocker イメージ https:\/\/quay.io\/repository\/suzuki_shunsuke\/durl\nbusybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。\n使い方 durl init で設定ファイル .durl.yml を生成します。\n$ durl init durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。\nhttps:\/\/github.com\/suzuki-shunsuke\/go-errlog\/blob\/v0.9.0\/scripts\/durl.sh#L9\nfind . \\ -type d -name node_modules -prune -o \\ -type d -name .git -prune -o \\ -type d -name vendor -prune -o \\ -type f -print | \\ grep -v package-lock."
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-04-28T21:25:00JST">Apr 28, 2019</time></li>
       
       
+      <li>137 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">durl - 壊れたURLを検知するCLIツール</h1>
@@ -138,42 +139,24 @@
 
   
 
-  <div class="article-body">
-
-<p>結構前に開発したツールですが、まだ記事にしてなかったので紹介します。</p>
-
+  <div class="article-body"><p>結構前に開発したツールですが、まだ記事にしてなかったので紹介します。</p>
 <p><a href="https://github.com/suzuki-shunsuke/durl">https://github.com/suzuki-shunsuke/durl</a></p>
-
 <p>ファイル中の URL が壊れていないかチェックするツールです。
 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。</p>
-
 <p>なお、ページ内リンク(アンカー)が壊れているものについては検知できません。</p>
-
 <h2 id="インストール">インストール</h2>
-
 <p>Go製で、バイナリを GitHub Releases で公開しています。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/durl/releases">https://github.com/suzuki-shunsuke/durl/releases</a></p>
-
 <h2 id="docker-イメージ">Docker イメージ</h2>
-
 <p><a href="https://quay.io/repository/suzuki_shunsuke/durl">https://quay.io/repository/suzuki_shunsuke/durl</a></p>
-
 <p>busybox ベースの Docker イメージも提供しています。
 CI で使うのに便利です。</p>
-
 <h2 id="使い方">使い方</h2>
-
 <p><code>durl init</code> で設定ファイル <code>.durl.yml</code> を生成します。</p>
-
 <pre><code>$ durl init
-</code></pre>
-
-<p><code>durl check</code> に対象ファイルパスのリストを標準入力として渡してください。
+</code></pre><p><code>durl check</code> に対象ファイルパスのリストを標準入力として渡してください。
 <code>find</code> コマンドなどと組み合わせると良いです。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9">https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9</a></p>
-
 <pre><code>find . \
   -type d -name node_modules -prune -o \
   -type d -name .git -prune -o \
@@ -183,48 +166,34 @@ CI で使うのに便利です。</p>
   grep -v Gopkg.toml | \
   grep -v Gopkg.lock | \
   durl check || exit 1
-</code></pre>
-
-<p>壊れた URL が見つかったら ファイルのパス、URL、HTTPのステータスコードを標準エラー出力します。</p>
-
+</code></pre><p>壊れた URL が見つかったら ファイルのパス、URL、HTTPのステータスコードを標準エラー出力します。</p>
 <pre><code>$ echo bar.txt | durl check
 [bar.txt] https://github.com/suzuki-shunsuke/dead-repository is dead (404)
-</code></pre>
-
-<h2 id="無視するドメイン">無視するドメイン</h2>
-
+</code></pre><h2 id="無視するドメイン">無視するドメイン</h2>
 <p><a href="https://github.com/suzuki-shunsuke/durl/issues/11">https://github.com/suzuki-shunsuke/durl/issues/11</a></p>
-
 <p>これらは無視します。</p>
-
 <ul>
 <li>example.com, example.org, example.net</li>
 <li>localhost</li>
 </ul>
-
 <h2 id="設定">設定</h2>
-
 <p><a href="https://github.com/suzuki-shunsuke/durl#configuration">https://github.com/suzuki-shunsuke/durl#configuration</a></p>
-
 <ul>
 <li>ignore_urls: 無視するURL(完全一致)のリスト</li>
 <li>ignore_hosts: 無視するドメイン(完全一致)のリスト</li>
 <li>http_method: HTTPリクエストのメソッド
-
 <ul>
 <li>head,get: HEADリクエストに失敗したらGETリクエスト</li>
 <li>head: HEADリクエスト</li>
 <li>get: GETリクエスト</li>
-</ul></li>
+</ul>
+</li>
 <li>max_request_count: 同時に並列でリクエストする最大数</li>
 <li>max_failed_request_count: 最大の失敗URL数。これを超えると即時異常終了する</li>
 <li>http_request_timeout: HTTPリクエストのタイムアウト</li>
 </ul>
-
 <h2 id="ci-に組み込む">CI に組み込む</h2>
-
 <p>ドキュメントやブログをGitHubなどでホスティングしている場合、CIに組み込むことも出来ます。</p>
-
 <ul>
 <li><a href="https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/.drone.yml#L35-L38">https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/.drone.yml#L35-L38</a></li>
 <li><a href="https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9">https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9</a></li>

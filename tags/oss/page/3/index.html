@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/oss/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-23T11:35:13JST">Aug 23, 2019</time></li>
       
       
+      <li>229 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/cmdx/">cmdx - task runner</a></h2>
   </header>
@@ -77,11 +78,11 @@ task runner の定義はググってもわからなかったので、 cmdx を t
  依存するライブラリのインストール ビルド テスト コード整形 lint etc  などを管理するものとします。
 類似するものとしては以下のようなものがあります。
  Make npm scripts Task tj/robo mumoshu/variant  使い方 詳細は README を読んでください。
-$ cmdx -i  で設定ファイルの雛形を生成します。
+$ cmdx -i で設定ファイルの雛形を生成します。
 そして設定ファイルに task を定義していきます。 設定に関しては README を参照してください。
 そうすると cmdx -l でタスクの一覧とその説明が見れます。
 例えば次は cmdx のリポジトリでの実行結果です。
-$ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is required) test, t - test fmt - format the go code vet, v - go vet lint, l - lint the go code release, r - release the new version durl - check dead links (durl is required) ci-local - run the Drone pipeline at localhost (drone-cli is required)  これにより新しくプロジェクトに参画した人もどのような task があるのか直ぐわかります。 例えば test を実行したければ cmdx t を実行すればいいことがわかります。 cmdx help test とすればここのタスクのより詳細なヘルプが見れます。</div>
+$ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is required) test, t - test fmt - format the go code vet, v - go vet lint, l - lint the go code release, r - release the new version durl - check dead links (durl is required) ci-local - run the Drone pipeline at localhost (drone-cli is required) これにより新しくプロジェクトに参画した人もどのような task があるのか直ぐわかります。 例えば test を実行したければ cmdx t を実行すればいいことがわかります。 cmdx help test とすればここのタスクのより詳細なヘルプが見れます。</div>
 
   
   <footer>
@@ -97,6 +98,9 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-07T08:20:00JST">Jul 7, 2019</time></li>
       
       
+      <li>173 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/fagott/">Flute - Golang HTTP client testing framework</a></h2>
   </header>
@@ -104,7 +108,7 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
   
   <div class="summary">2019-07-17 追記 プロジェクト名が変わりました
 https://github.com/suzuki-shunsuke/flute/issues/20
-Go の HTTP client のテストフレームワークを作ったので紹介します。
+ Go の HTTP client のテストフレームワークを作ったので紹介します。
 https://github.com/suzuki-shunsuke/flute
 執筆時点のバージョンは v0.6.0 です。
  リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。
@@ -126,6 +130,9 @@ https://github.com/suzuki-shunsuke/flute
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-12T07:40:45JST">Jun 12, 2019</time></li>
+      
+      
+      <li>302 Words</li>
       
       
     </ul>
@@ -157,6 +164,9 @@ https://docs.drone.io/user-guide/pipeline/migrating/
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
       
       
+      <li>51 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-jsoneq/">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a></h2>
   </header>
@@ -165,9 +175,9 @@ https://docs.drone.io/user-guide/pipeline/migrating/
   <div class="summary">https://github.com/suzuki-shunsuke/go-jsoneq
 2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。
 「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。
-struct { Foo string `json:&quot;foo&quot;` }{ Foo: &quot;bar&quot;, }  と
-map[string]interface{}{&quot;foo&quot;: &quot;bar&quot;}  を JSON に変換したらともに
-{&quot;foo&quot;: &quot;bar&quot;}  になりますね。
+struct { Foo string `json:&#34;foo&#34;` }{ Foo: &#34;bar&#34;, } と
+map[string]interface{}{&#34;foo&#34;: &#34;bar&#34;} を JSON に変換したらともに
+{&#34;foo&#34;: &#34;bar&#34;} になりますね。
 json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。
 jsoneq.Equal でやっていることは単純です。
  json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。
@@ -184,6 +194,9 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-04-28T21:25:00JST">Apr 28, 2019</time></li>
       
       
+      <li>137 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/durl/">durl - 壊れたURLを検知するCLIツール</a></h2>
   </header>
@@ -198,7 +211,7 @@ https://github.com/suzuki-shunsuke/durl/releases
 Docker イメージ https://quay.io/repository/suzuki_shunsuke/durl
 busybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。
 使い方 durl init で設定ファイル .durl.yml を生成します。
-$ durl init  durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。
+$ durl init durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。
 https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9
 find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.</div>
 
@@ -214,6 +227,9 @@ find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
+      
+      
+      <li>137 Words</li>
       
       
     </ul>
@@ -249,6 +265,9 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
       
       
+      <li>277 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog/">Graylog で log を管理する</a></h2>
   </header>
@@ -281,6 +300,9 @@ http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-31T08:56:04JST">Oct 31, 2018</time></li>
       
       
+      <li>156 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/akoi/">akoi - binary installer</a></h2>
   </header>
@@ -288,7 +310,7 @@ http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
   
   <div class="summary">自作のOSS akoi の紹介をします。
  なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
-まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード  ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)   akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
+まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード   ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)    akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
 分散ダウンロードについては
 https://qiita.com/codehex/items/d0a500ac387d39a34401
 が参考になります。
@@ -313,6 +335,9 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-30T08:35:16JST">Oct 30, 2018</time></li>
       
       
+      <li>209 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/gomic/">gomic - Goのモックジェネレータ</a></h2>
   </header>
@@ -320,14 +345,14 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
   
   <div class="summary">自作のOSS gomic の紹介をします。
  なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
-まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき  設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
+まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき   設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
 Goで書かれています。
 https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウンロードしてインストールできます。
 同様のツールは幾つかあります。
  https://github.com/avelino/awesome-go#testing https://github.com/golang/mock (以下 gomock) https://github.com/gojuno/minimock (以下 minimock)  特に gomock は有名ですね。
 なぜ作ったのか 上述のように既に同様のツールはありますし、 gomock と minimock は試しました。 しかしあまり満足のいくものではなかったため、自分で作ることにしました。
 自分が欲しかったのは学習コストの低いシンプルなAPIです。 interfaceのメソッドを実装した関数をモックに渡すことで 簡単にメソッドの実装を切り替えたいのです。
-// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &quot;/tmp&quot;, nil }) mock.Getwd() // &quot;/tmp&quot;, nil  これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</div>
+// Getwd メソッドのモック mock.SetFuncGetwd(func() (string, error) { return &#34;/tmp&#34;, nil }) mock.Getwd() // &#34;/tmp&#34;, nil これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</div>
 
   
   <footer>
@@ -341,6 +366,9 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-06T23:59:35JST">Sep 6, 2018</time></li>
+      
+      
+      <li>15 Words</li>
       
       
     </ul>

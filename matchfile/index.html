@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール - melody</title>
     
-<meta name="description" content="自作の CLI ツール matchfile について紹介します。https://github.com/suzuki-shunsuke/matchfileこの記事の執筆時点で最新バージョンは v0.1.1 です。変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。matchfile の使い方としては$ matchfile run &amp;lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&amp;gt; &amp;lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&amp;gt;  で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。">
+<meta name="description" content="自作の CLI ツール matchfile について紹介します。https://github.com/suzuki-shunsuke/matchfileこの記事の執筆時点で最新バージョンは v0.1.1 です。変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。matchfile の使い方としては$ matchfile run &amp;lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&amp;gt; &amp;lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&amp;gt; で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。">
 
 <meta property="og:title" content="matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/matchfile/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="自作の CLI ツール matchfile について紹介します。https://github.com/suzuki-shunsuke/matchfileこの記事の執筆時点で最新バージョンは v0.1.1 です。変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。matchfile の使い方としては$ matchfile run &amp;lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&amp;gt; &amp;lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&amp;gt;  で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。">
+<meta property="og:description" content="自作の CLI ツール matchfile について紹介します。https://github.com/suzuki-shunsuke/matchfileこの記事の執筆時点で最新バージョンは v0.1.1 です。変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。matchfile の使い方としては$ matchfile run &amp;lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&amp;gt; &amp;lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&amp;gt; で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/matchfile/">
 <meta name="twitter:title" content="matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール - melody">
-<meta name="twitter:description" content="自作の CLI ツール matchfile について紹介します。https://github.com/suzuki-shunsuke/matchfileこの記事の執筆時点で最新バージョンは v0.1.1 です。変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。matchfile の使い方としては$ matchfile run &amp;lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&amp;gt; &amp;lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&amp;gt;  で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。">
+<meta name="twitter:description" content="自作の CLI ツール matchfile について紹介します。https://github.com/suzuki-shunsuke/matchfileこの記事の執筆時点で最新バージョンは v0.1.1 です。変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。matchfile の使い方としては$ matchfile run &amp;lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&amp;gt; &amp;lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&amp;gt; で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "自作の CLI ツール matchfile について紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/matchfile\nこの記事の執筆時点で最新バージョンは v0.1.1 です。\n変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。\nPull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。\nそこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。\nただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。\nmatchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。\nPR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。\nタスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。\nmatchfile の使い方としては\n$ matchfile run \x26lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス\x26gt; \x26lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス\x26gt;  で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。"
+    "description": "自作の CLI ツール matchfile について紹介します。\nhttps:\/\/github.com\/suzuki-shunsuke\/matchfile\nこの記事の執筆時点で最新バージョンは v0.1.1 です。\n変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。\nPull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。\nそこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。\nただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。\nmatchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。\nPR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。\nタスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。\nmatchfile の使い方としては\n$ matchfile run \u0026lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス\u0026gt; \u0026lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス\u0026gt; で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-27T19:39:44JST">Oct 27, 2020</time></li>
       
       
+      <li>168 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</h1>
@@ -139,89 +140,54 @@
   
 
   <div class="article-body"><p>自作の CLI ツール matchfile について紹介します。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/matchfile">https://github.com/suzuki-shunsuke/matchfile</a></p>
-
 <p>この記事の執筆時点で最新バージョンは v0.1.1 です。</p>
-
 <p>変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。
 Go で書かれていて、バイナリをダウンロードしてくれば使えます。</p>
-
 <p>Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて
 必要なタスク(build, test, lint, etc) だけを実行したかったりします。</p>
-
 <p>そこで、 <code>PR で変更されたファイルパスのリスト</code> と <code>タスクが依存するファイルパスの条件</code> を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。</p>
-
 <p>ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。</p>
-
 <p>matchfile は <code>PR で変更されたファイルパスのリスト</code> や <code>タスクが依存するファイルパスの条件</code> を取得したりする機能はありません。</p>
-
 <p><code>PR で変更されたファイルパスのリスト</code> は <a href="https://github.com/suzuki-shunsuke/ci-info">ci-info</a> という自分が作った別のツールを使うと取得できます。</p>
-
 <p><code>タスクが依存するファイルパスの条件</code> はタスクに大きく依存するので matchfile はカバーしていません。</p>
-
 <p>matchfile の使い方としては</p>
-
 <pre><code>$ matchfile run &lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&gt; &lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&gt;
-</code></pre>
-
-<p>で、 <code>PR で変更されたファイルパスのリスト</code> のうち一つでも <code>タスクが依存するファイルパスの条件</code> にマッチすれば <code>true</code> を、マッチしなければ <code>false</code> を標準出力します。
+</code></pre><p>で、 <code>PR で変更されたファイルパスのリスト</code> のうち一つでも <code>タスクが依存するファイルパスの条件</code> にマッチすれば <code>true</code> を、マッチしなければ <code>false</code> を標準出力します。
 コマンドの exit code で結果を表現することも考えられましたが、そうすると <code>set -e</code> しているときに若干面倒くさいので、標準出力で表現しました。</p>
-
 <p>ごく簡単な例を示します。</p>
-
 <pre><code>$ echo template/foo.tpl &gt; changed_files.txt
 $ echo template &gt; template_dependencies.txt
 $ matchfile run changed_files.txt template_dependencies.txt
 true
-</code></pre>
-
-<p><code>タスクが依存するファイルパスの条件</code> は独自のフォーマットで指定します。
+</code></pre><p><code>タスクが依存するファイルパスの条件</code> は独自のフォーマットで指定します。
 <a href="https://git-scm.com/docs/gitignore">gitignore のフォーマット</a>にインスパイアされていますが、正規表現が使えるなど、独自のフォーマットになっています。
 CI の中でシェルスクリプトで動的に生成することを想定し、行指向のフォーマットになっています。
 Go 実装のパーサーが提供されたよく知られた行指向の(コマンドで生成しやすい)フォーマットがあれば良かったんですが、見つからなかったので簡単にフォーマットを定義してみました。</p>
-
 <pre><code>[#][!][&lt;kind&gt;,...] &lt;path&gt;
 ...
-</code></pre>
-
-<p>1行に1つ条件を書きます。
+</code></pre><p>1行に1つ条件を書きます。
 上から全部評価されます(どれかマッチしても終わりません)。
 <code>#</code> はコメントです。行の途中にコメントを書くことはできません。</p>
-
 <p><code>!</code> は gitignore と似ていますが、その行を評価する時点で評価結果が <code>true</code> であり、<code>!</code> を除いたその行の評価が <code>true</code> の場合、評価結果が <code>false</code> になります。
 日本語が下手くそですね。</p>
-
 <p>簡単な例を示すと、 <code>foo/foo.txt 以外の foo ディレクトリ直下のファイル</code> としたい場合、次のようになります。</p>
-
 <pre><code>glob foo/*
 !glob foo/foo.txt
-</code></pre>
-
-<p><code>kind</code> は <code>path</code> をどう扱うかを示していて、幾つか種類があります。</p>
-
+</code></pre><p><code>kind</code> は <code>path</code> をどう扱うかを示していて、幾つか種類があります。</p>
 <ul>
 <li>equal: ファイルパスが文字列として完全に一致すればマッチ</li>
 <li>dir: ファイルパスが <code>&lt;path&gt;/</code> で始まればマッチ</li>
 <li>regexp: 正規表現</li>
 <li>glob: グロブ。 <code>**</code> はサポートされてません</li>
 </ul>
-
 <p>kind はカンマつなぎで複数指定でき、複数指定した場合は、先に指定したものからマッチするかテストされ、一つでもマッチしたらその条件がマッチするものとして扱われます。</p>
-
 <p>kind の指定は任意で、指定しない場合、 kind は <code>equal,dir,glob</code> として扱われます。</p>
-
 <p>つまり</p>
-
 <pre><code>foo.txt
-</code></pre>
-
-<p>は</p>
-
+</code></pre><p>は</p>
 <pre><code>equal,dir,glob foo.txt
-</code></pre>
-
-<p>と同じです。</p>
+</code></pre><p>と同じです。</p>
 </div>
 
   <footer class="article-footer">

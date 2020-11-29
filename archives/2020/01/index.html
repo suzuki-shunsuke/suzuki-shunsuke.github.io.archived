@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2020/01/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-17T09:14:08JST">Jan 17, 2020</time></li>
       
       
+      <li>4132 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/">Terraform ハンズオン with MySQL Provider</a></h2>
   </header>
@@ -77,7 +78,7 @@
  https://github.com/terraform-providers https://www.terraform.io/docs/providers/index.html  また、 Terraform に関しては Terraform 入門 も参照してください。
 今回の作業用に適当にディレクトリを作成し、そこで作業しましょう。
 以降、コマンドの実行結果は一部省略することがあります。
-$ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terraform を複数人で使う場合、 Terraform のバージョンを揃えるのが重要です。 理由の一つとして、 Terraform の State は State を作成した Terraform のバージョンを記録しており、それより古いバージョンの Terraform で terraform plan などを実行すると失敗するようになっていることが挙げられます(この点については後でも触れます)。 そういう意味では、 tfenv によってバージョン管理するのが良いです。</div>
+$ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform を複数人で使う場合、 Terraform のバージョンを揃えるのが重要です。 理由の一つとして、 Terraform の State は State を作成した Terraform のバージョンを記録しており、それより古いバージョンの Terraform で terraform plan などを実行すると失敗するようになっていることが挙げられます(この点については後でも触れます)。 そういう意味では、 tfenv によってバージョン管理するのが良いです。</div>
 
   
   <footer>
@@ -91,6 +92,9 @@ $ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terrafor
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-16T09:25:05JST">Jan 16, 2020</time></li>
+      
+      
+      <li>945 Words</li>
       
       
     </ul>
@@ -121,6 +125,9 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-10T16:18:05JST">Jan 10, 2020</time></li>
       
       
+      <li>450 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-state-locking/">Terraform の State Locking の概要</a></h2>
   </header>
@@ -128,9 +135,9 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
   
   <div class="summary">Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。
 State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。
-例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で
+ 例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で
  現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。
-そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。
+ そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。
 コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。</div>
 
   

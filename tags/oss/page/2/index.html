@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/oss/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
       
       
+      <li>197 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-parameter/">buildflow の script や template に渡される parameter</a></h2>
   </header>
@@ -74,7 +75,7 @@
 この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。
 buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。
  PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase
- Status: Phase の実行結果  succeeded failed skipped  Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</div>
+ Status: Phase の実行結果  succeeded failed skipped   Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</div>
 
   
   <footer>
@@ -90,6 +91,9 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:26:57JST">Oct 17, 2020</time></li>
       
       
+      <li>149 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-task/">buildflow の task の設定項目</a></h2>
   </header>
@@ -98,7 +102,7 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
   <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。
 task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。
- name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。</div>
+ name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める   dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script   input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める   output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める   meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。</div>
 
   
   <footer>
@@ -114,6 +118,9 @@ task には幾つか type がありますが、全ての type に共通するパ
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
       
       
+      <li>127 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
   </header>
@@ -122,9 +129,9 @@ task には幾つか type がありますが、全ての type に共通するパ
   <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の概念である build, phase, task について書きたいと思います。
 buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
-$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
+$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
 設定ファイルでは phases, tasks をそれぞれ配列で指定します。
---- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
+--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
 
   
   <footer>
@@ -140,6 +147,9 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
       
       
+      <li>73 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-tengo/">buildflow での Tengo の使い方</a></h2>
   </header>
@@ -149,8 +159,8 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
 この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。
 https://github.com/d5/tengo
 buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。
-result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
---- phases: - name: main tasks: - name: hello input: | result := { foo: &quot;bar&quot; } command: command: 'echo &quot;{{.Task.Input.foo}}&quot;' when: &quot;result := true&quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
+result := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
+--- phases: - name: main tasks: - name: hello input: |result := { foo: &#34;bar&#34; } command: command: &#39;echo &#34;{{.Task.Input.foo}}&#34;&#39; when: &#34;result := true&#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
 
   
 </article>
@@ -160,6 +170,9 @@ result := true  task.input, output などだと result の値が Task.Input, Tas
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T16:06:31JST">Oct 17, 2020</time></li>
+      
+      
+      <li>210 Words</li>
       
       
     </ul>
@@ -175,7 +188,7 @@ CI サービス上で実行することを目的として開発しています(�
 Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。
 GitHub Releases からバイナリをダウンロードしてください。
 次のような設定ファイル .buildflow.yaml を用意します。
---- phases: - name: main tasks: - name: hello command: command: echo hello  次のコマンドを実行すると task が実行されます。
+--- phases: - name: main tasks: - name: hello command: command: echo hello 次のコマンドを実行すると task が実行されます。
 $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | + /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.</div>
 
   
@@ -192,6 +205,9 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-31T20:42:54JST">Jul 31, 2020</time></li>
       
       
+      <li>444 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/github-comment/">github-comment - GitHub にコメントを投稿する CLI</a></h2>
   </header>
@@ -205,8 +221,8 @@ Go 製なので、 GitHub Releases からダウンロードしてくれば簡単
 github-comment には
  init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。
 コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。
-$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。
-$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</div>
+$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可 post コマンド こんな感じでコメントを投稿できます。
+$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</div>
 
   
   <footer>
@@ -222,6 +238,9 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-06T16:52:58JST">Jul 6, 2020</time></li>
       
       
+      <li>86 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/clap/">clap - 簡単にツールをインストールするためのツールを作った</a></h2>
   </header>
@@ -233,10 +252,10 @@ Go で書かれています。 ツールの名前(clap)には特別な意味や�
 CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。
 このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。
 使い方は以下のようになっています。
-$ clap &lt;URL&gt; &lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt; [&lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt;...]  例えば conftest を /usr/local/bin にインストールする場合次のようになります。
-CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a+x /usr/local/bin/conftest  パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。
+$ clap &lt;URL&gt; &lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt; [&lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt;...] 例えば conftest を /usr/local/bin にインストールする場合次のようになります。
+CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a+x /usr/local/bin/conftest パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。
 上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。
-#!/usr/bin/env bash set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &quot;$dirpath&quot; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a+x /usr/local/bin/conftest popd rm -R &quot;$dirpath&quot;  地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。</div>
+#!/usr/bin/env bash  set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &#34;$dirpath&#34; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a+x /usr/local/bin/conftest popd rm -R &#34;$dirpath&#34; 地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。</div>
 
   
   <footer>
@@ -252,6 +271,9 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-05T18:53:25JST">Apr 5, 2020</time></li>
       
       
+      <li>183 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/skaffold-generator/">Skaffold で特定のサービスだけ動かすためのツールを作った</a></h2>
   </header>
@@ -262,7 +284,7 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
 どんなツールか 設定ファイル skaffold-generator.yaml を監視して変更があったら skaffold.yaml を生成するツールです。設定ファイルでサービスの依存関係を定義できたり、コマンドライン引数で指定したサービス及びそれが依存するサービスに関連した設定だけを使って skaffold.yaml を更新します。 このツールは skaffold.yaml を生成するだけなので実際にアプリケーションをビルド・デプロイするには skaffold と組み合わせて使います。
 なぜ作ったか 元々ローカルでアプリケーションを動かしながら開発するために Docker Compose を使ってるリポジトリがあるのですが、それを skaffold に移行出来ないか検証しています。 まだ skaffold を触り始めたばかりで理解が浅いのですが、 本番環境は k8s で動いてるからローカルも k8s で動かせるといいかなと思ったり、あとは変更を検知して自動でビルド・デプロイしてくれたりして便利そうかなと思いました。 まぁ結果的に移行しないことになったとしても、 Skaffold と現状の仕組みについて理解が深まればいいかなくらいのつもりです。
 検証の過程で、 以下のようなことが Docker Compose だと出来るけど Skaffold だと難しそうだと思いました。
- サービスの依存関係を定義すること  Skaffold というより k8s の問題かとは思いますが Docker Compose だと依存するものを自動で起動してくれて便利  コマンドライン引数で指定したサービスだけ起動すること  Skaffold だと skafffold.yaml で定義したものすべてがビルド・デプロイされるという認識   サービスの数が少なければ全部ビルド・デプロイでもいいですが、 マイクロサービスをモノレポで管理しているような場合、 すべてのマイクロサービスをビルド・デプロイするのは無駄が大きかったりします。</div>
+ サービスの依存関係を定義すること  Skaffold というより k8s の問題かとは思いますが Docker Compose だと依存するものを自動で起動してくれて便利   コマンドライン引数で指定したサービスだけ起動すること  Skaffold だと skafffold.yaml で定義したものすべてがビルド・デプロイされるという認識    サービスの数が少なければ全部ビルド・デプロイでもいいですが、 マイクロサービスをモノレポで管理しているような場合、 すべてのマイクロサービスをビルド・デプロイするのは無駄が大きかったりします。</div>
 
   
   <footer>
@@ -278,6 +300,9 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-30T13:54:47JST">Nov 30, 2019</time></li>
       
       
+      <li>120 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/dd-time/">dd-time - コマンドの実行時間を Datadog に送るツール</a></h2>
   </header>
@@ -288,8 +313,9 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
 circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。
 dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。
 使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。
-$ dd-time -t command:docker-build -- docker build .  Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。
-メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。</div>
+$ dd-time -t command:docker-build -- docker build . Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。
+メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。
+CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag として勝手に設定されますが、 CircleCI 以外でも使えます。</div>
 
   
   <footer>
@@ -305,6 +331,9 @@ $ dd-time -t command:docker-build -- docker build .  Datadog の API key を環�
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-04T10:00:21JST">Nov 4, 2019</time></li>
       
       
+      <li>90 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-timeout/">go-timeout - command の timeout</a></h2>
   </header>
@@ -315,7 +344,7 @@ https://github.com/suzuki-shunsuke/go-timeout
 基本的には https://github.com/Songmu/timeout をオススメしますが、これだと上手くいかないパターンがあったので自作しました。
 Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon2019-spring/#24 がとても参考になります。
 上記のスライドでは
- 標準ライブラリの exec.CommandContext でも停止できるが、 SIGKILL で強制的に停止することになる  子プロセスが停止しない  公式見解 では、SIGKILL 以外は標準ライブラリではサポートしない。サードパーティでやればよい Songmu/timeout 使えば SIGKILL 以外でより安全に停止できる  ということが丁寧に説明されています。
+ 標準ライブラリの exec.CommandContext でも停止できるが、 SIGKILL で強制的に停止することになる  子プロセスが停止しない   公式見解 では、SIGKILL 以外は標準ライブラリではサポートしない。サードパーティでやればよい Songmu/timeout 使えば SIGKILL 以外でより安全に停止できる  ということが丁寧に説明されています。
 自分は cmdx という task runner を開発していてその中で task の実行時に timeout を設定出来るようにしました。 当初 Songmu/timeout を使って実装したのですが、問題があることに気づきました。 それは、 command の中で fzf を使うと、上手く動かないというものでした。
  https://github.com/suzuki-shunsuke/cmdx/issues/52 https://twitter.com/szkdash/status/1165529415238815745  正直この辺の挙動はちゃんと理解できていないのですが、 調べてみると Songmu/timeout だと syscall.SysProcAttr の Setpgid を true に設定していて、そうすると fzf が上手く動かないようでした。</div>
 

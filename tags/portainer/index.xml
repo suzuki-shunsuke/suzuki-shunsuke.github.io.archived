@@ -6,11 +6,7 @@
     <description>Recent content in portainer on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 30 Sep 2018 21:56:42 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/portainer/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 30 Sep 2018 21:56:42 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/portainer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>drone の管理のために portainer を導入した</title>
       <link>https://suzuki-shunsuke.github.io/use-portainer-for-drone-admin/</link>

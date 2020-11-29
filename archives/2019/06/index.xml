@@ -5,12 +5,7 @@
     <link>https://suzuki-shunsuke.github.io/archives/2019/06/</link>
     <description>Recent content in 2019/06 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language>
-    <lastBuildDate>Wed, 12 Jun 2019 07:40:45 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/archives/2019/06/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>jp</language><atom:link href="https://suzuki-shunsuke.github.io/archives/2019/06/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</title>
       <link>https://suzuki-shunsuke.github.io/drone-jsonnet-generator/</link>
@@ -40,7 +35,7 @@ https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
 Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
 https://docs.drone.io/user-guide/pipeline/migrating/
  To simplify your configuration we recommend using jsonnet.
- $ drone jsonnet --format --stream  jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</description>
+ $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</description>
     </item>
     
   </channel>

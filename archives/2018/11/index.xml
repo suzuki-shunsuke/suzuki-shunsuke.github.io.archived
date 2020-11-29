@@ -5,12 +5,7 @@
     <link>https://suzuki-shunsuke.github.io/archives/2018/11/</link>
     <description>Recent content in 2018/11 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language>
-    <lastBuildDate>Tue, 27 Nov 2018 16:40:33 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/archives/2018/11/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>jp</language><atom:link href="https://suzuki-shunsuke.github.io/archives/2018/11/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Graylog で log を管理する</title>
       <link>https://suzuki-shunsuke.github.io/graylog/</link>

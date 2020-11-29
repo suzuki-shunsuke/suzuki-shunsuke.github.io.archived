@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている - melody</title>
     
-<meta name="description" content="buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では どんなツールか Hello World 特徴  について簡単に説明します。どんなツールか https://github.com/suzuki-shunsuke/buildflowワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。CI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。GitHub Releases からバイナリをダウンロードしてください。次のような設定ファイル .buildflow.yaml を用意します。--- phases: - name: main tasks: - name: hello command: command: echo hello  次のコマンドを実行すると task が実行されます。$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | &#43; /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.">
+<meta name="description" content="buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では どんなツールか Hello World 特徴  について簡単に説明します。どんなツールか https://github.com/suzuki-shunsuke/buildflowワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。CI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。GitHub Releases からバイナリをダウンロードしてください。次のような設定ファイル .buildflow.yaml を用意します。--- phases: - name: main tasks: - name: hello command: command: echo hello 次のコマンドを実行すると task が実行されます。$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | &#43; /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.">
 
 <meta property="og:title" content="buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-1/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では どんなツールか Hello World 特徴  について簡単に説明します。どんなツールか https://github.com/suzuki-shunsuke/buildflowワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。CI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。GitHub Releases からバイナリをダウンロードしてください。次のような設定ファイル .buildflow.yaml を用意します。--- phases: - name: main tasks: - name: hello command: command: echo hello  次のコマンドを実行すると task が実行されます。$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | &#43; /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.">
+<meta property="og:description" content="buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では どんなツールか Hello World 特徴  について簡単に説明します。どんなツールか https://github.com/suzuki-shunsuke/buildflowワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。CI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。GitHub Releases からバイナリをダウンロードしてください。次のような設定ファイル .buildflow.yaml を用意します。--- phases: - name: main tasks: - name: hello command: command: echo hello 次のコマンドを実行すると task が実行されます。$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | &#43; /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-1/">
 <meta name="twitter:title" content="buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている - melody">
-<meta name="twitter:description" content="buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では どんなツールか Hello World 特徴  について簡単に説明します。どんなツールか https://github.com/suzuki-shunsuke/buildflowワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。CI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。GitHub Releases からバイナリをダウンロードしてください。次のような設定ファイル .buildflow.yaml を用意します。--- phases: - name: main tasks: - name: hello command: command: echo hello  次のコマンドを実行すると task が実行されます。$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | &#43; /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.">
+<meta name="twitter:description" content="buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では どんなツールか Hello World 特徴  について簡単に説明します。どんなツールか https://github.com/suzuki-shunsuke/buildflowワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。CI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。GitHub Releases からバイナリをダウンロードしてください。次のような設定ファイル .buildflow.yaml を用意します。--- phases: - name: main tasks: - name: hello command: command: echo hello 次のコマンドを実行すると task が実行されます。$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | &#43; /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では\n どんなツールか Hello World 特徴  について簡単に説明します。\nどんなツールか https:\/\/github.com\/suzuki-shunsuke\/buildflow\nワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。\nCI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。\nHello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。\nGitHub Releases からバイナリをダウンロードしてください。\n次のような設定ファイル .buildflow.yaml を用意します。\n--- phases: - name: main tasks: - name: hello command: command: echo hello  次のコマンドを実行すると task が実行されます。\n$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | \x2b \/bin\/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4."
+    "description": "buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では\n どんなツールか Hello World 特徴  について簡単に説明します。\nどんなツールか https:\/\/github.com\/suzuki-shunsuke\/buildflow\nワークフローを実行するための CLI ツールです。 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、 それらとは目的も機能も違います。 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。\nCI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。\nHello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。\nGitHub Releases からバイナリをダウンロードしてください。\n次のような設定ファイル .buildflow.yaml を用意します。\n--- phases: - name: main tasks: - name: hello command: command: echo hello 次のコマンドを実行すると task が実行されます。\n$ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | \u002b \/bin\/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4."
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T16:06:31JST">Oct 17, 2020</time></li>
       
       
+      <li>210 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</h1>
@@ -140,52 +141,36 @@
 
   
 
-  <div class="article-body">
-
-<p>buildflow というツールを開発しているので紹介します。
+  <div class="article-body"><p>buildflow というツールを開発しているので紹介します。
 <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうかなと思います。
 1本目のこの記事では</p>
-
 <ul>
 <li>どんなツールか</li>
 <li>Hello World</li>
 <li>特徴</li>
 </ul>
-
 <p>について簡単に説明します。</p>
-
 <h2 id="どんなツールか">どんなツールか</h2>
-
 <p><a href="https://github.com/suzuki-shunsuke/buildflow">https://github.com/suzuki-shunsuke/buildflow</a></p>
-
 <p>ワークフローを実行するための CLI ツールです。
 ワークフローエンジンと言うと Airflow とか Azkaban, Argo Workflows のようなツールをイメージするかと思いますが、
 それらとは目的も機能も違います。
 一部の CI サービスではワークフローのローカル実行をサポートしてたりしますが、そんなイメージで良いかもしれません。
 buildflow では task と task の依存関係を設定ファイルに定義し、コマンドを実行するとローカルでタスクが実行されます。
 そういうとタスクランナーといったほうがいいのかもしれませんが、個別のタスクを指定して実行するような機能はないので、タスクランナーとも違う気がします。</p>
-
 <p>CI サービス上で実行することを目的として開発しています(汎用的なツールなので他の目的でも使えるとは思います)。</p>
-
 <h2 id="hello-world">Hello World</h2>
-
 <p>まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。</p>
-
 <p><a href="https://github.com/suzuki-shunsuke/buildflow/releases">GitHub Releases</a> からバイナリをダウンロードしてください。</p>
-
 <p>次のような設定ファイル <code>.buildflow.yaml</code> を用意します。</p>
-
-<pre><code class="language-yaml">---
-phases:
-- name: main
-  tasks:
-  - name: hello
-    command:
-      command: echo hello
-</code></pre>
-
-<p>次のコマンドを実行すると task が実行されます。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">phases</span>:
+- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">tasks</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#ae81ff">echo hello</span>
+</code></pre></div><p>次のコマンドを実行すると task が実行されます。</p>
 <pre><code>$ buildflow run
 
 ==============
@@ -208,55 +193,45 @@ end time: 2020-10-17T07:50:46Z
 duration: 4.317259ms
 + /bin/sh -c echo hello
 hello
-</code></pre>
-
-<h2 id="特徴">特徴</h2>
-
+</code></pre><h2 id="特徴">特徴</h2>
 <p>task を依存関係に基づいて並列実行できます。加えて以下のような特徴があります。</p>
-
 <ul>
 <li>ワンバイナリで動く。他に依存するものがない
-
 <ul>
 <li>Go で書かれています</li>
-</ul></li>
+</ul>
+</li>
 <li>他のタスクの実行結果によってタスクの挙動を変えられる
-
 <ul>
 <li>標準(エラー)出力、 exit code, etc</li>
 <li>dynamic に task を生成することも可能</li>
-</ul></li>
+</ul>
+</li>
 <li>Tengo というスクリプト言語を用いて柔軟な設定を書ける
-
 <ul>
 <li>設定ファイルは YAML ですが、一部の設定に Tengo というスクリプト言語が使えます</li>
 <li>Tengo の処理系も buildflow に内包されているので、 Tengo の処理系をインストールする必要はありません</li>
-</ul></li>
+</ul>
+</li>
 <li>CI で実行時に Pull Request (以下 PR) の情報に基づいて処理を変えられる
-
 <ul>
 <li>GitHub 前提(GitLab や BitBucket はサポート外)</li>
 <li>自動で PR の情報を取得</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>Tengo は Go で実行されたスクリプト言語です。 <a href="https://github.com/d5/tengo">https://github.com/d5/tengo</a> を参照してください。
 なぜ Tengo を採用したかとかは別に書きたいと思います。</p>
-
 <p>Tengo は Python や Ruby, Go といった言語に比べれば言語仕様がコンパクトであり、
 よく知らなくてもなんとなく読めるし、簡単にかけると思っています。
 加えて、そもそも buildflow の中での Tengo の役割は限定されており、 Tengo をゴリゴリ書く必要はないと思います。</p>
-
 <p>PR の情報に基づき、例えば以下のようなことが出来ます。</p>
-
 <ul>
 <li>特定のラベルがついたら task を実行する</li>
 <li>特定のファイルが PR で更新されたら task を実行する</li>
 <li>特定のユーザー(botとか)からの PR では task を実行しない</li>
 </ul>
-
 <p>これらのロジックは自分がよく欲しくなるので、 buildflow を使えば簡単に実装できるようにしました。</p>
-
 <p>他にも様々な機能がありますので、また別の記事で紹介できたらと思います。</p>
 </div>
 

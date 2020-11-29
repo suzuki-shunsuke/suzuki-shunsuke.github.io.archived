@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2020/10/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
       
       
+      <li>127 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
   </header>
@@ -73,9 +74,9 @@
   <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の概念である build, phase, task について書きたいと思います。
 buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
-$ buildflow run  で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
+$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
 設定ファイルでは phases, tasks をそれぞれ配列で指定します。
---- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello  上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
+--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
 
   
   <footer>
@@ -91,6 +92,9 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
       
       
+      <li>73 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-tengo/">buildflow での Tengo の使い方</a></h2>
   </header>
@@ -100,8 +104,8 @@ $ buildflow run  で 1 つの build が実行されます。 build は複数の 
 この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。
 https://github.com/d5/tengo
 buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。
-result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
---- phases: - name: main tasks: - name: hello input: | result := { foo: &quot;bar&quot; } command: command: 'echo &quot;{{.Task.Input.foo}}&quot;' when: &quot;result := true&quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
+result := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
+--- phases: - name: main tasks: - name: hello input: |result := { foo: &#34;bar&#34; } command: command: &#39;echo &#34;{{.Task.Input.foo}}&#34;&#39; when: &#34;result := true&#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
 
   
 </article>
@@ -111,6 +115,9 @@ result := true  task.input, output などだと result の値が Task.Input, Tas
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T16:06:31JST">Oct 17, 2020</time></li>
+      
+      
+      <li>210 Words</li>
       
       
     </ul>
@@ -126,7 +133,7 @@ CI サービス上で実行することを目的として開発しています(�
 Hello World まだどんなツールかピンと来てない人もいるかもしれないので、簡単な Hello World をやってみましょう。
 GitHub Releases からバイナリをダウンロードしてください。
 次のような設定ファイル .buildflow.yaml を用意します。
---- phases: - name: main tasks: - name: hello command: command: echo hello  次のコマンドを実行すると task が実行されます。
+--- phases: - name: main tasks: - name: hello command: command: echo hello 次のコマンドを実行すると task が実行されます。
 $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hello | + /bin/sh -c echo hello 07:50:46UTC | hello | 07:50:46UTC | hello | hello 07:50:46UTC | hello | ================ = Phase Result: main = ================ status: succeeded task: hello status: succeeded exit code: 0 start time: 2020-10-17T07:50:46Z end time: 2020-10-17T07:50:46Z duration: 4.</div>
 
   

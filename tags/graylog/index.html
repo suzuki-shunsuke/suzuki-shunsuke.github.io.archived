@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/tags/graylog/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-25T22:38:28JST">Jan 25, 2019</time></li>
       
       
+      <li>73 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/">Terraform Providerで import を実装する方法</a></h2>
   </header>
@@ -74,7 +75,7 @@
  https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
 terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
 https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5
-# &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb  区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
+# &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb 区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
 https://www.terraform.io/docs/providers/google/r/spanner_database.html#import
 https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.</div>
 
@@ -92,14 +93,17 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-19T21:02:11JST">Dec 19, 2018</time></li>
       
       
+      <li>45 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-alert-issue/">GraylogのAlertの課題</a></h2>
   </header>
 
   
-  <div class="summary"> Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
+  <div class="summary">Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
 2018-12-31 追記 元々 Alert Condition, Notification の APIがないと勘違いしていたのですが、 実はちゃんとあったので terraform で管理できるように go-graylog を更新しました。
- https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい  Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない 条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい) ConditionやNotificationを複数のStreamで使い回せない  (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない  Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない   </div>
+ https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい   Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない  条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい)   ConditionやNotificationを複数のStreamで使い回せない   (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない   Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない    </div>
 
   
 </article>
@@ -109,6 +113,9 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-07T08:22:49JST">Dec 7, 2018</time></li>
+      
+      
+      <li>569 Words</li>
       
       
     </ul>
@@ -123,7 +130,7 @@ https://suzuki-shunsuke.github.io/graylog-terraform/
 今回実現したのは以下のことです。
  PR時にテストをする plan/* tag を push すると terraform plan が実行される apply/* tag を push すると terraform apply が実行され、tfstate がコミット、プッシュされる  ソースコード https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform に置いておきました。
  https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh  CI/CD用の user, role を作成する まずは role を作成します。
-resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] }  permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</div>
+resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] } permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</div>
 
   
   <footer>
@@ -137,6 +144,9 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
+      
+      
+      <li>137 Words</li>
       
       
     </ul>
@@ -170,6 +180,9 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
+      
+      
+      <li>277 Words</li>
       
       
     </ul>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -77,8 +77,6 @@
 
   <body>
     
-    
-    
 
     <header class="l-header">
       <nav class="navbar navbar-default">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-21T18:13:53JST">Jul 21, 2019</time></li>
       
       
+      <li>297 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</h1>
@@ -138,11 +139,8 @@
 
   
 
-  <div class="article-body">
-
-<p><a href="https://itnext.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects-4b79d4f6cd65">The Top 10 Most Common Mistakes I’ve Seen in Go Projects</a> という記事を読んで面白かったのでメモります。
+  <div class="article-body"><p><a href="https://itnext.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects-4b79d4f6cd65">The Top 10 Most Common Mistakes I’ve Seen in Go Projects</a> という記事を読んで面白かったのでメモります。
 翻訳ではないです。メモなので、原文を読んでください。</p>
-
 <ol>
 <li>Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから</li>
 <li>Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある</li>
@@ -155,128 +153,93 @@
 <li>Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.Reader や io.Writer を渡そう</li>
 <li>Goroutines and Loop Variables</li>
 </ol>
-
 <h2 id="pointers-pointers-everywhere">Pointers! Pointers Everywhere!</h2>
-
 <p>変数はヒープかスタックに割り当てられる。</p>
-
 <ul>
 <li>スタック: 関数内の変数は、関数が返されると、スタックからポップされる</li>
 <li>ヒープ: 共有変数、グローバル変数</li>
 </ul>
-
 <p>関数で生成した構造体を返すと、スタックで管理され、返された時点でポップされる。
 関数内で生成したポインタを返すと、それは Heap で管理される。
 スタックで管理すると、関数が返された時点でポップされてしまい、関数の外でポインタが指す値にアクセスできなくなるため。</p>
-
-<pre><code class="language-go">func getFooValue() foo {
-	var result foo
-	// Do something
-	return result
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getFooValue</span>() <span style="color:#a6e22e">foo</span> {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span> <span style="color:#a6e22e">foo</span>
+	<span style="color:#75715e">// Do something
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>
 }
-</code></pre>
-
-<pre><code class="language-go">func getFooPointer() *foo {
-	var result foo
-	// Do something
-	return &amp;result
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">getFooPointer</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">foo</span> {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span> <span style="color:#a6e22e">foo</span>
+	<span style="color:#75715e">// Do something
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">result</span>
 }
-</code></pre>
-
-<p>スタックのほうが効率が良い理由</p>
-
+</code></pre></div><p>スタックのほうが効率が良い理由</p>
 <ul>
 <li>ガベージコレクタが不要
-
 <ul>
 <li>関数を抜けた時点でスタックからポップされる</li>
 <li>未使用の変数を回収する複雑な処理が不要</li>
-</ul></li>
+</ul>
+</li>
 <li>スタックの変数は一つの goroutine に属するため、共有のための同期が不要だから</li>
 </ul>
-
 <p>よって基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う。</p>
-
 <h2 id="error-management">Error Management</h2>
-
 <ul>
 <li>エラーは一回だけハンドリングされるべき。エラーはロギングされるか、プロパゲートされるべき(ロギングしつつプロパゲートはだめ)</li>
-
-<li><p>pkg/errors を使うと根本的なエラーの型を見て条件分岐できる</p>
-
+<li>pkg/errors を使うと根本的なエラーの型を見て条件分岐できる
 <ul>
-<li><p>自分が作ってる <a href="https://github.com/suzuki-shunsuke/go-errlog">go-errlog</a> の v0.9.1 だとそれは出来ない。改善すべきか</p>
-
-<pre><code class="language-go">switch errors.Cause(err).(type) {
-default:
-	log.WithError(err).Errorf(&quot;unable to server HTTP POST request for customer %s&quot;, customer.ID)
-	return Status{ok: false}
-case *db.DBError:
-	return retry(customer)
-}
-</code></pre></li>
-</ul></li>
+<li>自分が作ってる <a href="https://github.com/suzuki-shunsuke/go-errlog">go-errlog</a> の v0.9.1 だとそれは出来ない。改善すべきか</li>
 </ul>
-
-<h2 id="slice-initialization">Slice Initialization</h2>
-
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">switch</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">Cause</span>(<span style="color:#a6e22e">err</span>).(<span style="color:#66d9ef">type</span>) {
+<span style="color:#66d9ef">default</span>:
+	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">WithError</span>(<span style="color:#a6e22e">err</span>).<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;unable to server HTTP POST request for customer %s&#34;</span>, <span style="color:#a6e22e">customer</span>.<span style="color:#a6e22e">ID</span>)
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Status</span>{<span style="color:#a6e22e">ok</span>: <span style="color:#66d9ef">false</span>}
+<span style="color:#66d9ef">case</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">DBError</span>:
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">retry</span>(<span style="color:#a6e22e">customer</span>)
+}
+</code></pre></div><h2 id="slice-initialization">Slice Initialization</h2>
 <p><a href="https://tour.golang.org/moretypes/11">https://tour.golang.org/moretypes/11</a></p>
-
 <ul>
 <li>slice には length と capacity がある</li>
 <li>length は slice が保持する要素の数</li>
 <li>capacity は slice の裏にある配列の要素数を slice の最初の要素から数えたもの</li>
 </ul>
-
 <p><a href="https://golang.org/ref/spec#Making_slices_maps_and_channels">https://golang.org/ref/spec#Making_slices_maps_and_channels</a></p>
-
 <p>slice の場合</p>
-
-<pre><code class="language-go">make(T, n) // length, capacity 共に n
-make(T, n, m) // length は n, capacity は m
-</code></pre>
-
-<p><a href="https://play.golang.org/p/R1CF1e1K3L6">https://play.golang.org/p/R1CF1e1K3L6</a></p>
-
-<pre><code class="language-go">a := make([]int, 0, 10)
-fmt.Println(len(a), cap(a)) // 0, 10
-a = append(a, 1)
-fmt.Println(len(a), cap(a)) // 1, 10
-</code></pre>
-
-<p><code>append</code> はコストが高いからインデックスを指定したほうが良いというが、
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">make(<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">n</span>) <span style="color:#75715e">// length, capacity 共に n
+</span><span style="color:#75715e"></span>make(<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">m</span>) <span style="color:#75715e">// length は n, capacity は m
+</span></code></pre></div><p><a href="https://play.golang.org/p/R1CF1e1K3L6">https://play.golang.org/p/R1CF1e1K3L6</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">a</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>)
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(len(<span style="color:#a6e22e">a</span>), cap(<span style="color:#a6e22e">a</span>)) <span style="color:#75715e">// 0, 10
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">a</span> = append(<span style="color:#a6e22e">a</span>, <span style="color:#ae81ff">1</span>)
+<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(len(<span style="color:#a6e22e">a</span>), cap(<span style="color:#a6e22e">a</span>)) <span style="color:#75715e">// 1, 10
+</span></code></pre></div><p><code>append</code> はコストが高いからインデックスを指定したほうが良いというが、
 <code>make</code> でスライスを生成していれば、<code>append</code> してもそこまでコストは高くない。
 若干インデックスを指定したほうが効率が良いが、一貫性という観点では <code>append</code> を使ったほうがよいかもしれない。</p>
-
 <h2 id="goroutines-and-loop-variables">Goroutines and Loop Variables</h2>
-
-<pre><code class="language-go">ints := []int{1, 2, 3}
-for _, i := range ints {
-	go func() {
-		fmt.Printf(&quot;%v\n&quot;, i)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ints</span> {
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">i</span>)
 	}()
 }
-</code></pre>
-
-<p>これだと全ての goroutine で同じ i を共有してしまう。関数の引数として渡すか、for ループ内の変数として定義する。</p>
-
-<pre><code class="language-go">ints := []int{1, 2, 3}
-for _, i := range ints {
-	go func(i int) {
-		fmt.Printf(&quot;%v\n&quot;, i)
-	}(i)
+</code></pre></div><p>これだと全ての goroutine で同じ i を共有してしまう。関数の引数として渡すか、for ループ内の変数として定義する。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ints</span> {
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">i</span>)
+	}(<span style="color:#a6e22e">i</span>)
 }
-</code></pre>
-
-<pre><code class="language-go">ints := []int{1, 2, 3}
-for _, i := range ints {
-	i := i // 初見だと奇妙に見えるが、正しい。
-	go func() {
-		fmt.Printf(&quot;%v\n&quot;, i)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">ints</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>}
+<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">ints</span> {
+	<span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">i</span> <span style="color:#75715e">// 初見だと奇妙に見えるが、正しい。
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">i</span>)
 	}()
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
   <footer class="article-footer">
     

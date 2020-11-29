@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>github-comment - GitHub にコメントを投稿する CLI - melody</title>
     
-<meta name="description" content="GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。https://github.com/suzuki-shunsuke/github-commentこのブログの執筆時点で最新は v1.5.0 です。Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。github-comment には init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。">
+<meta name="description" content="GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。https://github.com/suzuki-shunsuke/github-commentこのブログの執筆時点で最新は v1.5.0 です。Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。github-comment には init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可 post コマンド こんな感じでコメントを投稿できます。$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。">
 
 <meta property="og:title" content="github-comment - GitHub にコメントを投稿する CLI - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/github-comment/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。https://github.com/suzuki-shunsuke/github-commentこのブログの執筆時点で最新は v1.5.0 です。Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。github-comment には init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。">
+<meta property="og:description" content="GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。https://github.com/suzuki-shunsuke/github-commentこのブログの執筆時点で最新は v1.5.0 です。Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。github-comment には init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可 post コマンド こんな感じでコメントを投稿できます。$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/github-comment/">
 <meta name="twitter:title" content="github-comment - GitHub にコメントを投稿する CLI - melody">
-<meta name="twitter:description" content="GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。https://github.com/suzuki-shunsuke/github-commentこのブログの執筆時点で最新は v1.5.0 です。Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。github-comment には init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。">
+<meta name="twitter:description" content="GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。https://github.com/suzuki-shunsuke/github-commentこのブログの執筆時点で最新は v1.5.0 です。Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。github-comment には init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可 post コマンド こんな感じでコメントを投稿できます。$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。\nhttps:\/\/github.com\/suzuki-shunsuke\/github-comment\nこのブログの執筆時点で最新は v1.5.0 です。\nGo 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。\n想定している主な用途は、 CI\/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。\ngithub-comment には\n init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。\nコメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。\n$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可  post コマンド こんな感じでコメントを投稿できます。\n$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test  パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。"
+    "description": "GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。\nhttps:\/\/github.com\/suzuki-shunsuke\/github-comment\nこのブログの執筆時点で最新は v1.5.0 です。\nGo 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。\n想定している主な用途は、 CI\/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。\ngithub-comment には\n init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。\nコメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。\n$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可 post コマンド こんな感じでコメントを投稿できます。\n$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-31T20:42:54JST">Jul 31, 2020</time></li>
       
       
+      <li>444 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">github-comment - GitHub にコメントを投稿する CLI</h1>
@@ -138,62 +139,37 @@
 
   
 
-  <div class="article-body">
-
-<p>GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。</p>
-
+  <div class="article-body"><p>GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。</p>
 <p><a href="https://github.com/suzuki-shunsuke/github-comment">https://github.com/suzuki-shunsuke/github-comment</a></p>
-
 <p>このブログの執筆時点で最新は v1.5.0 です。</p>
-
 <p>Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。</p>
-
 <p>想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。
 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。</p>
-
 <p>github-comment には</p>
-
 <ul>
 <li>init: 設定ファイルの雛形を生成する</li>
 <li>post: コメントを投稿する</li>
 <li>exec: 外部コマンドを実行し、その結果を元にコメントを投稿する</li>
 </ul>
-
 <p>という 3 つのサブコマンドがあります。</p>
-
 <p>コメントの投稿には GitHub の Access Token が必要です。
 コマンドライン引数 <code>-token</code> でも渡せますが、環境変数として設定しましょう。</p>
-
 <pre><code>$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可
-</code></pre>
-
-<h2 id="post-コマンド">post コマンド</h2>
-
+</code></pre><h2 id="post-コマンド">post コマンド</h2>
 <p>こんな感じでコメントを投稿できます。</p>
-
 <pre><code>$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test
-</code></pre>
-
-<p>パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</p>
-
+</code></pre><p>パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</p>
 <ul>
 <li>Drone</li>
 <li>CircleCI</li>
 <li>GitHub Actions</li>
 </ul>
-
 <p>そうするとこれでよくなります。</p>
-
 <pre><code>$ github-comment post -template test
-</code></pre>
-
-<p>コメントは Go の <a href="https://golang.org/pkg/text/template/">text/template</a> で処理されます。
+</code></pre><p>コメントは Go の <a href="https://golang.org/pkg/text/template/">text/template</a> で処理されます。
 <code>{{.Org}}</code> <code>{{.Repo}}</code> といった感じでパラメータを参照できます。</p>
-
 <pre><code>$ github-comment post -template &quot;{{.Org}}/{{.Repo}} test&quot;
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>PRNumber</li>
 <li>Org</li>
 <li>Repo</li>
@@ -201,16 +177,10 @@
 <li>TemplateKey</li>
 <li>Vars</li>
 </ul>
-
 <h2 id="exec-コマンド">exec コマンド</h2>
-
 <p>コマンドの実行結果(標準出力、標準エラー出力、 exit code) を元にコメントを投稿したい場合に、 exec コマンドが使えます。</p>
-
 <pre><code>$ github-comment exec -template &quot;{{.ExitCode}} {{.Stdout}}&quot; -- echo hello
-</code></pre>
-
-<p>コマンドを実行した上でコメントを投稿します。テンプレートの変数として、 post でも渡されるパラメータの他にコマンドの実行結果が渡されます。</p>
-
+</code></pre><p>コマンドを実行した上でコメントを投稿します。テンプレートの変数として、 post でも渡されるパラメータの他にコマンドの実行結果が渡されます。</p>
 <ul>
 <li>ExitCode</li>
 <li>Stdout</li>
@@ -219,52 +189,36 @@
 <li>Command: <a href="https://golang.org/pkg/os/exec/#Cmd.String">exec.Command.String</a></li>
 <li>JoinCommand: コマンド引数(配列)をスペース <code>&quot; &quot;</code> でつないだ文字列</li>
 </ul>
-
 <p>github-comment exec の標準入力は実行するコマンドに渡されますし、 github-comment exec の exit code は実行したコマンドの exit code になります。</p>
-
 <h2 id="設定ファイル">設定ファイル</h2>
-
 <p>上記の例では投稿するコメントを <code>-template</code> で渡していましたが、ごく短いコメント以外は設定ファイルに記述したほうが良いでしょう。
 設定ファイルは <code>github-comment init</code> で雛形を生成できます。</p>
-
 <pre><code>$ github-comment init
-</code></pre>
-
-<p>こんな感じで複数のテンプレートを記述できます。</p>
-
-<pre><code class="language-yaml">post:
-  default: |
-    foo
-  hello: |
-    hello
-  ...
-</code></pre>
-
-<p>そして <code>post</code> 実行時に <code>-template-key (-k)</code> で使用するテンプレートを指定します。
+</code></pre><p>こんな感じで複数のテンプレートを記述できます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">post</span>:
+  <span style="color:#f92672">default</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">    </span>    <span style="color:#ae81ff">foo</span>
+  <span style="color:#f92672">hello</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">    </span>    <span style="color:#ae81ff">hello</span>
+  <span style="color:#ae81ff">...</span>
+</code></pre></div><p>そして <code>post</code> 実行時に <code>-template-key (-k)</code> で使用するテンプレートを指定します。
 <code>-template</code> と <code>-k</code> 両方指定しない場合、デフォルトで <code>default</code> テンプレートが使用されます。</p>
-
 <pre><code>$ github-comment -k hello
-</code></pre>
-
-<h3 id="exec-の設定">exec の設定</h3>
-
+</code></pre><h3 id="exec-の設定">exec の設定</h3>
 <p><code>exec</code> の設定はもう少し複雑です。
 それはコマンドの実行結果によって使用するテンプレートを変えたり、あるいはコメントを投稿しなかったりできるようにするためです。
 一つのテンプレートキーに対し、複数のテンプレートを配列で設定します。</p>
-
-<pre><code class="language-yaml">exec:
-  default:
-    - when: ExitCode == 0
-      template: |
-        success
-    - when: ExitCode != 0
-      template: |
-        failed
-    ...
-  ...
-</code></pre>
-
-<p>そしてテンプレート文字列とは別に <code>when</code> という、そのテンプレートを使う条件を設定します。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
+  <span style="color:#f92672">default</span>:
+    - <span style="color:#f92672">when</span>: <span style="color:#ae81ff">ExitCode == 0</span>
+      <span style="color:#f92672">template</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">        </span>        <span style="color:#ae81ff">success</span>
+    - <span style="color:#f92672">when</span>: <span style="color:#ae81ff">ExitCode != 0</span>
+      <span style="color:#f92672">template</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">        </span>        <span style="color:#ae81ff">failed</span>
+    <span style="color:#ae81ff">...</span>
+  <span style="color:#ae81ff">...</span>
+</code></pre></div><p>そしてテンプレート文字列とは別に <code>when</code> という、そのテンプレートを使う条件を設定します。
 この条件は <a href="https://github.com/antonmedv/expr">antonmedv/expr</a> によって処理されます。
 テンプレートの text/template とはまた別の構文なのがややこしいですね。
 条件の評価結果は当然真偽値ではないといけません。
@@ -272,76 +226,45 @@
 false なら次のテンプレートを評価します。
 全部マッチしなければコメントは投稿されませんし、エラーにもなりません。
 <code>dont_comment: true</code> とすると、その条件にマッチした場合はコメントを投稿せずに終了します(後続のテンプレートも無視されます)。</p>
-
-<pre><code class="language-yaml">exec:
-  hello:
-    - when: ExitCode != 0
-      dont_comment: true
-    - when: true
-      template: |
-        Hello, world
-</code></pre>
-
-<h3 id="テンプレートの再利用">テンプレートの再利用</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
+  <span style="color:#f92672">hello</span>:
+    - <span style="color:#f92672">when</span>: <span style="color:#ae81ff">ExitCode != 0</span>
+      <span style="color:#f92672">dont_comment</span>: <span style="color:#66d9ef">true</span>
+    - <span style="color:#f92672">when</span>: <span style="color:#66d9ef">true</span>
+      <span style="color:#f92672">template</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">        </span>        <span style="color:#ae81ff">Hello, world</span>
+</code></pre></div><h3 id="テンプレートの再利用">テンプレートの再利用</h3>
 <p><code>templates</code> を使うと複数のテンプレートでヘッダーなどを共通化して再利用できます。</p>
-
-<pre><code class="language-yaml">templates:
-  header: &quot;# {{.Org}}/{{.Repo}}&quot;
-post:
-  default: |
-    {{template &quot;header&quot; .}}
-</code></pre>
-
-<p>Go の <a href="https://golang.org/pkg/text/template/">text/template</a> に馴染みがないとわかりにくいかと思いますが、</p>
-
-<pre><code class="language-yaml">templates:
-  テンプレート名: テンプレート
-</code></pre>
-
-<p>でテンプレートを定義して</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">templates</span>:
+  <span style="color:#f92672">header</span>: <span style="color:#e6db74">&#34;# {{.Org}}/{{.Repo}}&#34;</span>
+<span style="color:#f92672">post</span>:
+  <span style="color:#f92672">default</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">    </span>    {{<span style="color:#ae81ff">template &#34;header&#34; .}}</span>
+</code></pre></div><p>Go の <a href="https://golang.org/pkg/text/template/">text/template</a> に馴染みがないとわかりにくいかと思いますが、</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">templates</span>:
+  <span style="color:#f92672">テンプレート名</span>: <span style="color:#ae81ff">テンプレート</span>
+</code></pre></div><p>でテンプレートを定義して</p>
 <pre><code>{{template &quot;テンプレート名&quot; .}}
-</code></pre>
-
-<p>でテンプレートを参照できます。</p>
-
+</code></pre><p>でテンプレートを参照できます。</p>
 <h2 id="テンプレートの変数をコマンドライン引数で渡す">テンプレートの変数をコマンドライン引数で渡す</h2>
-
 <p><code>-var 変数名:値</code> でパラメータを渡せます。
 <code>{{.Var.変数名}}</code> で参照できます。</p>
-
 <pre><code>$ github-comment post -var name:foo -template &quot;Hello, {{.Var.name}}&quot;
-</code></pre>
-
-<h2 id="設定ファイルで変数を定義する">設定ファイルで変数を定義する</h2>
-
+</code></pre><h2 id="設定ファイルで変数を定義する">設定ファイルで変数を定義する</h2>
 <p>設定ファイルで変数を定義できます。任意の型の変数を定義できます。
 <code>{{.Var}}.変数名</code> で参照できます。</p>
-
-<pre><code class="language-yaml">vars:
-  foo: bar
-  zoo:
-    foo: hello
-</code></pre>
-
-<p><code>{{.Var.zoo.foo}}</code></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">vars</span>:
+  <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
+  <span style="color:#f92672">zoo</span>:
+    <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">hello</span>
+</code></pre></div><p><code>{{.Var.zoo.foo}}</code></p>
 <h2 id="post-コマンドの標準入力でテンプレートを渡す">post コマンドの標準入力でテンプレートを渡す</h2>
-
 <p><code>github-comment post</code> の標準入力でテンプレートを渡せます。 exec の場合はそうはならない(実行するコマンドに渡される)ので注意してください。</p>
-
 <pre><code>$ echo foo | github-comment post
-</code></pre>
-
-<h2 id="パラメータの補完">パラメータの補完</h2>
-
+</code></pre><h2 id="パラメータの補完">パラメータの補完</h2>
 <p>先に述べたとおり、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</p>
-
 <h3 id="circleci">CircleCI</h3>
-
 <p>プラットフォームの判別: <code>CIRCLECI</code> の有無</p>
-
 <table>
 <thead>
 <tr>
@@ -349,34 +272,27 @@ post:
 <th>ソース</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>.Org</td>
 <td>CIRCLE_PROJECT_USERNAME</td>
 </tr>
-
 <tr>
 <td>.Repo</td>
 <td>CIRCLE_PROJECT_REPONAME</td>
 </tr>
-
 <tr>
 <td>.PRNumber</td>
 <td>CIRCLE_PULL_REQUEST</td>
 </tr>
-
 <tr>
 <td>.SHA1</td>
 <td>CIRCLE_SHA1</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="drone">Drone</h3>
-
 <p>プラットフォームの判別: <code>DRONE</code> の有無</p>
-
 <table>
 <thead>
 <tr>
@@ -384,34 +300,27 @@ post:
 <th>ソース</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>.Org</td>
 <td>DRONE_REPO_OWNER</td>
 </tr>
-
 <tr>
 <td>.Repo</td>
 <td>DRONE_REPO_NAME</td>
 </tr>
-
 <tr>
 <td>.PRNumber</td>
 <td>DRONE_PULL_REQUEST</td>
 </tr>
-
 <tr>
 <td>.SHA1</td>
 <td>DRONE_COMMIT_SHA1</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="github-actions">GitHub Actions</h3>
-
 <p>プラットフォームの判別: <code>GITHUB_ACTIONS</code> の有無</p>
-
 <table>
 <thead>
 <tr>
@@ -419,65 +328,48 @@ post:
 <th>ソース</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>.Org</td>
 <td>GITHUB_REPOSITORY</td>
 </tr>
-
 <tr>
 <td>.Repo</td>
 <td>GITHUB_REPOSITORY</td>
 </tr>
-
 <tr>
 <td>.PRNumber</td>
 <td>GITHUB_EVENT_PATH</td>
 </tr>
-
 <tr>
 <td>.SHA1</td>
 <td>GITHUB_SHA1</td>
 </tr>
 </tbody>
 </table>
-
 <h2 id="exec-のパラメータの-command-と-joincommand">exec のパラメータの Command と JoinCommand</h2>
-
 <p>実行したコマンドを示すパラメータとして Command と JoinCommand があります。
 これらは似てますが、微妙に違います。</p>
-
 <p>Command は <a href="https://golang.org/pkg/os/exec/#Cmd.String">exec.Cmd の .String()</a> から取得されるのですが、コマンドが絶対パスになったりするので、あまり望ましくないこともあるでしょう。</p>
-
 <p>例えば <code>echo hello</code> の場合 <code>/usr/local/opt/coreutils/libexec/gnubin/echo foo</code> となったりします。</p>
-
 <p>一方 JoinCommand はコマンド文字列を単にスペースでつないだものになります。</p>
-
 <p>exec.Cmd の .String() のドキュメントに書いてあるとおり、 .Command と .JoinCommand はそのまま shell で実行するのには適さない形式なので注意してください。</p>
-
 <blockquote>
 <p>String returns a human-readable description of c.
 It is intended only for debugging.
 In particular, it is not suitable for use as input to a shell.
 The output of String may vary across Go releases.</p>
 </blockquote>
-
 <h2 id="設定ファイルのパス">設定ファイルのパス</h2>
-
 <p>設定ファイルのパスは <code>--config -c</code> オプションで指定できます。
 何も指定しない場合、カレントディレクトリからルートディレクトリに向かって <code>.github-comment.yml</code>, <code>.github-comment.yaml</code> を探索し、最初に見つかったものを使います。</p>
-
 <h2 id="設定ファイルで-org-repo-を指定する">設定ファイルで .Org, .Repo を指定する</h2>
-
 <p>設定ファイルでコメント先のリポジトリを指定できます。
 Platform で補完される場合や、明示的にパラメータで指定する場合は不要です。</p>
-
-<pre><code class="language-yaml">base:
-  org: suzuki-shunsuke
-  repo: github-comment
-</code></pre>
-</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">base</span>:
+  <span style="color:#f92672">org</span>: <span style="color:#ae81ff">suzuki-shunsuke</span>
+  <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">github-comment</span>
+</code></pre></div></div>
 
   <footer class="article-footer">
     

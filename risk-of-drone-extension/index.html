@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -77,8 +77,6 @@
 
   <body>
     
-    
-    
 
     <header class="l-header">
       <nav class="navbar navbar-default">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:54:23JST">Aug 15, 2019</time></li>
       
       
+      <li>79 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Drone Extension のリスク</h1>
@@ -139,21 +140,15 @@
   
 
   <div class="article-body"><p>Drone v1 では Extension という仕組みが導入されました。</p>
-
 <p>これは文字通り Drone を拡張する仕組みで、仕様に従って作れば自由に Drone を拡張できます。</p>
-
 <p><a href="https://docs.drone.io/extensions/overview/">https://docs.drone.io/extensions/overview/</a></p>
-
 <p>全てを本体でやるのではなく、拡張する仕組みを提供し、あとはコミュニティに委ねるというのが Drone の一つの方針とも言えると思います。</p>
-
 <p>Extension は非常に面白い仕組みだと思いますが、 Drone を運用する立場からすると中々頭が痛い仕組みな気がしてて、
 自分は導入に対し慎重な立場です。
 単なる杞憂で済めば良いのですが、その懸念について書きたいと思います。</p>
-
 <p>根本は Drone Extension 固有の問題と言うより、一般的な拡張機構全般に言えることだと思います。
 ただし、 Drone Extension は全てのビルドに影響を及ぼす、
 CI/CDシステムが動かなくなるとサービスのリリースに影響を及ぼしかねないということからよりリスクの高いものになっています。</p>
-
 <ul>
 <li>本体の drone/drone と比べ、開発は活発ではなく、サードパーティの extension はいつ開発が止まってもおかしくない</li>
 <li>本体の drone/drone と比べ、ドキュメントやサポート体制が貧弱だと思われる(drone に関しては <a href="https://discourse.drone.io">https://discourse.drone.io</a> でサポートされているが、サードパーティの extension では難しい)</li>
@@ -165,13 +160,10 @@ CI/CDシステムが動かなくなるとサービスのリリースに影響を
 <li>extension が落ちると全 build に影響するので、耐障害性(冗長化)、モニタリングが必要</li>
 <li>etc</li>
 </ul>
-
 <p>勿論、上記の懸念点は Extension によって提供される機能とトレードオフであり、
 Extension の導入方針は Drone が運用される環境によって大きく依存すると思います。</p>
-
 <p>例えば全員が顔見知りのような小さな組織で特定のサービス専用に Drone を使っていてかつ Drone の運用体制(人員)に十分余裕があるなら
 積極的に Extension を導入しても問題ないかもしれません。</p>
-
 <p>一方大きな組織で色々なサービスで同じ Drone を使っていてかつ Drone の運用体制が不十分(人手不足)ならば、 Extension の導入には慎重にならざるを得ないのではないかと思います。</p>
 </div>
 

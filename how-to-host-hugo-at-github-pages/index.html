@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>Hugo製ブログをGitHub PagesへCIでデプロイ - melody</title>
     
-<meta name="description" content="https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;quot;***&amp;quot; - run: git config user.email &amp;quot;***@example.com&amp;quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.">
+<meta name="description" content="https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;#34;***&amp;#34; - run: git config user.email &amp;#34;***@example.com&amp;#34; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master release.">
 
 <meta property="og:title" content="Hugo製ブログをGitHub PagesへCIでデプロイ - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;quot;***&amp;quot; - run: git config user.email &amp;quot;***@example.com&amp;quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.">
+<meta property="og:description" content="https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;#34;***&amp;#34; - run: git config user.email &amp;#34;***@example.com&amp;#34; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master release.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/how-to-host-hugo-at-github-pages/">
 <meta name="twitter:title" content="Hugo製ブログをGitHub PagesへCIでデプロイ - melody">
-<meta name="twitter:description" content="https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;quot;***&amp;quot; - run: git config user.email &amp;quot;***@example.com&amp;quot; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release.">
+<meta name="twitter:description" content="https://gohugo.io/ と https://pages.github.com/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci/config.yml--- version: 2 jobs: build: docker: - image: suzukishunsuke/hugo-ci:0.1.2 steps: - checkout - run: git config user.name &amp;#34;***&amp;#34; - run: git config user.email &amp;#34;***@example.com&amp;#34; # --depth 1 で高速化 - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master release.">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "https:\/\/gohugo.io\/ と https:\/\/pages.github.com\/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。\n前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci\/config.yml\n--- version: 2 jobs: build: docker: - image: suzukishunsuke\/hugo-ci:0.1.2 steps: - checkout - run: git config user.name \x26quot;***\x26quot; - run: git config user.email \x26quot;***@example.com\x26quot; # --depth 1 で高速化 - run: git clone --depth 1 https:\/\/github.com\/suzuki-shunsuke\/tale-hugo themes\/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master  release."
+    "description": "https:\/\/gohugo.io\/ と https:\/\/pages.github.com\/ の話です。 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。\n前提  テーマは master branch に含めない(CIでcloneする) buildしたものは gh-pages ブランチにデプロイ  コード .circleci\/config.yml\n--- version: 2 jobs: build: docker: - image: suzukishunsuke\/hugo-ci:0.1.2 steps: - checkout - run: git config user.name \u0026#34;***\u0026#34; - run: git config user.email \u0026#34;***@example.com\u0026#34; # --depth 1 で高速化 - run: git clone --depth 1 https:\/\/github.com\/suzuki-shunsuke\/tale-hugo themes\/tale - run: hugo - run: sh release.sh workflows: version: 2 build: jobs: - build: filters: branches: only: master release."
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-01T08:04:16JST">Oct 1, 2018</time></li>
       
       
+      <li>143 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Hugo製ブログをGitHub PagesへCIでデプロイ</h1>
@@ -138,78 +139,59 @@
 
   
 
-  <div class="article-body">
-
-<p><a href="https://gohugo.io/">https://gohugo.io/</a> と <a href="https://pages.github.com/">https://pages.github.com/</a> の話です。
+  <div class="article-body"><p><a href="https://gohugo.io/">https://gohugo.io/</a> と <a href="https://pages.github.com/">https://pages.github.com/</a> の話です。
 master に push したら GitHub Pages に circle ciでデプロイするようにする方法の紹介です。</p>
-
 <h2 id="前提">前提</h2>
-
 <ul>
 <li>テーマは master branch に含めない(CIでcloneする)</li>
 <li>buildしたものは gh-pages ブランチにデプロイ</li>
 </ul>
-
 <h2 id="コード">コード</h2>
-
 <p>.circleci/config.yml</p>
-
-<pre><code class="language-yaml">---
-version: 2
-jobs:
-  build:
-    docker:
-    - image: suzukishunsuke/hugo-ci:0.1.2
-    steps:
-    - checkout
-    - run: git config user.name &quot;***&quot;
-    - run: git config user.email &quot;***@example.com&quot;
-    # --depth 1 で高速化
-    - run: git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale
-    - run: hugo
-    - run: sh release.sh
-workflows:
-  version: 2
-  build:
-    jobs:
-    - build:
-        filters:
-          branches:
-            only: master
-</code></pre>
-
-<p>release.sh</p>
-
-<pre><code class="language-sh">git checkout gh-pages
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">version</span>: <span style="color:#ae81ff">2</span>
+<span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">build</span>:
+    <span style="color:#f92672">docker</span>:
+    - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">suzukishunsuke/hugo-ci:0.1.2</span>
+    <span style="color:#f92672">steps</span>:
+    - <span style="color:#ae81ff">checkout</span>
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">git config user.name &#34;***&#34;</span>
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">git config user.email &#34;***@example.com&#34;</span>
+    <span style="color:#75715e"># --depth 1 で高速化</span>
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">git clone --depth 1 https://github.com/suzuki-shunsuke/tale-hugo themes/tale</span>
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo</span>
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">sh release.sh</span>
+<span style="color:#f92672">workflows</span>:
+  <span style="color:#f92672">version</span>: <span style="color:#ae81ff">2</span>
+  <span style="color:#f92672">build</span>:
+    <span style="color:#f92672">jobs</span>:
+    - <span style="color:#f92672">build</span>:
+        <span style="color:#f92672">filters</span>:
+          <span style="color:#f92672">branches</span>:
+            <span style="color:#f92672">only</span>: <span style="color:#ae81ff">master</span>
+</code></pre></div><p>release.sh</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout gh-pages
 mv .git .circleci public
 cd public
 
-# 生成物に差分があったときのみデプロイ
+<span style="color:#75715e"># 生成物に差分があったときのみデプロイ</span>
 git status --porcelain
-if [ -n &quot;`git status --porcelain`&quot; ]; then
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;`git status --porcelain`&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
   git add .
-  git commit -m &quot;update&quot;
+  git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
   git push origin gh-pages
-fi
-</code></pre>
-
-<p>hugo をインストールした Docker Image を用意しておきます。</p>
-
+<span style="color:#66d9ef">fi</span>
+</code></pre></div><p>hugo をインストールした Docker Image を用意しておきます。</p>
 <p><a href="https://hub.docker.com/r/suzukishunsuke/hugo-ci/">https://hub.docker.com/r/suzukishunsuke/hugo-ci/</a></p>
-
 <p>ビルドしたものを gh-pages ブランチにデプロイする方法を工夫していて、
 <code>.git</code> を <code>public</code> ディレクトリに移動しています。</p>
-
-<pre><code class="language-sh">git checkout gh-pages
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout gh-pages
 mv .git .circleci public
 cd public
-</code></pre>
-
-<p>あと、ビルドされたものに差分があったときのみデプロイするようにしています。</p>
-
-<pre><code class="language-sh">if [ -n &quot;`git status --porcelain`&quot; ]; then
-</code></pre>
-</div>
+</code></pre></div><p>あと、ビルドされたものに差分があったときのみデプロイするようにしています。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;`git status --porcelain`&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</code></pre></div></div>
 
   <footer class="article-footer">
     

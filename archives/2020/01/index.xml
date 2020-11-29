@@ -5,12 +5,7 @@
     <link>https://suzuki-shunsuke.github.io/archives/2020/01/</link>
     <description>Recent content in 2020/01 on melody</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>jp</language>
-    <lastBuildDate>Fri, 17 Jan 2020 09:14:08 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/archives/2020/01/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>jp</language><atom:link href="https://suzuki-shunsuke.github.io/archives/2020/01/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Terraform ハンズオン with MySQL Provider</title>
       <link>https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/</link>
@@ -24,7 +19,7 @@
  https://github.com/terraform-providers https://www.terraform.io/docs/providers/index.html  また、 Terraform に関しては Terraform 入門 も参照してください。
 今回の作業用に適当にディレクトリを作成し、そこで作業しましょう。
 以降、コマンドの実行結果は一部省略することがあります。
-$ mkdir workspace $ cd workspace  Terraform のバージョンと tfenv Terraform を複数人で使う場合、 Terraform のバージョンを揃えるのが重要です。 理由の一つとして、 Terraform の State は State を作成した Terraform のバージョンを記録しており、それより古いバージョンの Terraform で terraform plan などを実行すると失敗するようになっていることが挙げられます(この点については後でも触れます)。 そういう意味では、 tfenv によってバージョン管理するのが良いです。</description>
+$ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform を複数人で使う場合、 Terraform のバージョンを揃えるのが重要です。 理由の一つとして、 Terraform の State は State を作成した Terraform のバージョンを記録しており、それより古いバージョンの Terraform で terraform plan などを実行すると失敗するようになっていることが挙げられます(この点については後でも触れます)。 そういう意味では、 tfenv によってバージョン管理するのが良いです。</description>
     </item>
     
     <item>
@@ -51,9 +46,9 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
       <guid>https://suzuki-shunsuke.github.io/terraform-state-locking/</guid>
       <description>Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。
 State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。
-例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で
+ 例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で
  現在の State を取得する (READ) 修正した State を S3 に push する (WRITE)  という処理を行っているはずであり、複数のコマンドを実行した場合、READ と WRITE の間に他のコマンドによって WRITE されると、その WRITE による変更が消えてしまいます。
-そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。
+ そこで State Locking を使うと各コマンドで State を変更する前に lock を取り、WRITE 後に lock を解除します。
 コマンドラインオプション plan, apply, refresh, state rm, state mv, state push には次のようなオプションがあります。</description>
     </item>
     

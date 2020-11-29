@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。 この際に何かしらの方法で認証しているはずです。\n結論を言うと、\nあるリポジトリAのbuildでは、 リポジトリAの drone連携を有効化したユーザー Bの access token を .netrc に書き込んで認証しています。 よってユーザーBにcloneする権限があるリポジトリはcloneできるし、 ユーザーBにcloneする権限がないリポジトリはcloneできません。 つまり、 誰が連携を有効化するかが重要 になります(これについては後述します)。 なお、drone連携の有効化はそのリポジトリのowner以上でないと出来ません。\ndrone上でリポジトリの連携を有効化すると、 リポジトリのHookが作成されます。 リポジトリの settings \x26gt; Hooks から確認できます。 この Hook の Payload URL を見ると access_token クエリがあると思います。 JWTのようですね。これはリポジトリの連携を有効化したユーザーのtokenです。\nこのtokenが GitHub から drone への webhook のパラメータとして送られてくるので、 drone 側で認証し、認証したユーザーのGitHub のaccess token を取得し、 build 時にコンテナの \/root\/.netrc に書き込むようです。\n.netrcに書き込まれているのは試しに個人の private repository で ."
+    "description": "drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。 この際に何かしらの方法で認証しているはずです。\n結論を言うと、\nあるリポジトリAのbuildでは、 リポジトリAの drone連携を有効化したユーザー Bの access token を .netrc に書き込んで認証しています。 よってユーザーBにcloneする権限があるリポジトリはcloneできるし、 ユーザーBにcloneする権限がないリポジトリはcloneできません。 つまり、 誰が連携を有効化するかが重要 になります(これについては後述します)。 なお、drone連携の有効化はそのリポジトリのowner以上でないと出来ません。\ndrone上でリポジトリの連携を有効化すると、 リポジトリのHookが作成されます。 リポジトリの settings \u0026gt; Hooks から確認できます。 この Hook の Payload URL を見ると access_token クエリがあると思います。 JWTのようですね。これはリポジトリの連携を有効化したユーザーのtokenです。\nこのtokenが GitHub から drone への webhook のパラメータとして送られてくるので、 drone 側で認証し、認証したユーザーのGitHub のaccess token を取得し、 build 時にコンテナの \/root\/.netrc に書き込むようです。\n.netrcに書き込まれているのは試しに個人の private repository で ."
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:44:27JST">Sep 30, 2018</time></li>
       
       
+      <li>139 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">Drone の build 実行時の認証方法</h1>
@@ -138,80 +139,55 @@
 
   
 
-  <div class="article-body">
-
-<p>drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。
+  <div class="article-body"><p>drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。
 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。
 この際に何かしらの方法で認証しているはずです。</p>
-
 <p>結論を言うと、</p>
-
 <p>あるリポジトリAのbuildでは、
 リポジトリAの <strong>drone連携を有効化したユーザー</strong> Bの access token を <strong>.netrc</strong> に書き込んで認証しています。
 よってユーザーBにcloneする権限があるリポジトリはcloneできるし、
 ユーザーBにcloneする権限がないリポジトリはcloneできません。
 つまり、 <strong>誰が連携を有効化するかが重要</strong> になります(これについては後述します)。
 なお、drone連携の有効化はそのリポジトリのowner以上でないと出来ません。</p>
-
 <p>drone上でリポジトリの連携を有効化すると、
 リポジトリのHookが作成されます。
 リポジトリの settings &gt; Hooks から確認できます。
 この Hook の Payload URL を見ると access_token クエリがあると思います。
 JWTのようですね。これはリポジトリの連携を有効化したユーザーのtokenです。</p>
-
 <p>このtokenが GitHub から drone への webhook のパラメータとして送られてくるので、
 drone 側で認証し、認証したユーザーのGitHub  のaccess token を取得し、
 build 時にコンテナの /root/.netrc に書き込むようです。</p>
-
 <p>.netrcに書き込まれているのは試しに個人の private repository で .netrc をcatしてみればわかります。
 他人も見えるrepositoryでcatすると悪用されかねないので気をつけましょう。</p>
-
 <pre><code>pipeline:
 netrc:
 image: alpine:3.6
 commands:
 - cat ~/.netrc
-</code></pre>
-
-<pre><code>+ cat ~/.netrc
+</code></pre><pre><code>+ cat ~/.netrc
 machine gihub.com
 login **************
 password x-oauth-basic
-</code></pre>
-
-<h2 id="cloneステップ以外での-netrcの活用">cloneステップ以外での .netrcの活用</h2>
-
+</code></pre><h2 id="cloneステップ以外での-netrcの活用">cloneステップ以外での .netrcの活用</h2>
 <p>.netrc のおかげで難しいこと考えずに clone 出来ているわけですが、この .netrc は当然 clone ステップ以外でも使えます。
 例えば private repository の ansible role の install です。</p>
-
 <p>roles.yml</p>
-
-<pre><code class="language-yaml">- src: https://github.com/&lt;owner&gt;/&lt;repo&gt;
-  name: foo.bar
-  scm: git
-</code></pre>
-
-<p>.drone.yml</p>
-
-<pre><code class="language-yaml">commands:
-- ansible-galaxy install -r roles.yml
-</code></pre>
-
-<h2 id="誰が連携を有効化するべきか">誰が連携を有効化するべきか</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">src</span>: <span style="color:#ae81ff">https://github.com/&lt;owner&gt;/&lt;repo&gt;</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foo.bar</span>
+  <span style="color:#f92672">scm</span>: <span style="color:#ae81ff">git</span>
+</code></pre></div><p>.drone.yml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">commands</span>:
+- <span style="color:#ae81ff">ansible-galaxy install -r roles.yml</span>
+</code></pre></div><h2 id="誰が連携を有効化するべきか">誰が連携を有効化するべきか</h2>
 <p>結論を言うと、ベストな方法は分かりません。</p>
-
 <p>連携を有効化した人が退職してしまったり、organizationから抜けてしまった場合、急にビルドが失敗するリスクがあります。
 理想を言えば特定の個人のアカウントで連携するのではなく、連携用のアカウントを用意するのが良いのかもしれませんが、
 それはそれで運用が難しいかもしれません。</p>
-
 <p>drone API ないし CLI で有効化は出来るので、CIで連携を自動化することは可能だと思います。</p>
-
 <ul>
 <li><a href="https://0-8-0.docs.drone.io/cli-repository-add/">https://0-8-0.docs.drone.io/cli-repository-add/</a></li>
 <li><a href="https://0-8-0.docs.drone.io/api-repo-create/">https://0-8-0.docs.drone.io/api-repo-create/</a></li>
 </ul>
-
 <p>自分のところではまだそこまでやってなく、個人で有効化してしまっているのですが、
 自動化したらまた記事にでもしたいと思います。</p>
 </div>

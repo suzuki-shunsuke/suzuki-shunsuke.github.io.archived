@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>go-error-handling-logging-practice v0.2 - melody</title>
     
-<meta name="description" content="以前 Golang のロギング・エラーハンドリングについて書きました。 https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。具体的には元々func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;quot;age&amp;quot;: age}, &amp;quot;failed to create a user&amp;quot;) }  だったものがfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;quot;user name is invalid&amp;quot;) }  になります。変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。">
+<meta name="description" content="以前 Golang のロギング・エラーハンドリングについて書きました。 https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。具体的には元々func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;#34;age&amp;#34;: age}, &amp;#34;failed to create a user&amp;#34;) } だったものがfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;#34;user name is invalid&amp;#34;) } になります。変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。">
 
 <meta property="og:title" content="go-error-handling-logging-practice v0.2 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="以前 Golang のロギング・エラーハンドリングについて書きました。 https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。具体的には元々func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;quot;age&amp;quot;: age}, &amp;quot;failed to create a user&amp;quot;) }  だったものがfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;quot;user name is invalid&amp;quot;) }  になります。変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。">
+<meta property="og:description" content="以前 Golang のロギング・エラーハンドリングについて書きました。 https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。具体的には元々func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;#34;age&amp;#34;: age}, &amp;#34;failed to create a user&amp;#34;) } だったものがfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;#34;user name is invalid&amp;#34;) } になります。変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice-0.2.0/">
 <meta name="twitter:title" content="go-error-handling-logging-practice v0.2 - melody">
-<meta name="twitter:description" content="以前 Golang のロギング・エラーハンドリングについて書きました。 https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。具体的には元々func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;quot;age&amp;quot;: age}, &amp;quot;failed to create a user&amp;quot;) }  だったものがfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;quot;user name is invalid&amp;quot;) }  になります。変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。">
+<meta name="twitter:description" content="以前 Golang のロギング・エラーハンドリングについて書きました。 https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/ https://github.com/suzuki-shunsuke/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。具体的には元々func createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{&amp;#34;age&amp;#34;: age}, &amp;#34;failed to create a user&amp;#34;) } だったものがfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, &amp;#34;user name is invalid&amp;#34;) } になります。変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。メッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "以前 Golang のロギング・エラーハンドリングについて書きました。\n https:\/\/suzuki-shunsuke.github.io\/golang-logging-error-handling-practice\/ https:\/\/github.com\/suzuki-shunsuke\/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。\n変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。\n具体的には元々\nfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{\x26quot;age\x26quot;: age}, \x26quot;failed to create a user\x26quot;) }  だったものが\nfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, \x26quot;user name is invalid\x26quot;) }  になります。\n変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。\nメッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と\n 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。"
+    "description": "以前 Golang のロギング・エラーハンドリングについて書きました。\n https:\/\/suzuki-shunsuke.github.io\/golang-logging-error-handling-practice\/ https:\/\/github.com\/suzuki-shunsuke\/go-error-handling-logging-practice  それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。 本記事ではその変更点について書きます。\n変更点 関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。\n具体的には元々\nfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), logrus.Fields{\u0026#34;age\u0026#34;: age}, \u0026#34;failed to create a user\u0026#34;) } だったものが\nfunc createUser(name string, age int) error { return errlog.Wrap(checkName(name), nil, \u0026#34;user name is invalid\u0026#34;) } になります。\n変更理由 メタ情報のフィールド名はコンテキストに依存します。 上記の例だとユーザー名というメタ情報のフィールド名は name より user_name や admin_name, owner_name としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。\nメッセージに関しても同様のことが言えます。 また、元々 v0.1 ではユーザーが定義した関数と\n 標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数 interface の関数やメソッド  を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-01T22:26:13JST">Feb 1, 2019</time></li>
       
       
+      <li>68 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">go-error-handling-logging-practice v0.2</h1>
@@ -128,53 +129,34 @@
 
   
 
-  <div class="article-body">
-
-<p>以前 Golang のロギング・エラーハンドリングについて書きました。</p>
-
+  <div class="article-body"><p>以前 Golang のロギング・エラーハンドリングについて書きました。</p>
 <ul>
 <li><a href="https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/">https://suzuki-shunsuke.github.io/golang-logging-error-handling-practice/</a></li>
 <li><a href="https://github.com/suzuki-shunsuke/go-error-handling-logging-practice">https://github.com/suzuki-shunsuke/go-error-handling-logging-practice</a></li>
 </ul>
-
 <p>それを少し v0.1 から v0.2 に互換性を壊す形でアップデートしようかと思います。
 本記事ではその変更点について書きます。</p>
-
 <h2 id="変更点">変更点</h2>
-
 <p><strong>関数のエラーに情報を付与する責務を関数に割り当てていたものを、呼び出し元に割り当てるようにします。</strong></p>
-
 <p>具体的には元々</p>
-
-<pre><code class="language-go">func createUser(name string, age int) error {
-	return errlog.Wrap(checkName(name), logrus.Fields{&quot;age&quot;: age}, &quot;failed to create a user&quot;)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">age</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">Wrap</span>(<span style="color:#a6e22e">checkName</span>(<span style="color:#a6e22e">name</span>), <span style="color:#a6e22e">logrus</span>.<span style="color:#a6e22e">Fields</span>{<span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#a6e22e">age</span>}, <span style="color:#e6db74">&#34;failed to create a user&#34;</span>)
 }
-</code></pre>
-
-<p>だったものが</p>
-
-<pre><code class="language-go">func createUser(name string, age int) error {
-	return errlog.Wrap(checkName(name), nil, &quot;user name is invalid&quot;)
+</code></pre></div><p>だったものが</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">age</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">error</span> {
+	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">Wrap</span>(<span style="color:#a6e22e">checkName</span>(<span style="color:#a6e22e">name</span>), <span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#34;user name is invalid&#34;</span>)
 }
-</code></pre>
-
-<p>になります。</p>
-
+</code></pre></div><p>になります。</p>
 <h2 id="変更理由">変更理由</h2>
-
 <p>メタ情報のフィールド名はコンテキストに依存します。
 上記の例だとユーザー名というメタ情報のフィールド名は <code>name</code> より <code>user_name</code> や <code>admin_name</code>, <code>owner_name</code> としたほうが適切かもしれません。それは関数内部では分からず、呼び出し元でないと分かりません。呼び出し元でないとフィールド名の衝突が避けられないこともあるでしょう。</p>
-
 <p>メッセージに関しても同様のことが言えます。
 また、元々 v0.1 ではユーザーが定義した関数と</p>
-
 <ul>
 <li>標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数</li>
 <li>interface の関数やメソッド</li>
 </ul>
-
 <p>を区別し、前者では関数側でエラーに情報を付与させる一方、後者では呼び出し元で情報を付与させるというふうにしていました。</p>
-
 <p>v0.2 では両者を区別せず、どちらの場合でも呼び出し元に付与させるというふうにすることでよりルールがシンプルになります。</p>
 </div>
 

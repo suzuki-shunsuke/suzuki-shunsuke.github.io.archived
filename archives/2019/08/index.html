@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2019/08/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-23T11:35:13JST">Aug 23, 2019</time></li>
       
       
+      <li>229 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/cmdx/">cmdx - task runner</a></h2>
   </header>
@@ -77,11 +78,11 @@ task runner の定義はググってもわからなかったので、 cmdx を t
  依存するライブラリのインストール ビルド テスト コード整形 lint etc  などを管理するものとします。
 類似するものとしては以下のようなものがあります。
  Make npm scripts Task tj/robo mumoshu/variant  使い方 詳細は README を読んでください。
-$ cmdx -i  で設定ファイルの雛形を生成します。
+$ cmdx -i で設定ファイルの雛形を生成します。
 そして設定ファイルに task を定義していきます。 設定に関しては README を参照してください。
 そうすると cmdx -l でタスクの一覧とその説明が見れます。
 例えば次は cmdx のリポジトリでの実行結果です。
-$ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is required) test, t - test fmt - format the go code vet, v - go vet lint, l - lint the go code release, r - release the new version durl - check dead links (durl is required) ci-local - run the Drone pipeline at localhost (drone-cli is required)  これにより新しくプロジェクトに参画した人もどのような task があるのか直ぐわかります。 例えば test を実行したければ cmdx t を実行すればいいことがわかります。 cmdx help test とすればここのタスクのより詳細なヘルプが見れます。</div>
+$ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is required) test, t - test fmt - format the go code vet, v - go vet lint, l - lint the go code release, r - release the new version durl - check dead links (durl is required) ci-local - run the Drone pipeline at localhost (drone-cli is required) これにより新しくプロジェクトに参画した人もどのような task があるのか直ぐわかります。 例えば test を実行したければ cmdx t を実行すればいいことがわかります。 cmdx help test とすればここのタスクのより詳細なヘルプが見れます。</div>
 
   
   <footer>
@@ -95,6 +96,9 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:54:23JST">Aug 15, 2019</time></li>
+      
+      
+      <li>79 Words</li>
       
       
     </ul>
@@ -125,13 +129,16 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:39:18JST">Aug 15, 2019</time></li>
       
       
+      <li>61 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-v1-deprecate-grpc/">Drone v1 で gRPC が使われなくなった</a></h2>
   </header>
 
   
   <div class="summary">v0.8 では server - agent 間の通信に gPRC が使われていましたが、 v1 では使われなくなりました。
-理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた   v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)   自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
+理由  https://discourse.drone.io/t/curious-about-decision-to-drop-grpc/3987  gRPC関連のトラブルの問い合わせが多すぎてサポートしきれないので止めた    v1 での通信方法  https://discourse.drone.io/t/drone-agents-keep-closing-connections-with-499-code/5197/2  agent がロングポーリングしている 30秒後、なんのビルドもなければコネクションを切って、再接続する(張りっぱなしにしてると、LBやファイアウォールにコネクション切られるため)     自分も v0.8 から Drone を運用していて最近 v1 に upgrade しましたが、 v0.8 では gRPC 関連のトラブルが頻発していました。 server のログでは絶えず gRPC 関連のエラーを吐いていましたし、 server - agent 間の TCP connection が切れっぱなしになって戻らくなって agent 数がどんどん減っていったり ビルドが pending のままになったり、色々ありました。
 関連する issue はあり、幾つか対策を打ってみたりしましたが、結局解決しませんでした。
  https://github.com/drone/drone/issues/2090 https://github.com/drone/drone/issues/2246 https://github.com/drone/drone/pull/2294 https://www.reddit.com/r/droneci/comments/8opifu/drone_stops_working_after_some_little_time/e06d1gn/  それが v1 にアップグレードして gRPC が使われなくなってから解消し、個人的にはとても助かりました。 管理者的にはアップグレードして一番嬉しい点ですね。</div>
 
@@ -145,13 +152,16 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-14T20:28:56JST">Aug 14, 2019</time></li>
       
       
+      <li>450 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/golang-time/">Golang での時刻の扱い方を整理する</a></h2>
   </header>
 
   
   <div class="summary">今更ながら Golang での時刻の扱い方について改めて整理してみました。
-まとめ  time.Local は明示的に設定する(基本UTC) DB などには 基本UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要  文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location</div>
+まとめ  time.Local は明示的に設定する(基本UTC) DB などには 基本UTC で永続化する 出力時に必要になったらタイムゾーンを変更する  location は出力時に問題になるので出力時に location を明示的に指定する 逆に言うと出力時以外は問題にならないので無理に location を UTC にしなくても良いかもしれない サードパーティ(ex. ORM) に time.Time を渡す場合は location に注意が必要   文字列として時刻の入力を受け付ける場合は location を明示的にセットする サードパーティが time.Local に依存する場合、 time.Local を明示的に UTC にしたりする必要があるかもしれない アプリケーションで利用する location が分かっている場合、location を取得するヘルパー関数を定義する time.LoadLocation は環境依存なので予め location が分かっているなら使わないほうがよい 文字列を time.Time に変換する場合、time.ParseInLocation で Location を指定して time.Time に変換後、time.Time.UTC() で UTC に変換する time.Time を文字列に変換する場合、time.In で location を変換後、time.Time.Format で文字列に変換する  グローバルな location https://golang.org/pkg/time/#Location</div>
 
   
   <footer>
@@ -165,6 +175,9 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
   <header>
     <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-02T23:02:57JST">Aug 2, 2019</time></li>
+      
+      
+      <li>93 Words</li>
       
       
     </ul>

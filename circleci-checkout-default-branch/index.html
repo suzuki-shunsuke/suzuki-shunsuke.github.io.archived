@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>CircleCI の checkout の注意点 - melody</title>
     
-<meta name="description" content="CircleCI の組み込みの command checkout の注意点について書きます。なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。最初に結論 先に結論を書くと CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96ここでは checkout の全てについては触れません。一部抜粋します。elif [ -n &amp;quot;$CIRCLE_BRANCH&amp;quot; ] then git reset --hard &amp;quot;$CIRCLE_SHA1&amp;quot; git checkout -q -B &amp;quot;$CIRCLE_BRANCH&amp;quot; fi  git reset --hard などをしています。">
+<meta name="description" content="CircleCI の組み込みの command checkout の注意点について書きます。なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。最初に結論 先に結論を書くと CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため   代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96ここでは checkout の全てについては触れません。一部抜粋します。elif [ -n &amp;#34;$CIRCLE_BRANCH&amp;#34; ] then git reset --hard &amp;#34;$CIRCLE_SHA1&amp;#34; git checkout -q -B &amp;#34;$CIRCLE_BRANCH&amp;#34; fi git reset --hard などをしています。">
 
 <meta property="og:title" content="CircleCI の checkout の注意点 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="CircleCI の組み込みの command checkout の注意点について書きます。なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。最初に結論 先に結論を書くと CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96ここでは checkout の全てについては触れません。一部抜粋します。elif [ -n &amp;quot;$CIRCLE_BRANCH&amp;quot; ] then git reset --hard &amp;quot;$CIRCLE_SHA1&amp;quot; git checkout -q -B &amp;quot;$CIRCLE_BRANCH&amp;quot; fi  git reset --hard などをしています。">
+<meta property="og:description" content="CircleCI の組み込みの command checkout の注意点について書きます。なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。最初に結論 先に結論を書くと CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため   代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96ここでは checkout の全てについては触れません。一部抜粋します。elif [ -n &amp;#34;$CIRCLE_BRANCH&amp;#34; ] then git reset --hard &amp;#34;$CIRCLE_SHA1&amp;#34; git checkout -q -B &amp;#34;$CIRCLE_BRANCH&amp;#34; fi git reset --hard などをしています。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/circleci-checkout-default-branch/">
 <meta name="twitter:title" content="CircleCI の checkout の注意点 - melody">
-<meta name="twitter:description" content="CircleCI の組み込みの command checkout の注意点について書きます。なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。最初に結論 先に結論を書くと CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96ここでは checkout の全てについては触れません。一部抜粋します。elif [ -n &amp;quot;$CIRCLE_BRANCH&amp;quot; ] then git reset --hard &amp;quot;$CIRCLE_SHA1&amp;quot; git checkout -q -B &amp;quot;$CIRCLE_BRANCH&amp;quot; fi  git reset --hard などをしています。">
+<meta name="twitter:description" content="CircleCI の組み込みの command checkout の注意点について書きます。なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。最初に結論 先に結論を書くと CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため   代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96ここでは checkout の全てについては触れません。一部抜粋します。elif [ -n &amp;#34;$CIRCLE_BRANCH&amp;#34; ] then git reset --hard &amp;#34;$CIRCLE_SHA1&amp;#34; git checkout -q -B &amp;#34;$CIRCLE_BRANCH&amp;#34; fi git reset --hard などをしています。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "CircleCI の組み込みの command checkout の注意点について書きます。\nなお、ここに書かれている内容は 2020\/04\/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。\nまた、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。\n最初に結論 先に結論を書くと\n CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f \x26lt;デフォルトブランチ\x26gt; origin\/\x26lt;デフォルトブランチ\x26gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。\nサンプル: https:\/\/app.circleci.com\/pipelines\/github\/suzuki-shunsuke\/test-circleci\/73\/workflows\/5611059c-d6b1-4a34-91b5-45d6f149d408\/jobs\/96\nここでは checkout の全てについては触れません。一部抜粋します。\nelif [ -n \x26quot;$CIRCLE_BRANCH\x26quot; ] then git reset --hard \x26quot;$CIRCLE_SHA1\x26quot; git checkout -q -B \x26quot;$CIRCLE_BRANCH\x26quot; fi  git reset --hard などをしています。"
+    "description": "CircleCI の組み込みの command checkout の注意点について書きます。\nなお、ここに書かれている内容は 2020\/04\/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。\nまた、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。\n最初に結論 先に結論を書くと\n CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため   代わりに origin のデフォルトブランチを参照したほうが良い git branch -f \u0026lt;デフォルトブランチ\u0026gt; origin\/\u0026lt;デフォルトブランチ\u0026gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。\nサンプル: https:\/\/app.circleci.com\/pipelines\/github\/suzuki-shunsuke\/test-circleci\/73\/workflows\/5611059c-d6b1-4a34-91b5-45d6f149d408\/jobs\/96\nここでは checkout の全てについては触れません。一部抜粋します。\nelif [ -n \u0026#34;$CIRCLE_BRANCH\u0026#34; ] then git reset --hard \u0026#34;$CIRCLE_SHA1\u0026#34; git checkout -q -B \u0026#34;$CIRCLE_BRANCH\u0026#34; fi git reset --hard などをしています。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-24T16:53:01JST">Apr 24, 2020</time></li>
       
       
+      <li>247 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">CircleCI の checkout の注意点</h1>
@@ -138,69 +139,45 @@
 
   
 
-  <div class="article-body">
-
-<p>CircleCI の組み込みの command <code>checkout</code> の注意点について書きます。</p>
-
+  <div class="article-body"><p>CircleCI の組み込みの command <code>checkout</code> の注意点について書きます。</p>
 <p>なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに <code>checkout</code> の挙動が変わる可能性があります。</p>
-
 <p>また、今回は話を簡略化するため、 <code>checkout</code> 実行時点で <code>.git</code> がない(つまりキャッシュしていない)ものとします。</p>
-
 <h2 id="最初に結論">最初に結論</h2>
-
 <p>先に結論を書くと</p>
-
 <ul>
 <li>CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)
-
 <ul>
 <li>履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため</li>
-</ul></li>
+</ul>
+</li>
 <li>代わりに origin のデフォルトブランチを参照したほうが良い</li>
 <li><code>git branch -f &lt;デフォルトブランチ&gt; origin/&lt;デフォルトブランチ&gt;</code> を実行してデフォルトブランチの履歴を修正するのもあり</li>
 </ul>
-
 <h2 id="checkout-がなにをやっているか">checkout がなにをやっているか</h2>
-
 <p><code>checkout</code> でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。</p>
-
 <p>サンプル: <a href="https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96">https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96</a></p>
-
 <p>ここでは <code>checkout</code> の全てについては触れません。一部抜粋します。</p>
-
-<pre><code class="language-sh">elif [ -n &quot;$CIRCLE_BRANCH&quot; ]
-then
-  git reset --hard &quot;$CIRCLE_SHA1&quot;
-  git checkout -q -B &quot;$CIRCLE_BRANCH&quot;
-fi
-</code></pre>
-
-<p><code>git reset --hard</code> などをしています。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$CIRCLE_BRANCH<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>
+<span style="color:#66d9ef">then</span>
+  git reset --hard <span style="color:#e6db74">&#34;</span>$CIRCLE_SHA1<span style="color:#e6db74">&#34;</span>
+  git checkout -q -B <span style="color:#e6db74">&#34;</span>$CIRCLE_BRANCH<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+</code></pre></div><p><code>git reset --hard</code> などをしています。</p>
 <h2 id="なぜこんなことをしているのか">なぜこんなことをしているのか？</h2>
-
 <p>なんでこんなことをしているのでしょうか？単に <code>git checkout $CIRCLE_BRANCH</code> とかじゃだめなんでしょうか？</p>
-
 <p>本当のところは CircleCI の中の人に聞かないとわかりませんが、自分なりに考えてみました。</p>
-
 <p>昔実行した job を rerun することを思い浮かべてみましょう。
 rerun するタイミングではすでに remote branch が削除されているかもしれません。そうなれば単に <code>git checkout</code> では失敗します。
 また、branch があったとしても $CIRCLE_SHA1 がその branch の HEAD とも限りません。
 force push で履歴が変更され、 $CIRCLE_SHA1 が CIRCLE_BRANCH の履歴上にないかもしれません。</p>
-
 <p>そういったケースを考慮し、このような実装になっているのだと思います。</p>
-
 <h2 id="注意点">注意点</h2>
-
 <p>しかし、 <code>git reset --hard</code> していることにより、一つ注意が必要です。
 <code>git reset --hard</code> は branch を $CIRCLE_BRANCH に切り替える前に実行しているため、
 実行しているブランチ(基本的にデフォルトブランチ)の履歴が変更されています。</p>
-
 <h2 id="ローカルで再現してみる">ローカルで再現してみる</h2>
-
 <p>CircleCI の rerun with SSH でも確認できますが、
 ローカルの適当なリポジトリで同様のコマンドを叩いてみることで簡単に再現できます。</p>
-
 <pre><code>$ mkdir sample
 $ cd sample
 $ git init
@@ -215,38 +192,22 @@ $ export CIRCLE_SHA1=$(git rev-parse $CIRCLE_BRANCH)
 # ここから CircleCI 同様のコマンドを叩いてみる
 $ git reset --hard &quot;$CIRCLE_SHA1&quot;
 $ git checkout -q -B &quot;$CIRCLE_BRANCH&quot;
-</code></pre>
-
-<p>ここで git log してみると master branch の履歴が $CIRCLE_BRANCH と同様になっているのが分かると思います。</p>
-
+</code></pre><p>ここで git log してみると master branch の履歴が $CIRCLE_BRANCH と同様になっているのが分かると思います。</p>
 <h2 id="何が困るのか">何が困るのか</h2>
-
 <p>デフォルトブランチ を参照しなければ特に困ることはないでしょう。
 一方でデフォルトブランチとの差分を検知して変更があったものだけビルドするとかそういうことをやっている場合には注意が必要です。</p>
-
 <pre><code>$ git diff --name-only master $CIRCLE_BRANCH
-</code></pre>
-
-<p>こうすると差分がないことになってしまいます。</p>
-
+</code></pre><p>こうすると差分がないことになってしまいます。</p>
 <h2 id="回避方法">回避方法</h2>
-
 <p>master の代わりに origin/master を参照すれば良いでしょう。</p>
-
 <pre><code>$ git diff --name-only origin/master $CIRCLE_BRANCH
-</code></pre>
-
-<p>ただ、うっかりローカルのデフォルトブランチを参照してしまうことは十分考えられる上に別にエラーは起こらないので間違いに気づきにくいです。</p>
-
+</code></pre><p>ただ、うっかりローカルのデフォルトブランチを参照してしまうことは十分考えられる上に別にエラーは起こらないので間違いに気づきにくいです。</p>
 <p>そこで checkout 直後にローカルのデフォルトブランチの履歴を origin と強制的に同じにしてしまうというテクニック(?)が考えられます。</p>
-
-<pre><code class="language-sh">DEFAULT_BRANCH=master
-if [ &quot;${CIRCLE_BRANCH:-}&quot; != &quot;$DEFAULT_BRANCH&quot; ]; then
-  git branch -f &quot;$DEFAULT_BRANCH&quot; &quot;origin/$DEFAULT_BRANCH&quot;
-fi
-</code></pre>
-
-<p>こうすれば間違えてローカルのデフォルトブランチを参照してしまっても安心です。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">DEFAULT_BRANCH<span style="color:#f92672">=</span>master
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CIRCLE_BRANCH<span style="color:#66d9ef">:-</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span>$DEFAULT_BRANCH<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  git branch -f <span style="color:#e6db74">&#34;</span>$DEFAULT_BRANCH<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;origin/</span>$DEFAULT_BRANCH<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+</code></pre></div><p>こうすれば間違えてローカルのデフォルトブランチを参照してしまっても安心です。
 とはいえ、コードを部分的に移植したりする際にも危険(間違いに気づきにくい)なので、 origin を参照することを推奨します。</p>
 </div>
 

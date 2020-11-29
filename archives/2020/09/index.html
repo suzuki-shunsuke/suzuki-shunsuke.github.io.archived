@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 <link rel="alternate" type="application/rss+xml" title="RSS" href="https://suzuki-shunsuke.github.io/archives/2020/09/index.xml">
 
@@ -22,8 +22,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -65,6 +63,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-09-12T08:05:59JST">Sep 12, 2020</time></li>
       
       
+      <li>146 Words</li>
+      
+      
     </ul>
     <h2 class="title"><a href="https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/">tfnotify の parse error を通知する</a></h2>
   </header>
@@ -74,8 +75,8 @@
 コメントを投稿できなくてもビルドのログには残るのですが、やはりコメントを投稿できると便利なので、tfnotify がパースエラーでコメントの投稿に失敗したら、 github-comment でコメントを投稿するようにしました。
 なお、この記事を書いている時点のバージョンは tfnotify v0.7.0, github-comment v1.9.0 です。
 例えば tfnotify plan がパースエラーになった場合、 cannot parse plan result というメッセージが標準エラー出力されます。 そこで標準エラー出力に cannot parse plan result が含まれていたら github-comment でコメントするようにします。
-terraform plan | github-comment exec -k plan -- tfnotify plan  .github-comment.yml
-# 細かく template を分けているが、別に分けなくてもよい templates: # header は CodeBuild の場合 header: '{{Env &quot;TARGET&quot;}} [Build link]({{Env &quot;CODEBUILD_BUILD_URL&quot;}})' exit_code: ':{{if eq .ExitCode 0}}white_check_mark{{else}}x{{end}}: Exit Code {{.ExitCode}}' join_command: | ``` $ {{.</div>
+terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.yml
+# 細かく template を分けているが、別に分けなくてもよい templates: # header は CodeBuild の場合 header: &#39;{{Env &#34;TARGET&#34;}} [Build link]({{Env &#34;CODEBUILD_BUILD_URL&#34;}})&#39; exit_code: &#39;:{{if eq .ExitCode 0}}white_check_mark{{else}}x{{end}}: Exit Code {{.ExitCode}}&#39; join_command: |``` $ {{.JoinCommand}} ``` hidden_combined_output: |&lt;details&gt; &lt;pre&gt;&lt;code&gt;{{.</div>
 
   
   <footer>

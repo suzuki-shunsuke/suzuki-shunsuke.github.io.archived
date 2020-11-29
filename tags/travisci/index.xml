@@ -6,11 +6,7 @@
     <description>Recent content in travisci on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Mon, 01 Oct 2018 07:23:15 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/travisci/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Oct 2018 07:23:15 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/travisci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>travis ci から circle ci への移行のすすめ</title>
       <link>https://suzuki-shunsuke.github.io/migrate-from-travis-ci-to-circle-ci/</link>

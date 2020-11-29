@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -77,8 +77,6 @@
 
   <body>
     
-    
-    
 
     <header class="l-header">
       <nav class="navbar navbar-default">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-01T07:23:15JST">Oct 1, 2018</time></li>
       
       
+      <li>60 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">travis ci から circle ci への移行のすすめ</h1>
@@ -140,31 +141,23 @@
 
   
 
-  <div class="article-body">
-
-<p>travis ci と circle ci の無償SaaS 版を比較しています。</p>
-
+  <div class="article-body"><p>travis ci と circle ci の無償SaaS 版を比較しています。</p>
 <p>OSS の CI では travis ci がよく使われる印象がありますが、
 場合によっては circle CI に移行するとCIの時間が大幅に短くなったりして良いと思います。
 ただし、複数バージョンで並列にテストしたい場合、circle ci の無償planだと並列に実行できないため、
 travis でやったほうが速いかもしれません。</p>
-
 <h2 id="circle-ci-の良いところ">Circle CI の良いところ</h2>
-
 <ul>
 <li>好きな Docker Image が使える</li>
 <li>ローカルでテストが出来る</li>
 <li>Pending 時間が travis ci に比べて短い気がする(主観)</li>
 <li>private repository の CI も出来る</li>
 </ul>
-
 <p>好きな Docker Image が使えるのが大きいですね。
 予め CI に必要なツールをインストールした Image を用意しておくことで大幅に高速化出来ますし、
 ツールがインストールできなかったりバージョンが変わってしまったりするトラブルも避けられます。
 同じImageを使ってローカルでテストできるのでローカルでの検証もしやすいです。</p>
-
 <p>自分の場合 Golang のツールの CI用に Docker Image を用意しています。</p>
-
 <p><a href="https://hub.docker.com/r/suzukishunsuke/go-ci/">https://hub.docker.com/r/suzukishunsuke/go-ci/</a></p>
 </div>
 

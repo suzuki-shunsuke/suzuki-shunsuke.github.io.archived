@@ -6,11 +6,7 @@
     <description>Recent content in circleci on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 07 Nov 2020 14:43:10 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 07 Nov 2020 14:43:10 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Splitting .circleci/config.yml</title>
       <link>https://suzuki-shunsuke.github.io/splitting-circleci-config/</link>
@@ -31,9 +27,9 @@ CircleCI doesn&amp;rsquo;t support to split .circleci/config.yml, so we manage a
 dd-time を使って CircleCI の run を使ったコマンドの実行時間をどう計測したらいいのかちょっと考えました。
 以前、コマンドの実行時間を DataDog に送るツール dd-time を作りました。
  https://techblog.szksh.cloud/dd-time/ https://github.com/suzuki-shunsuke/dd-time  これは基本的に以下のように引数として -- 以降に実行するコマンドを指定します。
-$ dd-time -m dd_time.execution_time -t command:docker-build -- docker build .  実行するスクリプトを標準入力で渡したい場合はこうします。
-$ curl https://example.com/install.sh | dd-time -m dd_time.execution_time -- sh  もちろんシェルスクリプトである必要はなくて例えば Python だったらこうなります。
-$ curl https://example.com/setup.py | dd-time -m dd_time.execution_time -- python  CircleCI の run では shell オプションで shell を指定できます。
+$ dd-time -m dd_time.execution_time -t command:docker-build -- docker build . 実行するスクリプトを標準入力で渡したい場合はこうします。
+$ curl https://example.com/install.sh | dd-time -m dd_time.execution_time -- sh もちろんシェルスクリプトである必要はなくて例えば Python だったらこうなります。
+$ curl https://example.com/setup.py | dd-time -m dd_time.execution_time -- python CircleCI の run では shell オプションで shell を指定できます。
 https://circleci.com/docs/2.0/configuration-reference/#run
 なので command 全体の時間を計測したい場合は、 shell を次のようにします。
 - run: name: test dd-time shell: /usr/local/bin/dd-time -m dd_time.</description>
@@ -49,10 +45,10 @@ https://circleci.com/docs/2.0/configuration-reference/#run
 なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。
 また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。
 最初に結論 先に結論を書くと
- CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため  代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
+ CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため   代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &amp;lt;デフォルトブランチ&amp;gt; origin/&amp;lt;デフォルトブランチ&amp;gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
 サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96
 ここでは checkout の全てについては触れません。一部抜粋します。
-elif [ -n &amp;quot;$CIRCLE_BRANCH&amp;quot; ] then git reset --hard &amp;quot;$CIRCLE_SHA1&amp;quot; git checkout -q -B &amp;quot;$CIRCLE_BRANCH&amp;quot; fi  git reset --hard などをしています。</description>
+elif [ -n &amp;#34;$CIRCLE_BRANCH&amp;#34; ] then git reset --hard &amp;#34;$CIRCLE_SHA1&amp;#34; git checkout -q -B &amp;#34;$CIRCLE_BRANCH&amp;#34; fi git reset --hard などをしています。</description>
     </item>
     
     <item>

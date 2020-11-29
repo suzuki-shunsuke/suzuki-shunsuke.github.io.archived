@@ -6,11 +6,7 @@
     <description>Recent content in ansible on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 06 Dec 2018 23:08:04 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 06 Dec 2018 23:08:04 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>molecule でansible の role と playbook をテストする</title>
       <link>https://suzuki-shunsuke.github.io/ansible-molecule/</link>
@@ -26,9 +22,10 @@ molecule は ansible 専用の testing ツールです。 基本的に playbook 
  star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。
 それでは使っていきましょう。
 インストール https://molecule.readthedocs.io/en/latest/installation.html
-$ pip install molecule  Docker を使う場合 docker-py も必要です。
-$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。
-role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</description>
+$ pip install molecule Docker を使う場合 docker-py も必要です。
+$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。
+role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。
+$ molecule init scenario -r &amp;lt;role name&amp;gt; こうすると molecule ディレクトリが生成されます。</description>
     </item>
     
     <item>
@@ -39,7 +36,7 @@ role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移
       <guid>https://suzuki-shunsuke.github.io/akoi/</guid>
       <description>自作のOSS akoi の紹介をします。
  なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
-まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード  ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)   akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
+まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード   ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)    akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
 分散ダウンロードについては
 https://qiita.com/codehex/items/d0a500ac387d39a34401
 が参考になります。
@@ -63,7 +60,7 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
 簡単なサンプルを用意しました。
 ansible playbookに加え、
  docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。
-$ bash test_docker.sh  とすることで動作確認できます。
+$ bash test_docker.sh とすることで動作確認できます。
 説明 スクリプトでやっていることは
  Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。
 Docker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。
@@ -73,7 +70,8 @@ https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
 関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。
 Vagrant Docker Provider https://www.vagrantup.com/docs/docker/
 なんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。
-https://www.vagrantup.com/docs/docker/basics.html#host-vm</description>
+https://www.vagrantup.com/docs/docker/basics.html#host-vm
+ By default, the host VM Vagrant spins up is backed by boot2docker, because it launches quickly and uses little resources.</description>
     </item>
     
   </channel>

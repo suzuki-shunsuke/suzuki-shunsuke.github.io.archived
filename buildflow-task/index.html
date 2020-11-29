@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>buildflow の task の設定項目 - melody</title>
     
-<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
+<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める   dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script   input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める   output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める   meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
 
 <meta property="og:title" content="buildflow の task の設定項目 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-task/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
+<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める   dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script   input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める   output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める   meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-task/">
 <meta name="twitter:title" content="buildflow の task の設定項目 - melody">
-<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
+<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。 name: task 名。 unique である必要はない。 Go の text/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める   dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script   input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める   output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める   meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。\nこの記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。\ntask には幾つか type がありますが、全ての type に共通するパラメータが以下になります。\n name: task 名。 unique である必要はない。 Go の text\/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める  dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script  input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める  output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める  meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。"
+    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。\nこの記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。\ntask には幾つか type がありますが、全ての type に共通するパラメータが以下になります。\n name: task 名。 unique である必要はない。 Go の text\/template が使える when: task を実行するか否か。 真偽値か Tengo script  when_file で外部ファイルを読み込める   dependency: task の依存関係の定義。 task 名のリストか、 Tengo script items: dynamic task の設定。 loop を使って複数の task を動的に生成できる  任意の list か map か、 Tengo script   input: Tengo script で task のコマンドのパラメータを生成できる  input_file で外部ファイルを読み込める   output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる  output_file で外部ファイルを読み込める   meta: ユーザーが自由にパラメータを定義できる map  上記の設定は name 以外はオプションです。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:26:57JST">Oct 17, 2020</time></li>
       
       
+      <li>149 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">buildflow の task の設定項目</h1>
@@ -141,81 +142,69 @@
   
 
   <div class="article-body"><p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうと思います。</p>
-
 <p>この記事では buildflow の task の基本的な設定項目などについて説明します。
 数が多いので、個々の設定の詳細はまた別の記事に書きます。</p>
-
 <p>task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。</p>
-
 <ul>
 <li>name: task 名。 unique である必要はない。 Go の text/template が使える</li>
 <li>when: task を実行するか否か。 真偽値か Tengo script
-
 <ul>
 <li>when_file で外部ファイルを読み込める</li>
-</ul></li>
+</ul>
+</li>
 <li>dependency: task の依存関係の定義。 task 名のリストか、 Tengo script</li>
 <li>items: dynamic task の設定。 loop を使って複数の task を動的に生成できる
-
 <ul>
 <li>任意の list か map か、 Tengo script</li>
-</ul></li>
+</ul>
+</li>
 <li>input: Tengo script で task のコマンドのパラメータを生成できる
-
 <ul>
 <li>input_file で外部ファイルを読み込める</li>
-</ul></li>
+</ul>
+</li>
 <li>output: Tengo script で task の実行結果を整形できる。他の task が参照して挙動を変えたりできる
-
 <ul>
 <li>output_file で外部ファイルを読み込める</li>
-</ul></li>
+</ul>
+</li>
 <li>meta: ユーザーが自由にパラメータを定義できる map</li>
 </ul>
-
 <p>上記の設定は name 以外はオプションです。</p>
-
 <p>task の type としては以下のものがあります。</p>
-
 <ul>
 <li>command: 外部コマンドを実行</li>
 <li>read_file: ファイルを読み込む。ファイルの内容を他の task で参照できる</li>
 <li>write_file: ファイルを書き込む</li>
 </ul>
-
 <p>command の設定</p>
-
 <ul>
 <li>shell, shell_opts: コマンドの実行シェル。デフォルトは <code>/bin/sh -c</code></li>
 <li>command: コマンド。 Go の text/template で処理される
-
 <ul>
 <li>command_file で外部ファイルを読み込める</li>
-</ul></li>
+</ul>
+</li>
 <li>stdin: コマンドの標準入力。 Go の text/template で処理される
-
 <ul>
 <li>stdin_file で外部ファイルを読み込める</li>
-</ul></li>
+</ul>
+</li>
 <li>env: 環境変数。環境変数名と値は Go の text/template で処理される</li>
 </ul>
-
 <p>read_file の設定</p>
-
 <ul>
 <li>path: ファイルのパス。Go の text/template で処理される</li>
 <li>format: ファイルのフォーマット。オプション。 json と yaml をサポート。指定するとパースした結果を他の task が参照できる</li>
 </ul>
-
 <p>write_file の設定</p>
-
 <ul>
 <li>path: ファイルのパス。Go の text/template で処理される</li>
 <li>template: ファイルの内容。Go の text/template で処理される
-
 <ul>
 <li>template_file で外部ファイルを読み込める</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>buildflow での Tengo の使い方 - melody</title>
     
-<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: | result := { foo: &amp;quot;bar&amp;quot; } command: command: &#39;echo &amp;quot;{{.Task.Input.foo}}&amp;quot;&#39; when: &amp;quot;result := true&amp;quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
+<meta name="description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: |result := { foo: &amp;#34;bar&amp;#34; } command: command: &amp;#39;echo &amp;#34;{{.Task.Input.foo}}&amp;#34;&amp;#39; when: &amp;#34;result := true&amp;#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
 
 <meta property="og:title" content="buildflow での Tengo の使い方 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/buildflow-tengo/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: | result := { foo: &amp;quot;bar&amp;quot; } command: command: &#39;echo &amp;quot;{{.Task.Input.foo}}&amp;quot;&#39; when: &amp;quot;result := true&amp;quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
+<meta property="og:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: |result := { foo: &amp;#34;bar&amp;#34; } command: command: &amp;#39;echo &amp;#34;{{.Task.Input.foo}}&amp;#34;&amp;#39; when: &amp;#34;result := true&amp;#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/buildflow-tengo/">
 <meta name="twitter:title" content="buildflow での Tengo の使い方 - melody">
-<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: | result := { foo: &amp;quot;bar&amp;quot; } command: command: &#39;echo &amp;quot;{{.Task.Input.foo}}&amp;quot;&#39; when: &amp;quot;result := true&amp;quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
+<meta name="twitter:description" content="buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。https://github.com/d5/tengobuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。result := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。--- phases: - name: main tasks: - name: hello input: |result := { foo: &amp;#34;bar&amp;#34; } command: command: &amp;#39;echo &amp;#34;{{.Task.Input.foo}}&amp;#34;&amp;#39; when: &amp;#34;result := true&amp;#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。\nこの記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。\nhttps:\/\/github.com\/d5\/tengo\nbuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。\nresult := true  task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。\n--- phases: - name: main tasks: - name: hello input: | result := { foo: \x26quot;bar\x26quot; } command: command: \x27echo \x26quot;{{.Task.Input.foo}}\x26quot;\x27 when: \x26quot;result := true\x26quot;  Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。"
+    "description": "buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。\nこの記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。\nhttps:\/\/github.com\/d5\/tengo\nbuildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。\nresult := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。\n--- phases: - name: main tasks: - name: hello input: |result := { foo: \u0026#34;bar\u0026#34; } command: command: \u0026#39;echo \u0026#34;{{.Task.Input.foo}}\u0026#34;\u0026#39; when: \u0026#34;result := true\u0026#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
       
       
+      <li>73 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">buildflow での Tengo の使い方</h1>
@@ -140,41 +141,29 @@
 
   
 
-  <div class="article-body">
-
-<p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうかなと思います。</p>
-
+  <div class="article-body"><p>buildflow というツールを開発しているので <code>buildflow</code> というタグをつけて何回かに分けてブログを書こうかなと思います。</p>
 <p>この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。</p>
-
 <p><a href="https://github.com/d5/tengo">https://github.com/d5/tengo</a></p>
-
 <p>buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、
 1 つの共通のルールがあります。
 <code>result</code> という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。
 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。
 もっとも単純な例だと次のような感じです。</p>
-
 <pre><code>result := true
-</code></pre>
-
-<p>task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。</p>
-
-<pre><code class="language-yaml">---
-phases:
-- name: main
-  tasks:
-  - name: hello
-    input: |
-      result := {
-        foo: &quot;bar&quot;
-      }
-    command:
-      command: 'echo &quot;{{.Task.Input.foo}}&quot;'
-    when: &quot;result := true&quot;
-</code></pre>
-
-<h2 id="tengo-の標準ライブラリ">Tengo の標準ライブラリ</h2>
-
+</code></pre><p>task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">phases</span>:
+- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">main</span>
+  <span style="color:#f92672">tasks</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+    <span style="color:#f92672">input</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">      result := {
+</span><span style="color:#e6db74">        foo: &#34;bar&#34;
+</span><span style="color:#e6db74">      }</span>      
+    <span style="color:#f92672">command</span>:
+      <span style="color:#f92672">command</span>: <span style="color:#e6db74">&#39;echo &#34;{{.Task.Input.foo}}&#34;&#39;</span>
+    <span style="color:#f92672">when</span>: <span style="color:#e6db74">&#34;result := true&#34;</span>
+</code></pre></div><h2 id="tengo-の標準ライブラリ">Tengo の標準ライブラリ</h2>
 <p>Tengo には<a href="https://github.com/d5/tengo/blob/master/docs/stdlib.md">標準ライブラリ</a>があります。
 buildflow では全ての標準ライブラリが使えます。</p>
 </div>

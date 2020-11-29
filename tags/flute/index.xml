@@ -6,11 +6,7 @@
     <description>Recent content in flute on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 07 Jul 2019 08:20:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://suzuki-shunsuke.github.io/tags/flute/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 07 Jul 2019 08:20:00 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/flute/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flute - Golang HTTP client testing framework</title>
       <link>https://suzuki-shunsuke.github.io/fagott/</link>
@@ -19,7 +15,7 @@
       <guid>https://suzuki-shunsuke.github.io/fagott/</guid>
       <description>2019-07-17 追記 プロジェクト名が変わりました
 https://github.com/suzuki-shunsuke/flute/issues/20
-Go の HTTP client のテストフレームワークを作ったので紹介します。
+ Go の HTTP client のテストフレームワークを作ったので紹介します。
 https://github.com/suzuki-shunsuke/flute
 執筆時点のバージョンは v0.6.0 です。
  リクエストパラメータのテスト HTTP サーバのモッキング  を目的としています。

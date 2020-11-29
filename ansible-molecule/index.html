@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.79.0" />
 
 
 
@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>molecule でansible の role と playbook をテストする - melody</title>
     
-<meta name="description" content="ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。以前 Docker を使って ansible のテストをする方法を紹介しました。https://suzuki-shunsuke.github.io/test-ansible-on-docker/この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。molecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、 star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。それでは使っていきましょう。インストール https://molecule.readthedocs.io/en/latest/installation.html$ pip install molecule  Docker を使う場合 docker-py も必要です。$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。">
+<meta name="description" content="ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。以前 Docker を使って ansible のテストをする方法を紹介しました。https://suzuki-shunsuke.github.io/test-ansible-on-docker/この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。molecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、 star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。それでは使っていきましょう。インストール https://molecule.readthedocs.io/en/latest/installation.html$ pip install molecule Docker を使う場合 docker-py も必要です。$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。$ molecule init scenario -r &amp;lt;role name&amp;gt; こうすると molecule ディレクトリが生成されます。">
 
 <meta property="og:title" content="molecule でansible の role と playbook をテストする - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/ansible-molecule/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。以前 Docker を使って ansible のテストをする方法を紹介しました。https://suzuki-shunsuke.github.io/test-ansible-on-docker/この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。molecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、 star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。それでは使っていきましょう。インストール https://molecule.readthedocs.io/en/latest/installation.html$ pip install molecule  Docker を使う場合 docker-py も必要です。$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。">
+<meta property="og:description" content="ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。以前 Docker を使って ansible のテストをする方法を紹介しました。https://suzuki-shunsuke.github.io/test-ansible-on-docker/この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。molecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、 star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。それでは使っていきましょう。インストール https://molecule.readthedocs.io/en/latest/installation.html$ pip install molecule Docker を使う場合 docker-py も必要です。$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。$ molecule init scenario -r &amp;lt;role name&amp;gt; こうすると molecule ディレクトリが生成されます。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/ansible-molecule/">
 <meta name="twitter:title" content="molecule でansible の role と playbook をテストする - melody">
-<meta name="twitter:description" content="ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。以前 Docker を使って ansible のテストをする方法を紹介しました。https://suzuki-shunsuke.github.io/test-ansible-on-docker/この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。molecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、 star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。それでは使っていきましょう。インストール https://molecule.readthedocs.io/en/latest/installation.html$ pip install molecule  Docker を使う場合 docker-py も必要です。$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。">
+<meta name="twitter:description" content="ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。以前 Docker を使って ansible のテストをする方法を紹介しました。https://suzuki-shunsuke.github.io/test-ansible-on-docker/この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。molecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、 star数はそれなりにある ansible の公式のプロジェクトである https://github.com/ansible/molecule/ geerlingguy さんも使ってる  という風に良い面もあります。それでは使っていきましょう。インストール https://molecule.readthedocs.io/en/latest/installation.html$ pip install molecule Docker を使う場合 docker-py も必要です。$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。$ molecule init scenario -r &amp;lt;role name&amp;gt; こうすると molecule ディレクトリが生成されます。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。\n以前 Docker を使って ansible のテストをする方法を紹介しました。\nhttps:\/\/suzuki-shunsuke.github.io\/test-ansible-on-docker\/\nこの際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。\nmolecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。\n 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、\n star数はそれなりにある ansible の公式のプロジェクトである https:\/\/github.com\/ansible\/molecule\/ geerlingguy さんも使ってる  という風に良い面もあります。\nそれでは使っていきましょう。\nインストール https:\/\/molecule.readthedocs.io\/en\/latest\/installation.html\n$ pip install molecule  Docker を使う場合 docker-py も必要です。\n$ pip install docker-py  role のテスト playbookに比べて role のテストは簡単です。\nrole のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。"
+    "description": "ansible 専用の testing ツール molecule を紹介します。 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。\n以前 Docker を使って ansible のテストをする方法を紹介しました。\nhttps:\/\/suzuki-shunsuke.github.io\/test-ansible-on-docker\/\nこの際は Docker Compose と簡単なシェルスクリプトを使って実現しました。 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。\nmolecule は ansible 専用の testing ツールです。 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。\n 情報が少ない 公式ドキュメントも分かりづらい部分がある コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い  という風に辛い部分もありますが、\n star数はそれなりにある ansible の公式のプロジェクトである https:\/\/github.com\/ansible\/molecule\/ geerlingguy さんも使ってる  という風に良い面もあります。\nそれでは使っていきましょう。\nインストール https:\/\/molecule.readthedocs.io\/en\/latest\/installation.html\n$ pip install molecule Docker を使う場合 docker-py も必要です。\n$ pip install docker-py role のテスト playbookに比べて role のテストは簡単です。\nrole のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。\n$ molecule init scenario -r \u0026lt;role name\u0026gt; こうすると molecule ディレクトリが生成されます。"
   }
 </script>
 
@@ -76,8 +76,6 @@
   </head>
 
   <body>
-    
-    
     
 
     <header class="l-header">
@@ -119,6 +117,9 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-06T23:08:04JST">Dec 6, 2018</time></li>
       
       
+      <li>359 Words</li>
+      
+      
     </ul>
 
     <h1 class="title">molecule でansible の role と playbook をテストする</h1>
@@ -140,151 +141,102 @@
 
   
 
-  <div class="article-body">
-
-<p>ansible 専用の testing ツール <a href="https://molecule.readthedocs.io/en/latest/index.html">molecule</a> を紹介します。
+  <div class="article-body"><p>ansible 専用の testing ツール <a href="https://molecule.readthedocs.io/en/latest/index.html">molecule</a> を紹介します。
 molecule の公式ドキュメント以外の情報は少ないので、参考になれば幸いです。</p>
-
 <p>以前 Docker を使って ansible のテストをする方法を紹介しました。</p>
-
 <p><a href="https://suzuki-shunsuke.github.io/test-ansible-on-docker/">https://suzuki-shunsuke.github.io/test-ansible-on-docker/</a></p>
-
 <p>この際は Docker Compose と簡単なシェルスクリプトを使って実現しました。
 これはこれでブラックボックスな部分がなく、学習コストも低くて悪くないので興味のある方はそちらもご参照ください。</p>
-
 <p>molecule は ansible 専用の testing ツールです。
 基本的に playbook というより role 用のツールですが、playbookのテストも工夫すれば出来ます。</p>
-
 <ul>
 <li>情報が少ない</li>
 <li>公式ドキュメントも分かりづらい部分がある</li>
 <li>コマンドがエラー吐いて失敗した際に、ググっても情報が出てこないので辛い</li>
 </ul>
-
 <p>という風に辛い部分もありますが、</p>
-
 <ul>
 <li>star数はそれなりにある</li>
 <li>ansible の公式のプロジェクトである <a href="https://github.com/ansible/molecule/">https://github.com/ansible/molecule/</a></li>
 <li><a href="https://github.com/geerlingguy">geerlingguy</a> さんも使ってる</li>
 </ul>
-
 <p>という風に良い面もあります。</p>
-
 <p>それでは使っていきましょう。</p>
-
 <h2 id="インストール">インストール</h2>
-
 <p><a href="https://molecule.readthedocs.io/en/latest/installation.html">https://molecule.readthedocs.io/en/latest/installation.html</a></p>
-
 <pre><code>$ pip install molecule
-</code></pre>
-
-<p>Docker を使う場合 <code>docker-py</code> も必要です。</p>
-
+</code></pre><p>Docker を使う場合 <code>docker-py</code> も必要です。</p>
 <pre><code>$ pip install docker-py
-</code></pre>
-
-<h2 id="role-のテスト">role のテスト</h2>
-
+</code></pre><h2 id="role-のテスト">role のテスト</h2>
 <p>playbookに比べて role のテストは簡単です。</p>
-
 <p>role のディレクトリ(tasksやfilesなどがあるディレクトリ)に移動してコマンドを実行します。</p>
-
 <pre><code>$ molecule init scenario -r &lt;role name&gt;
-</code></pre>
-
-<p>こうすると <code>molecule</code> ディレクトリが生成されます。</p>
-
+</code></pre><p>こうすると <code>molecule</code> ディレクトリが生成されます。</p>
 <p><code>molecule/default/molecule.yml</code> を修正します。</p>
-
 <p><a href="https://molecule.readthedocs.io/en/latest/configuration.html">https://molecule.readthedocs.io/en/latest/configuration.html</a></p>
-
-<pre><code class="language-yaml">---
-dependency:
-  name: galaxy
-  # 依存する role がある場合
-  options:
-    role-file: roles.yml
-driver:
-  name: docker
-lint:
-  name: yamllint
-# https://molecule.readthedocs.io/en/latest/configuration.html#platforms
-platforms:
-  - name: server  # コンテナの名前になる
-    # 必要に応じて image を変更
-    # 今回は ansibleのremote user を非rootにするために自作の Docker Image を指定
-    # https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
-    image: suzukishunsuke/ansible-test-centos:0.1.0
-    # systemd を使ったりする場合
-    # https://molecule.readthedocs.io/en/latest/examples.html#systemd-container
-    privileged: true
-    command: /sbin/init  # systemd を使う場合必要
-    env:
-      USER: foo # DockerだとUSER環境変数が空になってしまうようなので明示的に設定
-provisioner:
-  # https://molecule.readthedocs.io/en/latest/configuration.html#id12
-  name: ansible
-  lint:
-    name: ansible-lint
-  options:
-    user: foo # 非rootユーザーで実行
-  inventory:
-    group_vars:
-      # variables を指定
-      all:
-        nginx_server_name: localhost
-        mysql_host: localhost
-        mysql_port: 3306
-        mysql_database: grafana
-        mysql_user: root
-        mysql_password: password
-scenario:
-  name: default
-verifier:
-  name: testinfra
-  lint:
-    name: flake8
-</code></pre>
-
-<p>test の前にまずは lint します。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">dependency</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">galaxy</span>
+  <span style="color:#75715e"># 依存する role がある場合</span>
+  <span style="color:#f92672">options</span>:
+    <span style="color:#f92672">role-file</span>: <span style="color:#ae81ff">roles.yml</span>
+<span style="color:#f92672">driver</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">docker</span>
+<span style="color:#f92672">lint</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">yamllint</span>
+<span style="color:#75715e"># https://molecule.readthedocs.io/en/latest/configuration.html#platforms</span>
+<span style="color:#f92672">platforms</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">server </span> <span style="color:#75715e"># コンテナの名前になる</span>
+    <span style="color:#75715e"># 必要に応じて image を変更</span>
+    <span style="color:#75715e"># 今回は ansibleのremote user を非rootにするために自作の Docker Image を指定</span>
+    <span style="color:#75715e"># https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/</span>
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">suzukishunsuke/ansible-test-centos:0.1.0</span>
+    <span style="color:#75715e"># systemd を使ったりする場合</span>
+    <span style="color:#75715e"># https://molecule.readthedocs.io/en/latest/examples.html#systemd-container</span>
+    <span style="color:#f92672">privileged</span>: <span style="color:#66d9ef">true</span>
+    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">/sbin/init </span> <span style="color:#75715e"># systemd を使う場合必要</span>
+    <span style="color:#f92672">env</span>:
+      <span style="color:#f92672">USER</span>: <span style="color:#ae81ff">foo</span> <span style="color:#75715e"># DockerだとUSER環境変数が空になってしまうようなので明示的に設定</span>
+<span style="color:#f92672">provisioner</span>:
+  <span style="color:#75715e"># https://molecule.readthedocs.io/en/latest/configuration.html#id12</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ansible</span>
+  <span style="color:#f92672">lint</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ansible-lint</span>
+  <span style="color:#f92672">options</span>:
+    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">foo</span> <span style="color:#75715e"># 非rootユーザーで実行</span>
+  <span style="color:#f92672">inventory</span>:
+    <span style="color:#f92672">group_vars</span>:
+      <span style="color:#75715e"># variables を指定</span>
+      <span style="color:#f92672">all</span>:
+        <span style="color:#f92672">nginx_server_name</span>: <span style="color:#ae81ff">localhost</span>
+        <span style="color:#f92672">mysql_host</span>: <span style="color:#ae81ff">localhost</span>
+        <span style="color:#f92672">mysql_port</span>: <span style="color:#ae81ff">3306</span>
+        <span style="color:#f92672">mysql_database</span>: <span style="color:#ae81ff">grafana</span>
+        <span style="color:#f92672">mysql_user</span>: <span style="color:#ae81ff">root</span>
+        <span style="color:#f92672">mysql_password</span>: <span style="color:#ae81ff">password</span>
+<span style="color:#f92672">scenario</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">default</span>
+<span style="color:#f92672">verifier</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">testinfra</span>
+  <span style="color:#f92672">lint</span>:
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">flake8</span>
+</code></pre></div><p>test の前にまずは lint します。</p>
 <pre><code>$ molecule lint [-s &lt;senario name&gt;]
-</code></pre>
-
-<p>すると yamllint の設定ファイル <code>.yamllint</code> が作られていると思うので、必要に応じて修正します。</p>
-
+</code></pre><p>すると yamllint の設定ファイル <code>.yamllint</code> が作られていると思うので、必要に応じて修正します。</p>
 <p><a href="https://yamllint.readthedocs.io/en/stable/configuration.html">https://yamllint.readthedocs.io/en/stable/configuration.html</a></p>
-
 <p>ansible-lint で引っかかった人はこちらを参照してください。</p>
-
 <p><a href="https://github.com/ansible/ansible-lint">https://github.com/ansible/ansible-lint</a></p>
-
 <p>そして test コマンドを実行します。</p>
-
 <pre><code>$ molecule test [-s &lt;senario name&gt;]
-</code></pre>
-
-<p><code>test</code> コマンドではコンテナが削除されるため、デバッグが難しかったりします。</p>
-
+</code></pre><p><code>test</code> コマンドではコンテナが削除されるため、デバッグが難しかったりします。</p>
 <p>その場合、 <code>converge</code> コマンドを実行すればコンテナは消えません。</p>
-
 <pre><code>$ molecule converge [-s &lt;senario name&gt;]
-</code></pre>
-
-<p>消したくなったら destroy コマンドで消しましょう。</p>
-
+</code></pre><p>消したくなったら destroy コマンドで消しましょう。</p>
 <pre><code>$ molecule destroy [-s &lt;senario name&gt;]
-</code></pre>
-
-<h2 id="playbook-のテスト">playbook のテスト</h2>
-
+</code></pre><h2 id="playbook-のテスト">playbook のテスト</h2>
 <p>次に playbook のテストです。割とこれが本題だったりします。
 molecule は基本的に playbook というより role 用のツールなので若干工夫が必要です。</p>
-
 <p>自分はよく ansible playbook のディレクトリ構成を以下のようにします。</p>
-
 <pre><code>hello-molecule/  # ルートディレクトリ
   agent.yml # agent グループ用の playbook
   group_vars/
@@ -295,20 +247,13 @@ molecule は基本的に playbook というより role 用のツールなので�
     prod.yml # production用のinventory
   roles.yml  # 依存する role のリスト
   ansible.cfg
-</code></pre>
-
-<p>このときに playbook <code>agent.yml</code> のテストがしたいとします。
+</code></pre><p>このときに playbook <code>agent.yml</code> のテストがしたいとします。
 molecule のためにこの構成を弄ったりは極力したくありません。</p>
-
 <p>playbook のディレクトリで <code>molecule init</code> を実行します。
 default シナリオは必須のようです。</p>
-
 <pre><code>$ molecule init scenario -r hello-molecule
 $ molecule init scenario -s agent -r hello-molecule
-</code></pre>
-
-<p>するとこうなります。</p>
-
+</code></pre><p>するとこうなります。</p>
 <pre><code>hello-molecule/
   agent.yml
   group_vars/
@@ -324,31 +269,25 @@ $ molecule init scenario -s agent -r hello-molecule
     agent/
       molecule.yml
       playbook.yml # これは使わない。消す
-</code></pre>
-
-<p>ここから molecule.yml を修正していきます。
+</code></pre><p>ここから molecule.yml を修正していきます。
 一部抜粋します。</p>
-
-<pre><code class="language-yaml">---
-dependency:
-  name: galaxy
-  options:
-    role-file: roles.yml # ルートディレクトリからの相対パス
-platforms:
-  - name: server  # group名
-    image: centos:7
-provisioner:
-  name: ansible
-  playbooks:
-    converge: ../../server.yml # ルートディレクトリにある playbookを指定
-  env:
-    ANSIBLE_ROLES_PATH: ../../roles:../../_roles  # roleのパスを修正
-scenario:
-  name: server
-</code></pre>
-
-<p>このように playbookや role のパスを修正すればあとは role のテストと同じ要領でいけると思います。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#f92672">dependency</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">galaxy</span>
+  <span style="color:#f92672">options</span>:
+    <span style="color:#f92672">role-file</span>: <span style="color:#ae81ff">roles.yml</span> <span style="color:#75715e"># ルートディレクトリからの相対パス</span>
+<span style="color:#f92672">platforms</span>:
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">server </span> <span style="color:#75715e"># group名</span>
+    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">centos:7</span>
+<span style="color:#f92672">provisioner</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ansible</span>
+  <span style="color:#f92672">playbooks</span>:
+    <span style="color:#f92672">converge</span>: <span style="color:#ae81ff">../../server.yml</span> <span style="color:#75715e"># ルートディレクトリにある playbookを指定</span>
+  <span style="color:#f92672">env</span>:
+    <span style="color:#f92672">ANSIBLE_ROLES_PATH</span>: <span style="color:#ae81ff">../../roles:../../_roles </span> <span style="color:#75715e"># roleのパスを修正</span>
+<span style="color:#f92672">scenario</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">server</span>
+</code></pre></div><p>このように playbookや role のパスを修正すればあとは role のテストと同じ要領でいけると思います。</p>
 <p>以上、簡単ですが molecule の使い方を紹介しました。</p>
 </div>
 
