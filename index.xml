@@ -6,10 +6,20 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 29 Nov 2020 11:20:07 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 29 Nov 2020 11:36:44 +0900</lastBuildDate>
     
 	<atom:link href="https://suzuki-shunsuke.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>仕事でやったこと 2020-07-01 ~ 2020-09-30</title>
+      <link>https://suzuki-shunsuke.github.io/job-2020-07-01-09-30/</link>
+      <pubDate>Sun, 29 Nov 2020 11:36:44 +0900</pubDate>
+      
+      <guid>https://suzuki-shunsuke.github.io/job-2020-07-01-09-30/</guid>
+      <description>2020-07-01 から 2020-09-30 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。
+ Terraform  CircleCI から CodeBuild への移行 Security + DX 10月以降も継続 tfnotify の導入 Monorepo で導入するには一工夫が必要 コメントが消える挙動がドキュメント化されてなくて軽くハマった  Renovate の導入  Regex Manager 便利  Monorepo  差分検知・デプロイパイプラインの改善  DataDog からのアラートのハンドリング業務の改善  どんなアラートがあって、どう対応したかなどのナレッジの共有の改善 割とアナログな手法だが、ちゃんと work している   </description>
+    </item>
     
     <item>
       <title>仕事でやったこと 2020-04-01 ~ 2020-06-30</title>

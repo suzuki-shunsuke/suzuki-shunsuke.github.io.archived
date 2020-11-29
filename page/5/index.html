@@ -58,6 +58,35 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-12T07:40:45JST">Jun 12, 2019</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a></h2>
+  </header>
+
+  
+  <div class="summary">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作ったので紹介します。
+https://github.com/suzuki-shunsuke/drone-jsonnet-generator
+背景 https://docs.drone.io/user-guide/pipeline/migrating/
+Drone は v0.8 から v1 で .drone.yml のフォーマットが大きく変わっています。 Drone v1 ではビルド実行時に自動で変換しているため、v0.8 の .drone.yml でもそのまま動きます(matrix builds も動きます)。
+そのため、Drone v0.8 から v1 に移行する際、すぐに .drone.yml を修正しなくても問題ないのですが、 v1 独自の機能が出てきた場合 v0.8 のフォーマットの場合利用できないかもしれませんし、 いつまでも古いままだと気持ち悪いので出来るならフォーマットを変換したいです。
+drone-cli ではフォーマットを変換する drone convert というコマンドが提供されています。
+ただし、 drone convert は matrix build を multiple pipeline に変換するのですが、 非常に冗長になります。 そのため、jsonnet を利用することが推奨されています。
+https://docs.drone.io/user-guide/pipeline/migrating/
+ The above syntax can be quite verbose if you are testing a large number of variations.</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-jsonnet-generator/" title="Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-01T08:34:10JST">Jun 1, 2019</time></li>
       
       
@@ -302,33 +331,6 @@ func createUser(name string, age int) error { return errlog.Wrap(checkName(name)
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-25T22:38:28JST">Jan 25, 2019</time></li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/">Terraform Providerで import を実装する方法</a></h2>
-  </header>
-
-  
-  <div class="summary">terraform provider graylog で alert condition と stream rule の import を実装しました。
- https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
-terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
-https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5
-# &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb  区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
-https://www.terraform.io/docs/providers/google/r/spanner_database.html#import
-https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/" title="Terraform Providerで import を実装する方法">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -359,6 +361,8 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
+      
       <a href="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
       
       <a href="https://suzuki-shunsuke.github.io/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
@@ -376,8 +380,6 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
       <a href="https://suzuki-shunsuke.github.io/buildflow-result-output/" class="list-group-item">buildflow の実行結果の出力形式</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-pr-info/" class="list-group-item">buildflow が自動で取得する Pull Request の情報</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/buildflow-why-tengo/" class="list-group-item">buildflow ではなぜ Tengo を採用しているのか</a>
       
     </div>
   </section>
