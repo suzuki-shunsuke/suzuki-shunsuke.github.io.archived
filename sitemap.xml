@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/</loc>
+    <lastmod>2020-11-29T10:38:57+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/</loc>
+    <lastmod>2020-11-29T10:38:57+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/archives/2020/11/</loc>
     <lastmod>2020-11-07T14:43:10+09:00</lastmod>
   </url>
@@ -14,11 +24,6 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/circleci/</loc>
-    <lastmod>2020-11-07T14:43:10+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/</loc>
     <lastmod>2020-11-07T14:43:10+09:00</lastmod>
   </url>
   

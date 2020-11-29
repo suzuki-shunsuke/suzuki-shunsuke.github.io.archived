@@ -58,6 +58,28 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T18:52:34JST">Sep 30, 2018</time></li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/">drone exec を並列実行した際のdocker network name の衝突について</a></h2>
+  </header>
+
+  
+  <div class="summary">drone exec を並列実行すると docker network name が衝突することがあります。
+$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local  drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/drone-exec-network-name-collision/" title="drone exec を並列実行した際のdocker network name の衝突について">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-06T23:59:35JST">Sep 6, 2018</time></li>
       
       
@@ -121,6 +143,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
+      
       <a href="https://suzuki-shunsuke.github.io/splitting-circleci-config/" class="list-group-item">Splitting .circleci/config.yml</a>
       
       <a href="https://suzuki-shunsuke.github.io/github-ci-monitor/" class="list-group-item">github-ci-monitor: CI のステータスを DataDog で監視</a>
@@ -138,8 +162,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <a href="https://suzuki-shunsuke.github.io/buildflow-dynamic-task/" class="list-group-item">buildflow の dynamic task</a>
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-input-output/" class="list-group-item">buildflow の task の input, output という機能</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/buildflow-split-files/" class="list-group-item">buildflow で設定ファイルを分割する</a>
       
     </div>
   </section>

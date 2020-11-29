@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/drone-build-timeout/">
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>drone の build の timeout が変更できない - melody</title>
+    <title>仕事でやったこと 2019-10-01 ~ 2019-12-31 - melody</title>
     
-<meta name="description" content="drone 0.8.5 で検証しています。drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際にPATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  ">
+<meta name="description" content=" 2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。2019-10-01 / 12-31  Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
 
-<meta property="og:title" content="drone の build の timeout が変更できない - melody">
+<meta property="og:title" content="仕事でやったこと 2019-10-01 ~ 2019-12-31 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/drone-build-timeout/">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="drone 0.8.5 で検証しています。drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際にPATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  ">
+<meta property="og:description" content=" 2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。2019-10-01 / 12-31  Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/drone-build-timeout/">
-<meta name="twitter:title" content="drone の build の timeout が変更できない - melody">
-<meta name="twitter:description" content="drone 0.8.5 で検証しています。drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際にPATCH /api/repos/:owner/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  ">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/">
+<meta name="twitter:title" content="仕事でやったこと 2019-10-01 ~ 2019-12-31 - melody">
+<meta name="twitter:description" content=" 2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。2019-10-01 / 12-31  Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
-    "headline": "drone の build の timeout が変更できない - melody",
+    "headline": "仕事でやったこと 2019-10-01 ~ 2019-12-31 - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2018-09-30T20:16:28JST",
-    "dateModified": "2018-09-30T20:16:28JST",
+    "datePublished": "2020-11-29T10:38:57JST",
+    "dateModified": "2020-11-29T10:38:57JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "drone 0.8.5 で検証しています。\ndrone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。\nブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に\nPATCH \/api\/repos\/:owner\/:name  にリクエストが飛んでいるので、そこからコードを追いかけると分かります。\n https:\/\/github.com\/drone\/drone\/blob\/29785b86f6534ded974120de0fcf7c21397a9d0d\/router\/router.go#L109 https:\/\/github.com\/drone\/drone\/blob\/29785b86f6534ded974120de0fcf7c21397a9d0d\/server\/repo.go#L117  "
+    "description": " 2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。\n2019-10-01 \/ 12-31  Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =\x26gt; v0.12 State の分割 3 =\x26gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   "
   }
 </script>
 
@@ -109,68 +109,65 @@
       <ol class="breadcrumb">
         <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">drone の build の timeout が変更できない</li>
+        <li class="active">仕事でやったこと 2019-10-01 ~ 2019-12-31</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:16:28JST">Sep 30, 2018</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-29T10:38:57JST">Nov 29, 2020</time></li>
       
       
     </ul>
 
-    <h1 class="title">drone の build の timeout が変更できない</h1>
+    <h1 class="title">仕事でやったこと 2019-10-01 ~ 2019-12-31</h1>
     
-    
-    <section>
-      <div>
-        <ul class="p-terms">
-          
-          <li><a href="https://suzuki-shunsuke.github.io/tags/drone/">drone</a></li>
-          
-        </ul>
-      </div>
-    </section>
     
   </header>
 
   
 
-  <div class="article-body"><p>drone 0.8.5 で検証しています。</p>
+  <div class="article-body">
 
-<p>drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、
-実は drone の admin しか変更できません。</p>
+<p>2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。
+勿論全部は書けないのでいくつかピックアップして書きます。</p>
 
-<p>ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に</p>
-
-<pre><code>PATCH /api/repos/:owner/:name
-</code></pre>
-
-<p>にリクエストが飛んでいるので、そこからコードを追いかけると分かります。</p>
+<h2 id="2019-10-01-12-31">2019-10-01 / 12-31</h2>
 
 <ul>
-<li><a href="https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109">https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109</a></li>
-<li><a href="https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117">https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117</a></li>
+<li>Terraform
+
+<ul>
+<li><strong>terraform fmt の導入</strong></li>
+<li><strong>Terraform の upgrade v0.11 =&gt; v0.12</strong></li>
+<li><strong>State の分割 3 =&gt; 40 弱(正確な数は忘れた)</strong></li>
+<li>Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入</li>
+<li>新しいサービスを追加するときのための generator (シェルスクリプト)を開発</li>
+<li>CODEOWNERS の設定</li>
+<li>突撃隣の Terraform</li>
+<li><strong>GitHub flow の導入</strong></li>
+<li>古いリビジョンで apply の実行の禁止(CI がこけるようにした)</li>
+</ul></li>
+<li>Ansible
+
+<ul>
+<li>CI の高速化</li>
+<li>Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins)</li>
+<li>ローカルでの開発環境の改善</li>
+<li>コンテナを使い回せるようにする</li>
+<li><a href="https://github.com/aelsabbahy/goss">goss</a> に置き換えて高速化</li>
+</ul></li>
+<li>CI の改善
+
+<ul>
+<li>高速化(無駄な処理の削減)</li>
+</ul></li>
 </ul>
 </div>
 
   <footer class="article-footer">
     
-    
-    <section class="bordered">
-      <header>
-        <div class="panel-title">TAGS</div>
-      </header>
-      <div>
-        <ul class="p-terms">
-          
-          <li><a href="https://suzuki-shunsuke.github.io/tags/drone/">drone</a></li>
-          
-        </ul>
-      </div>
-    </section>
     
   </footer>
 
