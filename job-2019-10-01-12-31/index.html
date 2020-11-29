@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>仕事でやったこと 2019-10-01 ~ 2019-12-31 - melody</title>
     
-<meta name="description" content="2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
+<meta name="description" content="2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform リリースブランチをやめて GitHub Flow に移行 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
 
 <meta property="og:title" content="仕事でやったこと 2019-10-01 ~ 2019-12-31 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
+<meta property="og:description" content="2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform リリースブランチをやめて GitHub Flow に移行 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/">
 <meta name="twitter:title" content="仕事でやったこと 2019-10-01 ~ 2019-12-31 - melody">
-<meta name="twitter:description" content="2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
+<meta name="twitter:description" content="2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。 Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&amp;gt; v0.12 State の分割 3 =&amp;gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform リリースブランチをやめて GitHub Flow に移行 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   ">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。\n Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =\x26gt; v0.12 State の分割 3 =\x26gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform GitHub flow の導入 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   "
+    "description": "2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。\n Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =\x26gt; v0.12 State の分割 3 =\x26gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform リリースブランチをやめて GitHub Flow に移行 古いリビジョンで apply の実行の禁止(CI がこけるようにした)  Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善 コンテナを使い回せるようにする goss に置き換えて高速化  CI の改善  高速化(無駄な処理の削減)   "
   }
 </script>
 
@@ -142,7 +142,7 @@
 <li>新しいサービスを追加するときのための generator (シェルスクリプト)を開発</li>
 <li>CODEOWNERS の設定</li>
 <li>突撃隣の Terraform</li>
-<li><strong>GitHub flow の導入</strong></li>
+<li><strong>リリースブランチをやめて GitHub Flow に移行</strong></li>
 <li>古いリビジョンで apply の実行の禁止(CI がこけるようにした)</li>
 </ul></li>
 <li>Ansible
