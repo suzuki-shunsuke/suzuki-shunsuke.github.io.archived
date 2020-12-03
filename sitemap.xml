@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/</loc>
+    <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
+    <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
+    <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/terraform/</loc>
+    <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/</loc>
+    <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/job-2020-10-01-10-31/</loc>
     <lastmod>2020-11-29T11:48:17+09:00</lastmod>
   </url>
@@ -33,22 +58,7 @@
   </url>
   
   <url>
-    <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2020-11-07T14:43:10+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
-    <lastmod>2020-11-07T14:43:10+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suzuki-shunsuke.github.io/splitting-circleci-config/</loc>
-    <lastmod>2020-11-07T14:43:10+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
     <lastmod>2020-11-07T14:43:10+09:00</lastmod>
   </url>
   
@@ -129,11 +139,6 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/github-comment/</loc>
-    <lastmod>2020-09-12T08:05:59+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/terraform/</loc>
     <lastmod>2020-09-12T08:05:59+09:00</lastmod>
   </url>
   
@@ -634,6 +639,10 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/archives/2020/11/</loc>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/archives/2020/12/</loc>
   </url>
   
   <url>

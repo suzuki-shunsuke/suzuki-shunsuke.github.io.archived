@@ -60,6 +60,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T20:49:28JST">Oct 17, 2020</time></li>
+      
+      
+      <li>41 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-split-files/">buildflow で設定ファイルを分割する</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
+この記事では buildflow の設定ファイルを分割する方法について説明します。
+buildflow では一部の設定項目について他のファイルのパスを指定して読み込むということが出来ます。 1 つのファイルに全部の設定を書いていると、ファイルが大きくなってメンテナンス性が悪くなったり、 コードオーナーが曖昧になったりするので、そういう場合は分割すると良いでしょう。 コードオーナーが異なる複数のサービスで共通の設定ファイルを用いる場合、ファイルを分割して GitHub の CODEOWNERS を設定するのもよいでしょう。 あまりないかもしれませんが、ファイルを分割すると同じファイルを読み込んで再利用も出来ます。
+また、 Tengo script を独立したファイルに分割すると、 test が可能になります。 Tengo script をテストするためのツールとして tengo-tester というツールも開発しているので、そちらをお使いください。
+以下のようなファイル読み込みの設定があります。
+ phase.import task.import: task.input_file task.output_file task.when_file command.command_file command.env[].value_file write_file.template_file  ファイルのパスは、絶対パスか、実行中の build の設定ファイルが存在するディレクトリからの相対パスになります。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
       
       
@@ -325,37 +350,6 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-04T10:00:21JST">Nov 4, 2019</time></li>
-      
-      
-      <li>90 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/go-timeout/">go-timeout - command の timeout</a></h2>
-  </header>
-
-  
-  <div class="summary">作ったのは 2ヶ月くらい前の話ですが、 Go の command の timeout を実装するためのライブラリを作ったので紹介します。
-https://github.com/suzuki-shunsuke/go-timeout
-基本的には https://github.com/Songmu/timeout をオススメしますが、これだと上手くいかないパターンがあったので自作しました。
-Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon2019-spring/#24 がとても参考になります。
-上記のスライドでは
- 標準ライブラリの exec.CommandContext でも停止できるが、 SIGKILL で強制的に停止することになる  子プロセスが停止しない   公式見解 では、SIGKILL 以外は標準ライブラリではサポートしない。サードパーティでやればよい Songmu/timeout 使えば SIGKILL 以外でより安全に停止できる  ということが丁寧に説明されています。
-自分は cmdx という task runner を開発していてその中で task の実行時に timeout を設定出来るようにしました。 当初 Songmu/timeout を使って実装したのですが、問題があることに気づきました。 それは、 command の中で fzf を使うと、上手く動かないというものでした。
- https://github.com/suzuki-shunsuke/cmdx/issues/52 https://twitter.com/szkdash/status/1165529415238815745  正直この辺の挙動はちゃんと理解できていないのですが、 調べてみると Songmu/timeout だと syscall.SysProcAttr の Setpgid を true に設定していて、そうすると fzf が上手く動かないようでした。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/go-timeout/" title="go-timeout - command の timeout">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -386,6 +380,8 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
+      
       <a href="https://suzuki-shunsuke.github.io/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
       
       <a href="https://suzuki-shunsuke.github.io/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
@@ -404,8 +400,6 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
       
       <a href="https://suzuki-shunsuke.github.io/buildflow-goal/" class="list-group-item">なぜ buildflow を作ったのか</a>
       
-      <a href="https://suzuki-shunsuke.github.io/buildflow-result-output/" class="list-group-item">buildflow の実行結果の出力形式</a>
-      
     </div>
   </section>
 
@@ -415,13 +409,13 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (30)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (31)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (7)</a>
+      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (8)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
       
@@ -444,6 +438,8 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (1)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (13)</a>
@@ -461,8 +457,6 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
       <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/08" class="list-group-item">2019/08 (5)</a>
       
     </div>
   </section>
