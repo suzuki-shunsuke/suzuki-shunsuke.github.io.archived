@@ -56,6 +56,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
+      
+      
+      <li>73 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/buildflow-tengo/">buildflow での Tengo の使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
+この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。
+https://github.com/d5/tengo
+buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。
+result := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
+--- phases: - name: main tasks: - name: hello input: |result := { foo: &#34;bar&#34; } command: command: &#39;echo &#34;{{.Task.Input.foo}}&#34;&#39; when: &#34;result := true&#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T16:06:31JST">Oct 17, 2020</time></li>
       
       
@@ -333,37 +358,6 @@ $ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-16T09:25:05JST">Jan 16, 2020</time></li>
-      
-      
-      <li>945 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/terraform-getting-started/">Terraform 入門</a></h2>
-  </header>
-
-  
-  <div class="summary">参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。
-前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。
-Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraform
-Terraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。
-https://www.terraform.io/downloads.html
-tfenv を使うと管理が楽です。
-https://github.com/tfutils/tfenv
-tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/terraform-getting-started/" title="Terraform 入門">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -394,6 +388,8 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
+      
       <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
       
       <a href="https://suzuki-shunsuke.github.io/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
@@ -411,8 +407,6 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
       <a href="https://suzuki-shunsuke.github.io/github-ci-monitor/" class="list-group-item">github-ci-monitor: CI のステータスを DataDog で監視</a>
       
       <a href="https://suzuki-shunsuke.github.io/matchfile/" class="list-group-item">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/buildflow-goal/" class="list-group-item">なぜ buildflow を作ったのか</a>
       
     </div>
   </section>
@@ -437,11 +431,11 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
       
       <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
       
+      <a href="https://suzuki-shunsuke.github.io/tags/job" class="list-group-item">job (5)</a>
+      
       <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/tags/datadog" class="list-group-item">datadog (2)</a>
       
     </div>
   </section>
@@ -452,7 +446,7 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (1)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (2)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       

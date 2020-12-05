@@ -3,17 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+    <loc>https://suzuki-shunsuke.github.io/tags/dependabot/</loc>
+    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
-    <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+    <loc>https://suzuki-shunsuke.github.io/</loc>
+    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/renovate/</loc>
+    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/compare-renovate-dependabot/</loc>
+    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/</loc>
+    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/oss/</loc>
     <lastmod>2020-12-03T09:07:32+09:00</lastmod>
   </url>
   
@@ -25,6 +40,11 @@
   <url>
     <loc>https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/</loc>
     <lastmod>2020-12-03T09:07:32+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/job/</loc>
+    <lastmod>2020-11-29T11:48:17+09:00</lastmod>
   </url>
   
   <url>
@@ -169,11 +189,6 @@
   
   <url>
     <loc>https://suzuki-shunsuke.github.io/tags/codebuild/</loc>
-    <lastmod>2020-08-02T13:21:37+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/job/</loc>
     <lastmod>2020-08-02T13:21:37+09:00</lastmod>
   </url>
   
