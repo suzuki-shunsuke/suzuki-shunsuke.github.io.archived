@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/go-gencfg/">
+<link rel="canonical" href="https://suzuki-shunsuke.github.io/renovate-add-compare/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ - melody</title>
+    <title>Renovate の PR に便利なリンクを追加 - melody</title>
     
-<meta name="description" content="自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md">
+<meta name="description" content="Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。例えば、 datadog helm chart の場合{ &amp;#34;datasources&amp;#34;: [&amp;#34;helm&amp;#34;], &amp;#34;packageNames&amp;#34;: [&amp;#34;datadog&amp;#34;], &amp;#34;prBodyNotes&amp;#34;: [ &amp;#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&amp;#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。ex. https://github.com/suzuki-shunsuke/test-renovate-2/pull/28template で使える変数は https://docs.renovatebot.com/templates/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。">
 
-<meta property="og:title" content="go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ - melody">
+<meta property="og:title" content="Renovate の PR に便利なリンクを追加 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/go-gencfg/">
+<meta property="og:url" content="https://suzuki-shunsuke.github.io/renovate-add-compare/">
 <meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md">
+<meta property="og:description" content="Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。例えば、 datadog helm chart の場合{ &amp;#34;datasources&amp;#34;: [&amp;#34;helm&amp;#34;], &amp;#34;packageNames&amp;#34;: [&amp;#34;datadog&amp;#34;], &amp;#34;prBodyNotes&amp;#34;: [ &amp;#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&amp;#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。ex. https://github.com/suzuki-shunsuke/test-renovate-2/pull/28template で使える変数は https://docs.renovatebot.com/templates/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/go-gencfg/">
-<meta name="twitter:title" content="go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ - melody">
-<meta name="twitter:description" content="自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md">
+<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/renovate-add-compare/">
+<meta name="twitter:title" content="Renovate の PR に便利なリンクを追加 - melody">
+<meta name="twitter:description" content="Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。例えば、 datadog helm chart の場合{ &amp;#34;datasources&amp;#34;: [&amp;#34;helm&amp;#34;], &amp;#34;packageNames&amp;#34;: [&amp;#34;datadog&amp;#34;], &amp;#34;prBodyNotes&amp;#34;: [ &amp;#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&amp;#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。ex. https://github.com/suzuki-shunsuke/test-renovate-2/pull/28template で使える変数は https://docs.renovatebot.com/templates/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。">
 <meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/suzuki-shunsuke.github.io\/"
     },
-    "headline": "go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ - melody",
+    "headline": "Renovate の PR に便利なリンクを追加 - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2018-09-06T23:59:35JST",
-    "dateModified": "2018-09-06T23:59:35JST",
+    "datePublished": "2020-12-28T14:32:31JST",
+    "dateModified": "2020-12-28T14:32:31JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。\n使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。\nhttps:\/\/github.com\/suzuki-shunsuke\/go-gencfg\/blob\/master\/README.md"
+    "description": "Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。\n例えば、 datadog helm chart の場合\n{ \u0026#34;datasources\u0026#34;: [\u0026#34;helm\u0026#34;], \u0026#34;packageNames\u0026#34;: [\u0026#34;datadog\u0026#34;], \u0026#34;prBodyNotes\u0026#34;: [ \u0026#34;[compare](https:\/\/github.com\/DataDog\/helm-charts\/compare\/datadog-{{currentVersion}}...datadog-{{newVersion}})\u0026#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。\nex. https:\/\/github.com\/suzuki-shunsuke\/test-renovate-2\/pull\/28\ntemplate で使える変数は https:\/\/docs.renovatebot.com\/templates\/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。"
   }
 </script>
 
@@ -107,29 +107,29 @@
       <ol class="breadcrumb">
         <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ</li>
+        <li class="active">Renovate の PR に便利なリンクを追加</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-06T23:59:35JST">Sep 6, 2018</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-28T14:32:31JST">Dec 28, 2020</time></li>
       
       
-      <li>15 Words</li>
+      <li>62 Words</li>
       
       
     </ul>
 
-    <h1 class="title">go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ</h1>
+    <h1 class="title">Renovate の PR に便利なリンクを追加</h1>
     
     
     <section>
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
+          <li><a href="https://suzuki-shunsuke.github.io/tags/renovate/">renovate</a></li>
           
         </ul>
       </div>
@@ -139,12 +139,23 @@
 
   
 
-  <div class="article-body"><p>自作のOSS <a href="https://github.com/suzuki-shunsuke/go-gencfg">go-gencfg</a> を紹介します。
-Golang で <a href="https://github.com/spf13/viper">viper</a> という汎用的な設定管理ライブラリがありますが、
-特定のアプリケーション用に viper のラッパーを生成するCLIツールです。</p>
-<p>使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので
-そちらを御覧ください。</p>
-<p><a href="https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md">https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</a></p>
+  <div class="article-body"><p>Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。
+例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。
+一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。
+そういう場合、 <a href="https://docs.renovatebot.com/configuration-options/#prbodynotes">prBodyNotes</a> を利用して link を追加すると便利です。</p>
+<p>例えば、 datadog helm chart の場合</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;datasources&#34;</span>: [<span style="color:#e6db74">&#34;helm&#34;</span>],
+  <span style="color:#f92672">&#34;packageNames&#34;</span>: [<span style="color:#e6db74">&#34;datadog&#34;</span>],
+  <span style="color:#f92672">&#34;prBodyNotes&#34;</span>: [
+    <span style="color:#e6db74">&#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&#34;</span>
+  ]
+}
+</code></pre></div><p>とすると、 PR の description にリンクが追加されます。地味ですが便利です。
+Release page へのリンクを追加しても便利かもしれませんね。</p>
+<p>ex. <a href="https://github.com/suzuki-shunsuke/test-renovate-2/pull/28">https://github.com/suzuki-shunsuke/test-renovate-2/pull/28</a></p>
+<p>template で使える変数は <a href="https://docs.renovatebot.com/templates/">https://docs.renovatebot.com/templates/</a> を参照してください。
+helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。</p>
 </div>
 
   <footer class="article-footer">
@@ -157,7 +168,7 @@ Golang で <a href="https://github.com/spf13/viper">viper</a> という汎用的
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/oss/">oss</a></li>
+          <li><a href="https://suzuki-shunsuke.github.io/tags/renovate/">renovate</a></li>
           
         </ul>
       </div>

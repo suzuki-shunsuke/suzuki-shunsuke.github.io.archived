@@ -56,6 +56,42 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
+      
+      
+      <li>137 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/graylog-terraform/">GraylogをTerraformで管理する</a></h2>
+  </header>
+
+  
+  <div class="summary">Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
+Graylogには様々なリソースがあります。
+ User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
+APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
+https://github.com/suzuki-shunsuke/go-graylog
+GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
+ Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
+出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
+terraform を使った管理方法 以下では自分の管理方法を紹介します。
+https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
+にサンプルが置いてあります。
+基本はプロジェクトごとに
+ Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。</div>
+
+  
+  <footer>
+    <a href="https://suzuki-shunsuke.github.io/graylog-terraform/" title="GraylogをTerraformで管理する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-11-27T16:40:33JST">Nov 27, 2018</time></li>
       
       
@@ -328,28 +364,6 @@ docker API でエラーが出て、コンテナを操作できない これは�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:42:16JST">Sep 30, 2018</time></li>
-      
-      
-      <li>18 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/drone-cant-use-nonroot-image/">drone で非rootユーザーで実行されるImageを使えない</a></h2>
-  </header>
-
-  
-  <div class="summary">drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。
-/bin/sh: 3: cannot create /root/.netrc: Permission denied これについては drone の開発者が回答しています。
- https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -380,6 +394,8 @@ docker API でエラーが出て、コンテナを操作できない これは�
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
+      
       <a href="https://suzuki-shunsuke.github.io/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
       
       <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
@@ -397,8 +413,6 @@ docker API でエラーが出て、コンテナを操作できない これは�
       <a href="https://suzuki-shunsuke.github.io/splitting-circleci-config/" class="list-group-item">Splitting .circleci/config.yml</a>
       
       <a href="https://suzuki-shunsuke.github.io/github-ci-monitor/" class="list-group-item">github-ci-monitor: CI のステータスを DataDog で監視</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/matchfile/" class="list-group-item">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a>
       
     </div>
   </section>

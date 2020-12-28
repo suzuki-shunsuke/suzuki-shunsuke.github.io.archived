@@ -56,6 +56,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-28T14:32:31JST">Dec 28, 2020</time></li>
+      
+      
+      <li>62 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/renovate-add-compare/">Renovate の PR に便利なリンクを追加</a></h2>
+  </header>
+
+  
+  <div class="summary">Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。
+例えば、 datadog helm chart の場合
+{ &#34;datasources&#34;: [&#34;helm&#34;], &#34;packageNames&#34;: [&#34;datadog&#34;], &#34;prBodyNotes&#34;: [ &#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。
+ex. https://github.com/suzuki-shunsuke/test-renovate-2/pull/28
+template で使える変数は https://docs.renovatebot.com/templates/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-05T12:37:17JST">Dec 5, 2020</time></li>
       
       
@@ -277,41 +301,6 @@ GitHub API で各リポジトリのステータスを取得し、 DataDog API �
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-27T19:39:44JST">Oct 27, 2020</time></li>
-      
-      
-      <li>168 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/matchfile/">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a></h2>
-  </header>
-
-  
-  <div class="summary">自作の CLI ツール matchfile について紹介します。
-https://github.com/suzuki-shunsuke/matchfile
-この記事の執筆時点で最新バージョンは v0.1.1 です。
-変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。
-Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。
-そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。
-ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。
-matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。
-PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。
-タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。
-matchfile の使い方としては
-$ matchfile run &lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&gt; &lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&gt; で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。</div>
-
-  
-  <footer>
-    <a href="https://suzuki-shunsuke.github.io/matchfile/" title="matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -342,6 +331,8 @@ $ matchfile run &lt;PR で変更されたファイルパスのリストが書か
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
+      
       <a href="https://suzuki-shunsuke.github.io/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
       
       <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
@@ -359,8 +350,6 @@ $ matchfile run &lt;PR で変更されたファイルパスのリストが書か
       <a href="https://suzuki-shunsuke.github.io/splitting-circleci-config/" class="list-group-item">Splitting .circleci/config.yml</a>
       
       <a href="https://suzuki-shunsuke.github.io/github-ci-monitor/" class="list-group-item">github-ci-monitor: CI のステータスを DataDog で監視</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/matchfile/" class="list-group-item">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a>
       
     </div>
   </section>

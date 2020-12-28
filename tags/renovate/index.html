@@ -60,6 +60,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-28T14:32:31JST">Dec 28, 2020</time></li>
+      
+      
+      <li>62 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/renovate-add-compare/">Renovate の PR に便利なリンクを追加</a></h2>
+  </header>
+
+  
+  <div class="summary">Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。
+例えば、 datadog helm chart の場合
+{ &#34;datasources&#34;: [&#34;helm&#34;], &#34;packageNames&#34;: [&#34;datadog&#34;], &#34;prBodyNotes&#34;: [ &#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。
+ex. https://github.com/suzuki-shunsuke/test-renovate-2/pull/28
+template で使える変数は https://docs.renovatebot.com/templates/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-05T12:37:17JST">Dec 5, 2020</time></li>
       
       
@@ -104,6 +128,8 @@ Renovate は .circleci/config.yml などの update もサポート  https://docs
     </div>
     <div class="list-group">
       
+      <a href="https://suzuki-shunsuke.github.io/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
+      
       <a href="https://suzuki-shunsuke.github.io/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
       
       <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
@@ -121,8 +147,6 @@ Renovate は .circleci/config.yml などの update もサポート  https://docs
       <a href="https://suzuki-shunsuke.github.io/splitting-circleci-config/" class="list-group-item">Splitting .circleci/config.yml</a>
       
       <a href="https://suzuki-shunsuke.github.io/github-ci-monitor/" class="list-group-item">github-ci-monitor: CI のステータスを DataDog で監視</a>
-      
-      <a href="https://suzuki-shunsuke.github.io/matchfile/" class="list-group-item">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a>
       
     </div>
   </section>

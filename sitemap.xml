@@ -3,27 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://suzuki-shunsuke.github.io/</loc>
+    <lastmod>2020-12-28T14:32:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/renovate/</loc>
+    <lastmod>2020-12-28T14:32:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/renovate-add-compare/</loc>
+    <lastmod>2020-12-28T14:32:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
+    <lastmod>2020-12-28T14:32:31+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suzuki-shunsuke.github.io/tags/dependabot/</loc>
     <lastmod>2020-12-05T12:37:17+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://suzuki-shunsuke.github.io/</loc>
-    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/renovate/</loc>
-    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://suzuki-shunsuke.github.io/compare-renovate-dependabot/</loc>
-    <lastmod>2020-12-05T12:37:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://suzuki-shunsuke.github.io/tags/</loc>
     <lastmod>2020-12-05T12:37:17+09:00</lastmod>
   </url>
   
