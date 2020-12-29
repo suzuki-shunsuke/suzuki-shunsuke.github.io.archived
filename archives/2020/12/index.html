@@ -60,6 +60,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-28T14:32:31JST">Dec 28, 2020</time></li>
+      
+      
+      <li>62 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://suzuki-shunsuke.github.io/renovate-add-compare/">Renovate の PR に便利なリンクを追加</a></h2>
+  </header>
+
+  
+  <div class="summary">Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。
+例えば、 datadog helm chart の場合
+{ &#34;datasources&#34;: [&#34;helm&#34;], &#34;packageNames&#34;: [&#34;datadog&#34;], &#34;prBodyNotes&#34;: [ &#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。
+ex. https://github.com/suzuki-shunsuke/test-renovate-2/pull/28
+template で使える変数は https://docs.renovatebot.com/templates/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-05T12:37:17JST">Dec 5, 2020</time></li>
       
       
@@ -190,7 +214,7 @@ Hands on の題材として Docker コンテナを作ったりできたらいい
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (2)</a>
+      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (3)</a>
       
       <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
