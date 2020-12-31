@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>oss on melody</title>
-    <link>https://suzuki-shunsuke.github.io/tags/oss/</link>
+    <link>https://techblog.szksh.cloud/tags/oss/</link>
     <description>Recent content in oss on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 03 Dec 2020 09:07:32 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/oss/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Dec 2020 09:07:32 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/oss/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Terraform の Docker Provider の Collaborator になりました</title>
-      <link>https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/</link>
+      <link>https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/</link>
       <pubDate>Thu, 03 Dec 2020 09:07:32 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/</guid>
+      <guid>https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/</guid>
       <description>先日 kreuzwerker/terraform-provider-docker の Collaborator になりました。 kreuzwerker/terraform-provider-docker は Terraform の Docker Provider であり、 Docker コンテナや image, network などを管理できます。 元々は Hashicorp の Official Provider であった terraform-providers/terraform-provider-docker が kreuzwerker/terraform-provider-docker に移管され、 Community Provider になりました。 元のリポジトリは hashicorp org に移され archive されています。
 Collaborator になった経緯 リポジトリが移管される際に、メンテナを募集していて過去に contribution していた自分にも声をかけていただきました。
 https://github.com/hashicorp/terraform-provider-docker/issues/306
@@ -22,20 +22,20 @@ Hands on の題材として Docker コンテナを作ったりできたらいい
     
     <item>
       <title>Splitting .circleci/config.yml</title>
-      <link>https://suzuki-shunsuke.github.io/splitting-circleci-config/</link>
+      <link>https://techblog.szksh.cloud/splitting-circleci-config/</link>
       <pubDate>Sat, 07 Nov 2020 14:43:10 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/splitting-circleci-config/</guid>
+      <guid>https://techblog.szksh.cloud/splitting-circleci-config/</guid>
       <description>In this post I introduce how to split a huge .circleci/config.yml.
 CircleCI doesn&amp;rsquo;t support to split .circleci/config.yml, so we manage all workflows and jobs configuration into one file .circleci/config.yml. If the repository is Monorepo, the more the number of services increases, the more the size of .circleci/config.yml becomes large and it&amp;rsquo;s hard to maintain .circleci/config.yml. By splitting .circleci/config.yml per service, it makes easy to maintain .circleci/config.yml and we can configure split file&amp;rsquo;s CODEOWNERS.</description>
     </item>
     
     <item>
       <title>github-ci-monitor: CI のステータスを DataDog で監視</title>
-      <link>https://suzuki-shunsuke.github.io/github-ci-monitor/</link>
+      <link>https://techblog.szksh.cloud/github-ci-monitor/</link>
       <pubDate>Sun, 01 Nov 2020 17:51:44 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/github-ci-monitor/</guid>
+      <guid>https://techblog.szksh.cloud/github-ci-monitor/</guid>
       <description>自作の OSS github-ci-monitor の紹介です。
 GitHub リポジトリの CI のステータスを定期的に取得し、 DataDog に送ることで、 CI のステータスを監視するツールです。 現状は AWS Lambda で動かすことを想定していますが、他の方法でも動かせるようにするつもりです。
 Motivation モチベーションは、 PR をマージしたあとに CI がこけた場合に通知が欲しいというものです。 マージしたあとに CI が一瞬で終わるなら無事終わるのを見届けてもいいんですが、 数分かかると待ってるのも時間がもったいないです。 しばらくしたあとに結果を確認すればいいんですが、それも面倒くさいですし、普通に忘れます。 そうするとデプロイしたつもりが実は CI がこけてたなんてことが普通にあります。
@@ -48,10 +48,10 @@ GitHub API で各リポジトリのステータスを取得し、 DataDog API �
     
     <item>
       <title>matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</title>
-      <link>https://suzuki-shunsuke.github.io/matchfile/</link>
+      <link>https://techblog.szksh.cloud/matchfile/</link>
       <pubDate>Tue, 27 Oct 2020 19:39:44 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/matchfile/</guid>
+      <guid>https://techblog.szksh.cloud/matchfile/</guid>
       <description>自作の CLI ツール matchfile について紹介します。
 https://github.com/suzuki-shunsuke/matchfile
 この記事の執筆時点で最新バージョンは v0.1.1 です。
@@ -68,10 +68,10 @@ $ matchfile run &amp;lt;PR で変更されたファイルパスのリストが�
     
     <item>
       <title>なぜ buildflow を作ったのか</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-goal/</link>
+      <link>https://techblog.szksh.cloud/buildflow-goal/</link>
       <pubDate>Sun, 18 Oct 2020 09:53:08 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-goal/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-goal/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では なぜ buildflow を作ったのかについて説明します。 開発者である自分の好みや置かれた環境などが所々に反映された内容になっています。
 解決したい課題 自分は CI/CD の DX の改善に業務として取り組んでいます。 リポジトリはたくさんあり、横断的にメンテナンスしています。 幾つかのリポジトリはモノレポになっており、 CI の複雑さが増していたり、 CI の実行時間が長かったりします。
@@ -82,10 +82,10 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
     
     <item>
       <title>buildflow の実行結果の出力形式</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-result-output/</link>
+      <link>https://techblog.szksh.cloud/buildflow-result-output/</link>
       <pubDate>Sun, 18 Oct 2020 08:36:09 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-result-output/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-result-output/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では buildflow の実行結果の出力フォーマットなどについて説明します。
 ちょっと出力はわかりにくいかもしれません。 改善したいと思いつつ、どうあるべきなのかまだ見えてないのでこんな感じになっています。
@@ -95,10 +95,10 @@ task の標準出力、標準エラー出力はリアルタイムで出力され
     
     <item>
       <title>buildflow が自動で取得する Pull Request の情報</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-pr-info/</link>
+      <link>https://techblog.szksh.cloud/buildflow-pr-info/</link>
       <pubDate>Sun, 18 Oct 2020 08:13:48 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-pr-info/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-pr-info/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では buildflow が自動で Pull Request (以下 PR) の情報を取得してくる機能について説明します。
 この機能は GitHub のみサポートしています。 GitLab や BitBucket はサポートしていません。 これは単純に自分が GitHub しか使わないからです。
@@ -112,10 +112,10 @@ PR の情報をとってくるには、以下の情報が必要です。
     
     <item>
       <title>buildflow ではなぜ Tengo を採用しているのか</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-why-tengo/</link>
+      <link>https://techblog.szksh.cloud/buildflow-why-tengo/</link>
       <pubDate>Sat, 17 Oct 2020 22:35:56 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-why-tengo/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-why-tengo/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では buildflow でなぜ Tengo を採用しているのかについて説明します。
 https://github.com/d5/tengo
@@ -132,10 +132,10 @@ https://github.com/avelino/awesome-go#embeddable-scripting-languages
     
     <item>
       <title>buildflow の dynamic task</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-dynamic-task/</link>
+      <link>https://techblog.szksh.cloud/buildflow-dynamic-task/</link>
       <pubDate>Sat, 17 Oct 2020 21:29:51 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-dynamic-task/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-dynamic-task/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。
 --- phases: - name: main tasks: - name: &amp;#34;list {{.Item.Key}} {{.Item.Value.name}}&amp;#34; command: command: &amp;#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&amp;#34; items: - name: foo age: 10 - name: bar age: 20 上記の設定は dynamic task を使わないとこうなります。
@@ -144,10 +144,10 @@ https://github.com/avelino/awesome-go#embeddable-scripting-languages
     
     <item>
       <title>buildflow の task の input, output という機能</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-input-output/</link>
+      <link>https://techblog.szksh.cloud/buildflow-input-output/</link>
       <pubDate>Sat, 17 Oct 2020 21:05:41 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-input-output/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-input-output/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
 この記事では buildflow の task の input, output という機能について説明します。 task の input, output は Tengo script で task のパラメータを整形する機能です。
 task の command.command や write_file.template など、幾つかの設定では Go の text/template が使えますが、 text/template は複雑なロジックを記述したりするのには向いていません。 そこで task の input で Tengo script を使って必要なデータの整形を行うことで、 template は比較的きれいな状態に保つことが出来ます。
@@ -158,10 +158,10 @@ task.input は task.when が評価されたあと、 task の command などが�
     
     <item>
       <title>buildflow で設定ファイルを分割する</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-split-files/</link>
+      <link>https://techblog.szksh.cloud/buildflow-split-files/</link>
       <pubDate>Sat, 17 Oct 2020 20:49:28 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-split-files/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-split-files/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
 この記事では buildflow の設定ファイルを分割する方法について説明します。
 buildflow では一部の設定項目について他のファイルのパスを指定して読み込むということが出来ます。 1 つのファイルに全部の設定を書いていると、ファイルが大きくなってメンテナンス性が悪くなったり、 コードオーナーが曖昧になったりするので、そういう場合は分割すると良いでしょう。 コードオーナーが異なる複数のサービスで共通の設定ファイルを用いる場合、ファイルを分割して GitHub の CODEOWNERS を設定するのもよいでしょう。 あまりないかもしれませんが、ファイルを分割すると同じファイルを読み込んで再利用も出来ます。
@@ -172,10 +172,10 @@ buildflow では一部の設定項目について他のファイルのパスを�
     
     <item>
       <title>buildflow の script や template に渡される parameter</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-parameter/</link>
+      <link>https://techblog.szksh.cloud/buildflow-parameter/</link>
       <pubDate>Sat, 17 Oct 2020 19:44:39 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-parameter/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-parameter/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。
 buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。
@@ -185,10 +185,10 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
     
     <item>
       <title>buildflow の task の設定項目</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-task/</link>
+      <link>https://techblog.szksh.cloud/buildflow-task/</link>
       <pubDate>Sat, 17 Oct 2020 18:26:57 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-task/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-task/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の task の基本的な設定項目などについて説明します。 数が多いので、個々の設定の詳細はまた別の記事に書きます。
 task には幾つか type がありますが、全ての type に共通するパラメータが以下になります。
@@ -197,10 +197,10 @@ task には幾つか type がありますが、全ての type に共通するパ
     
     <item>
       <title>buildflow の build, phase, task について</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-build-phase-task/</link>
+      <link>https://techblog.szksh.cloud/buildflow-build-phase-task/</link>
       <pubDate>Sat, 17 Oct 2020 18:09:19 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-build-phase-task/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-build-phase-task/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
 この記事では buildflow の概念である build, phase, task について書きたいと思います。
 buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
@@ -211,10 +211,10 @@ $ buildflow run で 1 つの build が実行されます。 build は複数の p
     
     <item>
       <title>buildflow での Tengo の使い方</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-tengo/</link>
+      <link>https://techblog.szksh.cloud/buildflow-tengo/</link>
       <pubDate>Sat, 17 Oct 2020 17:18:34 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-tengo/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-tengo/</guid>
       <description>buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
 この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。
 https://github.com/d5/tengo
@@ -225,10 +225,10 @@ result := true task.input, output などだと result の値が Task.Input, Task
     
     <item>
       <title>buildflow というワークフローエンジンのようなタスクランナーのようなツールを作っている</title>
-      <link>https://suzuki-shunsuke.github.io/buildflow-1/</link>
+      <link>https://techblog.szksh.cloud/buildflow-1/</link>
       <pubDate>Sat, 17 Oct 2020 16:06:31 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/buildflow-1/</guid>
+      <guid>https://techblog.szksh.cloud/buildflow-1/</guid>
       <description>buildflow というツールを開発しているので紹介します。 buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。 1本目のこの記事では
  どんなツールか Hello World 特徴  について簡単に説明します。
 どんなツールか https://github.com/suzuki-shunsuke/buildflow
@@ -243,10 +243,10 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
     
     <item>
       <title>github-comment - GitHub にコメントを投稿する CLI</title>
-      <link>https://suzuki-shunsuke.github.io/github-comment/</link>
+      <link>https://techblog.szksh.cloud/github-comment/</link>
       <pubDate>Fri, 31 Jul 2020 20:42:54 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/github-comment/</guid>
+      <guid>https://techblog.szksh.cloud/github-comment/</guid>
       <description>GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。
 https://github.com/suzuki-shunsuke/github-comment
 このブログの執筆時点で最新は v1.5.0 です。
@@ -261,10 +261,10 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
     
     <item>
       <title>clap - 簡単にツールをインストールするためのツールを作った</title>
-      <link>https://suzuki-shunsuke.github.io/clap/</link>
+      <link>https://techblog.szksh.cloud/clap/</link>
       <pubDate>Mon, 06 Jul 2020 16:52:58 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/clap/</guid>
+      <guid>https://techblog.szksh.cloud/clap/</guid>
       <description>多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。
 https://github.com/suzuki-shunsuke/clap
 Go で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。
@@ -279,10 +279,10 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
     
     <item>
       <title>Skaffold で特定のサービスだけ動かすためのツールを作った</title>
-      <link>https://suzuki-shunsuke.github.io/skaffold-generator/</link>
+      <link>https://techblog.szksh.cloud/skaffold-generator/</link>
       <pubDate>Sun, 05 Apr 2020 18:53:25 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/skaffold-generator/</guid>
+      <guid>https://techblog.szksh.cloud/skaffold-generator/</guid>
       <description>自作の CLI ツール skaffold-generator の紹介です。 プロトタイピングみたいなノリで半日くらいで割と手早く作れました。 名前が長くて適当なのでもっと良い名前ないかなと思ってます。
 Skaffold に欲しい機能がないので補完する感じで作ったのですが、「それ〇〇で出来るよ」とかあったら(GitHub issue とか Twitter で)教えていただけると幸いです。
 どんなツールか 設定ファイル skaffold-generator.yaml を監視して変更があったら skaffold.yaml を生成するツールです。設定ファイルでサービスの依存関係を定義できたり、コマンドライン引数で指定したサービス及びそれが依存するサービスに関連した設定だけを使って skaffold.yaml を更新します。 このツールは skaffold.yaml を生成するだけなので実際にアプリケーションをビルド・デプロイするには skaffold と組み合わせて使います。
@@ -293,10 +293,10 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
     
     <item>
       <title>dd-time - コマンドの実行時間を Datadog に送るツール</title>
-      <link>https://suzuki-shunsuke.github.io/dd-time/</link>
+      <link>https://techblog.szksh.cloud/dd-time/</link>
       <pubDate>Sat, 30 Nov 2019 13:54:47 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/dd-time/</guid>
+      <guid>https://techblog.szksh.cloud/dd-time/</guid>
       <description>コマンドの実行時間を Datadog に送る dd-time というツールを作りました。
 このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。
 circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。
@@ -309,10 +309,10 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
     
     <item>
       <title>go-timeout - command の timeout</title>
-      <link>https://suzuki-shunsuke.github.io/go-timeout/</link>
+      <link>https://techblog.szksh.cloud/go-timeout/</link>
       <pubDate>Mon, 04 Nov 2019 10:00:21 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/go-timeout/</guid>
+      <guid>https://techblog.szksh.cloud/go-timeout/</guid>
       <description>作ったのは 2ヶ月くらい前の話ですが、 Go の command の timeout を実装するためのライブラリを作ったので紹介します。
 https://github.com/suzuki-shunsuke/go-timeout
 基本的には https://github.com/Songmu/timeout をオススメしますが、これだと上手くいかないパターンがあったので自作しました。
@@ -325,10 +325,10 @@ Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon
     
     <item>
       <title>cmdx - task runner</title>
-      <link>https://suzuki-shunsuke.github.io/cmdx/</link>
+      <link>https://techblog.szksh.cloud/cmdx/</link>
       <pubDate>Fri, 23 Aug 2019 11:35:13 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/cmdx/</guid>
+      <guid>https://techblog.szksh.cloud/cmdx/</guid>
       <description>最近自作した OSS, cmdx の紹介です。
 https://github.com/suzuki-shunsuke/cmdx
 cmdx は task runner です。
@@ -345,10 +345,10 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
     
     <item>
       <title>Flute - Golang HTTP client testing framework</title>
-      <link>https://suzuki-shunsuke.github.io/fagott/</link>
+      <link>https://techblog.szksh.cloud/fagott/</link>
       <pubDate>Sun, 07 Jul 2019 08:20:00 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/fagott/</guid>
+      <guid>https://techblog.szksh.cloud/fagott/</guid>
       <description>2019-07-17 追記 プロジェクト名が変わりました
 https://github.com/suzuki-shunsuke/flute/issues/20
  Go の HTTP client のテストフレームワークを作ったので紹介します。
@@ -364,10 +364,10 @@ https://github.com/suzuki-shunsuke/flute
     
     <item>
       <title>Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</title>
-      <link>https://suzuki-shunsuke.github.io/drone-jsonnet-generator/</link>
+      <link>https://techblog.szksh.cloud/drone-jsonnet-generator/</link>
       <pubDate>Wed, 12 Jun 2019 07:40:45 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/drone-jsonnet-generator/</guid>
+      <guid>https://techblog.szksh.cloud/drone-jsonnet-generator/</guid>
       <description>Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作ったので紹介します。
 https://github.com/suzuki-shunsuke/drone-jsonnet-generator
 背景 https://docs.drone.io/user-guide/pipeline/migrating/
@@ -381,10 +381,10 @@ https://docs.drone.io/user-guide/pipeline/migrating/
     
     <item>
       <title>go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</title>
-      <link>https://suzuki-shunsuke.github.io/go-jsoneq/</link>
+      <link>https://techblog.szksh.cloud/go-jsoneq/</link>
       <pubDate>Thu, 23 May 2019 11:43:18 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/go-jsoneq/</guid>
+      <guid>https://techblog.szksh.cloud/go-jsoneq/</guid>
       <description>https://github.com/suzuki-shunsuke/go-jsoneq
 2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。
 「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。
@@ -400,10 +400,10 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     
     <item>
       <title>durl - 壊れたURLを検知するCLIツール</title>
-      <link>https://suzuki-shunsuke.github.io/durl/</link>
+      <link>https://techblog.szksh.cloud/durl/</link>
       <pubDate>Sun, 28 Apr 2019 21:25:00 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/durl/</guid>
+      <guid>https://techblog.szksh.cloud/durl/</guid>
       <description>結構前に開発したツールですが、まだ記事にしてなかったので紹介します。
 https://github.com/suzuki-shunsuke/durl
 ファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。
@@ -420,10 +420,10 @@ find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -
     
     <item>
       <title>GraylogをTerraformで管理する</title>
-      <link>https://suzuki-shunsuke.github.io/graylog-terraform/</link>
+      <link>https://techblog.szksh.cloud/graylog-terraform/</link>
       <pubDate>Sat, 01 Dec 2018 14:56:00 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/graylog-terraform/</guid>
+      <guid>https://techblog.szksh.cloud/graylog-terraform/</guid>
       <description>Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
 Graylogには様々なリソースがあります。
  User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
@@ -441,10 +441,10 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
     
     <item>
       <title>Graylog で log を管理する</title>
-      <link>https://suzuki-shunsuke.github.io/graylog/</link>
+      <link>https://techblog.szksh.cloud/graylog/</link>
       <pubDate>Tue, 27 Nov 2018 16:40:33 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/graylog/</guid>
+      <guid>https://techblog.szksh.cloud/graylog/</guid>
       <description>Java 製の OSS ログ管理システム Graylog の紹介です。 Graylog については幾つかに分けて記事を書きたいと思います。 今回はGraylogの入門的な内容になります。
 なお、本記事中で「現在」「現時点」といった場合、特に断りがなければ記事執筆時点 2018-11-27 を指します。
 Graylog のバージョン 検証に用いるGraylogのバージョンは 2.4.6 になります。
@@ -461,10 +461,10 @@ http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
     
     <item>
       <title>akoi - binary installer</title>
-      <link>https://suzuki-shunsuke.github.io/akoi/</link>
+      <link>https://techblog.szksh.cloud/akoi/</link>
       <pubDate>Wed, 31 Oct 2018 08:56:04 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/akoi/</guid>
+      <guid>https://techblog.szksh.cloud/akoi/</guid>
       <description>自作のOSS akoi の紹介をします。
  なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
 まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード   ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)    akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
@@ -481,10 +481,10 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
     
     <item>
       <title>gomic - Goのモックジェネレータ</title>
-      <link>https://suzuki-shunsuke.github.io/gomic/</link>
+      <link>https://techblog.szksh.cloud/gomic/</link>
       <pubDate>Tue, 30 Oct 2018 08:35:16 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/gomic/</guid>
+      <guid>https://techblog.szksh.cloud/gomic/</guid>
       <description>自作のOSS gomic の紹介をします。
  なぜわざわざこんなものを作ったのか 生成されたモックの簡単な使い方  を主に説明したいと思います。
 まとめ  gomic は Goのinterfaceを実装したモックを生成するCLIツール モックを手で書くのが辛すぎた &amp;amp; 既存ツールで満足できなかったため作った  自動生成できるコードは自動生成すべき   設定ファイルで管理するため、interfaceの更新に合わせてmockの更新が容易 生成されるモックはシンプルなAPIのみ提供するので学習コストが低い  gomic とは gomic は Goのinterfaceを実装したモックを生成するCLIツールです。 これによってモックを使ったテストの作成を効率化します。 単調な作業を自動化し、本来注力すべきことに注力できるようにするためのツールです。
@@ -499,10 +499,10 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
     
     <item>
       <title>go-gencfg - viperの個々のアプリケーション用のラッパーのコードジェネレータ</title>
-      <link>https://suzuki-shunsuke.github.io/go-gencfg/</link>
+      <link>https://techblog.szksh.cloud/go-gencfg/</link>
       <pubDate>Thu, 06 Sep 2018 23:59:35 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/go-gencfg/</guid>
+      <guid>https://techblog.szksh.cloud/go-gencfg/</guid>
       <description>自作のOSS go-gencfg を紹介します。 Golang で viper という汎用的な設定管理ライブラリがありますが、 特定のアプリケーション用に viper のラッパーを生成するCLIツールです。
 使い方や開発の背景を書こうかと思いましたが、だいたい README に書いてあるので そちらを御覧ください。
 https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</description>

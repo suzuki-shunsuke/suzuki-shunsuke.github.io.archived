@@ -8,7 +8,7 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/">
+<link rel="canonical" href="https://techblog.szksh.cloud/send-circleci-run-execution-time-to-datadog/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,18 +20,18 @@
 
 <meta property="og:title" content="CircleCI の run の実行時間を DataDog に送る - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/">
-<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:url" content="https://techblog.szksh.cloud/send-circleci-run-execution-time-to-datadog/">
+<meta property="og:image" content="https://techblog.szksh.cloud/images/default.png">
 <meta property="og:site_name" content="melody">
 <meta property="og:description" content="小ネタです。dd-time を使って CircleCI の run を使ったコマンドの実行時間をどう計測したらいいのかちょっと考えました。以前、コマンドの実行時間を DataDog に送るツール dd-time を作りました。 https://techblog.szksh.cloud/dd-time/ https://github.com/suzuki-shunsuke/dd-time  これは基本的に以下のように引数として -- 以降に実行するコマンドを指定します。$ dd-time -m dd_time.execution_time -t command:docker-build -- docker build . 実行するスクリプトを標準入力で渡したい場合はこうします。$ curl https://example.com/install.sh | dd-time -m dd_time.execution_time -- sh もちろんシェルスクリプトである必要はなくて例えば Python だったらこうなります。$ curl https://example.com/setup.py | dd-time -m dd_time.execution_time -- python CircleCI の run では shell オプションで shell を指定できます。https://circleci.com/docs/2.0/configuration-reference/#runなので command 全体の時間を計測したい場合は、 shell を次のようにします。- run: name: test dd-time shell: /usr/local/bin/dd-time -m dd_time.">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/send-circleci-run-execution-time-to-datadog/">
+<meta name="twitter:url" content="https://techblog.szksh.cloud/send-circleci-run-execution-time-to-datadog/">
 <meta name="twitter:title" content="CircleCI の run の実行時間を DataDog に送る - melody">
 <meta name="twitter:description" content="小ネタです。dd-time を使って CircleCI の run を使ったコマンドの実行時間をどう計測したらいいのかちょっと考えました。以前、コマンドの実行時間を DataDog に送るツール dd-time を作りました。 https://techblog.szksh.cloud/dd-time/ https://github.com/suzuki-shunsuke/dd-time  これは基本的に以下のように引数として -- 以降に実行するコマンドを指定します。$ dd-time -m dd_time.execution_time -t command:docker-build -- docker build . 実行するスクリプトを標準入力で渡したい場合はこうします。$ curl https://example.com/install.sh | dd-time -m dd_time.execution_time -- sh もちろんシェルスクリプトである必要はなくて例えば Python だったらこうなります。$ curl https://example.com/setup.py | dd-time -m dd_time.execution_time -- python CircleCI の run では shell オプションで shell を指定できます。https://circleci.com/docs/2.0/configuration-reference/#runなので command 全体の時間を計測したい場合は、 shell を次のようにします。- run: name: test dd-time shell: /usr/local/bin/dd-time -m dd_time.">
-<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta name="twitter:image" content="https://techblog.szksh.cloud/images/default.png">
 
 
 <script type="application/ld+json">
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
+      "@id":"https:\/\/techblog.szksh.cloud\/"
     },
     "headline": "CircleCI の run の実行時間を DataDog に送る - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
+      "url": "https:\/\/techblog.szksh.cloud\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,7 +60,7 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
+        "url": "https:\/\/techblog.szksh.cloud\/images/logo.png",
         "width": 600,
         "height": 60
       }
@@ -70,7 +70,7 @@
 </script>
 
 
-    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    <link href="https://techblog.szksh.cloud/css/styles.css" rel="stylesheet">
     
 
   </head>
@@ -88,7 +88,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+            <a class="navbar-brand" href="https://techblog.szksh.cloud/">melody</a>
           </div>
 
           
@@ -105,7 +105,7 @@
 
     <nav class="p-crumb">
       <ol class="breadcrumb">
-        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        <li><a href="https://techblog.szksh.cloud/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
         <li class="active">CircleCI の run の実行時間を DataDog に送る</li>
       </ol>
@@ -129,11 +129,11 @@
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/circleci/">circleci</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/circleci/">circleci</a></li>
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/dd-time/">dd-time</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/dd-time/">dd-time</a></li>
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/datadog/">datadog</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/datadog/">datadog</a></li>
           
         </ul>
       </div>
@@ -186,11 +186,11 @@
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/circleci/">circleci</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/circleci/">circleci</a></li>
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/dd-time/">dd-time</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/dd-time/">dd-time</a></li>
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/datadog/">datadog</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/datadog/">datadog</a></li>
           
         </ul>
       </div>
@@ -214,25 +214,25 @@
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
+      <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
+      <a href="https://techblog.szksh.cloud/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
       
-      <a href="https://suzuki-shunsuke.github.io/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
+      <a href="https://techblog.szksh.cloud/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
       
-      <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
+      <a href="https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
+      <a href="https://techblog.szksh.cloud/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
+      <a href="https://techblog.szksh.cloud/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
+      <a href="https://techblog.szksh.cloud/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
       
     </div>
   </section>
@@ -243,25 +243,25 @@
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (31)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (31)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
+      <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (8)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (8)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/job" class="list-group-item">job (7)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (5)</a>
+      <a href="https://techblog.szksh.cloud/tags/circleci" class="list-group-item">circleci (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      <a href="https://techblog.szksh.cloud/tags/graylog" class="list-group-item">graylog (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
       
     </div>
   </section>
@@ -272,25 +272,25 @@
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (5)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (7)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (13)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/08" class="list-group-item">2020/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/08" class="list-group-item">2020/08 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/07" class="list-group-item">2020/07 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/05" class="list-group-item">2020/05 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/05" class="list-group-item">2020/05 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/01" class="list-group-item">2020/01 (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
+      <a href="https://techblog.szksh.cloud/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
     </div>
   </section>

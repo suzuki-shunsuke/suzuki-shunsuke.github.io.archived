@@ -8,7 +8,7 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/">
+<link rel="canonical" href="https://techblog.szksh.cloud/2019-knowledge-share-meeting/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,18 +20,18 @@
 
 <meta property="og:title" content="毎週30分の技術共有会 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/">
-<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:url" content="https://techblog.szksh.cloud/2019-knowledge-share-meeting/">
+<meta property="og:image" content="https://techblog.szksh.cloud/images/default.png">
 <meta property="og:site_name" content="melody">
 <meta property="og:description" content="自分が最近職場で行っている技術共有の取り組みについて紹介したいと思います。背景 これまで自分は積極的に自分にとって新しい技術を取り入れてサービスの品質の向上に繋げてきました。 ただし、それらの技術に関して周りに十分に共有できていなかった側面がありました。やっていること 毎週30分決まった時間にスライドを使って発表しています。 対象は同じ部署の希望者です。 枠は30分ですが、実質話しているのは20分くらいな気がします。 k8sのハンズオン的なこともやりました(そのときは30分で終わらないので2回に分けてやりました)。話したいことはたくさんあるのですが、とりあえず大きなトピックとして以下の3つに絞っています。 k8s(Rancher): オーケストレーション (いまここ) Drone: CI/CD Graylog: ログ収集  これまで話したこと・話す予定のこと k8s の初心者が k8s を本番運用を視野に入れつつ検証環境で使ってみるところまでを目指して話しています。 なぜ k8s を使うのか(部署のコンテキストに合わせて導入意義を説明) k8s のリソース(Pod, Service, Deployment, etc) について k8s, Rancher ハンズオン(2回) 簡単なアプリケーションをデプロイしてみたり Logging (いまここ) モニタリング IP制限のかかった外部サービスへアクセスする方法  毎週30分というペース感について 以下のようなことを配慮しました。 集中力が続くこと  60分は長すぎる   持続可能であること  1, 2 回やっただけでは意味がない 30分だけなら参加しやすい 準備のコストも現実的な範囲 30分と短めなので毎週やる。隔週とかだと頻度が少なすぎるし、1回飛ぶと1ヶ月空いてしまう    これまでの結果 特に大きな成果があるわけではないですが、 k8sに興味を持ちk8sを検証環境で使ってくれる人が出てきました。 共有会がk8s を触るきっかけになったのだとしたらそれだけでもやってよかったと思います。また、自分自身学ぶこともありました。 Logging に関して自分は今まで Sidecar pattern を使っていたのですが、Cluster Level Logging への移行を検討するきっかけになりました。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/2019-knowledge-share-meeting/">
+<meta name="twitter:url" content="https://techblog.szksh.cloud/2019-knowledge-share-meeting/">
 <meta name="twitter:title" content="毎週30分の技術共有会 - melody">
 <meta name="twitter:description" content="自分が最近職場で行っている技術共有の取り組みについて紹介したいと思います。背景 これまで自分は積極的に自分にとって新しい技術を取り入れてサービスの品質の向上に繋げてきました。 ただし、それらの技術に関して周りに十分に共有できていなかった側面がありました。やっていること 毎週30分決まった時間にスライドを使って発表しています。 対象は同じ部署の希望者です。 枠は30分ですが、実質話しているのは20分くらいな気がします。 k8sのハンズオン的なこともやりました(そのときは30分で終わらないので2回に分けてやりました)。話したいことはたくさんあるのですが、とりあえず大きなトピックとして以下の3つに絞っています。 k8s(Rancher): オーケストレーション (いまここ) Drone: CI/CD Graylog: ログ収集  これまで話したこと・話す予定のこと k8s の初心者が k8s を本番運用を視野に入れつつ検証環境で使ってみるところまでを目指して話しています。 なぜ k8s を使うのか(部署のコンテキストに合わせて導入意義を説明) k8s のリソース(Pod, Service, Deployment, etc) について k8s, Rancher ハンズオン(2回) 簡単なアプリケーションをデプロイしてみたり Logging (いまここ) モニタリング IP制限のかかった外部サービスへアクセスする方法  毎週30分というペース感について 以下のようなことを配慮しました。 集中力が続くこと  60分は長すぎる   持続可能であること  1, 2 回やっただけでは意味がない 30分だけなら参加しやすい 準備のコストも現実的な範囲 30分と短めなので毎週やる。隔週とかだと頻度が少なすぎるし、1回飛ぶと1ヶ月空いてしまう    これまでの結果 特に大きな成果があるわけではないですが、 k8sに興味を持ちk8sを検証環境で使ってくれる人が出てきました。 共有会がk8s を触るきっかけになったのだとしたらそれだけでもやってよかったと思います。また、自分自身学ぶこともありました。 Logging に関して自分は今まで Sidecar pattern を使っていたのですが、Cluster Level Logging への移行を検討するきっかけになりました。">
-<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta name="twitter:image" content="https://techblog.szksh.cloud/images/default.png">
 
 
 <script type="application/ld+json">
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
+      "@id":"https:\/\/techblog.szksh.cloud\/"
     },
     "headline": "毎週30分の技術共有会 - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
+      "url": "https:\/\/techblog.szksh.cloud\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,7 +60,7 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
+        "url": "https:\/\/techblog.szksh.cloud\/images/logo.png",
         "width": 600,
         "height": 60
       }
@@ -70,7 +70,7 @@
 </script>
 
 
-    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    <link href="https://techblog.szksh.cloud/css/styles.css" rel="stylesheet">
     
 
   </head>
@@ -88,7 +88,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+            <a class="navbar-brand" href="https://techblog.szksh.cloud/">melody</a>
           </div>
 
           
@@ -105,7 +105,7 @@
 
     <nav class="p-crumb">
       <ol class="breadcrumb">
-        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        <li><a href="https://techblog.szksh.cloud/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
         <li class="active">毎週30分の技術共有会</li>
       </ol>
@@ -201,25 +201,25 @@ Logging に関して自分は今まで Sidecar pattern を使っていたので�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
+      <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
+      <a href="https://techblog.szksh.cloud/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
       
-      <a href="https://suzuki-shunsuke.github.io/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
+      <a href="https://techblog.szksh.cloud/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
       
-      <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
+      <a href="https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
+      <a href="https://techblog.szksh.cloud/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
+      <a href="https://techblog.szksh.cloud/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
+      <a href="https://techblog.szksh.cloud/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
       
     </div>
   </section>
@@ -230,25 +230,25 @@ Logging に関して自分は今まで Sidecar pattern を使っていたので�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (31)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (31)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
+      <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (8)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (8)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/job" class="list-group-item">job (7)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (5)</a>
+      <a href="https://techblog.szksh.cloud/tags/circleci" class="list-group-item">circleci (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      <a href="https://techblog.szksh.cloud/tags/graylog" class="list-group-item">graylog (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
       
     </div>
   </section>
@@ -259,25 +259,25 @@ Logging に関して自分は今まで Sidecar pattern を使っていたので�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (5)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (7)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (13)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/08" class="list-group-item">2020/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/08" class="list-group-item">2020/08 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/07" class="list-group-item">2020/07 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/05" class="list-group-item">2020/05 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/05" class="list-group-item">2020/05 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/01" class="list-group-item">2020/01 (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
+      <a href="https://techblog.szksh.cloud/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
     </div>
   </section>

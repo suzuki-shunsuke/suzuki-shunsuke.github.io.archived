@@ -8,7 +8,7 @@
 
 
 
-<link rel="canonical" href="https://suzuki-shunsuke.github.io/terraform-getting-started/">
+<link rel="canonical" href="https://techblog.szksh.cloud/terraform-getting-started/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,18 +20,18 @@
 
 <meta property="og:title" content="Terraform 入門 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://suzuki-shunsuke.github.io/terraform-getting-started/">
-<meta property="og:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta property="og:url" content="https://techblog.szksh.cloud/terraform-getting-started/">
+<meta property="og:image" content="https://techblog.szksh.cloud/images/default.png">
 <meta property="og:site_name" content="melody">
 <meta property="og:description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://suzuki-shunsuke.github.io/terraform-getting-started/">
+<meta name="twitter:url" content="https://techblog.szksh.cloud/terraform-getting-started/">
 <meta name="twitter:title" content="Terraform 入門 - melody">
 <meta name="twitter:description" content="参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraformTerraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。https://www.terraform.io/downloads.htmltfenv を使うと管理が楽です。https://github.com/tfutils/tfenvtfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。">
-<meta name="twitter:image" content="https://suzuki-shunsuke.github.io/images/default.png">
+<meta name="twitter:image" content="https://techblog.szksh.cloud/images/default.png">
 
 
 <script type="application/ld+json">
@@ -40,12 +40,12 @@
     "@type": "NewsArticle",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id":"https:\/\/suzuki-shunsuke.github.io\/"
+      "@id":"https:\/\/techblog.szksh.cloud\/"
     },
     "headline": "Terraform 入門 - melody",
     "image": {
       "@type": "ImageObject",
-      "url": "https:\/\/suzuki-shunsuke.github.io\/images\/default.png",
+      "url": "https:\/\/techblog.szksh.cloud\/images\/default.png",
       "height": 800,
       "width": 800
     },
@@ -60,7 +60,7 @@
       "name": "melody",
       "logo": {
         "@type": "ImageObject",
-        "url": "https:\/\/suzuki-shunsuke.github.io\/images/logo.png",
+        "url": "https:\/\/techblog.szksh.cloud\/images/logo.png",
         "width": 600,
         "height": 60
       }
@@ -70,7 +70,7 @@
 </script>
 
 
-    <link href="https://suzuki-shunsuke.github.io/css/styles.css" rel="stylesheet">
+    <link href="https://techblog.szksh.cloud/css/styles.css" rel="stylesheet">
     
 
   </head>
@@ -88,7 +88,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://suzuki-shunsuke.github.io/">melody</a>
+            <a class="navbar-brand" href="https://techblog.szksh.cloud/">melody</a>
           </div>
 
           
@@ -105,7 +105,7 @@
 
     <nav class="p-crumb">
       <ol class="breadcrumb">
-        <li><a href="https://suzuki-shunsuke.github.io/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        <li><a href="https://techblog.szksh.cloud/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
         <li class="active">Terraform 入門</li>
       </ol>
@@ -129,7 +129,7 @@
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/terraform/">terraform</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/terraform/">terraform</a></li>
           
         </ul>
       </div>
@@ -503,7 +503,7 @@ CI の実行環境の IP range が定まってない場合、話は更に難し�
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://suzuki-shunsuke.github.io/tags/terraform/">terraform</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/terraform/">terraform</a></li>
           
         </ul>
       </div>
@@ -527,25 +527,25 @@ CI の実行環境の IP range が定まってない場合、話は更に難し�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
+      <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
+      <a href="https://techblog.szksh.cloud/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
       
-      <a href="https://suzuki-shunsuke.github.io/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
+      <a href="https://techblog.szksh.cloud/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
       
-      <a href="https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
+      <a href="https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
+      <a href="https://techblog.szksh.cloud/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
+      <a href="https://techblog.szksh.cloud/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
+      <a href="https://techblog.szksh.cloud/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
-      <a href="https://suzuki-shunsuke.github.io/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
+      <a href="https://techblog.szksh.cloud/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
       
     </div>
   </section>
@@ -556,25 +556,25 @@ CI の実行環境の IP range が定まってない場合、話は更に難し�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/tags/oss" class="list-group-item">oss (31)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (31)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/drone" class="list-group-item">drone (14)</a>
+      <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/terraform" class="list-group-item">terraform (8)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (8)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/job" class="list-group-item">job (7)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/golang" class="list-group-item">golang (6)</a>
+      <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/circleci" class="list-group-item">circleci (5)</a>
+      <a href="https://techblog.szksh.cloud/tags/circleci" class="list-group-item">circleci (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/graylog" class="list-group-item">graylog (5)</a>
+      <a href="https://techblog.szksh.cloud/tags/graylog" class="list-group-item">graylog (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/ansible" class="list-group-item">ansible (3)</a>
+      <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/tags/ci" class="list-group-item">ci (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
       
     </div>
   </section>
@@ -585,25 +585,25 @@ CI の実行環境の IP range が定まってない場合、話は更に難し�
     </div>
     <div class="list-group">
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/12" class="list-group-item">2020/12 (5)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/11" class="list-group-item">2020/11 (7)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/10" class="list-group-item">2020/10 (13)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/09" class="list-group-item">2020/09 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/08" class="list-group-item">2020/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/08" class="list-group-item">2020/08 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/07" class="list-group-item">2020/07 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/05" class="list-group-item">2020/05 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/05" class="list-group-item">2020/05 (1)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/04" class="list-group-item">2020/04 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2020/01" class="list-group-item">2020/01 (3)</a>
+      <a href="https://techblog.szksh.cloud/archives/2020/01" class="list-group-item">2020/01 (3)</a>
       
-      <a href="https://suzuki-shunsuke.github.io/archives/2019/11" class="list-group-item">2019/11 (3)</a>
+      <a href="https://techblog.szksh.cloud/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
     </div>
   </section>

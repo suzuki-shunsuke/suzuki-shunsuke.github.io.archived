@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>terraform on melody</title>
-    <link>https://suzuki-shunsuke.github.io/tags/terraform/</link>
+    <link>https://techblog.szksh.cloud/tags/terraform/</link>
     <description>Recent content in terraform on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 03 Dec 2020 09:07:32 +0900</lastBuildDate><atom:link href="https://suzuki-shunsuke.github.io/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Dec 2020 09:07:32 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Terraform の Docker Provider の Collaborator になりました</title>
-      <link>https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/</link>
+      <link>https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/</link>
       <pubDate>Thu, 03 Dec 2020 09:07:32 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/collaborator-of-terraform-docker-provider/</guid>
+      <guid>https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/</guid>
       <description>先日 kreuzwerker/terraform-provider-docker の Collaborator になりました。 kreuzwerker/terraform-provider-docker は Terraform の Docker Provider であり、 Docker コンテナや image, network などを管理できます。 元々は Hashicorp の Official Provider であった terraform-providers/terraform-provider-docker が kreuzwerker/terraform-provider-docker に移管され、 Community Provider になりました。 元のリポジトリは hashicorp org に移され archive されています。
 Collaborator になった経緯 リポジトリが移管される際に、メンテナを募集していて過去に contribution していた自分にも声をかけていただきました。
 https://github.com/hashicorp/terraform-provider-docker/issues/306
@@ -22,10 +22,10 @@ Hands on の題材として Docker コンテナを作ったりできたらいい
     
     <item>
       <title>tfnotify の parse error を通知する</title>
-      <link>https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/</link>
+      <link>https://techblog.szksh.cloud/post-tfnotify-parse-error/</link>
       <pubDate>Sat, 12 Sep 2020 08:05:59 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/post-tfnotify-parse-error/</guid>
+      <guid>https://techblog.szksh.cloud/post-tfnotify-parse-error/</guid>
       <description>tfnotify が terraform の標準出力のパースに失敗してコメントを投稿できないことがあります。
 コメントを投稿できなくてもビルドのログには残るのですが、やはりコメントを投稿できると便利なので、tfnotify がパースエラーでコメントの投稿に失敗したら、 github-comment でコメントを投稿するようにしました。
 なお、この記事を書いている時点のバージョンは tfnotify v0.7.0, github-comment v1.9.0 です。
@@ -36,10 +36,10 @@ terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.ym
     
     <item>
       <title>Terraform ハンズオン with MySQL Provider</title>
-      <link>https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/</link>
+      <link>https://techblog.szksh.cloud/terraform-hands-on-with-mysql-provider/</link>
       <pubDate>Fri, 17 Jan 2020 09:14:08 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/terraform-hands-on-with-mysql-provider/</guid>
+      <guid>https://techblog.szksh.cloud/terraform-hands-on-with-mysql-provider/</guid>
       <description>Terraform を勉強するには実際に使ってみるのが一番手っ取り早いですが、 では手頃な題材はあるかと言われると少し難しいです。
 公式の Getting Started では AWS が使われていますが、 AWS のアカウントやクレデンシャルが必要ですしお金もかかってしまいます(無料枠はありますが)。 もう少し手軽なものが欲しいところです。
 そこで公式の Provider で丁度いいものはないか探したところ、 MySQL Provider が良さそうでした。 MySQL のユーザーや Database を Terraform で管理したいとは自分は思いませんが、 Terraform の入門で遊ぶにはちょうどよいでしょう。
@@ -52,10 +52,10 @@ $ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform
     
     <item>
       <title>Terraform 入門</title>
-      <link>https://suzuki-shunsuke.github.io/terraform-getting-started/</link>
+      <link>https://techblog.szksh.cloud/terraform-getting-started/</link>
       <pubDate>Thu, 16 Jan 2020 09:25:05 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/terraform-getting-started/</guid>
+      <guid>https://techblog.szksh.cloud/terraform-getting-started/</guid>
       <description>参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。
 前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。
 Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraform
@@ -68,10 +68,10 @@ tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv �
     
     <item>
       <title>Terraform の State Locking の概要</title>
-      <link>https://suzuki-shunsuke.github.io/terraform-state-locking/</link>
+      <link>https://techblog.szksh.cloud/terraform-state-locking/</link>
       <pubDate>Fri, 10 Jan 2020 16:18:05 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/terraform-state-locking/</guid>
+      <guid>https://techblog.szksh.cloud/terraform-state-locking/</guid>
       <description>Terraform の State Locking という機能の概要について説明します。 ただし、自分もちゃんと理解しているわけではないので、推測も混じります。 基本的には公式ドキュメントに書いてある内容なのでそちらをご参照ください。
 State Locking とは terraform plan などのコマンドは State を変更する場合があります。 その処理は atomic ではないため、同時に複数のコマンドが State を書き換えようとすると不整合が生じる可能性があります。
  例えば S3 backend の state を state rm で更新する場合を考えます。 これはコマンド内部で
@@ -82,10 +82,10 @@ State Locking とは terraform plan などのコマンドは State を変更す�
     
     <item>
       <title>Terraform Providerで import を実装する方法</title>
-      <link>https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/</link>
+      <link>https://techblog.szksh.cloud/terraform-provider-graylog-import/</link>
       <pubDate>Fri, 25 Jan 2019 22:38:28 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/terraform-provider-graylog-import/</guid>
+      <guid>https://techblog.szksh.cloud/terraform-provider-graylog-import/</guid>
       <description>terraform provider graylog で alert condition と stream rule の import を実装しました。
  https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
 terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
@@ -97,10 +97,10 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
     
     <item>
       <title>Graylog の Terraform を CI/CDで実行する</title>
-      <link>https://suzuki-shunsuke.github.io/graylog-terraform-ci/</link>
+      <link>https://techblog.szksh.cloud/graylog-terraform-ci/</link>
       <pubDate>Fri, 07 Dec 2018 08:22:49 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/graylog-terraform-ci/</guid>
+      <guid>https://techblog.szksh.cloud/graylog-terraform-ci/</guid>
       <description>以前 Graylog を Terraform で管理する記事を書きました。
 https://suzuki-shunsuke.github.io/graylog-terraform/
 今回はそれを CI/CD で実行できるようにした話です。
@@ -113,10 +113,10 @@ resource &amp;quot;graylog_role&amp;quot; &amp;quot;terraform&amp;quot; { name =
     
     <item>
       <title>GraylogをTerraformで管理する</title>
-      <link>https://suzuki-shunsuke.github.io/graylog-terraform/</link>
+      <link>https://techblog.szksh.cloud/graylog-terraform/</link>
       <pubDate>Sat, 01 Dec 2018 14:56:00 +0900</pubDate>
       
-      <guid>https://suzuki-shunsuke.github.io/graylog-terraform/</guid>
+      <guid>https://techblog.szksh.cloud/graylog-terraform/</guid>
       <description>Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
 Graylogには様々なリソースがあります。
  User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
