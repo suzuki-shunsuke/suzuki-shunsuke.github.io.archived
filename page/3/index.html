@@ -56,6 +56,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T20:49:28JST">Oct 17, 2020</time></li>
+      
+      
+      <li>41 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-split-files/">buildflow で設定ファイルを分割する</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
+この記事では buildflow の設定ファイルを分割する方法について説明します。
+buildflow では一部の設定項目について他のファイルのパスを指定して読み込むということが出来ます。 1 つのファイルに全部の設定を書いていると、ファイルが大きくなってメンテナンス性が悪くなったり、 コードオーナーが曖昧になったりするので、そういう場合は分割すると良いでしょう。 コードオーナーが異なる複数のサービスで共通の設定ファイルを用いる場合、ファイルを分割して GitHub の CODEOWNERS を設定するのもよいでしょう。 あまりないかもしれませんが、ファイルを分割すると同じファイルを読み込んで再利用も出来ます。
+また、 Tengo script を独立したファイルに分割すると、 test が可能になります。 Tengo script をテストするためのツールとして tengo-tester というツールも開発しているので、そちらをお使いください。
+以下のようなファイル読み込みの設定があります。
+ phase.import task.import: task.input_file task.output_file task.when_file command.command_file command.env[].value_file write_file.template_file  ファイルのパスは、絶対パスか、実行中の build の設定ファイルが存在するディレクトリからの相対パスになります。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
       
       
@@ -318,39 +343,6 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-05-23T14:20:53JST">May 23, 2020</time></li>
-      
-      
-      <li>97 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/send-circleci-run-execution-time-to-datadog/">CircleCI の run の実行時間を DataDog に送る</a></h2>
-  </header>
-
-  
-  <div class="summary">小ネタです。
-dd-time を使って CircleCI の run を使ったコマンドの実行時間をどう計測したらいいのかちょっと考えました。
-以前、コマンドの実行時間を DataDog に送るツール dd-time を作りました。
- https://techblog.szksh.cloud/dd-time/ https://github.com/suzuki-shunsuke/dd-time  これは基本的に以下のように引数として -- 以降に実行するコマンドを指定します。
-$ dd-time -m dd_time.execution_time -t command:docker-build -- docker build . 実行するスクリプトを標準入力で渡したい場合はこうします。
-$ curl https://example.com/install.sh | dd-time -m dd_time.execution_time -- sh もちろんシェルスクリプトである必要はなくて例えば Python だったらこうなります。
-$ curl https://example.com/setup.py | dd-time -m dd_time.execution_time -- python CircleCI の run では shell オプションで shell を指定できます。
-https://circleci.com/docs/2.0/configuration-reference/#run
-なので command 全体の時間を計測したい場合は、 shell を次のようにします。
-- run: name: test dd-time shell: /usr/local/bin/dd-time -m dd_time.</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/send-circleci-run-execution-time-to-datadog/" title="CircleCI の run の実行時間を DataDog に送る">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -381,6 +373,8 @@ https://circleci.com/docs/2.0/configuration-reference/#run
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
+      
       <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
       
       <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
@@ -399,8 +393,6 @@ https://circleci.com/docs/2.0/configuration-reference/#run
       
       <a href="https://techblog.szksh.cloud/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
-      <a href="https://techblog.szksh.cloud/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
-      
     </div>
   </section>
 
@@ -410,13 +402,13 @@ https://circleci.com/docs/2.0/configuration-reference/#run
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (31)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (32)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
       <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (8)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (9)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (7)</a>
       
@@ -439,6 +431,8 @@ https://circleci.com/docs/2.0/configuration-reference/#run
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
@@ -456,8 +450,6 @@ https://circleci.com/docs/2.0/configuration-reference/#run
       <a href="https://techblog.szksh.cloud/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/01" class="list-group-item">2020/01 (3)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
     </div>
   </section>

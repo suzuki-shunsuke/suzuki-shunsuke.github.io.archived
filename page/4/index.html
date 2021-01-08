@@ -56,6 +56,39 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-05-23T14:20:53JST">May 23, 2020</time></li>
+      
+      
+      <li>97 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/send-circleci-run-execution-time-to-datadog/">CircleCI の run の実行時間を DataDog に送る</a></h2>
+  </header>
+
+  
+  <div class="summary">小ネタです。
+dd-time を使って CircleCI の run を使ったコマンドの実行時間をどう計測したらいいのかちょっと考えました。
+以前、コマンドの実行時間を DataDog に送るツール dd-time を作りました。
+ https://techblog.szksh.cloud/dd-time/ https://github.com/suzuki-shunsuke/dd-time  これは基本的に以下のように引数として -- 以降に実行するコマンドを指定します。
+$ dd-time -m dd_time.execution_time -t command:docker-build -- docker build . 実行するスクリプトを標準入力で渡したい場合はこうします。
+$ curl https://example.com/install.sh | dd-time -m dd_time.execution_time -- sh もちろんシェルスクリプトである必要はなくて例えば Python だったらこうなります。
+$ curl https://example.com/setup.py | dd-time -m dd_time.execution_time -- python CircleCI の run では shell オプションで shell を指定できます。
+https://circleci.com/docs/2.0/configuration-reference/#run
+なので command 全体の時間を計測したい場合は、 shell を次のようにします。
+- run: name: test dd-time shell: /usr/local/bin/dd-time -m dd_time.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/send-circleci-run-execution-time-to-datadog/" title="CircleCI の run の実行時間を DataDog に送る">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-24T16:53:01JST">Apr 24, 2020</time></li>
       
       
@@ -333,37 +366,6 @@ $ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is require
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:54:23JST">Aug 15, 2019</time></li>
-      
-      
-      <li>79 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/risk-of-drone-extension/">Drone Extension のリスク</a></h2>
-  </header>
-
-  
-  <div class="summary">Drone v1 では Extension という仕組みが導入されました。
-これは文字通り Drone を拡張する仕組みで、仕様に従って作れば自由に Drone を拡張できます。
-https://docs.drone.io/extensions/overview/
-全てを本体でやるのではなく、拡張する仕組みを提供し、あとはコミュニティに委ねるというのが Drone の一つの方針とも言えると思います。
-Extension は非常に面白い仕組みだと思いますが、 Drone を運用する立場からすると中々頭が痛い仕組みな気がしてて、 自分は導入に対し慎重な立場です。 単なる杞憂で済めば良いのですが、その懸念について書きたいと思います。
-根本は Drone Extension 固有の問題と言うより、一般的な拡張機構全般に言えることだと思います。 ただし、 Drone Extension は全てのビルドに影響を及ぼす、 CI/CDシステムが動かなくなるとサービスのリリースに影響を及ぼしかねないということからよりリスクの高いものになっています。
- 本体の drone/drone と比べ、開発は活発ではなく、サードパーティの extension はいつ開発が止まってもおかしくない 本体の drone/drone と比べ、ドキュメントやサポート体制が貧弱だと思われる(drone に関しては https://discourse.drone.io でサポートされているが、サードパーティの extension では難しい) ユーザーからの extension に関する要望を受け付けるようになると、管理者の負担になる extension のクォリティはマチマチであり、例外処理が甘かったり、ちゃんとエラーを吐かないものもあるだろう トラブルシューティングが難しいと思われる extension の仕組み上、extension を必要としないビルドにも影響を及ぼしうる 一度追加し、依存しだすと消すのが難しくなる extension が落ちると全 build に影響するので、耐障害性(冗長化)、モニタリングが必要 etc  勿論、上記の懸念点は Extension によって提供される機能とトレードオフであり、 Extension の導入方針は Drone が運用される環境によって大きく依存すると思います。
-例えば全員が顔見知りのような小さな組織で特定のサービス専用に Drone を使っていてかつ Drone の運用体制(人員)に十分余裕があるなら 積極的に Extension を導入しても問題ないかもしれません。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/risk-of-drone-extension/" title="Drone Extension のリスク">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -394,6 +396,8 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
+      
       <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
       
       <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
@@ -412,8 +416,6 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       
       <a href="https://techblog.szksh.cloud/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
-      <a href="https://techblog.szksh.cloud/job-2019-10-01-12-31/" class="list-group-item">仕事でやったこと 2019-10-01 ~ 2019-12-31</a>
-      
     </div>
   </section>
 
@@ -423,13 +425,13 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (31)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (32)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
       <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (8)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (9)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (7)</a>
       
@@ -452,6 +454,8 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
@@ -469,8 +473,6 @@ Extension は非常に面白い仕組みだと思いますが、 Drone を運用
       <a href="https://techblog.szksh.cloud/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/01" class="list-group-item">2020/01 (3)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2019/11" class="list-group-item">2019/11 (3)</a>
       
     </div>
   </section>
