@@ -6,7 +6,34 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 02 Jan 2021 19:42:10 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 16:24:44 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gitops</title>
+      <link>https://techblog.szksh.cloud/tags/gitops/</link>
+      <pubDate>Mon, 11 Jan 2021 16:24:44 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/tags/gitops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://techblog.szksh.cloud/tags/k8s/</link>
+      <pubDate>Mon, 11 Jan 2021 16:24:44 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>skaffold</title>
+      <link>https://techblog.szksh.cloud/tags/skaffold/</link>
+      <pubDate>Mon, 11 Jan 2021 16:24:44 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/tags/skaffold/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>oss</title>
       <link>https://techblog.szksh.cloud/tags/oss/</link>
@@ -130,24 +157,6 @@
       <pubDate>Sat, 23 May 2020 14:20:53 +0900</pubDate>
       
       <guid>https://techblog.szksh.cloud/tags/dd-time/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>k8s</title>
-      <link>https://techblog.szksh.cloud/tags/k8s/</link>
-      <pubDate>Sun, 05 Apr 2020 18:53:25 +0900</pubDate>
-      
-      <guid>https://techblog.szksh.cloud/tags/k8s/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>skaffold</title>
-      <link>https://techblog.szksh.cloud/tags/skaffold/</link>
-      <pubDate>Sun, 05 Apr 2020 18:53:25 +0900</pubDate>
-      
-      <guid>https://techblog.szksh.cloud/tags/skaffold/</guid>
       <description></description>
     </item>
     

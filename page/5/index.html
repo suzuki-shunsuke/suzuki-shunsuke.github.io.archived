@@ -56,6 +56,41 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-23T11:35:13JST">Aug 23, 2019</time></li>
+      
+      
+      <li>229 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/cmdx/">cmdx - task runner</a></h2>
+  </header>
+
+  
+  <div class="summary">最近自作した OSS, cmdx の紹介です。
+https://github.com/suzuki-shunsuke/cmdx
+cmdx は task runner です。
+task runner の定義はググってもわからなかったので、 cmdx を task runner と呼ぶのが適切かわかりませんが、 ここではプロジェクト固有のタスク
+ 依存するライブラリのインストール ビルド テスト コード整形 lint etc  などを管理するものとします。
+類似するものとしては以下のようなものがあります。
+ Make npm scripts Task tj/robo mumoshu/variant  使い方 詳細は README を読んでください。
+$ cmdx -i で設定ファイルの雛形を生成します。
+そして設定ファイルに task を定義していきます。 設定に関しては README を参照してください。
+そうすると cmdx -l でタスクの一覧とその説明が見れます。
+例えば次は cmdx のリポジトリでの実行結果です。
+$ cmdx -l init, i - setup git hooks coverage, c - test a package (fzf is required) test, t - test fmt - format the go code vet, v - go vet lint, l - lint the go code release, r - release the new version durl - check dead links (durl is required) ci-local - run the Drone pipeline at localhost (drone-cli is required) これにより新しくプロジェクトに参画した人もどのような task があるのか直ぐわかります。 例えば test を実行したければ cmdx t を実行すればいいことがわかります。 cmdx help test とすればここのタスクのより詳細なヘルプが見れます。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/cmdx/" title="cmdx - task runner">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-15T07:54:23JST">Aug 15, 2019</time></li>
       
       
@@ -324,36 +359,6 @@ https://docs.drone.io/user-guide/pipeline/migrating/
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
-      
-      
-      <li>51 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/go-jsoneq/">go-jsoneq - 2つの値がJSONとして等しいか比較するGoライブラリ</a></h2>
-  </header>
-
-  
-  <div class="summary">https://github.com/suzuki-shunsuke/go-jsoneq
-2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。
-「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。
-struct { Foo string `json:&#34;foo&#34;` }{ Foo: &#34;bar&#34;, } と
-map[string]interface{}{&#34;foo&#34;: &#34;bar&#34;} を JSON に変換したらともに
-{&#34;foo&#34;: &#34;bar&#34;} になりますね。
-json.Marshaler のテストや、 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。
-jsoneq.Equal でやっていることは単純です。
- json.Marshal で []byte に変換 json.Unmarshal で []byte を map, array と primitive な型からなるオブジェクト(?)に変換 reflect.DeepEqual で比較  引数が []byte の場合は 1 は飛ばします。
-GoDoc やサンプルを見れば使い方は簡単にわかると思います。
-以上、簡単ですが、自作ライブラリの紹介でした。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -384,6 +389,8 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/gitops-skaffold/" class="list-group-item">skaffold を使って GitOps する</a>
+      
       <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
       
       <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
@@ -401,8 +408,6 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
       <a href="https://techblog.szksh.cloud/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
       
       <a href="https://techblog.szksh.cloud/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2020-01-01-03-31/" class="list-group-item">仕事でやったこと 2020-01-01 ~ 2020-03-31</a>
       
     </div>
   </section>
@@ -442,7 +447,7 @@ GoDoc やサンプルを見れば使い方は簡単にわかると思います�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
