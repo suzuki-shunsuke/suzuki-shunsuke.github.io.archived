@@ -56,6 +56,37 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-04T10:00:21JST">Nov 4, 2019</time></li>
+      
+      
+      <li>90 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/go-timeout/">go-timeout - command の timeout</a></h2>
+  </header>
+
+  
+  <div class="summary">作ったのは 2ヶ月くらい前の話ですが、 Go の command の timeout を実装するためのライブラリを作ったので紹介します。
+https://github.com/suzuki-shunsuke/go-timeout
+基本的には https://github.com/Songmu/timeout をオススメしますが、これだと上手くいかないパターンがあったので自作しました。
+Go の command の timeout に関しては https://junkyard.song.mu/slides/gocon2019-spring/#24 がとても参考になります。
+上記のスライドでは
+ 標準ライブラリの exec.CommandContext でも停止できるが、 SIGKILL で強制的に停止することになる  子プロセスが停止しない   公式見解 では、SIGKILL 以外は標準ライブラリではサポートしない。サードパーティでやればよい Songmu/timeout 使えば SIGKILL 以外でより安全に停止できる  ということが丁寧に説明されています。
+自分は cmdx という task runner を開発していてその中で task の実行時に timeout を設定出来るようにしました。 当初 Songmu/timeout を使って実装したのですが、問題があることに気づきました。 それは、 command の中で fzf を使うと、上手く動かないというものでした。
+ https://github.com/suzuki-shunsuke/cmdx/issues/52 https://twitter.com/szkdash/status/1165529415238815745  正直この辺の挙動はちゃんと理解できていないのですが、 調べてみると Songmu/timeout だと syscall.SysProcAttr の Setpgid を true に設定していて、そうすると fzf が上手く動かないようでした。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/go-timeout/" title="go-timeout - command の timeout">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-23T11:35:13JST">Aug 23, 2019</time></li>
       
       
@@ -329,36 +360,6 @@ https://docs.drone.io/user-guide/pipeline/migrating/
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-01T08:34:10JST">Jun 1, 2019</time></li>
-      
-      
-      <li>195 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-plugin-jsonnet-check/">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a></h2>
-  </header>
-
-  
-  <div class="summary">久しぶりに Drone plugin を作ったので紹介します。
-https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
-.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。
-Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
-https://docs.drone.io/user-guide/pipeline/migrating/
- To simplify your configuration we recommend using jsonnet.
- $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/drone-plugin-jsonnet-check/" title=".drone.jsonnet と .drone.yml を比較する Drone plugin を作った">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -389,6 +390,8 @@ https://docs.drone.io/user-guide/pipeline/migrating/
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/tfmigrator/" class="list-group-item">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a>
+      
       <a href="https://techblog.szksh.cloud/gitops-skaffold/" class="list-group-item">skaffold を使って GitOps する</a>
       
       <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
@@ -407,8 +410,6 @@ https://docs.drone.io/user-guide/pipeline/migrating/
       
       <a href="https://techblog.szksh.cloud/job-2020-07-01-09-30/" class="list-group-item">仕事でやったこと 2020-07-01 ~ 2020-09-30</a>
       
-      <a href="https://techblog.szksh.cloud/job-2020-04-01-06-30/" class="list-group-item">仕事でやったこと 2020-04-01 ~ 2020-06-30</a>
-      
     </div>
   </section>
 
@@ -418,13 +419,13 @@ https://docs.drone.io/user-guide/pipeline/migrating/
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (32)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (33)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
       <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (9)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (10)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (7)</a>
       
@@ -447,7 +448,7 @@ https://docs.drone.io/user-guide/pipeline/migrating/
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
