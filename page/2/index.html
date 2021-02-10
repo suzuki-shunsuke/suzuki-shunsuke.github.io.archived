@@ -56,6 +56,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-29T11:48:17JST">Nov 29, 2020</time></li>
+      
+      
+      <li>85 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2020-10-01-10-31/">仕事でやったこと 2020-10-01 ~ 2020-10-31</a></h2>
+  </header>
+
+  
+  <div class="summary">2020-10-01 から 2020-10-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。
+ Terraform  CodeBuild Batch Build による dynamic な build pipeline の導入 Conftest の実行方法を修正  https://www.openpolicyagent.org/docs/latest/terraform/ tf ファイルに対して conftest を実行するのではなく、公式の方法に従ってテストするようにした   aws_cloudwatch_log_group.retention_in_days が設定されているか Conftest でテスト  コスト削減   tfnotify が parse に失敗した場合、 github-comment でコメント  https://techblog.szksh.cloud/post-tfnotify-parse-error/     Docker Hub 認証するようにした  Docker Hub の Rate Limit 問題に対応した話   kustomize build のテスト(失敗したら PR にコメントをして、なぜ失敗したか分かるようにした)  元々 kustomize build に失敗して CI がこけても、なぜこけたのか分かりにくく、 SRE に問い合わせが来て調べるみたいなことがあった どの k8s manifest の kustomize build に失敗したのか、 PR に分かりやすくコメントするようにした   CI で kubectl apply &ndash;server-dry-run によるテストを導入 Monorepo  差分検知・デプロイパイプラインの改善   Renovate  automerge の導入  renovate-approve 便利   CI で renovate-config-validator による validation の導入  https://docs.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/job-2020-10-01-10-31/" title="仕事でやったこと 2020-10-01 ~ 2020-10-31">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-29T11:36:44JST">Nov 29, 2020</time></li>
       
       
@@ -285,38 +310,6 @@ task の標準出力、標準エラー出力はリアルタイムで出力され
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:13:48JST">Oct 18, 2020</time></li>
-      
-      
-      <li>139 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-pr-info/">buildflow が自動で取得する Pull Request の情報</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
-この記事では buildflow が自動で Pull Request (以下 PR) の情報を取得してくる機能について説明します。
-この機能は GitHub のみサポートしています。 GitLab や BitBucket はサポートしていません。 これは単純に自分が GitHub しか使わないからです。
-PR の CI では
- 変更されたものだけテストする 特定の PR ラベルがついていたら実行する 特定のユーザーの PR だけ処理を変える(bot とか)  のように PR の情報に基づいて挙動を変えたくなったりします。
-シェルスクリプトで GitHub API 叩いて情報とってきて jq でパースしてとか、頑張れば別にできるんですが、 毎回そういうコードを書きたくないなと感じていました。
-なお、 PR の情報をとってくる機能はデフォルトで無効化されています(GitHub Access Token 必要ですしね)。 設定で pr: true を指定してください。
-PR の情報をとってくるには、以下の情報が必要です。
- repository owner: 設定ファイルで owner を設定するか、自動取得。 owner を設定してある場合はそちらが優先される repository name: 設定ファイルで repo を設定するか、自動取得。 repo を設定してある場合はそちらが優先される pull request number: 自動取得 GitHub Access Token: 環境変数 GITHUB_TOKEN または GITHUB_ACCESS_TOKEN を指定してください  取得される情報 以下のパラメータがテンプレートや Tengo script に渡されます。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/buildflow-pr-info/" title="buildflow が自動で取得する Pull Request の情報">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -347,6 +340,8 @@ PR の情報をとってくるには、以下の情報が必要です。
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
+      
       <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
       <a href="https://techblog.szksh.cloud/tfmigrator/" class="list-group-item">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a>
@@ -365,8 +360,6 @@ PR の情報をとってくるには、以下の情報が必要です。
       
       <a href="https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/" class="list-group-item">Terraform の Docker Provider の Collaborator になりました</a>
       
-      <a href="https://techblog.szksh.cloud/job-2020-10-01-10-31/" class="list-group-item">仕事でやったこと 2020-10-01 ~ 2020-10-31</a>
-      
     </div>
   </section>
 
@@ -384,7 +377,7 @@ PR の情報をとってくるには、以下の情報が必要です。
       
       <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (10)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (8)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (9)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
@@ -405,7 +398,7 @@ PR の情報をとってくるには、以下の情報が必要です。
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
       
