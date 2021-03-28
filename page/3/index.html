@@ -56,6 +56,35 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T09:53:08JST">Oct 18, 2020</time></li>
+      
+      
+      <li>262 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-goal/">なぜ buildflow を作ったのか</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では なぜ buildflow を作ったのかについて説明します。 開発者である自分の好みや置かれた環境などが所々に反映された内容になっています。
+解決したい課題 自分は CI/CD の DX の改善に業務として取り組んでいます。 リポジトリはたくさんあり、横断的にメンテナンスしています。 幾つかのリポジトリはモノレポになっており、 CI の複雑さが増していたり、 CI の実行時間が長かったりします。
+現在の CI/CD には以下のような問題があると感じています(他にもあるんですが、 buildflow と関係ないので割愛)。
+ 実行時間が長い  PR とは関係ない処理(test, build, etc) が実行されている   金銭的に高い  実行時間が長いので無駄にお金がかかっている CI サービスによっては並列度を上げることで実行時間が縮む場合があるが、それでもその分お金がかかる   PR とは直接関係ないところで失敗する  PR とは関係ない処理(test, build, etc) が実行されていて、それらが flaky で失敗する   メンテナンス性が悪い  属人化気味 何をやっているのか分かりにくい   同じような機能を複数のリポジトリで実装・メンテしたくない  これらの問題を解決するために buildflow を開発しました。
+buildflow で必要な処理だけを実行する buildflow では PR の情報を自動で取得し、それらに応じて実行する処理を変更できます。 変更されたファイルに応じてだけでなく、 label や PR の author などでも変更できます。 Tengo script を用いて柔軟なロジックを実装できます。 JSON や YAML の読み込みもサポートしているので、依存関係などの設定を別ファイルで管理することも出来ます。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/buildflow-goal/" title="なぜ buildflow を作ったのか">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:36:09JST">Oct 18, 2020</time></li>
       
       
@@ -309,31 +338,6 @@ $ buildflow run で 1 つの build が実行されます。 build は複数の p
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
-      
-      
-      <li>73 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-tengo/">buildflow での Tengo の使い方</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
-この記事では buildflow で Tengo というスクリプト言語をどのように使っているか書きたいと思います。
-https://github.com/d5/tengo
-buildflow の設定では task.when や task.dependency, task.input などで Tengo script が使えますが、 1 つの共通のルールがあります。 result という変数を宣言し、 script の実行結果をその変数に持たせるというルールです。 これは Tengo の仕様とかではなく、 buildflow 特有のルールです。 もっとも単純な例だと次のような感じです。
-result := true task.input, output などだと result の値が Task.Input, Task.Output として参照できるようになります。
---- phases: - name: main tasks: - name: hello input: |result := { foo: &#34;bar&#34; } command: command: &#39;echo &#34;{{.Task.Input.foo}}&#34;&#39; when: &#34;result := true&#34; Tengo の標準ライブラリ Tengo には標準ライブラリがあります。 buildflow では全ての標準ライブラリが使えます。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -364,6 +368,8 @@ result := true task.input, output などだと result の値が Task.Input, Task
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
+      
       <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
@@ -382,8 +388,6 @@ result := true task.input, output などだと result の値が Task.Input, Task
       
       <a href="https://techblog.szksh.cloud/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
       
-      <a href="https://techblog.szksh.cloud/compare-renovate-dependabot/" class="list-group-item">Renovate と Dependabot の比較</a>
-      
     </div>
   </section>
 
@@ -399,7 +403,7 @@ result := true task.input, output などだと result の値が Task.Input, Task
       
       <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (10)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
       
       <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (10)</a>
       
@@ -422,6 +426,8 @@ result := true task.input, output などだと result の値が Task.Input, Task
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/03" class="list-group-item">2021/03 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
@@ -439,8 +445,6 @@ result := true task.input, output などだと result の値が Task.Input, Task
       <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/05" class="list-group-item">2020/05 (1)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/04" class="list-group-item">2020/04 (2)</a>
       
     </div>
   </section>
