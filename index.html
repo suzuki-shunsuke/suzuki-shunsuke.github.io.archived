@@ -56,6 +56,37 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-03T11:04:25JST">Apr 3, 2021</time></li>
+      
+      
+      <li>150 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-module-template/">Terraform Module の Template という使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">Terraform Module の使い方として Terraform Module のテンプレートをコピペして使うというアプローチを紹介します。
+Terraform の設定ファイル(以下 tfファイル) を書く際、毎回一から書くのは大変です。 多くの場合、既存のコードを再利用したほうが楽でしょう。
+Terraform のコードの再利用の仕組みとして、 Module があります。 Module は勿論便利なのですが、使い方には注意が必要で、「安易に Module 化するな。使うな」というふうな考え方もあるでしょう。 自分も基本的に同意見で、 Module を共用するようになると Module への変更がしづらくなったり、パラメータがどんどん増えて複雑になったりします。
+例えば次のように共用の local Module を作成するアプローチがあります。
+modules/ lambda-base/ README.md main.tf variables.tf outputs.tf services/ foo/ staging/ main.tf # リポジトリ直下の modules/lambda-base を参照 production/ main.tf # リポジトリ直下の modules/lambda-base を参照 こうすると modules 配下の Module を変更した際にその Module を使っているすべてのサービスに影響が出てしまい、 サービスのオーナーが様々だったり、曖昧だったり不在だったりすると変更が難しいですし、どんどん Module が複雑になったりします。
+Module を別のリポジトリでバージョニングして管理し、バージョンを指定するようにするというやり方もありますが、 結構複雑というか考えることが多いアプローチだとは思います。
+Terraform にそこまで詳しくない developer にも書いてもらうとなると、シンプルなアプローチにするのが望ましいでしょう(当然これは組織によりますが)。
+そこで Module のテンプレートを用意し、 Module を使いたくなったらそれをコピペして使うというアプローチがあります。 例えば lambda-base という Module の Template を foo というサービスの staging 環境と production 環境で使う場合、次のような感じになります。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/terraform-module-template/" title="Terraform Module の Template という使い方">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-03-28T23:36:55JST">Mar 28, 2021</time></li>
       
       
@@ -273,30 +304,6 @@ mercari/tfnotify との違い 本家との違いは Release Note とドキュメ
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-28T14:32:31JST">Dec 28, 2020</time></li>
-      
-      
-      <li>62 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/renovate-add-compare/">Renovate の PR に便利なリンクを追加</a></h2>
-  </header>
-
-  
-  <div class="summary">Renovate による PR をレビューする際、差分がなんなのか分かりづらいときがあります。 例えば data source が github-release の場合、 PR の description に Release Note が含まれており、コードの差分も link があるので便利です。 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。 そういう場合、 prBodyNotes を利用して link を追加すると便利です。
-例えば、 datadog helm chart の場合
-{ &#34;datasources&#34;: [&#34;helm&#34;], &#34;packageNames&#34;: [&#34;datadog&#34;], &#34;prBodyNotes&#34;: [ &#34;[compare](https://github.com/DataDog/helm-charts/compare/datadog-{{currentVersion}}...datadog-{{newVersion}})&#34; ] } とすると、 PR の description にリンクが追加されます。地味ですが便利です。 Release page へのリンクを追加しても便利かもしれませんね。
-ex. https://github.com/suzuki-shunsuke/test-renovate-2/pull/28
-template で使える変数は https://docs.renovatebot.com/templates/ を参照してください。 helm chart ごとに設定を書かないといけないのが面倒ですが、仕方ないですね。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -327,6 +334,8 @@ template で使える変数は https://docs.renovatebot.com/templates/ を参照
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
+      
       <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
@@ -345,8 +354,6 @@ template で使える変数は https://docs.renovatebot.com/templates/ を参照
       
       <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
       
-      <a href="https://techblog.szksh.cloud/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
-      
     </div>
   </section>
 
@@ -364,7 +371,7 @@ template で使える変数は https://docs.renovatebot.com/templates/ を参照
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (10)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (11)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       

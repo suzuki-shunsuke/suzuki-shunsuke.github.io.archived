@@ -6,7 +6,23 @@
     <description>Recent content in terraform on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sun, 31 Jan 2021 14:53:23 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Apr 2021 11:04:25 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform Module の Template という使い方</title>
+      <link>https://techblog.szksh.cloud/terraform-module-template/</link>
+      <pubDate>Sat, 03 Apr 2021 11:04:25 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/terraform-module-template/</guid>
+      <description>Terraform Module の使い方として Terraform Module のテンプレートをコピペして使うというアプローチを紹介します。
+Terraform の設定ファイル(以下 tfファイル) を書く際、毎回一から書くのは大変です。 多くの場合、既存のコードを再利用したほうが楽でしょう。
+Terraform のコードの再利用の仕組みとして、 Module があります。 Module は勿論便利なのですが、使い方には注意が必要で、「安易に Module 化するな。使うな」というふうな考え方もあるでしょう。 自分も基本的に同意見で、 Module を共用するようになると Module への変更がしづらくなったり、パラメータがどんどん増えて複雑になったりします。
+例えば次のように共用の local Module を作成するアプローチがあります。
+modules/ lambda-base/ README.md main.tf variables.tf outputs.tf services/ foo/ staging/ main.tf # リポジトリ直下の modules/lambda-base を参照 production/ main.tf # リポジトリ直下の modules/lambda-base を参照 こうすると modules 配下の Module を変更した際にその Module を使っているすべてのサービスに影響が出てしまい、 サービスのオーナーが様々だったり、曖昧だったり不在だったりすると変更が難しいですし、どんどん Module が複雑になったりします。
+Module を別のリポジトリでバージョニングして管理し、バージョンを指定するようにするというやり方もありますが、 結構複雑というか考えることが多いアプローチだとは思います。
+Terraform にそこまで詳しくない developer にも書いてもらうとなると、シンプルなアプローチにするのが望ましいでしょう(当然これは組織によりますが)。
+そこで Module のテンプレートを用意し、 Module を使いたくなったらそれをコピペして使うというアプローチがあります。 例えば lambda-base という Module の Template を foo というサービスの staging 環境と production 環境で使う場合、次のような感じになります。</description>
+    </item>
+    
     <item>
       <title>terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</title>
       <link>https://techblog.szksh.cloud/tfmigrator/</link>

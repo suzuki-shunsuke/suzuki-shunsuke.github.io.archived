@@ -60,6 +60,37 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-03T11:04:25JST">Apr 3, 2021</time></li>
+      
+      
+      <li>150 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-module-template/">Terraform Module の Template という使い方</a></h2>
+  </header>
+
+  
+  <div class="summary">Terraform Module の使い方として Terraform Module のテンプレートをコピペして使うというアプローチを紹介します。
+Terraform の設定ファイル(以下 tfファイル) を書く際、毎回一から書くのは大変です。 多くの場合、既存のコードを再利用したほうが楽でしょう。
+Terraform のコードの再利用の仕組みとして、 Module があります。 Module は勿論便利なのですが、使い方には注意が必要で、「安易に Module 化するな。使うな」というふうな考え方もあるでしょう。 自分も基本的に同意見で、 Module を共用するようになると Module への変更がしづらくなったり、パラメータがどんどん増えて複雑になったりします。
+例えば次のように共用の local Module を作成するアプローチがあります。
+modules/ lambda-base/ README.md main.tf variables.tf outputs.tf services/ foo/ staging/ main.tf # リポジトリ直下の modules/lambda-base を参照 production/ main.tf # リポジトリ直下の modules/lambda-base を参照 こうすると modules 配下の Module を変更した際にその Module を使っているすべてのサービスに影響が出てしまい、 サービスのオーナーが様々だったり、曖昧だったり不在だったりすると変更が難しいですし、どんどん Module が複雑になったりします。
+Module を別のリポジトリでバージョニングして管理し、バージョンを指定するようにするというやり方もありますが、 結構複雑というか考えることが多いアプローチだとは思います。
+Terraform にそこまで詳しくない developer にも書いてもらうとなると、シンプルなアプローチにするのが望ましいでしょう(当然これは組織によりますが)。
+そこで Module のテンプレートを用意し、 Module を使いたくなったらそれをコピペして使うというアプローチがあります。 例えば lambda-base という Module の Template を foo というサービスの staging 環境と production 環境で使う場合、次のような感じになります。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/terraform-module-template/" title="Terraform Module の Template という使い方">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-01-31T14:53:23JST">Jan 31, 2021</time></li>
       
       
@@ -323,45 +354,23 @@ resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
-      
-      
-      <li>137 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/graylog-terraform/">GraylogをTerraformで管理する</a></h2>
-  </header>
-
-  
-  <div class="summary">Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
-Graylogには様々なリソースがあります。
- User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
-APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
-https://github.com/suzuki-shunsuke/go-graylog
-GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
- Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
-出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
-terraform を使った管理方法 以下では自分の管理方法を紹介します。
-https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
-にサンプルが置いてあります。
-基本はプロジェクトごとに
- Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/graylog-terraform/" title="GraylogをTerraformで管理する">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
+<nav>
+  <ul class="pager">
+
+    
+    <li class="disabled"><a href="#">Previous</a></li>
+    
+
+    
+    <li><a href="/tags/terraform/page/2/">Next</a></li>
+    
+
+  </ul>
+</nav>
+
 
 
   </div>
@@ -374,6 +383,8 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       <div class="panel-title">LATESTS</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
       
@@ -393,8 +404,6 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       
       <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
       
-      <a href="https://techblog.szksh.cloud/renovate-add-compare/" class="list-group-item">Renovate の PR に便利なリンクを追加</a>
-      
     </div>
   </section>
 
@@ -412,7 +421,7 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (10)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (11)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
