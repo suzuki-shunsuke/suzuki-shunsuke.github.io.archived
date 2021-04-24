@@ -6,7 +6,19 @@
     <description>Recent content on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Sat, 03 Apr 2021 11:04:25 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Apr 2021 21:57:27 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>terraform init で lock ファイルが更新される問題の対応</title>
+      <link>https://techblog.szksh.cloud/terraform-providers-lock/</link>
+      <pubDate>Sat, 24 Apr 2021 21:57:27 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/terraform-providers-lock/</guid>
+      <description>Terraform v0.14 で local で terraform init すると lock ファイルが更新されてしまう問題に対応しました。
+結論を最初に言うと、 100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法で紹介している方法で Renovate で Terraform Provider を update する際に terraform init -upgrade を実行して lock ファイルを更新してコミット・プッシュしているのですが、 その際に terraform providers lock -platform=darwin_amd64 を実行するようにしました。
+Terraform v0.14 で lock ファイル .terraform.lock.hcl が導入されました。 Renovate で Terraform Provider を update する際にも lock ファイルを更新する必要があるので、 terraform init -upgrade を実行して lock ファイルを更新してコミット・プッシュしています。 なのですが、ローカルで terraform init を実行するとなんか lock ファイルが更新されることが良くありました。しばらく放置していたのですが、 developer から「なんかファイル更新されたんだけど、これコミットしていいの？」と聞かれ、このまま放っておいて困惑させたりもやっとさせたりするのは良くないなと思い、調べてみました。
+lock ファイルについて .</description>
+    </item>
+    
     <item>
       <title>Terraform Module の Template という使い方</title>
       <link>https://techblog.szksh.cloud/terraform-module-template/</link>

@@ -56,6 +56,27 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-30T05:44:14JST">Dec 30, 2020</time></li>
+      
+      
+      <li>62 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/">仕事でやったこと 2020-11-01 ~ 2020-11-30</a></h2>
+  </header>
+
+  
+  <div class="summary">2020-11-01 から 2020-11-30 にかけて仕事でやったことを書ける範囲で書きます。
+ github-ci-monitor を導入し、 CI の失敗を通知  https://github.com/suzuki-shunsuke/github-ci-monitor   Terraform  Upgrade AWS Provider: Renovate で自動更新する仕組みの改善 Upgrade Terraform from v0.12 to v0.13 tfsec の導入 PR の label によって CI(plan/apply) の実行対象を追加できるようにした CircleCI から CodeBuild への移行 tfmigrate の検証   Monorepo の CI の高速化 (CircleCI)  k8s manifest の test を、変更があったものに対してだけ実行するようにした   kube-linter の導入 Renovate  https://quipper.hatenablog.com/entry/2020/12/10/080000 additionalBranchPrefix によるブランチの分割 depName を使ったリファクタリング   .circleci/config.yml の分割 ブログの執筆  Docker Hub の Rate Limit 問題に対応した話    </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-28T14:32:31JST">Dec 28, 2020</time></li>
       
       
@@ -270,37 +291,6 @@ CircleCI doesn&rsquo;t support to split .circleci/config.yml, so we manage all w
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-01T17:51:44JST">Nov 1, 2020</time></li>
-      
-      
-      <li>229 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/github-ci-monitor/">github-ci-monitor: CI のステータスを DataDog で監視</a></h2>
-  </header>
-
-  
-  <div class="summary">自作の OSS github-ci-monitor の紹介です。
-GitHub リポジトリの CI のステータスを定期的に取得し、 DataDog に送ることで、 CI のステータスを監視するツールです。 現状は AWS Lambda で動かすことを想定していますが、他の方法でも動かせるようにするつもりです。
-Motivation モチベーションは、 PR をマージしたあとに CI がこけた場合に通知が欲しいというものです。 マージしたあとに CI が一瞬で終わるなら無事終わるのを見届けてもいいんですが、 数分かかると待ってるのも時間がもったいないです。 しばらくしたあとに結果を確認すればいいんですが、それも面倒くさいですし、普通に忘れます。 そうするとデプロイしたつもりが実は CI がこけてたなんてことが普通にあります。
-そういうことにすぐ気づけるよう、 Slack に通知がほしいと思っていました。
-仕組み 仕組みは単純です。
-GitHub API で各リポジトリのステータスを取得し、 DataDog API でステータスを送信しています。 DataDog API は Service Check API を使っています。 status は以下のようになります。
- 0: 正常 1: 異常 3: ステータスの取得に失敗  また以下の tag が付きます。
- owner: リポジトリのオーナー repo: リポジトリ名 ref: ブランチ名  各リポジトリのステータスは現状 3 つをサポートしています。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/github-ci-monitor/" title="github-ci-monitor: CI のステータスを DataDog で監視">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -331,6 +321,8 @@ GitHub API で各リポジトリのステータスを取得し、 DataDog API �
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
+      
       <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
@@ -349,8 +341,6 @@ GitHub API で各リポジトリのステータスを取得し、 DataDog API �
       
       <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
       
-      <a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/" class="list-group-item">仕事でやったこと 2020-11-01 ~ 2020-11-30</a>
-      
     </div>
   </section>
 
@@ -366,9 +356,9 @@ GitHub API で各リポジトリのステータスを取得し、 DataDog API �
       
       <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (11)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
