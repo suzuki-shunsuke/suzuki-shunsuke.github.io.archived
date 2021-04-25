@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.79.0" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://techblog.szksh.cloud/tags/github-actions/index.xml">
+
+<link rel="canonical" href="https://techblog.szksh.cloud/tags/github-actions/">
+
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <title>github-actions - melody</title>
+    
+    <link href="https://techblog.szksh.cloud/css/styles.css" rel="stylesheet">
+    
+
+  </head>
+
+  <body>
+    
+
+    <header class="l-header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://techblog.szksh.cloud/">melody</a>
+          </div>
+
+          
+
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        
+<div class="row">
+  <div class="col-md-8">
+
+    
+    <header class="page-header">
+      <h1>github-actions</h1>
+    </header>
+    
+
+    <ul class="p-articles">
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-25T16:09:47JST">Apr 25, 2021</time></li>
+      
+      
+      <li>139 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a></h2>
+  </header>
+
+  
+  <div class="summary">GitHub Actions の勉強がてら Pull Request (以下 PR) で変更されたファイルや PR Label に応じて Matrix build を実行する Github Actions の Workflow のサンプルを書いてみました。
+https://github.com/suzuki-shunsuke/example-github-actions-dynamic-matrix
+Monorepo で同じ Job を PR で変更されたものに対してだけ実行したい、 けど workflow をサービスごとに定義するのはめんどいみたいな場合に使えるかもしれません。
+勉強がてらちょっと書いてみて軽く動作確認しただけなので、バグってる、あるいは実用的ではないかもしれません。
+ここでは Monorepo の CI を GitHub Actions で実行する場合を考えます。
+GitHub Actions では path filter を用いて workflow の実行有無を制御することができます。 そこでサービスごとに workflow を作成し、 path filter を設定することでそのサービスが更新されたときのみそのサービスの CI を実行するということが簡単にできます。
+しかし多くのサービスが含まれる Monorepo で各サービスに同じ Job を実行したい場合を考えてみましょう。 その場合サービスを追加するたびに workflow を追加していく必要があります。 まぁ .github/workflows 配下に 1 つ YAML をコピペで作成するだけといえばそれまでなのですが、それすらも省略したいとしましょう。
+Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch Build の buildspec を PR で変更されたファイルおよび PR Label に応じて動的に生成しています。 これの良いところは、サービスを追加したり、リネームしたり、削除したりしても CI をイジる必要がまったくないところです。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" title="PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+    </ul>
+
+    
+
+
+  </div>
+  <div class="col-md-4">
+    
+<aside class="l-sidebar">
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">LATESTS</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
+      
+      <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
+      
+      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
+      
+      <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
+      
+      <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
+      
+      <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
+      
+      <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
+      
+      <a href="https://techblog.szksh.cloud/tfmigrator/" class="list-group-item">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a>
+      
+      <a href="https://techblog.szksh.cloud/gitops-skaffold/" class="list-group-item">skaffold を使って GitOps する</a>
+      
+      <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">TAG</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (33)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/circleci" class="list-group-item">circleci (5)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/graylog" class="list-group-item">graylog (5)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
+      
+    </div>
+  </section>
+
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">ARCHIVE</div>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/03" class="list-group-item">2021/03 (1)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2020/08" class="list-group-item">2020/08 (1)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
+      
+      <a href="https://techblog.szksh.cloud/archives/2020/05" class="list-group-item">2020/05 (1)</a>
+      
+    </div>
+  </section>
+
+</aside>
+
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="l-footer">
+      <div class="container">
+        <p><span class="h-logo">&copy; melody</span></p>
+        <aside>
+          <p>Powered by <a href="https://gohugo.io/">Hugo</a>.</p>
+          <p><a href="https://github.com/dim0627/hugo_theme_beg">Beg</a> designed by <a href="http://yet.unresolved.xyz/">Daisuke Tsuji</a>.</p>
+        </aside>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

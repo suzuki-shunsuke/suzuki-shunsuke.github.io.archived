@@ -56,6 +56,37 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-07T08:22:49JST">Dec 7, 2018</time></li>
+      
+      
+      <li>569 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/graylog-terraform-ci/">Graylog の Terraform を CI/CDで実行する</a></h2>
+  </header>
+
+  
+  <div class="summary">以前 Graylog を Terraform で管理する記事を書きました。
+https://suzuki-shunsuke.github.io/graylog-terraform/
+今回はそれを CI/CD で実行できるようにした話です。
+ただし、今回の内容は Graylog に限らず Terraform を CI/CD で実行する方法として使えると思います。
+今回実現したのは以下のことです。
+ PR時にテストをする plan/* tag を push すると terraform plan が実行される apply/* tag を push すると terraform apply が実行され、tfstate がコミット、プッシュされる  ソースコード https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform に置いておきました。
+ https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/role.tf#L13-L25 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/user.tf#L12-L21 https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/.drone.yml https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/terraform.tfvars.tpl https://github.com/suzuki-shunsuke/example/blob/master/graylog-terraform/drone_pipeline_commands/git.sh  CI/CD用の user, role を作成する まずは role を作成します。
+resource &quot;graylog_role&quot; &quot;terraform&quot; { name = &quot;terraform&quot; description = &quot;terraform&quot; permissions = [ &quot;dashboards:*&quot;, &quot;indexsets:*&quot;, &quot;inputs:*&quot;, &quot;roles:*&quot;, &quot;streams:*&quot;, &quot;users:*&quot;, ] } permission は terraform で管理するリソースのみ付与しますが、 それでも結構強い権限を付与するので取扱に注意してください。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/graylog-terraform-ci/" title="Graylog の Terraform を CI/CDで実行する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-06T23:08:04JST">Dec 6, 2018</time></li>
       
       
@@ -341,30 +372,6 @@ https://hub.docker.com/r/suzukishunsuke/go-ci/</div>
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T22:55:57JST">Sep 30, 2018</time></li>
-      
-      
-      <li>31 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/visualize-drone-usage-by-metabase/">metabase を使って drone の利用状況を可視化する</a></h2>
-  </header>
-
-  
-  <div class="summary">drone OSS 0.8.5 で検証しています。
-https://drone.io/ と https://www.metabase.com/ の話です。
-drone の利用状況を可視化したかったので、 drone の DB(MySQL) のデータを metabase で可視化しました。
-どんなグラフを作ったのか いざグラフを作成するとなると、何を作ったらいいのか迷いましたが、以下のようなものをとりあえず作ってみました。
- ユーザー数 有効化されたリポジトリ数 buildの多いリポジトリ buildをよく実行しているユーザー ビルド時間の分布 build event の割合(push, tag, pull request, deployment) リポジトリのsecretsの数の分布  </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -395,6 +402,8 @@ drone の利用状況を可視化したかったので、 drone の DB(MySQL) �
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
+      
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
       <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
@@ -412,8 +421,6 @@ drone の利用状況を可視化したかったので、 drone の DB(MySQL) �
       <a href="https://techblog.szksh.cloud/gitops-skaffold/" class="list-group-item">skaffold を使って GitOps する</a>
       
       <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
-      
-      <a href="https://techblog.szksh.cloud/my-work-2020/" class="list-group-item">2019-10 から今(2020-12-31)に至るまで仕事でやっていること</a>
       
     </div>
   </section>
