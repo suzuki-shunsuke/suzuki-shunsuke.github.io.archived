@@ -60,6 +60,26 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-28T09:28:01JST">Apr 28, 2021</time></li>
+      
+      
+      <li>65 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/">仕事でやったこと 2021-04-01 ~ 2021-04-30</a></h2>
+  </header>
+
+  
+  <div class="summary"> SRE チームの新メンバーのオンボーディングのサポート Lambda の Monorepo  幾つか実際に Function 作った(developer support) 幾つかの Release Strategy の実装・検証  シンプルな GitHub Flow Git Flow をアレンジしたリリースフロー Canary Release WIP: AWS AppConfig を用いた Dark Launch     IAM User の初期パスワード送信の自動化 Terraform  Renovate による Terraform の patch update の自動化 Docker を使ったローカル開発環境の改善 ローカルで terraform init したら .terraform.lock.hcl が更新される問題の対応 https://techblog.szksh.cloud/terraform-providers-lock/   GCP の Terraform 管理  調査 WIP   Conftest  社内の Rego の活用事例をまとめた opa fmt によるフォーマット(CI も導入) Policy Testing (CI も導入)    </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-03-28T23:36:55JST">Mar 28, 2021</time></li>
       
       
@@ -256,27 +276,6 @@
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-29T10:50:11JST">Nov 29, 2020</time></li>
-      
-      
-      <li>110 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2020-01-01-03-31/">仕事でやったこと 2020-01-01 ~ 2020-03-31</a></h2>
-  </header>
-
-  
-  <div class="summary">2020-01-01 から 2020-03-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。
- Monorepo  更新検知のシェルスクリプトを Go でリプレース  CI の修正をリリース前に本番と同じ条件下で検証出来る仕組みを構築した話   CircleCI のコードリストアの改善(コスト削減・高速化)  リポジトリが非常にでかいので全部 checkout, restore すると時間がかかる Job ごとに必要最小限のコードだけをリストアすることで高速化     サーバの OS upgrade Ansible  CI の更新検知で、 PR の label で対象を指定できるようにした(コードに変更がなくてもテストが実行できるようにした)  たまにテストしたいときはある それまではてきとうにコードを修正しないとテストが実行されなかったが、 PR の label で対象の playbook を指定できるようにした   key=value 形式を YAML に変換  https://www.ansible.com/blog/ansible-best-practices-essentials  Use Native YAML Syntax       .circleci/config.yml のリファクタリング  job を parameterize して共通化したり parameterize された command を使って共通化したり コード量の大幅な削減   Terraform  CircleCI の環境変数を設定することで、 master での CI を一時的に禁止できるようにした  State を弄ってたりするときに予期せぬ apply が実行されないようにするため   master branch の CI が終わるまで wait  master の CI が走っている間に PR の CI でまだ apply されていないリソースが差分として出るのを防ぐ   shfmt, shellcheck の導入  CI/CD でシェルスクリプトを書いているので、それらを lint   State Locking の導入 Terraform Cloud の検証  結果、見送り すでに CI/CD pipeline を構築している自分たちにとっては、わざわざ移行するメリットが薄いと判断     MongoDB upgrade Jenkins Alternative の検証  RunDeck Argo Workflows 結局、ローカルで検証した程度    </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -307,6 +306,8 @@
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
+      
       <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
@@ -325,8 +326,6 @@
       
       <a href="https://techblog.szksh.cloud/gitops-skaffold/" class="list-group-item">skaffold を使って GitOps する</a>
       
-      <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
-      
     </div>
   </section>
 
@@ -342,9 +341,9 @@
       
       <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
@@ -365,6 +364,8 @@
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/04" class="list-group-item">2021/04 (4)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/03" class="list-group-item">2021/03 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
@@ -382,8 +383,6 @@
       <a href="https://techblog.szksh.cloud/archives/2020/08" class="list-group-item">2020/08 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/05" class="list-group-item">2020/05 (1)</a>
       
     </div>
   </section>

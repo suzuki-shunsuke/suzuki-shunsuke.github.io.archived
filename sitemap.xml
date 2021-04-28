@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://techblog.szksh.cloud/tags/job/</loc>
+    <lastmod>2021-04-28T09:28:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://techblog.szksh.cloud/</loc>
+    <lastmod>2021-04-28T09:28:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://techblog.szksh.cloud/tags/</loc>
+    <lastmod>2021-04-28T09:28:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://techblog.szksh.cloud/job-2021-04-01-04-30/</loc>
+    <lastmod>2021-04-28T09:28:01+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://techblog.szksh.cloud/tags/github-actions/</loc>
     <lastmod>2021-04-25T16:09:47+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://techblog.szksh.cloud/</loc>
-    <lastmod>2021-04-25T16:09:47+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/</loc>
-    <lastmod>2021-04-25T16:09:47+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://techblog.szksh.cloud/tags/</loc>
     <lastmod>2021-04-25T16:09:47+09:00</lastmod>
   </url>
   
@@ -35,11 +45,6 @@
   <url>
     <loc>https://techblog.szksh.cloud/terraform-module-template/</loc>
     <lastmod>2021-04-03T11:04:25+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://techblog.szksh.cloud/tags/job/</loc>
-    <lastmod>2021-03-28T23:36:55+09:00</lastmod>
   </url>
   
   <url>
@@ -745,6 +750,10 @@
   
   <url>
     <loc>https://techblog.szksh.cloud/archives/2021/03/</loc>
+  </url>
+  
+  <url>
+    <loc>https://techblog.szksh.cloud/archives/2021/04/</loc>
   </url>
   
   <url>

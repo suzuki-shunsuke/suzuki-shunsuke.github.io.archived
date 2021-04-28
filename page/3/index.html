@@ -56,6 +56,27 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-29T10:38:57JST">Nov 29, 2020</time></li>
+      
+      
+      <li>63 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2019-10-01-12-31/">仕事でやったこと 2019-10-01 ~ 2019-12-31</a></h2>
+  </header>
+
+  
+  <div class="summary">2019-10-01 から 2019-12-31 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。
+ Terraform  terraform fmt の導入 Terraform の upgrade v0.11 =&gt; v0.12 State の分割 3 =&gt; 40 弱(正確な数は忘れた) Conftest による lint: Remote Backend のパスを間違えるとまずいので test を導入 新しいサービスを追加するときのための generator (シェルスクリプト)を開発 CODEOWNERS の設定 突撃隣の Terraform リリースブランチをやめて GitHub Flow に移行 古いリビジョンで apply の実行の禁止(CI がこけるようにした)   Ansible  CI の高速化 Jenkins job を CircleCI の scheduled job にリプレース(脱 Jenkins) ローカルでの開発環境の改善  コンテナを使い回せるようにする   goss に置き換えて高速化   CI の改善  高速化(無駄な処理の削減)    </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-07T14:43:10JST">Nov 7, 2020</time></li>
       
       
@@ -320,31 +341,6 @@ task.input は task.when が評価されたあと、 task の command などが�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T20:49:28JST">Oct 17, 2020</time></li>
-      
-      
-      <li>41 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-split-files/">buildflow で設定ファイルを分割する</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
-この記事では buildflow の設定ファイルを分割する方法について説明します。
-buildflow では一部の設定項目について他のファイルのパスを指定して読み込むということが出来ます。 1 つのファイルに全部の設定を書いていると、ファイルが大きくなってメンテナンス性が悪くなったり、 コードオーナーが曖昧になったりするので、そういう場合は分割すると良いでしょう。 コードオーナーが異なる複数のサービスで共通の設定ファイルを用いる場合、ファイルを分割して GitHub の CODEOWNERS を設定するのもよいでしょう。 あまりないかもしれませんが、ファイルを分割すると同じファイルを読み込んで再利用も出来ます。
-また、 Tengo script を独立したファイルに分割すると、 test が可能になります。 Tengo script をテストするためのツールとして tengo-tester というツールも開発しているので、そちらをお使いください。
-以下のようなファイル読み込みの設定があります。
- phase.import task.import: task.input_file task.output_file task.when_file command.command_file command.env[].value_file write_file.template_file  ファイルのパスは、絶対パスか、実行中の build の設定ファイルが存在するディレクトリからの相対パスになります。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -375,6 +371,8 @@ buildflow では一部の設定項目について他のファイルのパスを�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
+      
       <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
@@ -393,8 +391,6 @@ buildflow では一部の設定項目について他のファイルのパスを�
       
       <a href="https://techblog.szksh.cloud/gitops-skaffold/" class="list-group-item">skaffold を使って GitOps する</a>
       
-      <a href="https://techblog.szksh.cloud/fork-tfnotify/" class="list-group-item">tfnotify を fork した</a>
-      
     </div>
   </section>
 
@@ -410,9 +406,9 @@ buildflow では一部の設定項目について他のファイルのパスを�
       
       <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (12)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (11)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
@@ -433,6 +429,8 @@ buildflow では一部の設定項目について他のファイルのパスを�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/04" class="list-group-item">2021/04 (4)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/03" class="list-group-item">2021/03 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
@@ -450,8 +448,6 @@ buildflow では一部の設定項目について他のファイルのパスを�
       <a href="https://techblog.szksh.cloud/archives/2020/08" class="list-group-item">2020/08 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/05" class="list-group-item">2020/05 (1)</a>
       
     </div>
   </section>
