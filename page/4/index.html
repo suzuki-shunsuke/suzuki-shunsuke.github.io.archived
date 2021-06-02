@@ -56,6 +56,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:05:41JST">Oct 17, 2020</time></li>
+      
+      
+      <li>69 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-input-output/">buildflow の task の input, output という機能</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では buildflow の task の input, output という機能について説明します。 task の input, output は Tengo script で task のパラメータを整形する機能です。
+task の command.command や write_file.template など、幾つかの設定では Go の text/template が使えますが、 text/template は複雑なロジックを記述したりするのには向いていません。 そこで task の input で Tengo script を使って必要なデータの整形を行うことで、 template は比較的きれいな状態に保つことが出来ます。
+これは MVC モデルで View とロジックを分離するみたいな考え方と似ているかもしれません。
+output ではコマンドの実行結果を整形することが出来ます。 例えばコマンドの標準出力をユニークな文字列のリストにしたり出来ます。
+task.input は task.when が評価されたあと、 task の command などが実行される前に評価されます。 つまり、 task.when や task.dependency で同じ task の input の結果を参照は出来ません。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T20:49:28JST">Oct 17, 2020</time></li>
       
       
@@ -310,39 +335,6 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-06T16:52:58JST">Jul 6, 2020</time></li>
-      
-      
-      <li>86 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/clap/">clap - 簡単にツールをインストールするためのツールを作った</a></h2>
-  </header>
-
-  
-  <div class="summary">多分車輪の再生産だとは思いますが、簡単にツールをインストールするための CLI ツールを作りました。 tarball や zip をダウンロードして展開して指定したパスにインストールするツールです。
-https://github.com/suzuki-shunsuke/clap
-Go で書かれています。 ツールの名前(clap)には特別な意味や理由はなく、なんとなくです。
-CI で何かしらのツールをインストールすることがままあって、そのためのシェルスクリプトを都度書くのが割と面倒なのでツール化しました。
-このブログを書いている時点でバージョンは v0.1.0-1 で、最低限の機能しかありませんが、9割型ニーズを満たせるかなと思います。
-使い方は以下のようになっています。
-$ clap &lt;URL&gt; &lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt; [&lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt;...] 例えば conftest を /usr/local/bin にインストールする場合次のようになります。
-CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest chmod a+x /usr/local/bin/conftest パーミッションの付与はやってくれないので必要に応じてやってください。 ファイルの圧縮形式は URL から自動で判別してくれます。
-上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。
-#!/usr/bin/env bash  set -eu CONFTEST_VERSION=0.18.2 dirpath=$(mktemp -d) pushd &#34;$dirpath&#34; TARFILE=conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz curl -OL https://github.com/instrumenta/conftest/releases/download/v${CONFTEST_VERSION}/${TARFILE} tar xvzf $TARFILE mv conftest /usr/local/bin/conftest chmod a+x /usr/local/bin/conftest popd rm -R &#34;$dirpath&#34; 地味に面倒ですね。これをツール毎に書いて、しかも圧縮形式によって微妙に変えないといけません。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/clap/" title="clap - 簡単にツールをインストールするためのツールを作った">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -373,6 +365,8 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
+      
       <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
       
       <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
@@ -391,8 +385,6 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
       
       <a href="https://techblog.szksh.cloud/tfmigrator/" class="list-group-item">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a>
       
-      <a href="https://techblog.szksh.cloud/gitops-skaffold/" class="list-group-item">skaffold を使って GitOps する</a>
-      
     </div>
   </section>
 
@@ -406,9 +398,9 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (13)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
       <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
       
@@ -431,6 +423,8 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/05" class="list-group-item">2021/05 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/04" class="list-group-item">2021/04 (4)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/03" class="list-group-item">2021/03 (1)</a>
@@ -448,8 +442,6 @@ CONFTEST_VERSION=0.18.2 clap install https://github.com/instrumenta/conftest/rel
       <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/08" class="list-group-item">2020/08 (1)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/07" class="list-group-item">2020/07 (2)</a>
       
     </div>
   </section>
