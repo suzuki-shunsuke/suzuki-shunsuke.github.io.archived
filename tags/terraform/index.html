@@ -60,6 +60,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-06-24T21:25:24JST">Jun 24, 2021</time></li>
+      
+      
+      <li>337 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/">Terraform で空の AWS Lambda Function を作る方法</a></h2>
+  </header>
+
+  
+  <div class="summary">Terraform で空の AWS Lambda Function を作ろうとした際にちょっとハマったのでやり方を書いておきます。
+「空の Lambda Function」という表現は適切ではないかもしれませんが、 Lambda で実行するコードのデプロイは Terraform 以外のツールでやるけど、 Lambda Function の作成は Terraform で行うので、 dummy のコードを指定して Terraform で Lambda を作るという話です。
+自分は今は lambroll というツールで Lambda をデプロイしています。 lambroll は Lambda Function も作ってくれるので Terraform で作る必要は必ずしもありません。
+しかし Lambda Function に関連するリソースを Terraform で管理する場合、 Lambda Function も Terraform で作ると Lambda Function の ARN や Invoke ARN を参照できます。
+また lambroll でデプロイする場合も先に Terraform で IAM Role を作成する必要がありますが、 Terraform で aws_lambda_permission のようなリソースを作成するには Lambda Function が先に作られている必要があるので、 互いに依存関係が発生し、面倒なことになります。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" title="Terraform で空の AWS Lambda Function を作る方法">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-24T21:57:27JST">Apr 24, 2021</time></li>
       
       
@@ -320,36 +348,6 @@ State Locking とは terraform plan などのコマンドは State を変更す�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-25T22:38:28JST">Jan 25, 2019</time></li>
-      
-      
-      <li>73 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-provider-graylog-import/">Terraform Providerで import を実装する方法</a></h2>
-  </header>
-
-  
-  <div class="summary">terraform provider graylog で alert condition と stream rule の import を実装しました。
- https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
-terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
-https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5
-# &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb 区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
-https://www.terraform.io/docs/providers/google/r/spanner_database.html#import
-https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/terraform-provider-graylog-import/" title="Terraform Providerで import を実装する方法">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -380,6 +378,8 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
+      
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
@@ -398,8 +398,6 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
       
       <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
-      <a href="https://techblog.szksh.cloud/tfmigrator/" class="list-group-item">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a>
-      
     </div>
   </section>
 
@@ -415,9 +413,9 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (13)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (13)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       

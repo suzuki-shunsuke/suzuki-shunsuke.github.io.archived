@@ -56,6 +56,33 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-01-31T14:53:23JST">Jan 31, 2021</time></li>
+      
+      
+      <li>457 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/tfmigrator/">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a></h2>
+  </header>
+
+  
+  <div class="summary">terraformer で雑に生成した Terraform の設定ファイル (以下 tf ファイル) と state を分割したくてツールを書きました。
+tfmigrator
+経緯 miam から Terraform へ移行したい miam というツールで管理されている大量のリソースを Terraform で管理したくなりました。 多くの AWS Resource は Terraform で管理されていますが、 IAM に関しては miam で管理されています。 なぜ Terraform ではなく miam で管理されているかというと、当時のことは自分には分かりませんが、歴史的な経緯もあると思います。 昔は今よりも Terraform の表現力が豊かではなく、 Ruby で自由にかける miam のほうが扱いやすかったとか、 miam だと miam でリソースを管理することを強制できるため、権限管理を厳格にやるという観点では都合が良いという点もあるかと思います。
+ではなぜ Terraform で管理したくなったかというと、 一番大きな理由は miam で頻繁に rate limit に引っかかるようになったからです。 Terraform にしろ miam にしろ CI/CD で test, apply が実行されるようになっています。 miam では毎回全部のリソースを対象に処理が実行されるため、リソースの数が増えるにつれて rate limit に引っかかりやすくなります。 CI を rerun すれば成功するのですが、悪いときは 3 回連続で rate limit に引っかかり、 4 回目でようやく成功するということもありました。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/tfmigrator/" title="terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-01-11T16:24:44JST">Jan 11, 2021</time></li>
       
       
@@ -290,27 +317,6 @@ Hands on の題材として Docker コンテナを作ったりできたらいい
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-29T11:20:07JST">Nov 29, 2020</time></li>
-      
-      
-      <li>59 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2020-04-01-06-30/">仕事でやったこと 2020-04-01 ~ 2020-06-30</a></h2>
-  </header>
-
-  
-  <div class="summary">2020-04-01 から 2020-06-30 にかけて仕事でやったことを書きます。 勿論全部は書けないのでいくつかピックアップして書きます。
- Monorepo  CI で kustomize build の diff を PR にコメント Conftest で k8s manifest の validation の導入 Go で書かれた差分検知のコードのリファクタリング CI の高速化・コスト削減   GitOps  GitOps を導入するためのツールの開発のサポート   Terraform  input variables を local value に置き換え   GuardDuty の導入  Terraform で IaC False Positive なアラートが多くてハンドリングできてない   ブログの執筆  CI の修正をリリース前に本番と同じ条件下で検証出来る仕組みを構築した話   Argo Workflows の検証 MongoDB Atlas への移行サポート  Go で Restore Job の開発 オペレーション    </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -341,6 +347,8 @@ Hands on の題材として Docker コンテナを作ったりできたらいい
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
+      
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
@@ -359,8 +367,6 @@ Hands on の題材として Docker コンテナを作ったりできたらいい
       
       <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
-      <a href="https://techblog.szksh.cloud/tfmigrator/" class="list-group-item">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a>
-      
     </div>
   </section>
 
@@ -376,9 +382,9 @@ Hands on の題材として Docker コンテナを作ったりできたらいい
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (13)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (13)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       

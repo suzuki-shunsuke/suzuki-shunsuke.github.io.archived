@@ -56,6 +56,40 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-20T12:27:26JST">Jan 20, 2019</time></li>
+      
+      
+      <li>154 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/downgrade-github-plan/">GithubをFree Planにダウングレードした</a></h2>
+  </header>
+
+  
+  <div class="summary">GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。
+https://github.blog/2019-01-07-new-year-new-github/
+そこで無料プランにダウングレードすることにしました。
+ https://help.github.com/articles/downgrading-your-github-billing-plan/ https://blog.jnito.com/entry/2019/01/09/081913  無料プランではwikiはpublic repositoryでしか使えないので、 private repository の wiki を 移行することにしました。
+private なソースコード(サービス)のためのwikiではなく、 個人的なメモが書いてあるだけだったので移行することに特に問題はありませんでした。
+全 private repository の wiki を clone そこでまずはそういった wiki を clone して一つのリポジトリにまとめることにしました。
+https://github.com/suzuki-shunsuke/foo の wiki は https://github.com/suzuki-shunsuke/foo.wiki で clone できます。
+次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。
+https://developer.github.com/v3/repos/#list-your-repositories
+curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&#34; | jq -r &#39;.[].html_url&#39; | xargs -I{} -n 1 git clone {}.wiki wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。
+また /user/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/downgrade-github-plan/" title="GithubをFree Planにダウングレードした">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-25T21:51:41JST">Dec 25, 2018</time></li>
       
       
@@ -362,28 +396,6 @@ https://www.vagrantup.com/docs/docker/basics.html#host-vm
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-10T21:14:03JST">Oct 10, 2018</time></li>
-      
-      
-      <li>20 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/migrate-to-user-gh-pages/">Project site を User site に移行しました (GitHub Pages)</a></h2>
-  </header>
-
-  
-  <div class="summary">なんとなく試験的に Project site でホスティングしていた GitHub Pages を User site に移行しました。
-source code は source branch にあります。
-CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書きましたが参考になる部分もあるかもしれません。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -414,6 +426,8 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
+      
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
@@ -432,8 +446,6 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
       
       <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
-      <a href="https://techblog.szksh.cloud/tfmigrator/" class="list-group-item">terraformer で雑に生成した tf ファイル と state を分割したくてツールを書いた</a>
-      
     </div>
   </section>
 
@@ -449,9 +461,9 @@ CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書�
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (13)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (13)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (12)</a>
+      <a href="https://techblog.szksh.cloud/tags/buildflow" class="list-group-item">buildflow (12)</a>
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
