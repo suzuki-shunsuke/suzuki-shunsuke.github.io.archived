@@ -56,6 +56,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:16:28JST">Sep 30, 2018</time></li>
+      
+      
+      <li>23 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-build-timeout/">drone の build の timeout が変更できない</a></h2>
+  </header>
+
+  
+  <div class="summary">drone 0.8.5 で検証しています。
+drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
+ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
+PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
+ https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:44:27JST">Sep 30, 2018</time></li>
       
       
@@ -213,6 +237,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
+      
       <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
@@ -230,8 +256,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
     </div>
   </section>
@@ -271,6 +295,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/06" class="list-group-item">2021/06 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/05" class="list-group-item">2021/05 (1)</a>
@@ -288,8 +314,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
     </div>
   </section>

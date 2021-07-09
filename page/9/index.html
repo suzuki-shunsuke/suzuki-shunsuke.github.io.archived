@@ -56,6 +56,47 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-12T21:02:51JST">Oct 12, 2018</time></li>
+      
+      
+      <li>92 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/test-ansible-on-docker/">Dockerを使ってansible playbookをテストする</a></h2>
+  </header>
+
+  
+  <div class="summary">ansible playbookを(VMの代わりに)Dockerコンテナに対して実行すると、効率よく動作確認できるというお話です。 ansible playbookの動作確認のためにvagrantでVMを起動したりしていると動作確認に時間がかかるし、容量も喰います。 Dockerコンテナを使って動作確認できればこれらの問題を解決できます。
+ただし、Dockerコンテナの場合、一部のansible のtaskが失敗することがあるので ansible playbookによってはDockerコンテナではテストにならない場合もあるかと思います。
+サンプル https://github.com/suzuki-shunsuke/example/tree/master/ansible/test-on-docker
+簡単なサンプルを用意しました。
+ansible playbookに加え、
+ docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。
+$ bash test_docker.sh とすることで動作確認できます。
+説明 スクリプトでやっていることは
+ Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。
+Docker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。
+ https://docs.ansible.com/ansible/2.6/plugins/connection.html https://docs.ansible.com/ansible/2.6/plugins/connection/docker.html  また、Docker Hubで公開されている多くのDockerイメージのUSERは root ですが、 ansible playbookの動作確認としては都合が悪かったりします。
+そこで自分は非rootユーザーを作成したDocker Imageを使っています。
+https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
+関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。
+Vagrant Docker Provider https://www.vagrantup.com/docs/docker/
+なんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。
+https://www.vagrantup.com/docs/docker/basics.html#host-vm
+ By default, the host VM Vagrant spins up is backed by boot2docker, because it launches quickly and uses little resources.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/test-ansible-on-docker/" title="Dockerを使ってansible playbookをテストする">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-10T21:14:03JST">Oct 10, 2018</time></li>
       
       
@@ -276,30 +317,6 @@ limitAxis = 25 axisList := []Axis{} for p := 0; p &lt; perm; p++ { axisList = ap
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:16:28JST">Sep 30, 2018</time></li>
-      
-      
-      <li>23 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-build-timeout/">drone の build の timeout が変更できない</a></h2>
-  </header>
-
-  
-  <div class="summary">drone 0.8.5 で検証しています。
-drone の build の タイムアウトの設定はリポジトリの settings から変更できそうですが、 実は drone の admin しか変更できません。
-ブラウザのデベロッパーツールを使うと、この Timeout の設定を変更した際に
-PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そこからコードを追いかけると分かります。
- https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/router/router.go#L109 https://github.com/drone/drone/blob/29785b86f6534ded974120de0fcf7c21397a9d0d/server/repo.go#L117  </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -330,6 +347,8 @@ PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そ�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
+      
       <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
@@ -347,8 +366,6 @@ PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そ�
       <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
     </div>
   </section>
@@ -388,6 +405,8 @@ PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そ�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/06" class="list-group-item">2021/06 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/05" class="list-group-item">2021/05 (1)</a>
@@ -405,8 +424,6 @@ PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そ�
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
     </div>
   </section>

@@ -6,7 +6,34 @@
     <description>Recent content in Tags on melody</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language>
-    <lastBuildDate>Thu, 24 Jun 2021 21:25:24 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Jul 2021 19:38:55 +0900</lastBuildDate><atom:link href="https://techblog.szksh.cloud/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>conftest</title>
+      <link>https://techblog.szksh.cloud/tags/conftest/</link>
+      <pubDate>Fri, 09 Jul 2021 19:38:55 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/tags/conftest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>opa</title>
+      <link>https://techblog.szksh.cloud/tags/opa/</link>
+      <pubDate>Fri, 09 Jul 2021 19:38:55 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/tags/opa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rego</title>
+      <link>https://techblog.szksh.cloud/tags/rego/</link>
+      <pubDate>Fri, 09 Jul 2021 19:38:55 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/tags/rego/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>lambda</title>
       <link>https://techblog.szksh.cloud/tags/lambda/</link>

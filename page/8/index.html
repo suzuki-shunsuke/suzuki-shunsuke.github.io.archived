@@ -56,6 +56,36 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-25T22:38:28JST">Jan 25, 2019</time></li>
+      
+      
+      <li>73 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-provider-graylog-import/">Terraform Providerで import を実装する方法</a></h2>
+  </header>
+
+  
+  <div class="summary">terraform provider graylog で alert condition と stream rule の import を実装しました。
+ https://github.com/suzuki-shunsuke/go-graylog/pull/59 https://github.com/suzuki-shunsuke/go-graylog/pull/60  そこで import を実装する方法を紹介したいと思います。
+terraform でリソースをimportするにはリソースがimportをサポートしている必要があります。 schema.Resource の Importer フィールドですね。リソースがIDだけでGet出来る場合、schema.ImportStatePassthroughを使えば終わりです。 一方、Graylogのalert condition や stream rule はIDだけでなく、stream id も必要になります。 terraform import コマンドは1つの引数しか取らないため、サポートできないのでは？と以前まで思っていました。 そういった場合、次のようにStateFuncを実装すればサポートできます。
+https://github.com/suzuki-shunsuke/go-graylog/pull/59/commits/baee1165f49d2bc21b6ea7551ceff6b7daf01543#diff-f41be2a3640efd12ad4e808d77c5c8d5
+# &quot;/&quot; で区切って stream id と ID を渡す $ terraform import graylog_alarm_callback.test 5bb1b4b5c9e77bbbbbbbbbbb/5c4acaefc9e77bbbbbbbbbbb 区切り文字は何でも良いのでしょうが、公式のprovider が &ldquo;/&rdquo; で区切っていたのでそれに従うことにしました。
+https://www.terraform.io/docs/providers/google/r/spanner_database.html#import
+https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassthrough の実装を見てみれば分かりますが、 StateFunc の中では GET API を叩いてリソースを取得したりはしません。 terraform import コマンドの標準出力を見ると分かりますが refresh を実行しているのでそこでGETしているようです。 StateFunc は *schema.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/terraform-provider-graylog-import/" title="Terraform Providerで import を実装する方法">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-20T12:27:26JST">Jan 20, 2019</time></li>
       
       
@@ -355,47 +385,6 @@ https://github.com/suzuki-shunsuke/gomic/releases からバイナリをダウン
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-12T21:02:51JST">Oct 12, 2018</time></li>
-      
-      
-      <li>92 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/test-ansible-on-docker/">Dockerを使ってansible playbookをテストする</a></h2>
-  </header>
-
-  
-  <div class="summary">ansible playbookを(VMの代わりに)Dockerコンテナに対して実行すると、効率よく動作確認できるというお話です。 ansible playbookの動作確認のためにvagrantでVMを起動したりしていると動作確認に時間がかかるし、容量も喰います。 Dockerコンテナを使って動作確認できればこれらの問題を解決できます。
-ただし、Dockerコンテナの場合、一部のansible のtaskが失敗することがあるので ansible playbookによってはDockerコンテナではテストにならない場合もあるかと思います。
-サンプル https://github.com/suzuki-shunsuke/example/tree/master/ansible/test-on-docker
-簡単なサンプルを用意しました。
-ansible playbookに加え、
- docker-compose.yml test_docker.sh: 簡単なシェルスクリプト  を作成してあります。
-$ bash test_docker.sh とすることで動作確認できます。
-説明 スクリプトでやっていることは
- Docker Compose でコンテナを起動 コンテナのIDを取得し、inventory ファイルを作成 Docker Connection Pluginを使ってコンテナにplaybookを実行  です。
-Docker Connection Plugin を使うとDockerコンテナに対してansible playbookを実行できます。
- https://docs.ansible.com/ansible/2.6/plugins/connection.html https://docs.ansible.com/ansible/2.6/plugins/connection/docker.html  また、Docker Hubで公開されている多くのDockerイメージのUSERは root ですが、 ansible playbookの動作確認としては都合が悪かったりします。
-そこで自分は非rootユーザーを作成したDocker Imageを使っています。
-https://hub.docker.com/r/suzukishunsuke/ansible-test-centos/
-関係ありそうなツール 今回は簡単なスクリプトとdocker-compose.ymlを用意しましたが、 もっとイケてるやり方がありそうなものです。
-Vagrant Docker Provider https://www.vagrantup.com/docs/docker/
-なんかあまり使えなさそうです。 Linux以外だと結局VMが必要で、既に非推奨な boot2docker をデフォルトでは使うらしくだめそうだなって思いました。 あまり調べてません。
-https://www.vagrantup.com/docs/docker/basics.html#host-vm
- By default, the host VM Vagrant spins up is backed by boot2docker, because it launches quickly and uses little resources.</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/test-ansible-on-docker/" title="Dockerを使ってansible playbookをテストする">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -426,6 +415,8 @@ https://www.vagrantup.com/docs/docker/basics.html#host-vm
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
+      
       <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
@@ -443,8 +434,6 @@ https://www.vagrantup.com/docs/docker/basics.html#host-vm
       <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
     </div>
   </section>
@@ -484,6 +473,8 @@ https://www.vagrantup.com/docs/docker/basics.html#host-vm
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/06" class="list-group-item">2021/06 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/05" class="list-group-item">2021/05 (1)</a>
@@ -501,8 +492,6 @@ https://www.vagrantup.com/docs/docker/basics.html#host-vm
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
     </div>
   </section>

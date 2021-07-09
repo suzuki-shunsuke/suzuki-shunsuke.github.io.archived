@@ -56,6 +56,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-08-02T13:21:37JST">Aug 2, 2020</time></li>
+      
+      
+      <li>159 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/codebuild-1/">AWS CodeBuild 良さそう</a></h2>
+  </header>
+
+  
+  <div class="summary">AWS CodeBuild を検証しているんですが、結構良いですね。 現状 Jenkins や CircleCI で実行しているジョブや CI/CD を一部移行したいなと思いました。
+一部と言っているのは、単純に全部いきなり移行するのは難しいから共存する前提で考えるくらいの意味です。
+なお、これを書いている時点ではまだ軽く検証しているだけなので、CodeBuild の理解は浅いです。
+特徴としては
+ Managed AWS 以外のサービスに AWS の credential を登録しなくて良い  Secret を AWS Secrets Manager で管理できる Secret を至るところに設定するのではなく、 AWS Secrets Manager か何かで一元管理するのが理想 Role 作って Build Project の Service Role として指定するだけなら credential を扱う必要がなくて楽で安心   VPC 内で実行できる GitHub 連携も簡単  Webhook の設定で PR の細かなイベント(merge とか reopen とか)に対応しているのも良い PR を merge したときも PR で変更されたファイルによって Webhook をフィルタできるのが良い   変更されたファイルによって実行するBuild Project を変更するようなロジックを実現できる(monorepo で特に有効)  といった点が挙げられます。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/codebuild-1/" title="AWS CodeBuild 良さそう">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-31T20:42:54JST">Jul 31, 2020</time></li>
       
       
@@ -334,38 +362,6 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-10T18:31:05JST">Nov 10, 2019</time></li>
-      
-      
-      <li>180 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/mobreview/">モブレビューやっていきたい</a></h2>
-  </header>
-
-  
-  <div class="summary">最近モブレビュー取り入れたいと感じていて、なんで取り入れたいかなどについて書いてみました。 モブレビュー自体まだ 2, 3 回しかやってないので説得力にかけますが、ご容赦ください。
-想定  チームは 6 人以下 Pull Request (以下 PR) をマージするには必ず他の誰かが approve しないといけない  目的  チーム内の情報共有  属人化の解消 退職や異動などによる情報の喪失(誰も分からない状態)を防ぐ チーム外の人とのコミュニケーションにも活用できる   レビュー待ちの短縮 レビューの品質の改善 仕事を評価してもらうことで承認欲求を満たす オンボーディングの改善  レビューを通じて必要な知識を吸収してもらう オンボーディングに限ったことではないが、オンボーディングにも有効ではないか   最後までやりきる  箇条書した内容を補足します。
-情報共有 属人化の解消は結構重要だと自分は思っていて、特定の人じゃないと出来ないこと、わからないことというのは ボトルネックや技術的負債だったり、障害対応時に致命的になりかねません(深夜に障害が起こってAさんに聞かないとわからないのに、Aさんと連絡が取れないとか最悪)。 チーム全員とはいかなくても 3 人ぐらいは出来る・分かってる必要があるかなと思います。
-まぁ、当初は 3 人ぐらい分かってても、時間が経って異動やら退職やらで気づいたら分かっている人いなくなってたというのは ありえなくないので、そういったリスクをどうやって防ぐかというのは考える必要がありますが、今回の話とは外れるので割愛します。
-また、チーム外の人とのコミュニケーションにも活用できると思っていて、 例えばランチや飲み会でチーム外の人とのコミュニケーションを取る際に自分のチームの他の人が対応した件とかが話題に上がったときに ちゃんと情報共有できてないと、自分は担当外なので分かりませんとなってしまうでしょう。 知っていればむしろ自分から話題にできるかもしれません。 そこから発展して更に新しいタスクの話もできるかもしれません。
-レビューの改善 せっかくいい仕事をしても中々レビューしてもらえないとなると不満がたまります。 モブレビューを実施することでレビューを促進し、レビュー待ちの時間を短くできることを期待します。 レビューしたくても良くわからなくてレビューできないというパターンもあると思うので、 わからない部分をモブレビューで解消されてレビューが進むと良いですね。
-また、ちゃんと複数人でレビューすることで目先の問題を解決するだけの本質的でない問題解決を防ぐことが出来ることもあると思います。 「いや、それそもそもPRの前提がおかしくない？前提となっている仕様を見直すべきなのでは」 みたいなこともあるかもしれません。
-仕事を評価してもらうことで承認欲求を満たす いい仕事したら他の人にも知ってもらいたいというのは自然なことでしょう。 いい仕事を褒めるのは良いチーム・環境であり働きやすさというところにつながるのではないでしょうか。
-ちなみに現職だと Slack で他のチームにも共有して emoji で褒め称えるというのが結構やられていて 気持ちのいい環境だなと思っています。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/mobreview/" title="モブレビューやっていきたい">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -396,6 +392,8 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
+      
       <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
@@ -413,8 +411,6 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
       <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2020-12-01-12-31/" class="list-group-item">仕事でやったこと 2020-12-01 ~ 2020-12-31</a>
       
     </div>
   </section>
@@ -454,6 +450,8 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/06" class="list-group-item">2021/06 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/05" class="list-group-item">2021/05 (1)</a>
@@ -471,8 +469,6 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/09" class="list-group-item">2020/09 (1)</a>
       
     </div>
   </section>
