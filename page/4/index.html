@@ -56,6 +56,38 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:13:48JST">Oct 18, 2020</time></li>
+      
+      
+      <li>139 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-pr-info/">buildflow が自動で取得する Pull Request の情報</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では buildflow が自動で Pull Request (以下 PR) の情報を取得してくる機能について説明します。
+この機能は GitHub のみサポートしています。 GitLab や BitBucket はサポートしていません。 これは単純に自分が GitHub しか使わないからです。
+PR の CI では
+ 変更されたものだけテストする 特定の PR ラベルがついていたら実行する 特定のユーザーの PR だけ処理を変える(bot とか)  のように PR の情報に基づいて挙動を変えたくなったりします。
+シェルスクリプトで GitHub API 叩いて情報とってきて jq でパースしてとか、頑張れば別にできるんですが、 毎回そういうコードを書きたくないなと感じていました。
+なお、 PR の情報をとってくる機能はデフォルトで無効化されています(GitHub Access Token 必要ですしね)。 設定で pr: true を指定してください。
+PR の情報をとってくるには、以下の情報が必要です。
+ repository owner: 設定ファイルで owner を設定するか、自動取得。 owner を設定してある場合はそちらが優先される repository name: 設定ファイルで repo を設定するか、自動取得。 repo を設定してある場合はそちらが優先される pull request number: 自動取得 GitHub Access Token: 環境変数 GITHUB_TOKEN または GITHUB_ACCESS_TOKEN を指定してください  取得される情報 以下のパラメータがテンプレートや Tengo script に渡されます。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/buildflow-pr-info/" title="buildflow が自動で取得する Pull Request の情報">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T22:35:56JST">Oct 17, 2020</time></li>
       
       
@@ -307,35 +339,6 @@ $ buildflow run ============== = Phase: main = ============== 07:50:46UTC | hell
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-09-12T08:05:59JST">Sep 12, 2020</time></li>
-      
-      
-      <li>146 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/post-tfnotify-parse-error/">tfnotify の parse error を通知する</a></h2>
-  </header>
-
-  
-  <div class="summary">tfnotify が terraform の標準出力のパースに失敗してコメントを投稿できないことがあります。
-コメントを投稿できなくてもビルドのログには残るのですが、やはりコメントを投稿できると便利なので、tfnotify がパースエラーでコメントの投稿に失敗したら、 github-comment でコメントを投稿するようにしました。
-なお、この記事を書いている時点のバージョンは tfnotify v0.7.0, github-comment v1.9.0 です。
-例えば tfnotify plan がパースエラーになった場合、 cannot parse plan result というメッセージが標準エラー出力されます。 そこで標準エラー出力に cannot parse plan result が含まれていたら github-comment でコメントするようにします。
-terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.yml
-# 細かく template を分けているが、別に分けなくてもよい templates: # header は CodeBuild の場合 header: &#39;{{Env &#34;TARGET&#34;}} [Build link]({{Env &#34;CODEBUILD_BUILD_URL&#34;}})&#39; exit_code: &#39;:{{if eq .ExitCode 0}}white_check_mark{{else}}x{{end}}: Exit Code {{.ExitCode}}&#39; join_command: |``` $ {{.JoinCommand}} ``` hidden_combined_output: |&lt;details&gt; &lt;pre&gt;&lt;code&gt;{{.</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/post-tfnotify-parse-error/" title="tfnotify の parse error を通知する">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -366,6 +369,8 @@ terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.ym
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
+      
       <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
       
       <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
@@ -384,8 +389,6 @@ terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.ym
       
       <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
       
-      <a href="https://techblog.szksh.cloud/job-2021-01-01-01-31/" class="list-group-item">仕事でやったこと 2021-01-01 ~ 2021-01-31</a>
-      
     </div>
   </section>
 
@@ -399,7 +402,7 @@ terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.ym
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (13)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (14)</a>
       
       <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (13)</a>
       
@@ -424,7 +427,7 @@ terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.ym
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/06" class="list-group-item">2021/06 (1)</a>
       

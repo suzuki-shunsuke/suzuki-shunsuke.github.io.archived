@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language><atom:link href="https://techblog.szksh.cloud/archives/2021/07/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>仕事でやったこと 2021-06-01 ~ 2021-06-30</title>
+      <link>https://techblog.szksh.cloud/job-2021-06-01-06-30/</link>
+      <pubDate>Tue, 13 Jul 2021 05:47:11 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/job-2021-06-01-06-30/</guid>
+      <description> GCP を Terraform で管理するための developer support miam を Terraform に移行 Docker Hub から ECR への移行  </description>
+    </item>
+    
+    <item>
       <title>OPA で Table Driven Tests っぽいことをしてみる</title>
       <link>https://techblog.szksh.cloud/opa-table-driven-test/</link>
       <pubDate>Fri, 09 Jul 2021 19:38:55 +0900</pubDate>

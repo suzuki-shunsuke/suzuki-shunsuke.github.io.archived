@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://techblog.szksh.cloud/drone-cant-use-nonroot-image/">
+<link rel="canonical" href="https://techblog.szksh.cloud/job-2021-06-01-06-30/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>drone で非rootユーザーで実行されるImageを使えない - melody</title>
+    <title>仕事でやったこと 2021-06-01 ~ 2021-06-30 - melody</title>
     
-<meta name="description" content="drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。/bin/sh: 3: cannot create /root/.netrc: Permission denied これについては drone の開発者が回答しています。 https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。">
+<meta name="description" content=" GCP を Terraform で管理するための developer support miam を Terraform に移行 Docker Hub から ECR への移行  ">
 
-<meta property="og:title" content="drone で非rootユーザーで実行されるImageを使えない - melody">
+<meta property="og:title" content="仕事でやったこと 2021-06-01 ~ 2021-06-30 - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://techblog.szksh.cloud/drone-cant-use-nonroot-image/">
+<meta property="og:url" content="https://techblog.szksh.cloud/job-2021-06-01-06-30/">
 <meta property="og:image" content="https://techblog.szksh.cloud/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。/bin/sh: 3: cannot create /root/.netrc: Permission denied これについては drone の開発者が回答しています。 https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。">
+<meta property="og:description" content=" GCP を Terraform で管理するための developer support miam を Terraform に移行 Docker Hub から ECR への移行  ">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://techblog.szksh.cloud/drone-cant-use-nonroot-image/">
-<meta name="twitter:title" content="drone で非rootユーザーで実行されるImageを使えない - melody">
-<meta name="twitter:description" content="drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。/bin/sh: 3: cannot create /root/.netrc: Permission denied これについては drone の開発者が回答しています。 https://discourse.drone.io/t/solved-netrc-permission-denied/171/2 https://discourse.drone.io/t/solved-netrc-permission-denied/171/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。">
+<meta name="twitter:url" content="https://techblog.szksh.cloud/job-2021-06-01-06-30/">
+<meta name="twitter:title" content="仕事でやったこと 2021-06-01 ~ 2021-06-30 - melody">
+<meta name="twitter:description" content=" GCP を Terraform で管理するための developer support miam を Terraform に移行 Docker Hub から ECR への移行  ">
 <meta name="twitter:image" content="https://techblog.szksh.cloud/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/techblog.szksh.cloud\/"
     },
-    "headline": "drone で非rootユーザーで実行されるImageを使えない - melody",
+    "headline": "仕事でやったこと 2021-06-01 ~ 2021-06-30 - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/techblog.szksh.cloud\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2018-09-30T21:42:16JST",
-    "dateModified": "2018-09-30T21:42:16JST",
+    "datePublished": "2021-07-13T05:47:11JST",
+    "dateModified": "2021-07-13T05:47:11JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。\n\/bin\/sh: 3: cannot create \/root\/.netrc: Permission denied これについては drone の開発者が回答しています。\n https:\/\/discourse.drone.io\/t\/solved-netrc-permission-denied\/171\/2 https:\/\/discourse.drone.io\/t\/solved-netrc-permission-denied\/171\/4  結論を言うと、 他のイメージを使うか、 rootで実行されるようにイメージを修正する必要がありそうです。"
+    "description": " GCP を Terraform で管理するための developer support miam を Terraform に移行 Docker Hub から ECR への移行  "
   }
 </script>
 
@@ -107,42 +107,60 @@
       <ol class="breadcrumb">
         <li><a href="https://techblog.szksh.cloud/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">drone で非rootユーザーで実行されるImageを使えない</li>
+        <li class="active">仕事でやったこと 2021-06-01 ~ 2021-06-30</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:42:16JST">Sep 30, 2018</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-07-13T05:47:11JST">Jul 13, 2021</time></li>
       
       
-      <li>18 Words</li>
+      <li>15 Words</li>
       
       
     </ul>
 
-    <h1 class="title">drone で非rootユーザーで実行されるImageを使えない</h1>
+    <h1 class="title">仕事でやったこと 2021-06-01 ~ 2021-06-30</h1>
     
+    
+    <section>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://techblog.szksh.cloud/tags/job/">job</a></li>
+          
+        </ul>
+      </div>
+    </section>
     
   </header>
 
   
 
-  <div class="article-body"><p>drone で非rootユーザーで実行されるDocker Imageを使おうとするとbuildに失敗します。</p>
-<pre><code>/bin/sh: 3: cannot create /root/.netrc: Permission denied
-</code></pre><p>これについては drone の開発者が回答しています。</p>
-<ul>
-<li><a href="https://discourse.drone.io/t/solved-netrc-permission-denied/171/2">https://discourse.drone.io/t/solved-netrc-permission-denied/171/2</a></li>
-<li><a href="https://discourse.drone.io/t/solved-netrc-permission-denied/171/4">https://discourse.drone.io/t/solved-netrc-permission-denied/171/4</a></li>
+  <div class="article-body"><ul>
+<li>GCP を Terraform で管理するための developer support</li>
+<li>miam を Terraform に移行</li>
+<li>Docker Hub から ECR への移行</li>
 </ul>
-<p>結論を言うと、
-他のイメージを使うか、
-rootで実行されるようにイメージを修正する必要がありそうです。</p>
 </div>
 
   <footer class="article-footer">
     
+    
+    <section class="bordered">
+      <header>
+        <div class="panel-title">TAGS</div>
+      </header>
+      <div>
+        <ul class="p-terms">
+          
+          <li><a href="https://techblog.szksh.cloud/tags/job/">job</a></li>
+          
+        </ul>
+      </div>
+    </section>
     
   </footer>
 
