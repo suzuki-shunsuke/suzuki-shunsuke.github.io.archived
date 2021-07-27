@@ -56,6 +56,28 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-10T17:49:58JST">Feb 10, 2019</time></li>
+      
+      
+      <li>46 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/golang-good-point/">Golang の好きなところ</a></h2>
+  </header>
+
+  
+  <div class="summary">自分は 2017/8頃(曖昧)からメインで書く言語をPythonからGolangに変更しました。 Goを書き始めて割と早い段階でGoが一番好きになりました。 そこでなんで Go が好きなのかということを頑張って言語化しようと思います。
+若干他の言語と比較する部分もありますが、決して他の言語をディスったり、 他の言語より優れているということが言いたいわけではないのでご了承ください。
+ 依存するものが小さく、バイナリ1つインストールするだけで良い  Prometheus の exporter とかインストールするの簡単 Docker Imageも最小限になる   静的型付け  ビルド出来ている時点で一定の信頼性が担保されている よく知らないコードを読んだり修正するときとかだいぶ有り難い   GoDocが素晴らしい  何もしなくてもライブラリのドキュメントが出来上がっている   ライブラリの公開が容易  GitHubに公開するだけ npm や pypi のようなレジストリがないので楽   go test とか go vet, gofmt みたいに標準ツールが揃っている コーディング規約で悩む必要がない lintツールが充実している  gometalinter とか使っておけば OK lintできる環境を構築するのにそこまで頑張らなくて良い   エラーハンドリングが暗黙的に省略できないので信頼性が高い  Goのエラーハンドリング嫌いって人もいるし、v2で改善されるって話も聞くけど、自分はむしろ好き(面倒なのは理解できるけど)   言語仕様がシンプル(客観的な根拠はないし、難しい部分もあるけど、そんな気がする)  メタプログラミング使った、魔術的なコードになりにくい   interface 使ってコードを疎結合にするのが書いてて気持ちいい 並列処理が書きやすい  </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-01T22:26:13JST">Feb 1, 2019</time></li>
       
       
@@ -349,41 +371,6 @@ http://docs.graylog.org/en/2.5/pages/users_and_roles/external_auth.html
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-31T08:56:04JST">Oct 31, 2018</time></li>
-      
-      
-      <li>156 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/akoi/">akoi - binary installer</a></h2>
-  </header>
-
-  
-  <div class="summary">自作のOSS akoi の紹介をします。
- なぜこんなものを作ったのか akoi と ansible を使ってサーバにバイナリをインストールする方法  について主に説明します。
-まとめ  akoi はバイナリファイルのインストーラ 設定ファイルで管理できる 冪等であり、効率よくインストールできる  並列インストール Accept-Ranges による分散ダウンロード   ansibleでサーバにバイナリをインストールするのを補助してくれる  ansible で真面目にバージョンコントロールして効率よくインストールするのは難しい(ほとんどの ansible role は出来ていない)    akoi とは akoi はバイナリファイルのインストーラです。 設定ファイルにインストールするファイルのダウンロードURLとインストール先を記述して管理します。 インストールするバイナリのバージョン管理が可能であり、既にインストールしてあるバージョンへの切り替えはシンボリックを作り直すだけなので一瞬で終わります。無駄にダウンロードをしたりはしません。 複数のバイナリを並列でインストールしたり、Accept-Ranges ヘッダによる分散ダウンロードをサポートしています。
-分散ダウンロードについては
-https://qiita.com/codehex/items/d0a500ac387d39a34401
-が参考になります。
-Goで書かれています。
-https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウンロードしてインストールできます。
-詳細はREADMEを読んでください。
-なぜ作ったのか サーバにバイナリをインストールする ansible role を書くのが辛かったからです。 最近は色々なソフトウェアがGoで書かれ、バイナリで配布されています。 そういったバイナリをサーバへインストールするのは ansible で行っているという方も少なくないのではないでしょうか？ 有名なソフトウェアをインストールする ansible role は大抵Ansible Galaxy で公開されています。
-しかし、ほとんどの role は「真面目に」バージョン管理していません。 ここでいう「真面目に」とは
- バージョンを指定できる バージョンを変更できる 指定したバージョンが既にインストールされている場合は無駄にダウンロードしたりしない  といったことです。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/akoi/" title="akoi - binary installer">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -414,6 +401,8 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
       
       <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
@@ -432,8 +421,6 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
       
       <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
       
-      <a href="https://techblog.szksh.cloud/job-2021-02-01-02-28/" class="list-group-item">仕事でやったこと 2021-02-01 ~ 2021-02-28</a>
-      
     </div>
   </section>
 
@@ -443,11 +430,11 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (33)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (34)</a>
+      
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
-      
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (14)</a>
       
       <a href="https://techblog.szksh.cloud/tags/terraform" class="list-group-item">terraform (13)</a>
       
@@ -472,7 +459,7 @@ https://github.com/suzuki-shunsuke/akoi/releases からバイナリをダウン�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/06" class="list-group-item">2021/06 (1)</a>
       
