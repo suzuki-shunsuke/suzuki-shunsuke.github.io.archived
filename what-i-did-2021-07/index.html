@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>2021-07 やったこと - melody</title>
     
-<meta name="description" content="今まで仕事に限定して書いてきたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書く。仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https://gist.github.com/suzuki-shunsuke/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。">
+<meta name="description" content="今まで仕事に限定して書いてきましたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書きます。仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https://gist.github.com/suzuki-shunsuke/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。">
 
 <meta property="og:title" content="2021-07 やったこと - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://techblog.szksh.cloud/what-i-did-2021-07/">
 <meta property="og:image" content="https://techblog.szksh.cloud/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="今まで仕事に限定して書いてきたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書く。仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https://gist.github.com/suzuki-shunsuke/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。">
+<meta property="og:description" content="今まで仕事に限定して書いてきましたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書きます。仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https://gist.github.com/suzuki-shunsuke/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://techblog.szksh.cloud/what-i-did-2021-07/">
 <meta name="twitter:title" content="2021-07 やったこと - melody">
-<meta name="twitter:description" content="今まで仕事に限定して書いてきたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書く。仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https://gist.github.com/suzuki-shunsuke/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。">
+<meta name="twitter:description" content="今まで仕事に限定して書いてきましたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書きます。仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https://gist.github.com/suzuki-shunsuke/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。">
 <meta name="twitter:image" content="https://techblog.szksh.cloud/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "今まで仕事に限定して書いてきたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書く。\n仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https:\/\/gist.github.com\/suzuki-shunsuke\/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。"
+    "description": "今まで仕事に限定して書いてきましたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書きます。\n仕事  Docker Image を Docker Hub から ECR へ移行 Terraform  .terraform.lock.hcl を CI の中で自動で更新(commit, push)できるようにした  Terraform に詳しくない人も使うので、自動化したほうが良いと判断   tfmigrate を CI に導入 (in progress) Terraform Modules を Terraform の Monorepo とは別リポジトリで管理して versioning するようにした Route53 の管理を Roadworker から Terraform へ移行    Event  Open Policy Agent Rego Knowledge Sharing Meetup で登壇  https:\/\/gist.github.com\/suzuki-shunsuke\/9372337aa62a6f8394bb136582ec068e    OSS Contribution AWS AppConfig を Terraform で管理できるようにする PR が無事マージされました。"
   }
 </script>
 
@@ -141,7 +141,7 @@
 
   
 
-  <div class="article-body"><p>今まで仕事に限定して書いてきたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書く。</p>
+  <div class="article-body"><p>今まで仕事に限定して書いてきましたが、 OSS 活動なんかにも触れてもいいんじゃないかと思ったので分かる範囲で書きます。</p>
 <h2 id="仕事">仕事</h2>
 <ul>
 <li>Docker Image を Docker Hub から ECR へ移行</li>
