@@ -117,7 +117,7 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-07-28T06:58:45JST">Jul 28, 2021</time></li>
       
       
-      <li>187 Words</li>
+      <li>239 Words</li>
       
       
     </ul>
@@ -178,7 +178,11 @@
 <li><a href="https://github.com/hashicorp/terraform-provider-aws/pull/19307">feat: add aws_appconfig_application and aws_appconfig_environment</a></li>
 </ul>
 <h2 id="新たに作った-oss">新たに作った OSS</h2>
-<p><a href="https://github.com/tfmigrator/cli">tfmigrator/cli</a>: CLI to Migrate Terraform Configuration and State with terraform state command and hcledit</p>
+<ul>
+<li><a href="https://github.com/tfmigrator/cli">tfmigrator/cli</a>: CLI to Migrate Terraform Configuration and State with terraform state command and hcledit</li>
+<li><a href="https://github.com/suzuki-shunsuke/renovate-github-tags-datasource-repositories">Renovate github-tags Datasource Repositories</a></li>
+</ul>
+<h3 id="tfmigrator">tfmigrator</h3>
 <p>Terraform Configuration と State をマイグレーションする tfmigrator の CLI をリリースしました。
 tfmigrator には紆余曲折有り(?)、時系列的に</p>
 <ul>
@@ -208,6 +212,13 @@ tfmigrator には紆余曲折有り(?)、時系列的に</p>
 </ul>
 </li>
 </ul>
+<h3 id="renovate-github-tags-datasource-repositories">Renovate github-tags Datasource Repositories</h3>
+<p>Renovate の Datasource や Manager でサポートされていない package を Renovate で update するために、
+package ように GitHub Repository を作って package のバージョンに合わせて GitHub tag を更新し、
+<code>github-tags</code> Datasource として使おうというプロジェクトです。
+現状 AWS RDS や AWS Elasticache の engine version 用のリポジトリを作っています。
+tag は GitHub Actions を毎日定期実行することで更新します。
+詳細はリポジトリの README でも読んでください。</p>
 <h2 id="新しいバージョンをリリースした-oss">新しいバージョンをリリースした OSS</h2>
 <ul>
 <li><a href="https://github.com/suzuki-shunsuke/tfcmt">tfcmt</a>
