@@ -56,6 +56,37 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-05T12:37:17JST">Dec 5, 2020</time></li>
+      
+      
+      <li>147 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/compare-renovate-dependabot/">Renovate と Dependabot の比較</a></h2>
+  </header>
+
+  
+  <div class="summary">普段 Renovate を主に使っている自分が、 Dependabot と Renovate の違いについて調べてみました。 普段 Renovate を主に使っているので、 Renovate 寄りの内容になっています。 気分を害する人がいましたら申し訳ありません。 Dependabot の理解が浅いので間違ってたら指摘してもらえると助かります。 2020-12-01 時点の情報です。
+設定項目の数  https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuration-options-for-dependency-updates#directory https://docs.renovatebot.com/configuration-options/  まずは設定のドキュメントを見比べると、 Renovate のほうが設定項目が多いです。 Renovate はよく言うと設定項目が多く、柔軟な設定ができるといえる一方、すべての設定を理解し使いこなすのは難しいです。 決して日本語の情報も多くないので、色々試行錯誤したりすることもあります。 Dependabot の場合、設定がそんなに多くなく割と分かりやすい印象があります。
+scheduling  https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/configuration-options-for-dependency-updates#scheduleinterval https://docs.renovatebot.com/configuration-options/#prhourlylimit https://docs.renovatebot.com/configuration-options/#schedule  Dependabot は schedule の設定が必須です。 Renovate でも schedule の設定は出来ます。
+Dependabot は 1 個 1 個設定しないといけない？ Renovate は renovate.json さえ作れば中身がほぼ空でも勝手に update されます。 逆に対象を絞りたかったら明示的に指定する必要があります。
+一方で Dependabot は対象を 1 つ 1 つ指定しないといけないようですね。
+もちろん、これは必ずしも悪いことではないですし、良い面もあります。 設定が明示的に書かれていたほうが挙動を理解しやすいですしね。
+ただし、数が多いと大変ですし、サービスを追加するたびに設定を追加しないといけなさそうです。
+Renovate は .circleci/config.yml などの update もサポート  https://docs.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/compare-renovate-dependabot/" title="Renovate と Dependabot の比較">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-03T09:07:32JST">Dec 3, 2020</time></li>
       
       
@@ -281,35 +312,6 @@ $ matchfile run &lt;PR で変更されたファイルパスのリストが書か
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T09:53:08JST">Oct 18, 2020</time></li>
-      
-      
-      <li>262 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-goal/">なぜ buildflow を作ったのか</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
-この記事では なぜ buildflow を作ったのかについて説明します。 開発者である自分の好みや置かれた環境などが所々に反映された内容になっています。
-解決したい課題 自分は CI/CD の DX の改善に業務として取り組んでいます。 リポジトリはたくさんあり、横断的にメンテナンスしています。 幾つかのリポジトリはモノレポになっており、 CI の複雑さが増していたり、 CI の実行時間が長かったりします。
-現在の CI/CD には以下のような問題があると感じています(他にもあるんですが、 buildflow と関係ないので割愛)。
- 実行時間が長い  PR とは関係ない処理(test, build, etc) が実行されている   金銭的に高い  実行時間が長いので無駄にお金がかかっている CI サービスによっては並列度を上げることで実行時間が縮む場合があるが、それでもその分お金がかかる   PR とは直接関係ないところで失敗する  PR とは関係ない処理(test, build, etc) が実行されていて、それらが flaky で失敗する   メンテナンス性が悪い  属人化気味 何をやっているのか分かりにくい   同じような機能を複数のリポジトリで実装・メンテしたくない  これらの問題を解決するために buildflow を開発しました。
-buildflow で必要な処理だけを実行する buildflow では PR の情報を自動で取得し、それらに応じて実行する処理を変更できます。 変更されたファイルに応じてだけでなく、 label や PR の author などでも変更できます。 Tengo script を用いて柔軟なロジックを実装できます。 JSON や YAML の読み込みもサポートしているので、依存関係などの設定を別ファイルで管理することも出来ます。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/buildflow-goal/" title="なぜ buildflow を作ったのか">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -340,6 +342,8 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
@@ -357,8 +361,6 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
       <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
       
     </div>
   </section>
@@ -387,7 +389,7 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
       
     </div>
   </section>
@@ -397,6 +399,8 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
       <div class="panel-title">ARCHIVE</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       
@@ -415,8 +419,6 @@ buildflow で必要な処理だけを実行する buildflow では PR の情報�
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
     </div>
   </section>

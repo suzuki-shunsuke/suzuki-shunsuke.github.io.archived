@@ -56,6 +56,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-16T09:10:51JST">Aug 16, 2021</time></li>
+      
+      
+      <li>483 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/github-app-for-codebuild/">AWS CodeBuild を実行する Github App を作る</a></h2>
+  </header>
+
+  
+  <div class="summary">GitHub Repository の CI に CodeBuild を使う場合、 CodeBuild の Webhook integration (以下 CodeBuild GitHub integration と呼ぶことにします) を使うのが一番自然でしょう。 基本的なユースケースならこれでよいのですが、 GitHub App を活用することでより高度な CI を実現することができます。
+解決したい課題  Batch Build の課題  起動・終了が遅い 全 build が成功した Batch Build を Retry できない Web UI がわかりにくい  余計な build が起動する build 単体を Retry できない   build ごとに条件設定とかできない buildspec を動的に生成できない   CodeBuild GitHub integration の課題  Build Project ごとに Repository Webhook が 1 つ作られる  webhook 1 repository あたり 20 個までしか作れない (これを裏付ける客観的なソースはないですが) webhook の数が増えると build の動作が不安定になるのを観測しています   Filter の条件が限られている(例えば PR label で filter とかできない) 複数の build を実行できない(Batch Build も 1 つとみなした場合の話)   CodeBuild の課題  Retry した場合 webhook で起動したときの環境変数が設定されない    GitHub App Amazon API Gateway と Lambda を使って GitHub App を構築します。 Lambda で webhook を受け取り、 AWS SDK を使って build を実行します。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" title="AWS CodeBuild を実行する Github App を作る">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-07-28T06:58:45JST">Jul 28, 2021</time></li>
       
       
@@ -288,26 +313,6 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-03-28T23:36:55JST">Mar 28, 2021</time></li>
-      
-      
-      <li>53 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/">仕事でやったこと 2021-03-01 ~ 2021-03-31</a></h2>
-  </header>
-
-  
-  <div class="summary"> ブログの執筆  100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法 Pull Request の terraform plan の実行結果を S3 に保存して安全に apply   Terraform のドキュメント作成  CI/CD でやってること ローカルでの開発環境 setup etc   CI の改善  CircleCI の job の branch filter を設定して余計な job が実行されないようにした (進行中) デプロイをサービスごとに分割   (進行中) Lambda を爆速でデプロイするためのプラットフォームづくり  Terraform + lambroll + AWS CodeBuild   MongoDB upgrade (Atlas) On Boarding のドキュメントの整理  </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -338,6 +343,8 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
@@ -355,8 +362,6 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
       <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
       
     </div>
   </section>
@@ -385,7 +390,7 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
       
     </div>
   </section>
@@ -395,6 +400,8 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
       <div class="panel-title">ARCHIVE</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       
@@ -413,8 +420,6 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
     </div>
   </section>

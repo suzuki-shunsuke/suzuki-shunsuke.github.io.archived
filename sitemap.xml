@@ -2,19 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://techblog.szksh.cloud/tags/aws/</loc>
+    <lastmod>2021-08-16T09:10:51+09:00</lastmod>
+  </url><url>
+    <loc>https://techblog.szksh.cloud/github-app-for-codebuild/</loc>
+    <lastmod>2021-08-16T09:10:51+09:00</lastmod>
+  </url><url>
+    <loc>https://techblog.szksh.cloud/tags/codebuild/</loc>
+    <lastmod>2021-08-16T09:10:51+09:00</lastmod>
+  </url><url>
+    <loc>https://techblog.szksh.cloud/tags/github-app/</loc>
+    <lastmod>2021-08-16T09:10:51+09:00</lastmod>
+  </url><url>
+    <loc>https://techblog.szksh.cloud/</loc>
+    <lastmod>2021-08-16T09:10:51+09:00</lastmod>
+  </url><url>
+    <loc>https://techblog.szksh.cloud/tags/</loc>
+    <lastmod>2021-08-16T09:10:51+09:00</lastmod>
+  </url><url>
     <loc>https://techblog.szksh.cloud/what-i-did-2021-07/</loc>
     <lastmod>2021-07-28T06:58:45+09:00</lastmod>
   </url><url>
     <loc>https://techblog.szksh.cloud/tags/job/</loc>
     <lastmod>2021-07-28T06:58:45+09:00</lastmod>
   </url><url>
-    <loc>https://techblog.szksh.cloud/</loc>
-    <lastmod>2021-07-28T06:58:45+09:00</lastmod>
-  </url><url>
     <loc>https://techblog.szksh.cloud/tags/oss/</loc>
-    <lastmod>2021-07-28T06:58:45+09:00</lastmod>
-  </url><url>
-    <loc>https://techblog.szksh.cloud/tags/</loc>
     <lastmod>2021-07-28T06:58:45+09:00</lastmod>
   </url><url>
     <loc>https://techblog.szksh.cloud/job-2021-06-01-06-30/</loc>
@@ -185,16 +197,10 @@
     <loc>https://techblog.szksh.cloud/post-tfnotify-parse-error/</loc>
     <lastmod>2020-09-12T08:05:59+09:00</lastmod>
   </url><url>
-    <loc>https://techblog.szksh.cloud/tags/aws/</loc>
-    <lastmod>2020-08-02T13:21:37+09:00</lastmod>
-  </url><url>
     <loc>https://techblog.szksh.cloud/codebuild-1/</loc>
     <lastmod>2020-08-02T13:21:37+09:00</lastmod>
   </url><url>
     <loc>https://techblog.szksh.cloud/tags/ci/</loc>
-    <lastmod>2020-08-02T13:21:37+09:00</lastmod>
-  </url><url>
-    <loc>https://techblog.szksh.cloud/tags/codebuild/</loc>
     <lastmod>2020-08-02T13:21:37+09:00</lastmod>
   </url><url>
     <loc>https://techblog.szksh.cloud/github-comment/</loc>
@@ -476,6 +482,8 @@
     <loc>https://techblog.szksh.cloud/archives/2021/06/</loc>
   </url><url>
     <loc>https://techblog.szksh.cloud/archives/2021/07/</loc>
+  </url><url>
+    <loc>https://techblog.szksh.cloud/archives/2021/08/</loc>
   </url><url>
     <loc>https://techblog.szksh.cloud/about/</loc>
   </url><url>

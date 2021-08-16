@@ -56,6 +56,37 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-16T09:25:05JST">Jan 16, 2020</time></li>
+      
+      
+      <li>945 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-getting-started/">Terraform 入門</a></h2>
+  </header>
+
+  
+  <div class="summary">参考  10分で理解するTerraform | Qiita Terraform入門資料(v0.12.0対応) ~基本知識から設計や運用、知っておくべきtipsまで~ | Qiita AWSでTerraformに入門 | Developers.io Terraform職人入門: 日々の運用で学んだ知見を淡々とまとめる | Qiita  手を動かしたい方は Terraform ハンズオン with MySQL Provider も参考にしてください。
+前提  執筆時点 (2020/01/05) で Terraform の最新バージョンは v0.12.18 です  Terraform とは Terraform は Infrastructure as Code を実現する汎用的なCLIツールです。 インフラの状態を設定ファイルに定義し、コマンドを実行することで、 実際のインフラの状態と設定ファイルの差分を検知し、設定ファイルに記述されたとおりになるようにインフラを変更(CRUD)します。
+Hashicorp という企業がホストしている OSS になります。 Go で書かれています。 https://github.com/hashicorp/terraform
+Terraform のインストール Terraform は Go 製なので 1 バイナリをダウンロードしてインストールするだけです。
+https://www.terraform.io/downloads.html
+tfenv を使うと管理が楽です。
+https://github.com/tfutils/tfenv
+tfenv は Terraform のバージョン管理ツールです。 pyenv や rbenv の Terraform 版みたいなものです。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/terraform-getting-started/" title="Terraform 入門">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-10T16:18:05JST">Jan 10, 2020</time></li>
       
       
@@ -322,31 +353,6 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-21T18:13:53JST">Jul 21, 2019</time></li>
-      
-      
-      <li>297 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/the-top-10-most-common-mistakes-ive-seen-in-go-projects/">The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて</a></h2>
-  </header>
-
-  
-  <div class="summary">The Top 10 Most Common Mistakes I’ve Seen in Go Projects という記事を読んで面白かったのでメモります。 翻訳ではないです。メモなので、原文を読んでください。
- Unknown Enum Value: Unknown であることを表す enum の値は 0 にしよう。値がセットされていない場合に Unknown として扱えるから Benchmarking: ベンチマークを取るのは難しい。コンパイラの最適化によってベンチマークの結果が不適切になる場合がある Pointers! Pointers Everywhere!: パフォーマンスの観点から基本的にはポインタを使うべきではない。変数を共有する必要がある場合のみ、ポインタを使う Breaking a for/switch or a for/select: for, switch が入れ子になっている場合、switch の中で break しても for から抜けられない。抜けたければ labeled break を使う Errors Management Slice Initialization Context Management Not Using the -race Option: go test コマンドでは -race オプションをつけよう Using a Filename as an Input: 引数としてファイル名を渡すのではなく、 io.</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/the-top-10-most-common-mistakes-ive-seen-in-go-projects/" title="The Top 10 Most Common Mistakes I’ve Seen in Go Projects を読んでみて">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -377,6 +383,8 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
@@ -394,8 +402,6 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
       <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
       
     </div>
   </section>
@@ -424,7 +430,7 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
       
     </div>
   </section>
@@ -434,6 +440,8 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
       <div class="panel-title">ARCHIVE</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       
@@ -452,8 +460,6 @@ https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
     </div>
   </section>

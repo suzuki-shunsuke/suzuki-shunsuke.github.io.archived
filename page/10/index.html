@@ -56,6 +56,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:30:06JST">Sep 30, 2018</time></li>
+      
+      
+      <li>28 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-tag-conditional-step/">drone の step を実行するか否かをタグ名で判定する方法</a></h2>
+  </header>
+
+  
+  <div class="summary">drone 0.8.5 で検証しています。
+tag 名による判定方法はドキュメントには書いてないので書いておきます。
+when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。
+上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。
+ https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  </div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T20:32:20JST">Sep 30, 2018</time></li>
       
       
@@ -283,6 +307,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
@@ -300,8 +326,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
       <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
-      <a href="https://techblog.szksh.cloud/job-2021-03-01-03-31/" class="list-group-item">仕事でやったこと 2021-03-01 ~ 2021-03-31</a>
       
     </div>
   </section>
@@ -330,7 +354,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/ci" class="list-group-item">ci (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
       
     </div>
   </section>
@@ -340,6 +364,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <div class="panel-title">ARCHIVE</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       
@@ -358,8 +384,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/10" class="list-group-item">2020/10 (13)</a>
       
     </div>
   </section>
