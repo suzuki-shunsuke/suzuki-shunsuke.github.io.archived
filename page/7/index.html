@@ -56,6 +56,38 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-08-02T23:02:57JST">Aug 2, 2019</time></li>
+      
+      
+      <li>93 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-jsonnet/">Drone v1 では Jsonnet が extension なしで使える</a></h2>
+  </header>
+
+  
+  <div class="summary">Drone では v1 から冗長な YAML を DRY にする一つの手として、 Jsonnet の利用が推奨されています。 これについては過去のブログでも触れています。
+https://techblog.szksh.cloud/drone-jsonnet-generator/
+しかし、 v1 の rc の時点では Jsonnet の活用には Jsonnet Extension が必要でした。
+https://engineering.linecorp.com/ja/blog/go-oss-ci-cd-platform-drone-1-0-0-rc-1/#title7-1
+しかし、 v1 の正式版では Jsonnet Extension がなくても Jsonnet が利用できるようになっています。
+まず Drone の管理者側で Drone server に環境変数 DRONE_JSONNET_ENABLED=true を設定する必要があります。
+そうしたら、ユーザー側は次のようにすることで jsonnet が使えます。
+ .drone.yml の代わりに .drone.jsonnet をコミットする (.drone.yml は不要) 各リポジトリの settings の Main &gt; Configuration で設定ファイルのパスを変更する  こうすることでビルド実行時に自動で Jsonnet が YAML に変換され処理されるようです。
+いつから Jsonnet Extension は不要になったのか  https://github.com/drone/drone/compare/v1.0.0-rc.6...v1.0.0 https://github.com/drone/drone/commit/5013cfa993fa455fc56f10e45b9f36cf1d6dff57  v1 の rc ではサポートされてませんでしたが、正式版をリリースするタイミングで Jsonnet Extension が不要になっていたようです。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/drone-jsonnet/" title="Drone v1 では Jsonnet が extension なしで使える">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-07-21T18:13:53JST">Jul 21, 2019</time></li>
       
       
@@ -340,37 +372,6 @@ https://qiita.com/yamamoto-febc/items/498b911611dd25351ad7
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-02-16T18:38:45JST">Feb 16, 2019</time></li>
-      
-      
-      <li>131 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/use-confita/">Goの設定管理で viper の代わりに confita を使う</a></h2>
-  </header>
-
-  
-  <div class="summary">Golang の設定管理のライブラリといえば viper が有名ですが、 confita も良さそうだったので紹介したいと思います。
-confita の機能としては以下のようなものがあります。
- 構造体に設定をマッピング flag や環境変数、設定ファイルに対応 複数の設定ファイルに対応  構造体に設定をマッピングすることで、https://github.com/go-playground/validator のようなライブラリを使って設定のバリデーションが出来ます。
-また viper は v1.3.1 の時点で複数の設定ファイルを扱いにくいです。
- Viper can search multiple paths, but currently a single Viper instance only supports a single configuration file.
- k8s で ConfigMap と Secret を設定ファイルとして扱う場合、複数のファイルを扱えないと不便です。 その点 confita は複数の設定ファイルを問題なく扱えます。
-以下はフラグで指定した複数の設定ファイルから設定を読み込む簡単なサンプルです。
-import ( &#34;context&#34; &#34;gopkg.in/go-playground/validator.v9&#34; &#34;github.com/heetch/confita&#34; &#34;github.com/heetch/confita/backend&#34; &#34;github.com/heetch/confita/backend/file&#34; flag &#34;github.com/spf13/pflag&#34; ) func loadConfig(ctx context.Context) (Config, error) { cps := flag.StringSliceP(&#34;config&#34;, &#34;c&#34;, nil, &#34;configuration file path&#34;) flag.</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/use-confita/" title="Goの設定管理で viper の代わりに confita を使う">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -401,6 +402,8 @@ import ( &#34;context&#34; &#34;gopkg.in/go-playground/validator.v9&#34; &#34;gi
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
+      
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
@@ -419,8 +422,6 @@ import ( &#34;context&#34; &#34;gopkg.in/go-playground/validator.v9&#34; &#34;gi
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
     </div>
   </section>
 
@@ -430,7 +431,7 @@ import ( &#34;context&#34; &#34;gopkg.in/go-playground/validator.v9&#34; &#34;gi
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (34)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
       
@@ -459,7 +460,7 @@ import ( &#34;context&#34; &#34;gopkg.in/go-playground/validator.v9&#34; &#34;gi
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       

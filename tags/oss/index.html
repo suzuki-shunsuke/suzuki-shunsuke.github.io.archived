@@ -60,6 +60,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-28T09:07:38JST">Aug 28, 2021</time></li>
+      
+      
+      <li>629 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/aqua/">aqua - CLI ツールのバージョン管理</a></h2>
+  </header>
+
+  
+  <div class="summary">aqua という OSS を開発しているので紹介します。
+記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。
+aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。
+例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。
+packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &#39;jq-{{if eq .OS &#34;darwin&#34;}}osx-amd64{{else}}{{if eq .OS &#34;linux&#34;}}linux64{{else}}win64.exe{{end}}{{end}}&#39; files: - name: jq - name: conftest type: github_release repo_owner: open-policy-agent repo_name: conftest asset: &#39;conftest_{{trimPrefix &#34;v&#34; .</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/aqua/" title="aqua - CLI ツールのバージョン管理">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-07-28T06:58:45JST">Jul 28, 2021</time></li>
       
       
@@ -315,38 +343,6 @@ task の標準出力、標準エラー出力はリアルタイムで出力され
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T08:13:48JST">Oct 18, 2020</time></li>
-      
-      
-      <li>139 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-pr-info/">buildflow が自動で取得する Pull Request の情報</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
-この記事では buildflow が自動で Pull Request (以下 PR) の情報を取得してくる機能について説明します。
-この機能は GitHub のみサポートしています。 GitLab や BitBucket はサポートしていません。 これは単純に自分が GitHub しか使わないからです。
-PR の CI では
- 変更されたものだけテストする 特定の PR ラベルがついていたら実行する 特定のユーザーの PR だけ処理を変える(bot とか)  のように PR の情報に基づいて挙動を変えたくなったりします。
-シェルスクリプトで GitHub API 叩いて情報とってきて jq でパースしてとか、頑張れば別にできるんですが、 毎回そういうコードを書きたくないなと感じていました。
-なお、 PR の情報をとってくる機能はデフォルトで無効化されています(GitHub Access Token 必要ですしね)。 設定で pr: true を指定してください。
-PR の情報をとってくるには、以下の情報が必要です。
- repository owner: 設定ファイルで owner を設定するか、自動取得。 owner を設定してある場合はそちらが優先される repository name: 設定ファイルで repo を設定するか、自動取得。 repo を設定してある場合はそちらが優先される pull request number: 自動取得 GitHub Access Token: 環境変数 GITHUB_TOKEN または GITHUB_ACCESS_TOKEN を指定してください  取得される情報 以下のパラメータがテンプレートや Tengo script に渡されます。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/buildflow-pr-info/" title="buildflow が自動で取得する Pull Request の情報">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -377,6 +373,8 @@ PR の情報をとってくるには、以下の情報が必要です。
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
+      
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
@@ -395,8 +393,6 @@ PR の情報をとってくるには、以下の情報が必要です。
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
     </div>
   </section>
 
@@ -406,7 +402,7 @@ PR の情報をとってくるには、以下の情報が必要です。
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (34)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
       
@@ -435,7 +431,7 @@ PR の情報をとってくるには、以下の情報が必要です。
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       

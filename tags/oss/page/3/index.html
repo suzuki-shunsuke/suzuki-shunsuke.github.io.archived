@@ -60,6 +60,39 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-31T20:42:54JST">Jul 31, 2020</time></li>
+      
+      
+      <li>444 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/github-comment/">github-comment - GitHub にコメントを投稿する CLI</a></h2>
+  </header>
+
+  
+  <div class="summary">GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。
+https://github.com/suzuki-shunsuke/github-comment
+このブログの執筆時点で最新は v1.5.0 です。
+Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。
+想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。
+github-comment には
+ init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。
+コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。
+$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可 post コマンド こんな感じでコメントを投稿できます。
+$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/github-comment/" title="github-comment - GitHub にコメントを投稿する CLI">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-06T16:52:58JST">Jul 6, 2020</time></li>
       
       
@@ -347,42 +380,6 @@ find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
-      
-      
-      <li>137 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/graylog-terraform/">GraylogをTerraformで管理する</a></h2>
-  </header>
-
-  
-  <div class="summary">Graylogのリソースを terraform で管理するために作った terraform provider を紹介します。 Graylogとは何かはこちらを読んでください。
-Graylogには様々なリソースがあります。
- User Role Input Index Set Stream Stream Rule Dashboard Alert etc  これらのリソースはWeb UIから作成したり出来るわけですが、 Web UIでポチポチするのは疲れますし、ソースコードで管理したいものです(Infrastructure as Code)。 また、Web UIからでは細かな権限管理は出来ず(限られた権限管理しか出来ない)、APIを使ってする必要があります。
-APIを使って管理できるツールを探したものの見つからなかったので、 APIを使ってGraylog用のterraform providerを自作しています。
-https://github.com/suzuki-shunsuke/go-graylog
-GraylogのAPIの種類は非常に多く、残念ながらカバーできているのは一部だけですが、以下のようなものをサポートしています。
- Alert Condition Alert Notification (Alarm Callback) Input User Role Index Set Stream Stream Rule Dashboard Ldap Setting  Role はサポートしているので権限管理は問題なく出来ます。 Dashboard Widget もサポートしたいです。
-出来れば Alert の設定も出来ると良いのですが、Alertに関するCRUD APIが提供されていない(GETのみ)ので、サポートできません。
-terraform を使った管理方法 以下では自分の管理方法を紹介します。
-https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
-にサンプルが置いてあります。
-基本はプロジェクトごとに
- Index Set, Stream, Role といったリソースを作成 User に Role を付与  という流れになります。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/graylog-terraform/" title="GraylogをTerraformで管理する">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -413,6 +410,8 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
+      
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
@@ -431,8 +430,6 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
     </div>
   </section>
 
@@ -442,7 +439,7 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (34)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
       
@@ -471,7 +468,7 @@ https://github.com/suzuki-shunsuke/example/tree/master/graylog-terraform
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       

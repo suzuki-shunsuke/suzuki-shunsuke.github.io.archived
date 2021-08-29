@@ -56,6 +56,35 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
+      
+      
+      <li>127 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の概念である build, phase, task について書きたいと思います。
+buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
+$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
+設定ファイルでは phases, tasks をそれぞれ配列で指定します。
+--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/buildflow-build-phase-task/" title="buildflow の build, phase, task について">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
       
       
@@ -327,37 +356,6 @@ Skaffold に欲しい機能がないので補完する感じで作ったので�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-01-17T09:14:08JST">Jan 17, 2020</time></li>
-      
-      
-      <li>4132 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-hands-on-with-mysql-provider/">Terraform ハンズオン with MySQL Provider</a></h2>
-  </header>
-
-  
-  <div class="summary">Terraform を勉強するには実際に使ってみるのが一番手っ取り早いですが、 では手頃な題材はあるかと言われると少し難しいです。
-公式の Getting Started では AWS が使われていますが、 AWS のアカウントやクレデンシャルが必要ですしお金もかかってしまいます(無料枠はありますが)。 もう少し手軽なものが欲しいところです。
-そこで公式の Provider で丁度いいものはないか探したところ、 MySQL Provider が良さそうでした。 MySQL のユーザーや Database を Terraform で管理したいとは自分は思いませんが、 Terraform の入門で遊ぶにはちょうどよいでしょう。
-ちなみに公式の Provider のリストはこちらです。
- https://github.com/terraform-providers https://www.terraform.io/docs/providers/index.html  また、 Terraform に関しては Terraform 入門 も参照してください。
-今回の作業用に適当にディレクトリを作成し、そこで作業しましょう。
-以降、コマンドの実行結果は一部省略することがあります。
-$ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform を複数人で使う場合、 Terraform のバージョンを揃えるのが重要です。 理由の一つとして、 Terraform の State は State を作成した Terraform のバージョンを記録しており、それより古いバージョンの Terraform で terraform plan などを実行すると失敗するようになっていることが挙げられます(この点については後でも触れます)。 そういう意味では、 tfenv によってバージョン管理するのが良いです。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/terraform-hands-on-with-mysql-provider/" title="Terraform ハンズオン with MySQL Provider">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -388,6 +386,8 @@ $ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
+      
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
@@ -406,8 +406,6 @@ $ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
     </div>
   </section>
 
@@ -417,7 +415,7 @@ $ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (34)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
       
@@ -446,7 +444,7 @@ $ mkdir workspace $ cd workspace Terraform のバージョンと tfenv Terraform
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       

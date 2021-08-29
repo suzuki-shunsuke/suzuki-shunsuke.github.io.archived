@@ -56,6 +56,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-28T09:07:38JST">Aug 28, 2021</time></li>
+      
+      
+      <li>629 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/aqua/">aqua - CLI ツールのバージョン管理</a></h2>
+  </header>
+
+  
+  <div class="summary">aqua という OSS を開発しているので紹介します。
+記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。
+aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。
+例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。
+packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &#39;jq-{{if eq .OS &#34;darwin&#34;}}osx-amd64{{else}}{{if eq .OS &#34;linux&#34;}}linux64{{else}}win64.exe{{end}}{{end}}&#39; files: - name: jq - name: conftest type: github_release repo_owner: open-policy-agent repo_name: conftest asset: &#39;conftest_{{trimPrefix &#34;v&#34; .</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/aqua/" title="aqua - CLI ツールのバージョン管理">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-16T09:10:51JST">Aug 16, 2021</time></li>
       
       
@@ -282,37 +310,6 @@ lock ファイルについて .</div>
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-03T11:04:25JST">Apr 3, 2021</time></li>
-      
-      
-      <li>150 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-module-template/">Terraform Module の Template という使い方</a></h2>
-  </header>
-
-  
-  <div class="summary">Terraform Module の使い方として Terraform Module のテンプレートをコピペして使うというアプローチを紹介します。
-Terraform の設定ファイル(以下 tfファイル) を書く際、毎回一から書くのは大変です。 多くの場合、既存のコードを再利用したほうが楽でしょう。
-Terraform のコードの再利用の仕組みとして、 Module があります。 Module は勿論便利なのですが、使い方には注意が必要で、「安易に Module 化するな。使うな」というふうな考え方もあるでしょう。 自分も基本的に同意見で、 Module を共用するようになると Module への変更がしづらくなったり、パラメータがどんどん増えて複雑になったりします。
-例えば次のように共用の local Module を作成するアプローチがあります。
-modules/ lambda-base/ README.md main.tf variables.tf outputs.tf services/ foo/ staging/ main.tf # リポジトリ直下の modules/lambda-base を参照 production/ main.tf # リポジトリ直下の modules/lambda-base を参照 こうすると modules 配下の Module を変更した際にその Module を使っているすべてのサービスに影響が出てしまい、 サービスのオーナーが様々だったり、曖昧だったり不在だったりすると変更が難しいですし、どんどん Module が複雑になったりします。
-Module を別のリポジトリでバージョニングして管理し、バージョンを指定するようにするというやり方もありますが、 結構複雑というか考えることが多いアプローチだとは思います。
-Terraform にそこまで詳しくない developer にも書いてもらうとなると、シンプルなアプローチにするのが望ましいでしょう(当然これは組織によりますが)。
-そこで Module のテンプレートを用意し、 Module を使いたくなったらそれをコピペして使うというアプローチがあります。 例えば lambda-base という Module の Template を foo というサービスの staging 環境と production 環境で使う場合、次のような感じになります。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/terraform-module-template/" title="Terraform Module の Template という使い方">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -343,6 +340,8 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
+      
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
@@ -361,8 +360,6 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
     </div>
   </section>
 
@@ -372,7 +369,7 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (34)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
       
@@ -401,7 +398,7 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       

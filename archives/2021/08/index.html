@@ -60,6 +60,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-28T09:07:38JST">Aug 28, 2021</time></li>
+      
+      
+      <li>629 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/aqua/">aqua - CLI ツールのバージョン管理</a></h2>
+  </header>
+
+  
+  <div class="summary">aqua という OSS を開発しているので紹介します。
+記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。
+aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。
+例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。
+packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &#39;jq-{{if eq .OS &#34;darwin&#34;}}osx-amd64{{else}}{{if eq .OS &#34;linux&#34;}}linux64{{else}}win64.exe{{end}}{{end}}&#39; files: - name: jq - name: conftest type: github_release repo_owner: open-policy-agent repo_name: conftest asset: &#39;conftest_{{trimPrefix &#34;v&#34; .</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/aqua/" title="aqua - CLI ツールのバージョン管理">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-16T09:10:51JST">Aug 16, 2021</time></li>
       
       
@@ -98,6 +126,8 @@
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
+      
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
@@ -116,8 +146,6 @@
       
       <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-module-template/" class="list-group-item">Terraform Module の Template という使い方</a>
-      
     </div>
   </section>
 
@@ -127,7 +155,7 @@
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (34)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
       
@@ -156,7 +184,7 @@
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       
