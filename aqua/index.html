@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -147,7 +147,7 @@ aqua で管理する主な対象は GitHub Release で公開されているツ�
 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。</p>
 <p>例えば以下のような設定ファイルを書き、 <code>aqua install</code> というコマンドを実行すると
 <a href="https://stedolan.github.io/jq/">jq</a>, <a href="https://www.conftest.dev/">conftest</a> などが GitHub Release からダウンロードされ、インストールされます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">packages</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">packages</span>:
 - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">jq</span>
   <span style="color:#f92672">registry</span>: <span style="color:#ae81ff">inline</span>
   <span style="color:#f92672">version</span>: <span style="color:#ae81ff">jq-1.6</span>
@@ -170,7 +170,7 @@ YAML の設定ファイルを書いてコマンドを実行すると指定した
   <span style="color:#f92672">files</span>:
   - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">conftest</span>
 </code></pre></div><p>ちなみに上記の設定ファイルの</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">asset</span>: <span style="color:#e6db74">&#39;conftest_{{trimPrefix &#34;v&#34; .Package.Version}}_{{title .OS}}_x86_64.tar.gz&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">asset</span>: <span style="color:#e6db74">&#39;conftest_{{trimPrefix &#34;v&#34; .Package.Version}}_{{title .OS}}_x86_64.tar.gz&#39;</span>
 </code></pre></div><p>の部分では Go の <a href="https://pkg.go.dev/text/template">text/template</a> と <a href="http://masterminds.github.io/sprig/">sprig</a> が使われています。</p>
 <p>ツールごとに URL を調べて download して tarball などを展開してインストールしてなどの面倒な作業を aqua で自動化できます。
 update も基本的に設定ファイルの version を更新するだけで OK です。</p>
@@ -216,7 +216,7 @@ direnv を使い、リポジトリ直下に .envrc を置いて <code>.aqua/bin<
 <h3 id="ユースケース3-特定のプロジェクトリポジトリによらないツールの管理">ユースケース3: 特定のプロジェクト(リポジトリ)によらないツールの管理</h3>
 <p>特定のプロジェクトによらずにツールを laptop にインストールしたい場合にも使えます。
 <code>~/.aqua/global/aqua.yaml</code> に設定ファイルを記述し、 <code>~/.aqua/global/.aqua/bin</code> を PATH に追加してください。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export PATH<span style="color:#f92672">=</span>$HOME/.aqua/global/.aqua/bin:$PATH
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">export PATH<span style="color:#f92672">=</span>$HOME/.aqua/global/.aqua/bin:$PATH
 </code></pre></div><p>そして <code>~/.aqua/global</code> 配下で <code>aqua i</code> を実行すればインストールができます。
 <code>~/.aqua/global</code> を Git で管理して GitHub などでホスティングするのも良いでしょう。</p>
 <p><a href="https://github.com/suzuki-shunsuke/my-aqua-config">https://github.com/suzuki-shunsuke/my-aqua-config</a></p>

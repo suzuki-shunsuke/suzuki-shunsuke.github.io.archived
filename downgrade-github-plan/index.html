@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -156,7 +156,7 @@ private repository の wiki を 移行することにしました。</p>
 <a href="https://github.com/suzuki-shunsuke/foo.wiki">https://github.com/suzuki-shunsuke/foo.wiki</a> で clone できます。</p>
 <p>次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。</p>
 <p><a href="https://developer.github.com/v3/repos/#list-your-repositories">https://developer.github.com/v3/repos/#list-your-repositories</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl <span style="color:#e6db74">&#34;https://api.github.com/user/repos?access_token=</span>$GITHUB_TOKEN<span style="color:#e6db74">&amp;visibility=private&#34;</span> | jq -r <span style="color:#e6db74">&#39;.[].html_url&#39;</span> | xargs -I<span style="color:#f92672">{}</span> -n <span style="color:#ae81ff">1</span> git clone <span style="color:#f92672">{}</span>.wiki
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl <span style="color:#e6db74">&#34;https://api.github.com/user/repos?access_token=</span>$GITHUB_TOKEN<span style="color:#e6db74">&amp;visibility=private&#34;</span> | jq -r <span style="color:#e6db74">&#39;.[].html_url&#39;</span> | xargs -I<span style="color:#f92672">{}</span> -n <span style="color:#ae81ff">1</span> git clone <span style="color:#f92672">{}</span>.wiki
 </code></pre></div><p>wikiが存在しないものに関しては clone に失敗します。
 API で wiki のリストが取得できると良かったんですが、
 wikiに関するAPIはなさそうです。</p>

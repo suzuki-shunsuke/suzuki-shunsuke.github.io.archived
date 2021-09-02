@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -157,7 +157,7 @@
 <p><code>checkout</code> でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。</p>
 <p>サンプル: <a href="https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96">https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96</a></p>
 <p>ここでは <code>checkout</code> の全てについては触れません。一部抜粋します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$CIRCLE_BRANCH<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$CIRCLE_BRANCH<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>
 <span style="color:#66d9ef">then</span>
   git reset --hard <span style="color:#e6db74">&#34;</span>$CIRCLE_SHA1<span style="color:#e6db74">&#34;</span>
   git checkout -q -B <span style="color:#e6db74">&#34;</span>$CIRCLE_BRANCH<span style="color:#e6db74">&#34;</span>
@@ -203,7 +203,7 @@ $ git checkout -q -B &quot;$CIRCLE_BRANCH&quot;
 <pre><code>$ git diff --name-only origin/master $CIRCLE_BRANCH
 </code></pre><p>ただ、うっかりローカルのデフォルトブランチを参照してしまうことは十分考えられる上に別にエラーは起こらないので間違いに気づきにくいです。</p>
 <p>そこで checkout 直後にローカルのデフォルトブランチの履歴を origin と強制的に同じにしてしまうというテクニック(?)が考えられます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">DEFAULT_BRANCH<span style="color:#f92672">=</span>master
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">DEFAULT_BRANCH<span style="color:#f92672">=</span>master
 <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CIRCLE_BRANCH<span style="color:#66d9ef">:-</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> !<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span>$DEFAULT_BRANCH<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
   git branch -f <span style="color:#e6db74">&#34;</span>$DEFAULT_BRANCH<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;origin/</span>$DEFAULT_BRANCH<span style="color:#e6db74">&#34;</span>
 <span style="color:#66d9ef">fi</span>

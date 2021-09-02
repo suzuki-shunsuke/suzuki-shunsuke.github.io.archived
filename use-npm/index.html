@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -198,7 +198,7 @@ Nodeはバージョンの変化が速く、互換性が壊れたりとかも多�
 npm はかなり一般的なツールであり、そのへんのツールよりは導入障壁が低いと思います。</p>
 <h2 id="npm-scripts-の関数エイリアス">npm scripts の関数・エイリアス</h2>
 <p>npm scripts をよく使う場合、関数やエイリアスを設定すると便利です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nx<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">nx<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
   npm --silent run $1 -- <span style="color:#e6db74">${</span>@:2<span style="color:#e6db74">}</span>
 <span style="color:#f92672">}</span>
 alias npm<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;npm --silent&#34;</span>

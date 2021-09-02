@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -179,16 +179,16 @@ service2/
 ...
 </code></pre><p>circleci-config-merge merges the list of workflow jobs.</p>
 <p>For example,</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflows</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflows</span>:
   <span style="color:#f92672">build</span>:
     <span style="color:#f92672">jobs</span>:
     - <span style="color:#ae81ff">foo</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflows</span>:
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflows</span>:
   <span style="color:#f92672">build</span>:
     <span style="color:#f92672">jobs</span>:
     - <span style="color:#ae81ff">bar</span>
 </code></pre></div><p>The workflow <code>build</code>&rsquo;s jobs are merged as the following.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflows</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">workflows</span>:
   <span style="color:#f92672">build</span>:
     <span style="color:#f92672">jobs</span>: <span style="color:#75715e"># sort by job name for comparison</span>
     - <span style="color:#ae81ff">bar</span>

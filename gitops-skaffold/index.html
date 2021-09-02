@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -177,7 +177,7 @@ FluxCD では registry をポーリングして自動で最新のタグに書き
         production/
           kustomization.yaml
 </code></pre><p>skaffold.yaml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">skaffold/v2beta10</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Config</span>
 <span style="color:#f92672">build</span>:
@@ -202,7 +202,7 @@ FluxCD では registry をポーリングして自動で最新のタグに書き
       - <span style="color:#ae81ff">kubernetes/overlays/production</span>
 </code></pre></div><p><a href="https://skaffold.dev/docs/environment/profiles/">profile</a> によって develop と production を区別しています。</p>
 <p>manifest では tag を指定しないようにします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">    <span style="color:#f92672">spec</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">    <span style="color:#f92672">spec</span>:
       <span style="color:#f92672">containers</span>:
       - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foo</span>
         <span style="color:#f92672">image</span>: <span style="color:#ae81ff">foo</span>
@@ -215,7 +215,7 @@ FluxCD では registry をポーリングして自動で最新のタグに書き
   --output manifest.yaml
 </code></pre><p><code>--loud=true</code> をつけないとなにも出力しないのでなにが起こってるのかわかりません。</p>
 <p>生成されたマニフェストをみると tag が自動で付与されています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">xxx.dkr.ecr.ap-northeast-1.amazonaws.com/foo:production-e3a42e0@sha256:7032af912c511ab0c8353c28604461d8960833144953fb50853f087db55ffdd0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">      - <span style="color:#f92672">image</span>: <span style="color:#ae81ff">xxx.dkr.ecr.ap-northeast-1.amazonaws.com/foo:production-e3a42e0@sha256:7032af912c511ab0c8353c28604461d8960833144953fb50853f087db55ffdd0</span>
 </code></pre></div><p>生成した manifest を <code>manifest</code> リポジトリに commit, push します。
 manifest リポジトリを checkout してきて git コマンドでやることもできますが、 <a href="https://github.com/int128/ghcp">ghcp</a> を使うとコマンド1つでできるので便利です。</p>
 <p>manifest リポジトリは対象のサービス及び環境ごとにブランチを分けることにします。
@@ -224,7 +224,7 @@ manifest リポジトリを checkout してきて git コマンドでやるこ�
 </code></pre><p>message は実際にはもっと詳細なメッセージにすべきでしょう。 CI で実行することになると思うので、 build URL を含めたりすると良いでしょう。</p>
 <p>こうすると <code>foo/production</code> ブランチに manifest.yaml が push されます。
 あとは ArgoCD や FluxCD のような GitOps ツール で foo/production の manifest.yaml をデプロイすればよいはずです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">argoproj.io/v1alpha1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Application</span>
 <span style="color:#f92672">metadata</span>:
   <span style="color:#f92672">name</span>: <span style="color:#ae81ff">foo</span>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -212,7 +212,7 @@ HCL は Hashicorp Configuration Language の略で、 Hashicorp が開発して�
 <p>Terraform v0.12 では HCL の v2 を使います。 v1 は古いので注意してください。</p>
 <p>設定ファイルの拡張子は基本 <code>.tf</code> です。
 次のような形でリソースを定義します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># resource &#34;リソースの種類&#34; &#34;リソース名&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># resource &#34;リソースの種類&#34; &#34;リソース名&#34;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_instance&#34; &#34;example&#34;</span> {<span style="color:#75715e">
 </span><span style="color:#75715e">  # 属性名 = 属性値
 </span><span style="color:#75715e"></span>  ami           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ami-2757f631&#34;</span>
@@ -229,7 +229,7 @@ HCL は Hashicorp Configuration Language の略で、 Hashicorp が開発して�
 <h2 id="リソースの属性の参照">リソースの属性の参照</h2>
 <p>あるリソースの設定で他のリソースの属性値を参照することが出来ます。</p>
 <p>サンプルを示します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_iam_instance_profile&#34; &#34;example&#34;</span> {<span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;aws_iam_instance_profile&#34; &#34;example&#34;</span> {<span style="color:#75715e">
 </span><span style="color:#75715e">  # リソース aws_iam_role.example の属性 name の値を参照
 </span><span style="color:#75715e"></span>  role <span style="color:#f92672">=</span> <span style="color:#66d9ef">aws_iam_role</span>.<span style="color:#66d9ef">example</span>.<span style="color:#66d9ef">name</span>
 }
@@ -275,13 +275,13 @@ State から削除するには <a href="https://www.terraform.io/docs/commands/s
 変数を使うには宣言が必要です。宣言では型なども指定できます。</p>
 <p><a href="https://www.terraform.io/docs/configuration/types.html">https://www.terraform.io/docs/configuration/types.html</a></p>
 <p>変数の宣言はつぎのようにします。 <code>.tf</code> のどこに書いても大丈夫です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># variable &#34;変数名&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># variable &#34;変数名&#34;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;region&#34;</span> {
   type    <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;string&#34;</span>
   default <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-east-1&#34;</span>
 }
 </code></pre></div><p>変数の値の設定は次のようにします。 <code>terraform.tfvars</code> というファイル名に書いておくとコマンド実行時に自動で読み込まれます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl">ami <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl">ami <span style="color:#f92672">=</span> {
   &#34;us-east-1&#34; <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ami-abc123&#34;</span>
   &#34;us-west-2&#34; <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ami-def456&#34;</span>
 }
@@ -289,7 +289,7 @@ State から削除するには <a href="https://www.terraform.io/docs/commands/s
 <h2 id="provider-の設定">Provider の設定</h2>
 <p>Provider を使うには設定が必要です。
 設定の属性は Provider によって違います。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># provider &#34;Provider名&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># provider &#34;Provider名&#34;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;google&#34;</span> {
   project <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;acme-app&#34;</span>
   region  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;us-central1&#34;</span>
@@ -301,7 +301,7 @@ State から削除するには <a href="https://www.terraform.io/docs/commands/s
 リソースが1つだけでも、チーム固有の設定を Module のデフォルト値として設定したり、チームでは使わないリソースの属性を隠蔽したり用途はあるかと思います。</p>
 <p>Module の作り方は通常の Terraform の設定ファイルの記述と同様、 1つのディレクトリ直下にパッケージングするリソースの設定ファイルを記述するだけです。</p>
 <p>Module は次のように使います。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># module &#34;名前&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># module &#34;名前&#34;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;servers&#34;</span> {<span style="color:#75715e">
 </span><span style="color:#75715e">  # モジュールへのパス
 </span><span style="color:#75715e"></span>  source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;./app-cluster&#34;</span><span style="color:#75715e">
@@ -334,7 +334,7 @@ Terraform の Module 化は慎重でなければなりません。
 <p><a href="https://www.terraform.io/docs/configuration/outputs.html">https://www.terraform.io/docs/configuration/outputs.html</a></p>
 <p>Module で定義したリソースの属性は基本的に外部から隠蔽されます。
 リソースの属性を参照できるようにするには、次のように個別に Output として宣言する必要があります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">output</span> <span style="color:#e6db74">&#34;instance_ip_addr&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">output</span> <span style="color:#e6db74">&#34;instance_ip_addr&#34;</span> {
   value <span style="color:#f92672">=</span> <span style="color:#66d9ef">aws_instance</span>.<span style="color:#66d9ef">server</span>.<span style="color:#66d9ef">private_ip</span>
 }
 </code></pre></div><p>これはモジュールで定義したリソース <code>aws_instance.server</code> の属性 <code>private_ip</code> を Module の属性 <code>instance_ip_addr</code> として外部に公開するという意味です。
@@ -343,7 +343,7 @@ Module のパスが module.servers だとすると、 <code>module.servers.insta
 <p><a href="https://www.terraform.io/docs/configuration/data-sources.html">https://www.terraform.io/docs/configuration/data-sources.html</a></p>
 <p>Data source は Terraform で管理していない(あるいは他の State で管理している)リソースの属性を参照するための仕組みです。</p>
 <p>次のように記述します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># data &#34;リソースの種類&#34; &#34;リソース名&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># data &#34;リソースの種類&#34; &#34;リソース名&#34;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">data</span> <span style="color:#e6db74">&#34;aws_ami&#34; &#34;example&#34;</span> {<span style="color:#75715e">
 </span><span style="color:#75715e">  # リソースを一意に識別するためのクエリ
 </span><span style="color:#75715e"></span>
@@ -361,7 +361,7 @@ Module のパスが module.servers だとすると、 <code>module.servers.insta
 <p><a href="https://www.terraform.io/docs/providers/terraform/d/remote_state.html">https://www.terraform.io/docs/providers/terraform/d/remote_state.html</a></p>
 <p>他の State で管理されているリソースの属性を Data source を使って参照するために <code>terraform_remote_state</code> があります。
 参照するには Module 同様 その属性が Output によって外部に公開されている必要があります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">data</span> <span style="color:#e6db74">&#34;terraform_remote_state&#34; &#34;vpc&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">data</span> <span style="color:#e6db74">&#34;terraform_remote_state&#34; &#34;vpc&#34;</span> {
   backend <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;remote&#34;</span>
 
   config <span style="color:#f92672">=</span> {

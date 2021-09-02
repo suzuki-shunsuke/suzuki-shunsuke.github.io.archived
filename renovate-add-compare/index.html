@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -144,7 +144,7 @@
 一方 helm data source の場合、 そういったものがなく差分がなんなのか分からないことがあります。
 そういう場合、 <a href="https://docs.renovatebot.com/configuration-options/#prbodynotes">prBodyNotes</a> を利用して link を追加すると便利です。</p>
 <p>例えば、 datadog helm chart の場合</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;datasources&#34;</span>: [<span style="color:#e6db74">&#34;helm&#34;</span>],
   <span style="color:#f92672">&#34;packageNames&#34;</span>: [<span style="color:#e6db74">&#34;datadog&#34;</span>],
   <span style="color:#f92672">&#34;prBodyNotes&#34;</span>: [

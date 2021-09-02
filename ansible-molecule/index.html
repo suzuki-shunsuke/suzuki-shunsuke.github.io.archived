@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -174,7 +174,7 @@ molecule の公式ドキュメント以外の情報は少ないので、参考�
 </code></pre><p>こうすると <code>molecule</code> ディレクトリが生成されます。</p>
 <p><code>molecule/default/molecule.yml</code> を修正します。</p>
 <p><a href="https://molecule.readthedocs.io/en/latest/configuration.html">https://molecule.readthedocs.io/en/latest/configuration.html</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">dependency</span>:
   <span style="color:#f92672">name</span>: <span style="color:#ae81ff">galaxy</span>
   <span style="color:#75715e"># 依存する role がある場合</span>
@@ -271,7 +271,7 @@ $ molecule init scenario -s agent -r hello-molecule
       playbook.yml # これは使わない。消す
 </code></pre><p>ここから molecule.yml を修正していきます。
 一部抜粋します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">dependency</span>:
   <span style="color:#f92672">name</span>: <span style="color:#ae81ff">galaxy</span>
   <span style="color:#f92672">options</span>:

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -149,13 +149,13 @@ tarball や zip をダウンロードして展開して指定したパスにイ�
 <p>使い方は以下のようになっています。</p>
 <pre><code>$ clap &lt;URL&gt; &lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt; [&lt;インストールするファイルのアーカイブ内での相対パス&gt;:&lt;インストール先&gt;...]
 </code></pre><p>例えば <a href="https://github.com/open-policy-agent/conftest">conftest</a> を /usr/local/bin にインストールする場合次のようになります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">CONFTEST_VERSION<span style="color:#f92672">=</span>0.18.2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">CONFTEST_VERSION<span style="color:#f92672">=</span>0.18.2
 clap install https://github.com/instrumenta/conftest/releases/download/v<span style="color:#e6db74">${</span>CONFTEST_VERSION<span style="color:#e6db74">}</span>/conftest_<span style="color:#e6db74">${</span>CONFTEST_VERSION<span style="color:#e6db74">}</span>_Linux_x86_64.tar.gz conftest:/usr/local/bin/conftest
 chmod a+x /usr/local/bin/conftest
 </code></pre></div><p>パーミッションの付与はやってくれないので必要に応じてやってください。
 ファイルの圧縮形式は URL から自動で判別してくれます。</p>
 <p>上記の conftest のインストールを今までは次のようなシェルスクリプトを書いていました。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>
 set -eu
 

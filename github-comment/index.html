@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -195,7 +195,7 @@
 設定ファイルは <code>github-comment init</code> で雛形を生成できます。</p>
 <pre><code>$ github-comment init
 </code></pre><p>こんな感じで複数のテンプレートを記述できます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">post</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">post</span>:
   <span style="color:#f92672">default</span>: |<span style="color:#e6db74">
 </span><span style="color:#e6db74">    </span>    <span style="color:#ae81ff">foo</span>
   <span style="color:#f92672">hello</span>: |<span style="color:#e6db74">
@@ -208,7 +208,7 @@
 <p><code>exec</code> の設定はもう少し複雑です。
 それはコマンドの実行結果によって使用するテンプレートを変えたり、あるいはコメントを投稿しなかったりできるようにするためです。
 一つのテンプレートキーに対し、複数のテンプレートを配列で設定します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
   <span style="color:#f92672">default</span>:
     - <span style="color:#f92672">when</span>: <span style="color:#ae81ff">ExitCode == 0</span>
       <span style="color:#f92672">template</span>: |<span style="color:#e6db74">
@@ -226,7 +226,7 @@
 false なら次のテンプレートを評価します。
 全部マッチしなければコメントは投稿されませんし、エラーにもなりません。
 <code>dont_comment: true</code> とすると、その条件にマッチした場合はコメントを投稿せずに終了します(後続のテンプレートも無視されます)。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
   <span style="color:#f92672">hello</span>:
     - <span style="color:#f92672">when</span>: <span style="color:#ae81ff">ExitCode != 0</span>
       <span style="color:#f92672">dont_comment</span>: <span style="color:#66d9ef">true</span>
@@ -235,13 +235,13 @@ false なら次のテンプレートを評価します。
 </span><span style="color:#e6db74">        </span>        <span style="color:#ae81ff">Hello, world</span>
 </code></pre></div><h3 id="テンプレートの再利用">テンプレートの再利用</h3>
 <p><code>templates</code> を使うと複数のテンプレートでヘッダーなどを共通化して再利用できます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">templates</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">templates</span>:
   <span style="color:#f92672">header</span>: <span style="color:#e6db74">&#34;# {{.Org}}/{{.Repo}}&#34;</span>
 <span style="color:#f92672">post</span>:
   <span style="color:#f92672">default</span>: |<span style="color:#e6db74">
 </span><span style="color:#e6db74">    </span>    {{<span style="color:#ae81ff">template &#34;header&#34; .}}</span>
 </code></pre></div><p>Go の <a href="https://golang.org/pkg/text/template/">text/template</a> に馴染みがないとわかりにくいかと思いますが、</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">templates</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">templates</span>:
   <span style="color:#f92672">テンプレート名</span>: <span style="color:#ae81ff">テンプレート</span>
 </code></pre></div><p>でテンプレートを定義して</p>
 <pre><code>{{template &quot;テンプレート名&quot; .}}
@@ -253,7 +253,7 @@ false なら次のテンプレートを評価します。
 </code></pre><h2 id="設定ファイルで変数を定義する">設定ファイルで変数を定義する</h2>
 <p>設定ファイルで変数を定義できます。任意の型の変数を定義できます。
 <code>{{.Var}}.変数名</code> で参照できます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">vars</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">vars</span>:
   <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">bar</span>
   <span style="color:#f92672">zoo</span>:
     <span style="color:#f92672">foo</span>: <span style="color:#ae81ff">hello</span>
@@ -366,7 +366,7 @@ The output of String may vary across Go releases.</p>
 <h2 id="設定ファイルで-org-repo-を指定する">設定ファイルで .Org, .Repo を指定する</h2>
 <p>設定ファイルでコメント先のリポジトリを指定できます。
 Platform で補完される場合や、明示的にパラメータで指定する場合は不要です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">base</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">base</span>:
   <span style="color:#f92672">org</span>: <span style="color:#ae81ff">suzuki-shunsuke</span>
   <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">github-comment</span>
 </code></pre></div></div>

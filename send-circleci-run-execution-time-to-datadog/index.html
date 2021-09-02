@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -159,7 +159,7 @@
 </code></pre><p>CircleCI の <code>run</code> では <code>shell</code> オプションで shell を指定できます。</p>
 <p><a href="https://circleci.com/docs/2.0/configuration-reference/#run">https://circleci.com/docs/2.0/configuration-reference/#run</a></p>
 <p>なので command 全体の時間を計測したい場合は、 shell を次のようにします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">run</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#f92672">run</span>:
     <span style="color:#f92672">name</span>: <span style="color:#ae81ff">test dd-time</span>
     <span style="color:#f92672">shell</span>: <span style="color:#ae81ff">/usr/local/bin/dd-time -m dd_time.test -- sh -eo pipefail</span>
     <span style="color:#f92672">command</span>: |<span style="color:#e6db74">

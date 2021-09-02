@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -142,15 +142,15 @@
   <div class="article-body"><p><a href="https://github.com/suzuki-shunsuke/go-jsoneq">https://github.com/suzuki-shunsuke/go-jsoneq</a></p>
 <p>2つの値がJSONとして等しいか比較するGoライブラリを開発したので紹介します。</p>
 <p>「2つの値がJSONとして等しい」とは、2つの値をそれぞれJSON文字列に変換したら、2つが表現するデータがおなじになるという意味です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">struct</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">struct</span> {
 	<span style="color:#a6e22e">Foo</span> <span style="color:#66d9ef">string</span> <span style="color:#e6db74">`json:&#34;foo&#34;`</span>
 }{
 	<span style="color:#a6e22e">Foo</span>: <span style="color:#e6db74">&#34;bar&#34;</span>,
 }
 </code></pre></div><p>と</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{<span style="color:#e6db74">&#34;foo&#34;</span>: <span style="color:#e6db74">&#34;bar&#34;</span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{<span style="color:#e6db74">&#34;foo&#34;</span>: <span style="color:#e6db74">&#34;bar&#34;</span>}
 </code></pre></div><p>を JSON に変換したらともに</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;foo&#34;</span>: <span style="color:#e6db74">&#34;bar&#34;</span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{<span style="color:#f92672">&#34;foo&#34;</span>: <span style="color:#e6db74">&#34;bar&#34;</span>}
 </code></pre></div><p>になりますね。</p>
 <p>json.Marshaler のテストや、
 実際の JSON 文字列から構造体を定義したときにちゃんと定義できているかチェックするのに使えると思います。</p>

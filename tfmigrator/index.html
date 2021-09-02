@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -203,7 +203,7 @@ Terraform CLI と hcledit が必要です。</p>
 <pre><code>$ terraformer import aws -r iam --compact --path-pattern .
 </code></pre><p>こうすると resources.tf と terraform.tfstate が作られます。</p>
 <p>tfmigrator の設定ファイル tfmigrator.yaml を書きます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">items</span>:
 <span style="color:#75715e"># 既に Terraform で管理されているものは無視</span>
 - <span style="color:#f92672">rule</span>: <span style="color:#e6db74">&#39;&#34;tags&#34; in Values &amp;&amp; Values.tags.ManagedBy == &#34;Terraform&#34;&#39;</span>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -167,13 +167,13 @@
 <p><a href="https://crieit.net/posts/Go-time-LoadLocation">https://crieit.net/posts/Go-time-LoadLocation</a> に書いてあるとおり、
 <code>time.LoadLocation</code> を下手に呼び出すと環境によっては <code>unknown time zone</code> エラーが起こるため
 次のように time.FixedZone で Location を生成します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">jp</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">FixedZone</span>(<span style="color:#e6db74">&#34;Asia/Tokyo&#34;</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">jp</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">FixedZone</span>(<span style="color:#e6db74">&#34;Asia/Tokyo&#34;</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span>)
 </code></pre></div><p>FixedZone という関数名が紛らわしい気もしますが、新しい Location を生成しているだけで副作用はありません。</p>
 <p>ちなみに time.FixedZone に渡す文字列は &ldquo;foo&rdquo; みたいな適当な文字列でも動くようです。</p>
 <p><a href="https://golang.org/pkg/time/#FixedZone">https://golang.org/pkg/time/#FixedZone</a></p>
 <p><a href="https://github.com/golang/go/blob/9e277f7d554455e16ba3762541c53e9bfc1d8188/src/time/zoneinfo.go#L263-L308">https://github.com/golang/go/blob/9e277f7d554455e16ba3762541c53e9bfc1d8188/src/time/zoneinfo.go#L263-L308</a></p>
 <p>アプリケーションで利用する location が決まっている場合、次のように location を返すヘルパー関数を用意すると良さそうです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">location</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">location</span>
 
 <span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;time&#34;</span>
@@ -194,7 +194,7 @@
 <p>厳密に言うと、<code>time.UTC</code> は変更可能なので UTC だとは限りません。
 そのため、本来 <code>time.UTC</code> はゲッター関数であるべきだったんじゃないかなという気もします。</p>
 <p>厳密に UTC な Location を取得するにはヘルパー関数を書くと良さそうです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">location</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">location</span>
 
 <span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;time&#34;</span>
@@ -214,7 +214,7 @@
 </code></pre></div><h2 id="動作環境に依存しないコードにするために">動作環境に依存しないコードにするために</h2>
 <p>動作環境によって <code>time.Local</code> の値が違うことで結果が変わってしまう場合があります。
 それを防ぐために、プログラムの最初に <code>time.Local</code> を UTC にするという手もありそうです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Local</span> = <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">UTC</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Local</span> = <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">UTC</span>()
 </code></pre></div><p>ただし、それでもグローバル変数である以上、行儀の悪いサードパーティのライブラリによって変更されるかもしれませんし、
 必要な箇所で location を明示的に指定してグローバル変数に依存しないようなコードを書くことを心がけたほうが良い気もします。</p>
 <h2 id="文字列を-timetime-に変換する">文字列を time.Time に変換する</h2>
@@ -239,7 +239,7 @@ ParseInLocation uses the given location.</p>
 </li>
 </ul>
 <p>予め location がわかっている場合 time.ParseInLocation で location を指定して time.Time に変換した後 time.Time.In で UTC にするのが良さそうです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">ParseInLocation</span>(<span style="color:#e6db74">&#34;2006-01-02T15:04:05&#34;</span>, <span style="color:#e6db74">&#34;2019-08-13T21:30:00&#34;</span>, <span style="color:#a6e22e">jp</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">ParseInLocation</span>(<span style="color:#e6db74">&#34;2006-01-02T15:04:05&#34;</span>, <span style="color:#e6db74">&#34;2019-08-13T21:30:00&#34;</span>, <span style="color:#a6e22e">jp</span>)
 <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
 }
@@ -251,7 +251,7 @@ ParseInLocation uses the given location.</p>
 but with the copy&rsquo;s location information set to loc for display purposes.</p>
 </blockquote>
 <p>time.Time.In は time.Time の Location だけ変更したコピーを返します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;fmt&#34;</span>
@@ -280,7 +280,7 @@ log.LUTC をセットすることで UTC になります。</p>
 <li><a href="https://golang.org/pkg/log/#SetFlags">https://golang.org/pkg/log/#SetFlags</a></li>
 <li><a href="https://golang.org/pkg/log/#pkg-constants">https://golang.org/pkg/log/#pkg-constants</a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetFlags</span>(<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Flags</span>() | <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">LUTC</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetFlags</span>(<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Flags</span>() | <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">LUTC</span>)
 </code></pre></div><h3 id="logrus">logrus</h3>
 <p><a href="https://github.com/Sirupsen/logrus">logrus</a> のログの時刻の location も time.Local なようです。</p>
 <h3 id="robfigcron">robfig/cron</h3>

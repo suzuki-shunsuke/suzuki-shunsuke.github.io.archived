@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -148,7 +148,7 @@ master に push したら GitHub Pages に circle ciでデプロイするよう�
 </ul>
 <h2 id="コード">コード</h2>
 <p>.circleci/config.yml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">version</span>: <span style="color:#ae81ff">2</span>
 <span style="color:#f92672">jobs</span>:
   <span style="color:#f92672">build</span>:
@@ -171,7 +171,7 @@ master に push したら GitHub Pages に circle ciでデプロイするよう�
           <span style="color:#f92672">branches</span>:
             <span style="color:#f92672">only</span>: <span style="color:#ae81ff">master</span>
 </code></pre></div><p>release.sh</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout gh-pages
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout gh-pages
 mv .git .circleci public
 cd public
 
@@ -186,11 +186,11 @@ git status --porcelain
 <p><a href="https://hub.docker.com/r/suzukishunsuke/hugo-ci/">https://hub.docker.com/r/suzukishunsuke/hugo-ci/</a></p>
 <p>ビルドしたものを gh-pages ブランチにデプロイする方法を工夫していて、
 <code>.git</code> を <code>public</code> ディレクトリに移動しています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout gh-pages
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git checkout gh-pages
 mv .git .circleci public
 cd public
 </code></pre></div><p>あと、ビルドされたものに差分があったときのみデプロイするようにしています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;`git status --porcelain`&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;`git status --porcelain`&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
 </code></pre></div></div>
 
   <footer class="article-footer">

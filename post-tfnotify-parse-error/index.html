@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -148,9 +148,9 @@
 <p>なお、この記事を書いている時点のバージョンは tfnotify v0.7.0, github-comment v1.9.0 です。</p>
 <p>例えば <code>tfnotify plan</code> がパースエラーになった場合、 <code>cannot parse plan result</code> というメッセージが標準エラー出力されます。
 そこで標準エラー出力に <code>cannot parse plan result</code> が含まれていたら github-comment でコメントするようにします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">terraform plan | github-comment exec -k plan -- tfnotify plan
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">terraform plan | github-comment exec -k plan -- tfnotify plan
 </code></pre></div><p>.github-comment.yml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 細かく template を分けているが、別に分けなくてもよい</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># 細かく template を分けているが、別に分けなくてもよい</span>
 <span style="color:#f92672">templates</span>:
   <span style="color:#75715e"># header は CodeBuild の場合</span>
   <span style="color:#f92672">header</span>: <span style="color:#e6db74">&#39;{{Env &#34;TARGET&#34;}} [Build link]({{Env &#34;CODEBUILD_BUILD_URL&#34;}})&#39;</span>
@@ -181,8 +181,8 @@
 </span><span style="color:#e6db74">      </span>      {{<span style="color:#ae81ff">template &#34;exec_default&#34; .}}</span>
 </code></pre></div><p><code>tfnotify apply</code> の場合は <code>cannot parse apply result</code> というメッセージを出力するので
 次のようになります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">terraform apply -auto-approve | github-comment exec -k apply -- tfnotify apply
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">terraform apply -auto-approve | github-comment exec -k apply -- tfnotify apply
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">exec</span>:
   <span style="color:#f92672">apply</span>:
   - <span style="color:#f92672">when</span>: |<span style="color:#e6db74">
 </span><span style="color:#e6db74">      </span>      <span style="color:#ae81ff">Stderr contains &#34;cannot parse apply result&#34;</span>

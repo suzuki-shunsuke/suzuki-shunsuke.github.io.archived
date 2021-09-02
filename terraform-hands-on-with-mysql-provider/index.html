@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -169,7 +169,7 @@ Terraform v0.12.19
 <p><a href="https://hub.docker.com/_/mysql?tab=description">https://hub.docker.com/_/mysql?tab=description</a></p>
 <h3 id="docker-compose-使う場合">Docker Compose 使う場合</h3>
 <p>docker-compose.yml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
 <span style="color:#f92672">services</span>:
   <span style="color:#f92672">mysql</span>:
@@ -203,7 +203,7 @@ $ docker rm -vf terraform-mysql
 </code></pre><h2 id="リソースの作成">リソースの作成</h2>
 <p>次のような設定ファイルを用意します。</p>
 <p>main.tf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;mysql&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">provider</span> <span style="color:#e6db74">&#34;mysql&#34;</span> {
   endpoint <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;localhost:23306&#34;</span>
   username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;root&#34;</span>
   password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;password&#34;</span>
@@ -364,7 +364,7 @@ mysql&gt; select * from INFORMATION_SCHEMA.SCHEMATA where SCHEMA_NAME='foo';
 <pre><code>$ ls
 docker-compose.yml main.tf  terraform.tfstate
 </code></pre><p>こんな JSON ファイルになります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#ae81ff">4</span>,
   <span style="color:#f92672">&#34;terraform_version&#34;</span>: <span style="color:#e6db74">&#34;0.12.19&#34;</span>,
   <span style="color:#f92672">&#34;serial&#34;</span>: <span style="color:#ae81ff">1</span>,
@@ -420,7 +420,7 @@ No changes. Infrastructure is up-to-date.
 </code></pre><h2 id="リソースの更新">リソースの更新</h2>
 <p>同じ調子でもう一つ Database を作ってみましょう。
 Database foo の設定をコピーして <code>terraform plan</code> を実行します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
   name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>
 }
 
@@ -438,7 +438,7 @@ A mysql_database resource named &quot;foo&quot; was already declared at main.tf:
 Resource names must be unique per type in each module.
 </code></pre><p>失敗しました。エラーメッセージの通り、リソースパスはユニークでないといけません。
 修正しましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
   name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>
 }
 
@@ -468,7 +468,7 @@ Error: Error 1007: Can't create database 'foo'; database exists
 </code></pre><p>失敗しました。同じ名前のデータベースは作成できないので当然です。
 このように plan に成功しても apply に失敗することはあります。</p>
 <p>では name を修正しましょう。ついでに database foo の default character set を修正します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span><span style="color:#75715e"> # default character set を修正。デフォルトは utf8
 </span><span style="color:#75715e"></span>}
@@ -528,7 +528,7 @@ mysql&gt; select * from INFORMATION_SCHEMA.SCHEMATA where SCHEMA_NAME='foo';
 1 row in set (0.00 sec)
 </code></pre><p>このように、一部の変更の適用に失敗にしても、その他の変更は適用されるという、ある意味中途半端に apply される場合があります。こういった場合に rollback するようなコマンドはないので気をつけましょう。適用された変更はちゃんと State に反映されています。</p>
 <p>では mysql_database.foo の変更に失敗したので、適切に設定を変更しましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span><span style="color:#75715e"> # utf8_general_ci から変更
@@ -557,7 +557,7 @@ docker-compose.yml main.tf  terraform.tfstate  terraform.state.backup
 <code>terraform.tfstate</code> が terraform のコマンドによって更新される前に自動的にバックアップが作成されます。</p>
 <h2 id="リソースの-recreate">リソースの recreate</h2>
 <p>今度は database の名前を変更してみましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo2&#34;</span><span style="color:#75715e"> # foo から変更
 </span><span style="color:#75715e"></span>  default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
@@ -612,7 +612,7 @@ Empty set (0.00 sec)
 </code></pre><p>新しいデータベースには先程作成したテーブルがありません。このように recreate は危険な操作なのでやるときには注意を払いましょう。</p>
 <h2 id="変数の利用">変数の利用</h2>
 <p>変数を使ってみましょう。設定を修正します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo2&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#66d9ef">var</span>.<span style="color:#66d9ef">default_character_set</span><span style="color:#75715e">  # 変数 default_character_set を参照
 </span><span style="color:#75715e"></span>  default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
@@ -629,7 +629,7 @@ This variable can be declared with a variable &quot;default_character_set&quot; 
 block.
 </code></pre><p>エラーになりました。変数を利用するには宣言が必要です。
 <code>variables.tf</code> というファイルを作成しましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;default_character_set&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;default_character_set&#34;</span> {
   type <span style="color:#f92672">=</span> <span style="color:#66d9ef">string</span>
 }
 </code></pre></div><pre><code>$ terraform plan
@@ -664,7 +664,7 @@ The root module input variable &quot;default_character_set&quot; is not set, and
 default value. Use a -var or -var-file command line argument to provide a
 value for this variable.
 </code></pre><p><code>terraform.tfvars</code> というファイルを作成し、値を設定しましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl">default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl">default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span>
 </code></pre></div><pre><code>$ terraform plan
 
 No changes. Infrastructure is up-to-date.
@@ -680,7 +680,7 @@ var.default_character_set
 <pre><code>$ mv main.tfvars terraform.tfvars
 </code></pre><h2 id="他のリソースの属性の参照">他のリソースの属性の参照</h2>
 <p>設定を修正します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo2&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#66d9ef">var</span>.<span style="color:#66d9ef">default_character_set</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
@@ -767,7 +767,7 @@ resource &quot;mysql_database&quot; &quot;zoo&quot; {
 }
 </code></pre><p>失敗しました。 <code>mysql_database.zoo</code> が存在しないからです。
 空で良いのでリソースの設定を追加しましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
 }
 </code></pre></div><pre><code>$ terraform import mysql_database.zoo zoo
 mysql_database.zoo: Importing from ID &quot;zoo&quot;...
@@ -791,7 +791,7 @@ Error: Missing required argument
 The argument &quot;name&quot; is required, but no definition was found.
 </code></pre><p>zoo の設定が空で name が設定されていないので失敗しました。
 修正します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
   name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zoo&#34;</span>
 }
 </code></pre></div><pre><code>$ terraform plan
@@ -810,7 +810,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 <p>import は State にはリソースのデータを反映してくれますが、設定ファイルには反映してくれないので自分で反映させる必要があります。
 一部の Provider では、設定ファイルに自動で反映させるためのサードパーティのツールもあります。</p>
 <p>修正します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zoo&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;latin1&#34;</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;latin1_swedish_ci&#34;</span>
@@ -823,7 +823,7 @@ No changes. Infrastructure is up-to-date.
 <p><code>terraform destroy</code> もありますが、今回は設定をコメントアウトします。
 ちなみに Terraform の設定ファイルの記述言語である HCL ではコメントアウトは <code>#</code> でも <code>//</code> でもどちらでも良いです。</p>
 <p><a href="https://github.com/hashicorp/hcl#syntax">https://github.com/hashicorp/hcl#syntax</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># resource &#34;mysql_database&#34; &#34;bar&#34; {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#75715e"># resource &#34;mysql_database&#34; &#34;bar&#34; {
 </span><span style="color:#75715e">#   name                  = &#34;bar&#34;
 </span><span style="color:#75715e">#   default_character_set = mysql_database.foo.default_character_set
 </span><span style="color:#75715e">#   default_collation     = &#34;utf8mb4_general_ci&#34;
@@ -863,7 +863,7 @@ Apply complete! Resources: 0 added, 0 changed, 1 destroyed.
 <h2 id="terraform-state-mv">terraform state mv</h2>
 <p><a href="https://www.terraform.io/docs/commands/state/mv.html">https://www.terraform.io/docs/commands/state/mv.html</a></p>
 <p>ここで リソースの名前を変えて <code>terraform plan</code> してみましょう。名前を変えたくなることはまぁあると思います。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo2&#34;</span> {<span style="color:#75715e"> # foo から foo2 に変更
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;foo2&#34;</span> {<span style="color:#75715e"> # foo から foo2 に変更
 </span><span style="color:#75715e"></span>  name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo2&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#66d9ef">var</span>.<span style="color:#66d9ef">default_character_set</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
@@ -915,7 +915,7 @@ mysql&gt; select * from INFORMATION_SCHEMA.SCHEMATA where SCHEMA_NAME='zoo';
 1 row in set (0.00 sec)
 </code></pre><p>default_character_set を変えると自動で DEFAULT_COLLATION_NAME も変わりました。
 設定ファイルにも変更を反映させましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zoo&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
@@ -945,7 +945,7 @@ exceptional situations such as recovering from errors or mistakes, or when
 Terraform specifically suggests to use it as part of an error message.
 </code></pre><p>差分が出てしまいました。これは State が更新されていないからです。
 terraform.tfstate を確認してみましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    {
       <span style="color:#f92672">&#34;mode&#34;</span>: <span style="color:#e6db74">&#34;managed&#34;</span>,
       <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;mysql_database&#34;</span>,
       <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;zoo&#34;</span>,
@@ -995,7 +995,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 module.app.mysql_database.db: Refreshing state... [id=app]
 mysql_database.foo2: Refreshing state... [id=foo2]
 mysql_database.zoo: Refreshing state... [id=zoo]
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    {
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    {
       <span style="color:#f92672">&#34;mode&#34;</span>: <span style="color:#e6db74">&#34;managed&#34;</span>,
       <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;mysql_database&#34;</span>,
       <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;zoo&#34;</span>,
@@ -1020,13 +1020,13 @@ No changes. Infrastructure is up-to-date.
 <p>簡単なモジュールを作ってみましょう。</p>
 <pre><code>$ mkdir database
 vi database/database.tf
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;db&#34;</span> {
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;db&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;app&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
 }
 </code></pre></div><p>では Module を使って database を作ってみます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;app&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;app&#34;</span> {
   source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;./database&#34;</span>
 }
 </code></pre></div><pre><code>$ terraform plan
@@ -1056,13 +1056,13 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 </code></pre><h3 id="module-パラメータ">Module パラメータ</h3>
 <p>これで Module を使って Database を作れましたが、 name が &ldquo;app&rdquo; 固定なので使いづらいですね。名前を変えられるようにしましょう。</p>
 <p>database/database.tf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;db&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;db&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#66d9ef">var</span>.<span style="color:#66d9ef">name</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4&#34;</span>
   default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
 }
 </code></pre></div><p>database/variables.tf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;name&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;name&#34;</span> {
   type <span style="color:#f92672">=</span> <span style="color:#66d9ef">string</span>
 }
 </code></pre></div><pre><code>$ terraform plan
@@ -1075,14 +1075,14 @@ Error: Missing required argument
 The argument &quot;name&quot; is required, but no definition was found.
 </code></pre><p>必須パラメータを指定していないので失敗しました。デフォルト値を設定しましょう。</p>
 <p><a href="https://www.terraform.io/docs/configuration/variables.html">https://www.terraform.io/docs/configuration/variables.html</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;name&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">variable</span> <span style="color:#e6db74">&#34;name&#34;</span> {
   type    <span style="color:#f92672">=</span> <span style="color:#66d9ef">string</span>
   default <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;app&#34;</span>
 }
 </code></pre></div><pre><code>$ terraform plan
 No changes. Infrastructure is up-to-date.
 </code></pre><p>パラメータを渡して name を変更しましょう。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;app&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;app&#34;</span> {
   source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;./database&#34;</span>
   name   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;app2&#34;</span>
 }
@@ -1097,7 +1097,7 @@ Terraform will perform the following actions:
       ~ name                  = &quot;app&quot; -&gt; &quot;app2&quot; # forces replacement
     }
 </code></pre><p>パラメータを渡せました。もとに戻しておきます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;app&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">module</span> <span style="color:#e6db74">&#34;app&#34;</span> {
   source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;./database&#34;</span>
   name   <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;app&#34;</span>
 }
@@ -1107,12 +1107,12 @@ Terraform will perform the following actions:
 モジュール内であれば普通に参照できますが、モジュールの外から参照するには、 Module 側で明示的に公開する必要があります。不便な側面もあるかもしれませんが、カプセル化とも言えますね。</p>
 <p>default_character_set を公開しましょう。</p>
 <p>database/output.tf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">output</span> <span style="color:#e6db74">&#34;default_character_set&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">output</span> <span style="color:#e6db74">&#34;default_character_set&#34;</span> {
   value <span style="color:#f92672">=</span> <span style="color:#66d9ef">mysql_database</span>.<span style="color:#66d9ef">db</span>.<span style="color:#66d9ef">default_character_set</span>
 }
 </code></pre></div><p>そして参照します。</p>
 <p>main.tf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zoo&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#66d9ef">module</span>.<span style="color:#66d9ef">app</span>.<span style="color:#66d9ef">default_character_set</span><span style="color:#75715e">  # 参照
 </span><span style="color:#75715e"></span>  default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>
@@ -1154,7 +1154,7 @@ Do you really want to destroy all resources?
   Enter a value: yes
 </code></pre><p>module.app を消そうとしたら、 mysql_database.zoo も削除されそうになっています。
 これは mysql_database.zoo が module.app の属性に依存しているからです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-hcl" data-lang="hcl"><span style="color:#66d9ef">resource</span> <span style="color:#e6db74">&#34;mysql_database&#34; &#34;zoo&#34;</span> {
   name                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zoo&#34;</span>
   default_character_set <span style="color:#f92672">=</span> <span style="color:#66d9ef">module</span>.<span style="color:#66d9ef">app</span>.<span style="color:#66d9ef">default_character_set</span><span style="color:#75715e">  # module.app に依存
 </span><span style="color:#75715e"></span>  default_collation     <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;utf8mb4_general_ci&#34;</span>

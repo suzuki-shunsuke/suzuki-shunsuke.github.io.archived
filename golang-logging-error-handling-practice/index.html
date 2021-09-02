@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -188,7 +188,7 @@ JSONフォーマットで出力してfluentdでElasticsearchにフォワード�
 <p><a href="https://echo.labstack.com/guide/error-handling">https://echo.labstack.com/guide/error-handling</a></p>
 <p>error が発生してもすぐログを吐くのではなく、error を関数の戻り値として返し、ロギングする責務を親に委譲します。
 Goでは以下のようなイディオムがよく見られますね。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
 }
 </code></pre></div><h2 id="ロギングに必要な情報を戻り値のerrorに含める">ロギングに必要な情報を戻り値のerrorに含める</h2>
@@ -228,13 +228,13 @@ Goでは以下のようなイディオムがよく見られますね。</p>
 <p>pkg/errors だとメタ情報には対応できないので自分でライブラリを作りました。</p>
 <p><a href="https://github.com/suzuki-shunsuke/go-errlog">https://github.com/suzuki-shunsuke/go-errlog</a></p>
 <p>こんな感じになります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">Wrap</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">logrus</span>.<span style="color:#a6e22e">Fields</span>{<span style="color:#e6db74">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;foo&#34;</span>}, <span style="color:#e6db74">&#34;failed to create a user&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">Wrap</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">logrus</span>.<span style="color:#a6e22e">Fields</span>{<span style="color:#e6db74">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;foo&#34;</span>}, <span style="color:#e6db74">&#34;failed to create a user&#34;</span>)
 </code></pre></div><h2 id="error-に含める情報の責務">error に含める情報の責務</h2>
 <p>上記のように error に情報を含める場合、どこまで含めるかというのが問題になります。
 ここでプラクティスとして、
 <strong>関数がerrorを返す場合、その関数がもっている情報は全て含める責務があり、
 逆に子関数から返ってきたerrorには子関数に渡っている情報が含まれているので呼び出し元で付与する必要はない</strong>というふうにしています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">age</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">error</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">age</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">error</span> {
 	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">checkName</span>(<span style="color:#a6e22e">name</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">Wrap</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">logrus</span>.<span style="color:#a6e22e">Fields</span>{<span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#a6e22e">age</span>}, <span style="color:#e6db74">&#34;failed to create a user&#34;</span>)
 	}
@@ -243,7 +243,7 @@ Goでは以下のようなイディオムがよく見られますね。</p>
 上記の例だとエラーに関係ない <code>age</code> も渡す必要はないのではないかとも考えられますが、原則ログに残すこととします。</p>
 <p>ただし、子関数が標準関数やサードパーティのライブラリなど、プロジェクト外部で定義された関数であれば話は別です。
 それらがどのようなエラーを返すかは保証がありません。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#a6e22e">filename</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">f</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#a6e22e">filename</span>); <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">Wrap</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">logrus</span>.<span style="color:#a6e22e">Fields</span>{<span style="color:#e6db74">&#34;filename&#34;</span>: <span style="color:#a6e22e">filename</span>}, <span style="color:#e6db74">&#34;failed to open a file&#34;</span>, <span style="color:#e6db74">&#34;failed to create a user&#34;</span>)
 }
 </code></pre></div><p>上記の例だと、<code>os.Open</code>に渡したメタ情報 <code>filename</code> や os.Openに失敗したことを示す <code>failed to open a file</code> といったメッセージも<code>errlog.Wrap</code>に渡しています。</p>
@@ -252,7 +252,7 @@ Goでは以下のようなイディオムがよく見られますね。</p>
 上記の例だと「ファイルのオープンに失敗」した結果、「ユーザの作成に失敗」するという順序になります。</p>
 <h2 id="エラーのロギングはシンプルに">エラーのロギングはシンプルに</h2>
 <p>go-errlogではシンプルにロギングを記述できます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">NewLogger</span>(<span style="color:#66d9ef">nil</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">errlog</span>.<span style="color:#a6e22e">NewLogger</span>(<span style="color:#66d9ef">nil</span>)
 <span style="color:#75715e">// err != nil なら logging する
 </span><span style="color:#75715e">// err がメタ情報を持ってたら logrusで構造化してロギングする
 </span><span style="color:#75715e">// メッセージも pkg/errors のように一つのテキストに連結してロギング

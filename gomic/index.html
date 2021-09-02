@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -179,7 +179,7 @@
 <p>自分が欲しかったのは学習コストの低いシンプルなAPIです。
 interfaceのメソッドを実装した関数をモックに渡すことで
 簡単にメソッドの実装を切り替えたいのです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Getwd メソッドのモック
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// Getwd メソッドのモック
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">SetFuncGetwd</span>(<span style="color:#66d9ef">func</span>() (<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">error</span>) {
 	<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/tmp&#34;</span>, <span style="color:#66d9ef">nil</span>
 })
@@ -187,7 +187,7 @@ interfaceのメソッドを実装した関数をモックに渡すことで
 <span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">Getwd</span>() <span style="color:#75715e">// &#34;/tmp&#34;, nil
 </span></code></pre></div><p>これは非常にシンプルで分かりやすく、柔軟性のあるパターンです(minimockはこのパターンもサポートしています)。</p>
 <p>gomock や minimock では</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mockSample</span>.<span style="color:#a6e22e">EXPECT</span>().<span style="color:#a6e22e">Method</span>(<span style="color:#e6db74">&#34;hoge&#34;</span>).<span style="color:#a6e22e">Return</span>(<span style="color:#ae81ff">1</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mockSample</span>.<span style="color:#a6e22e">EXPECT</span>().<span style="color:#a6e22e">Method</span>(<span style="color:#e6db74">&#34;hoge&#34;</span>).<span style="color:#a6e22e">Return</span>(<span style="color:#ae81ff">1</span>)
 </code></pre></div><p>のように 関数のパラメータと戻り値のペアを渡してモックを実装するパターン(何か名前があるのでしょうか？)をサポートしています。
 このパターンを gomic はサポートしていません。
 このパターンはごく簡単なサンプルでは有効かもしれませんが、実際には使えないことが多いかなと感じています。</p>
@@ -223,19 +223,19 @@ golintのようなlinterでエラーにならないようにコードコメン�
 <p>をご確認ください。</p>
 <p>以下のサンプルは <a href="https://github.com/suzuki-shunsuke/gomic/tree/v0.5.0/examples">v0.5.0のサンプル</a> を元にしています。</p>
 <p>まず mock を生成します(以下このモックを生成する関数を&quot;コンストラクタ&quot;と呼びます)。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">examples</span>.<span style="color:#a6e22e">NewOSMock</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">examples</span>.<span style="color:#a6e22e">NewOSMock</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>)
 </code></pre></div><p>第一引数は *testing.T で、通常のテストならテスト関数の引数をそのまま渡せば良いし、そうでなければ nil を渡せば良いと思います。
 第二引数は <code>func(t *testing.T, intfName, methodName string)</code> 型の関数で、interfaceのメソッドの実装がセットされていない場合に呼び出されます。nil を渡すと代わりに<a href="https://godoc.org/github.com/suzuki-shunsuke/gomic/gomic#DefaultCallbackNotImplemented">gomic.DefaultCallbackNotImplemented</a> が呼び出されます。</p>
 <p>mockは interface を実装しています。</p>
 <p>次にinterfaceのメソッドを実装した関数をmockにセットします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">SetFuncGetwd</span>(<span style="color:#66d9ef">func</span>() (<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">error</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">SetFuncGetwd</span>(<span style="color:#66d9ef">func</span>() (<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">error</span>) {
 	<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/tmp&#34;</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;&#34;</span>)
 })
 </code></pre></div><p><code>mock.Getwd</code> を呼び出すと <code>SetFuncGetwd</code> に渡した関数が呼び出されます。</p>
 <p>上記のサンプルのように決まった値を返すだけの fake はよくあるので、以下のように簡単に書けるようにしています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">SetReturnGetwd</span>(<span style="color:#e6db74">&#34;/tmp&#34;</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;&#34;</span>))
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">SetReturnGetwd</span>(<span style="color:#e6db74">&#34;/tmp&#34;</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;&#34;</span>))
 </code></pre></div><p>モックの <code>SetFuncXXX</code> 及び <code>SetReturnXXX</code> はモック自身を返すのでメソッドチェーンが出来るようになっています。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">examples</span>.<span style="color:#a6e22e">NewOSMock</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>).
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">mock</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">examples</span>.<span style="color:#a6e22e">NewOSMock</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#66d9ef">nil</span>).
   <span style="color:#a6e22e">SetReturnMkdir</span>(<span style="color:#66d9ef">nil</span>).
 	<span style="color:#a6e22e">SetFuncGetwd</span>(<span style="color:#66d9ef">func</span>() (<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">error</span>) {
 		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;/tmp&#34;</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;&#34;</span>)
@@ -246,7 +246,7 @@ golintのようなlinterでエラーにならないようにコードコメン�
 gomic.DefaultCallbackNotImplemented は コンストラクタの第一引数が nil だと <a href="https://golang.org/pkg/log/#Fatal">log.Fatal</a> を、そうでなければ <a href="https://golang.org/pkg/testing/#T.Fatal">testing.T#Fatal</a> を呼び出し、そこで処理を停止します。</p>
 <p>コンストラクタの第二引数で渡した関数で log.Fatal や testing.Fatal によって処理を止めなければ、interfaceのメソッドを実装していない場合、<a href="https://golang.org/ref/spec#The_zero_value">zero value</a> を返す fake になります。</p>
 <p>一番簡単なのは <a href="https://godoc.org/github.com/suzuki-shunsuke/gomic/gomic#DoNothing">gomic.DoNothing</a> を渡すことです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">Getwd</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">gomic</span>.<span style="color:#a6e22e">DoNothing</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">s</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mock</span>.<span style="color:#a6e22e">Getwd</span>(<span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">gomic</span>.<span style="color:#a6e22e">DoNothing</span>)
 </code></pre></div><p>上で説明したことは</p>
 <p><a href="https://github.com/suzuki-shunsuke/gomic/blob/v0.5.0/examples/os_mock.go#L27-L67">https://github.com/suzuki-shunsuke/gomic/blob/v0.5.0/examples/os_mock.go#L27-L67</a></p>
 <p>を見てもらえばわかると思います。</p>

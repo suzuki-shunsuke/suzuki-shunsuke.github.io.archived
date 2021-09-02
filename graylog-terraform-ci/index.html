@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="pinterest" content="nopin">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.84.4" />
+<meta name="generator" content="Hugo 0.87.0" />
 
 
 
@@ -205,7 +205,7 @@ but those do not provide any access to data or maintenance functionalities.</p>
 <p>以降は <a href="https://drone.io/">drone ci</a> という CI/CD プラットフォームを前提に書きますが、
 travis ci や circle ci, jenkins など他のCI/CDでも考え方は一緒だと思います。</p>
 <p>.drone.yml は 以下のようになります。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 <span style="color:#f92672">pipeline</span>:
   <span style="color:#f92672">envsubst</span>:
     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">suzukishunsuke/alpine-envsubst:0.1.0</span>
@@ -259,7 +259,7 @@ travis ci や circle ci, jenkins など他のCI/CDでも考え方は一緒だと
 </code></pre></div><p>まずは terraform を実行するための Docker Image を用意しました。</p>
 <p><a href="https://hub.docker.com/r/suzukishunsuke/terraform-graylog/">https://hub.docker.com/r/suzukishunsuke/terraform-graylog/</a></p>
 <p>PR時のテストでは terraform validate と terraform fmt を実行します。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">validate</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">validate</span>:
     <span style="color:#f92672">image</span>: <span style="color:#75715e">*terraform_image</span>
     <span style="color:#f92672">environment</span>:
     - <span style="color:#e6db74">&#34;TF_VAR_auth_name=dummy&#34;</span>
@@ -277,7 +277,7 @@ travis ci や circle ci, jenkins など他のCI/CDでも考え方は一緒だと
 <p>次に <code>plan/*</code> と tag を push すると <code>terraform plan</code> が実行されます。
 この結果を見て <code>terraform apply</code> を実行します。</p>
 <p>これは <a href="https://0-8-0.docs.drone.io/manage-secrets/">drone の secrets</a> の都合なのですが、secrets の環境変数は全部大文字になってしまうため <code>TF_VAR_auth_name</code> という環境変数をセットできません。そのため <a href="https://www.gnu.org/software/gettext/manual/html_node/envsubst-Invocation.html">envsubst</a> を使って terraform.tfvars に token を書き込んでいます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">envsubst</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">envsubst</span>:
     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">suzukishunsuke/alpine-envsubst:0.1.0</span>
     <span style="color:#f92672">commands</span>:
     - <span style="color:#ae81ff">envsubst &lt; terraform.tfvars.tpl &gt; terraform.tfvars</span>
@@ -291,7 +291,7 @@ travis ci や circle ci, jenkins など他のCI/CDでも考え方は一緒だと
 auth_name = &quot;$GRAYLOG_AUTH_NAME&quot;
 auth_password = &quot;token&quot;
 </code></pre><p>plan を実行する step です。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">plan</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">plan</span>:
     <span style="color:#f92672">image</span>: <span style="color:#75715e">&amp;terraform_image</span> <span style="color:#e6db74">&#34;suzukishunsuke/terraform-graylog:0.1.2&#34;</span>
     <span style="color:#f92672">commands</span>:
     - <span style="color:#ae81ff">terraform init</span>
@@ -302,7 +302,7 @@ auth_password = &quot;token&quot;
       <span style="color:#f92672">event</span>: <span style="color:#ae81ff">tag</span>
       <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">refs/tags/plan/*</span>
 </code></pre></div><p><code>apply/*</code> と tag を push すると <code>terraform apply</code> が実行されます。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">apply</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">apply</span>:
     <span style="color:#f92672">image</span>: <span style="color:#75715e">*terraform_image</span>
     <span style="color:#f92672">commands</span>:
     - <span style="color:#ae81ff">terraform init</span>
@@ -314,7 +314,7 @@ auth_password = &quot;token&quot;
       <span style="color:#f92672">event</span>: <span style="color:#ae81ff">tag</span>
       <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">refs/tags/apply/*</span>
 </code></pre></div><p>terraform.tfstate をコミット, プッシュします。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">git</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  <span style="color:#f92672">git</span>:
     <span style="color:#f92672">image</span>: <span style="color:#ae81ff">plugins/git</span>
     <span style="color:#f92672">commands</span>:
     - <span style="color:#ae81ff">sh drone_pipeline_commands/git.sh</span>
@@ -322,7 +322,7 @@ auth_password = &quot;token&quot;
       <span style="color:#f92672">event</span>: <span style="color:#ae81ff">tag</span>
       <span style="color:#f92672">ref</span>: <span style="color:#ae81ff">refs/tags/apply/*</span>
 </code></pre></div><p>drone_pipeline_commands/git.sh はこんな感じです。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git status --porcelain <span style="color:#f92672">||</span> exit <span style="color:#ae81ff">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git status --porcelain <span style="color:#f92672">||</span> exit <span style="color:#ae81ff">1</span>
 <span style="color:#66d9ef">if</span> <span style="color:#e6db74">`</span>git diff --exit-code --quiet terraform.tfstate<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">then</span>
   echo <span style="color:#e6db74">&#34;terraform.tfstate isn&#39;t changed&#34;</span>
   exit <span style="color:#ae81ff">0</span>
