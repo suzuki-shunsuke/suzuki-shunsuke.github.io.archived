@@ -8,29 +8,29 @@
 
 
 
-<link rel="canonical" href="https://techblog.szksh.cloud/drone-tag-conditional-step/">
+<link rel="canonical" href="https://techblog.szksh.cloud/what-i-did-2021-08/">
 
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <title>drone の step を実行するか否かをタグ名で判定する方法 - melody</title>
+    <title>2021-08 やったこと - melody</title>
     
-<meta name="description" content="drone 0.8.5 で検証しています。tag 名による判定方法はドキュメントには書いてないので書いておきます。when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  ">
+<meta name="description" content="仕事  AWS IAM User を削除する際に force_destroy が true になっているか Conftest でテスト Terraform の State 分割 Terraform Modules を別リポジトリで管理して versioning git-secrets を secretlint に移行  git-secrets がメンテされてなくて、既知バグが放置されているから   CI で terraform fmt によるフォーマットの自動化 WIP: AWS WAF の COUNT, BLOCK ログを Firehose で抽出 WIP: AWS CodeBuild で Provisioning Error が発生したら自動で Retry WIP: AWS CodeBuild のための GitHub App の開発 WIP: AWS SSO について調査  OSS Contribution Renovate の GitHub Actions のドキュメントの修正をしました。 ドキュメント中に書かれたバージョンを Renovate で自動 update するようにしました。">
 
-<meta property="og:title" content="drone の step を実行するか否かをタグ名で判定する方法 - melody">
+<meta property="og:title" content="2021-08 やったこと - melody">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://techblog.szksh.cloud/drone-tag-conditional-step/">
+<meta property="og:url" content="https://techblog.szksh.cloud/what-i-did-2021-08/">
 <meta property="og:image" content="https://techblog.szksh.cloud/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="drone 0.8.5 で検証しています。tag 名による判定方法はドキュメントには書いてないので書いておきます。when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  ">
+<meta property="og:description" content="仕事  AWS IAM User を削除する際に force_destroy が true になっているか Conftest でテスト Terraform の State 分割 Terraform Modules を別リポジトリで管理して versioning git-secrets を secretlint に移行  git-secrets がメンテされてなくて、既知バグが放置されているから   CI で terraform fmt によるフォーマットの自動化 WIP: AWS WAF の COUNT, BLOCK ログを Firehose で抽出 WIP: AWS CodeBuild で Provisioning Error が発生したら自動で Retry WIP: AWS CodeBuild のための GitHub App の開発 WIP: AWS SSO について調査  OSS Contribution Renovate の GitHub Actions のドキュメントの修正をしました。 ドキュメント中に書かれたバージョンを Renovate で自動 update するようにしました。">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
-<meta name="twitter:url" content="https://techblog.szksh.cloud/drone-tag-conditional-step/">
-<meta name="twitter:title" content="drone の step を実行するか否かをタグ名で判定する方法 - melody">
-<meta name="twitter:description" content="drone 0.8.5 で検証しています。tag 名による判定方法はドキュメントには書いてないので書いておきます。when: ref: refs/tags/foo-* # タグ名が foo-* ならステップを実行 グロブ * には / は含まれないことには注意してください。上記の例だと、 tag foo/bar/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70 https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80  ">
+<meta name="twitter:url" content="https://techblog.szksh.cloud/what-i-did-2021-08/">
+<meta name="twitter:title" content="2021-08 やったこと - melody">
+<meta name="twitter:description" content="仕事  AWS IAM User を削除する際に force_destroy が true になっているか Conftest でテスト Terraform の State 分割 Terraform Modules を別リポジトリで管理して versioning git-secrets を secretlint に移行  git-secrets がメンテされてなくて、既知バグが放置されているから   CI で terraform fmt によるフォーマットの自動化 WIP: AWS WAF の COUNT, BLOCK ログを Firehose で抽出 WIP: AWS CodeBuild で Provisioning Error が発生したら自動で Retry WIP: AWS CodeBuild のための GitHub App の開発 WIP: AWS SSO について調査  OSS Contribution Renovate の GitHub Actions のドキュメントの修正をしました。 ドキュメント中に書かれたバージョンを Renovate で自動 update するようにしました。">
 <meta name="twitter:image" content="https://techblog.szksh.cloud/images/default.png">
 
 
@@ -42,15 +42,15 @@
       "@type": "WebPage",
       "@id":"https:\/\/techblog.szksh.cloud\/"
     },
-    "headline": "drone の step を実行するか否かをタグ名で判定する方法 - melody",
+    "headline": "2021-08 やったこと - melody",
     "image": {
       "@type": "ImageObject",
       "url": "https:\/\/techblog.szksh.cloud\/images\/default.png",
       "height": 800,
       "width": 800
     },
-    "datePublished": "2018-09-30T21:30:06JST",
-    "dateModified": "2018-09-30T21:30:06JST",
+    "datePublished": "2021-09-02T14:33:16JST",
+    "dateModified": "2021-09-02T14:33:16JST",
     "author": {
       "@type": "Person",
       "name": "melody"
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "drone 0.8.5 で検証しています。\ntag 名による判定方法はドキュメントには書いてないので書いておきます。\nwhen: ref: refs\/tags\/foo-* # タグ名が foo-* ならステップを実行 グロブ * には \/ は含まれないことには注意してください。\n上記の例だと、 tag foo\/bar\/0.1.0 はマッチしません。 これは Go の filepath.Match を使っているからです。\n https:\/\/github.com\/cncd\/pipeline\/blob\/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb\/pipeline\/frontend\/yaml\/constraint.go#L70 https:\/\/github.com\/cncd\/pipeline\/blob\/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb\/pipeline\/frontend\/yaml\/constraint.go#L80  "
+    "description": "仕事  AWS IAM User を削除する際に force_destroy が true になっているか Conftest でテスト Terraform の State 分割 Terraform Modules を別リポジトリで管理して versioning git-secrets を secretlint に移行  git-secrets がメンテされてなくて、既知バグが放置されているから   CI で terraform fmt によるフォーマットの自動化 WIP: AWS WAF の COUNT, BLOCK ログを Firehose で抽出 WIP: AWS CodeBuild で Provisioning Error が発生したら自動で Retry WIP: AWS CodeBuild のための GitHub App の開発 WIP: AWS SSO について調査  OSS Contribution Renovate の GitHub Actions のドキュメントの修正をしました。 ドキュメント中に書かれたバージョンを Renovate で自動 update するようにしました。"
   }
 </script>
 
@@ -107,29 +107,31 @@
       <ol class="breadcrumb">
         <li><a href="https://techblog.szksh.cloud/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
         
-        <li class="active">drone の step を実行するか否かをタグ名で判定する方法</li>
+        <li class="active">2021-08 やったこと</li>
       </ol>
     </nav>
 
     <article class="single">
   <header>
     <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T21:30:06JST">Sep 30, 2018</time></li>
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-09-02T14:33:16JST">Sep 2, 2021</time></li>
       
       
-      <li>28 Words</li>
+      <li>153 Words</li>
       
       
     </ul>
 
-    <h1 class="title">drone の step を実行するか否かをタグ名で判定する方法</h1>
+    <h1 class="title">2021-08 やったこと</h1>
     
     
     <section>
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://techblog.szksh.cloud/tags/drone/">drone</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/job/">job</a></li>
+          
+          <li><a href="https://techblog.szksh.cloud/tags/oss/">oss</a></li>
           
         </ul>
       </div>
@@ -139,16 +141,55 @@
 
   
 
-  <div class="article-body"><p>drone 0.8.5 で検証しています。</p>
-<p>tag 名による判定方法はドキュメントには書いてないので書いておきます。</p>
-<pre><code>when:
-  ref: refs/tags/foo-*  # タグ名が foo-* ならステップを実行
-</code></pre><p>グロブ <code>*</code> には <code>/</code> は含まれないことには注意してください。</p>
-<p>上記の例だと、 tag <code>foo/bar/0.1.0</code> はマッチしません。
-これは Go の <a href="https://golang.org/pkg/path/filepath/#Match">filepath.Match</a> を使っているからです。</p>
+  <div class="article-body"><h2 id="仕事">仕事</h2>
 <ul>
-<li><a href="https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70">https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L70</a></li>
-<li><a href="https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80">https://github.com/cncd/pipeline/blob/f8c48fc9fb9fd113c6e7dd941d63bb9f86a623cb/pipeline/frontend/yaml/constraint.go#L80</a></li>
+<li>AWS IAM User を削除する際に force_destroy が true になっているか Conftest でテスト</li>
+<li>Terraform の State 分割</li>
+<li>Terraform Modules を別リポジトリで管理して versioning</li>
+<li>git-secrets を secretlint に移行
+<ul>
+<li>git-secrets がメンテされてなくて、既知バグが放置されているから</li>
+</ul>
+</li>
+<li>CI で terraform fmt によるフォーマットの自動化</li>
+<li>WIP: AWS WAF の COUNT, BLOCK ログを Firehose で抽出</li>
+<li>WIP: AWS CodeBuild で Provisioning Error が発生したら自動で Retry</li>
+<li>WIP: AWS CodeBuild のための GitHub App の開発</li>
+<li>WIP: AWS SSO について調査</li>
+</ul>
+<h2 id="oss-contribution">OSS Contribution</h2>
+<p>Renovate の GitHub Actions のドキュメントの修正をしました。
+ドキュメント中に書かれたバージョンを Renovate で自動 update するようにしました。</p>
+<ul>
+<li><a href="https://github.com/renovatebot/github-action/pull/556">docs: fix broken links and update GitHub Actions</a></li>
+<li><a href="https://github.com/renovatebot/github-action/pull/557">chore: update GitHub Actions in README by Renovate</a></li>
+</ul>
+<h2 id="新たに作った-oss">新たに作った OSS</h2>
+<ul>
+<li><a href="https://github.com/suzuki-shunsuke/logrus-error">logrus-error</a>: <a href="https://github.com/sirupsen/logrus">logrus</a>.Fields を error に埋め込む Go の薄いライブラリ</li>
+<li><a href="https://github.com/suzuki-shunsuke/aqua">aqua</a>: Command Line Tools Version Manager
+<ul>
+<li><a href="https://github.com/suzuki-shunsuke/aqua-proxy">aqua-proxy</a>: aqua の内部ツール</li>
+<li><a href="https://github.com/suzuki-shunsuke/aqua-installer">aqua-installer</a>: aqua をインストールするスクリプトと GitHub Actions</li>
+</ul>
+</li>
+<li><a href="https://github.com/suzuki-shunsuke/go-checkout-github-merged-commit">go-checkout-github-merged-commit</a>: PR の merged commit を checkout する Go のライブラリ</li>
+<li><a href="https://github.com/suzuki-shunsuke/aws-codebuild-retry">aws-codebuild-retry</a>: AWS CodeBuild を Retry する Lambda Function</li>
+</ul>
+<h2 id="blog">Blog</h2>
+<ul>
+<li><a href="https://techblog.szksh.cloud/archives/2021/08/">https://techblog.szksh.cloud/archives/2021/08/</a>
+<ul>
+<li><a href="https://techblog.szksh.cloud/aqua/">aqua - CLI ツールのバージョン管理</a></li>
+<li><a href="https://techblog.szksh.cloud/github-app-for-codebuild/">AWS CodeBuild を実行する Github App を作る</a></li>
+</ul>
+</li>
+<li>Quipper
+<ul>
+<li><a href="https://quipper.hatenablog.com/entry/2021/08/11/080000">Terraform の CI に tfmigrate を導入した話</a></li>
+<li><a href="https://quipper.hatenablog.com/entry/2021/08/02/080000">AWS IAM の管理を miam から Terraform に移行した話</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -162,7 +203,9 @@
       <div>
         <ul class="p-terms">
           
-          <li><a href="https://techblog.szksh.cloud/tags/drone/">drone</a></li>
+          <li><a href="https://techblog.szksh.cloud/tags/job/">job</a></li>
+          
+          <li><a href="https://techblog.szksh.cloud/tags/oss/">oss</a></li>
           
         </ul>
       </div>

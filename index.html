@@ -56,6 +56,30 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-09-02T14:33:16JST">Sep 2, 2021</time></li>
+      
+      
+      <li>153 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/what-i-did-2021-08/">2021-08 やったこと</a></h2>
+  </header>
+
+  
+  <div class="summary">仕事  AWS IAM User を削除する際に force_destroy が true になっているか Conftest でテスト Terraform の State 分割 Terraform Modules を別リポジトリで管理して versioning git-secrets を secretlint に移行  git-secrets がメンテされてなくて、既知バグが放置されているから   CI で terraform fmt によるフォーマットの自動化 WIP: AWS WAF の COUNT, BLOCK ログを Firehose で抽出 WIP: AWS CodeBuild で Provisioning Error が発生したら自動で Retry WIP: AWS CodeBuild のための GitHub App の開発 WIP: AWS SSO について調査  OSS Contribution Renovate の GitHub Actions のドキュメントの修正をしました。 ドキュメント中に書かれたバージョンを Renovate で自動 update するようにしました。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" title="2021-08 やったこと">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-28T09:07:38JST">Aug 28, 2021</time></li>
       
       
@@ -283,33 +307,6 @@ Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch B
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-24T21:57:27JST">Apr 24, 2021</time></li>
-      
-      
-      <li>164 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-providers-lock/">terraform init で lock ファイルが更新される問題の対応</a></h2>
-  </header>
-
-  
-  <div class="summary">Terraform v0.14 で local で terraform init すると lock ファイルが更新されてしまう問題に対応しました。
-結論を最初に言うと、 100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法で紹介している方法で Renovate で Terraform Provider を update する際に terraform init -upgrade を実行して lock ファイルを更新してコミット・プッシュしているのですが、 その際に terraform providers lock -platform=darwin_amd64 を実行するようにしました。
-Terraform v0.14 で lock ファイル .terraform.lock.hcl が導入されました。 Renovate で Terraform Provider を update する際にも lock ファイルを更新する必要があるので、 terraform init -upgrade を実行して lock ファイルを更新してコミット・プッシュしています。 なのですが、ローカルで terraform init を実行するとなんか lock ファイルが更新されることが良くありました。しばらく放置していたのですが、 developer から「なんかファイル更新されたんだけど、これコミットしていいの？」と聞かれ、このまま放っておいて困惑させたりもやっとさせたりするのは良くないなと思い、調べてみました。
-lock ファイルについて .</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/terraform-providers-lock/" title="terraform init で lock ファイルが更新される問題の対応">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -340,6 +337,8 @@ lock ファイルについて .</div>
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
       
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
@@ -358,8 +357,6 @@ lock ファイルについて .</div>
       
       <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
-      
     </div>
   </section>
 
@@ -369,9 +366,9 @@ lock ファイルについて .</div>
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (36)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -398,7 +395,7 @@ lock ファイルについて .</div>
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       

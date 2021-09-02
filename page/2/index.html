@@ -56,6 +56,33 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-24T21:57:27JST">Apr 24, 2021</time></li>
+      
+      
+      <li>164 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/terraform-providers-lock/">terraform init で lock ファイルが更新される問題の対応</a></h2>
+  </header>
+
+  
+  <div class="summary">Terraform v0.14 で local で terraform init すると lock ファイルが更新されてしまう問題に対応しました。
+結論を最初に言うと、 100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法で紹介している方法で Renovate で Terraform Provider を update する際に terraform init -upgrade を実行して lock ファイルを更新してコミット・プッシュしているのですが、 その際に terraform providers lock -platform=darwin_amd64 を実行するようにしました。
+Terraform v0.14 で lock ファイル .terraform.lock.hcl が導入されました。 Renovate で Terraform Provider を update する際にも lock ファイルを更新する必要があるので、 terraform init -upgrade を実行して lock ファイルを更新してコミット・プッシュしています。 なのですが、ローカルで terraform init を実行するとなんか lock ファイルが更新されることが良くありました。しばらく放置していたのですが、 developer から「なんかファイル更新されたんだけど、これコミットしていいの？」と聞かれ、このまま放っておいて困惑させたりもやっとさせたりするのは良くないなと思い、調べてみました。
+lock ファイルについて .</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/terraform-providers-lock/" title="terraform init で lock ファイルが更新される問題の対応">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-03T11:04:25JST">Apr 3, 2021</time></li>
       
       
@@ -283,27 +310,6 @@ mercari/tfnotify との違い 本家との違いは Release Note とドキュメ
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-30T05:44:14JST">Dec 30, 2020</time></li>
-      
-      
-      <li>62 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/job-2020-11-01-11-30/">仕事でやったこと 2020-11-01 ~ 2020-11-30</a></h2>
-  </header>
-
-  
-  <div class="summary">2020-11-01 から 2020-11-30 にかけて仕事でやったことを書ける範囲で書きます。
- github-ci-monitor を導入し、 CI の失敗を通知  https://github.com/suzuki-shunsuke/github-ci-monitor   Terraform  Upgrade AWS Provider: Renovate で自動更新する仕組みの改善 Upgrade Terraform from v0.12 to v0.13 tfsec の導入 PR の label によって CI(plan/apply) の実行対象を追加できるようにした CircleCI から CodeBuild への移行 tfmigrate の検証   Monorepo の CI の高速化 (CircleCI)  k8s manifest の test を、変更があったものに対してだけ実行するようにした   kube-linter の導入 Renovate  https://quipper.hatenablog.com/entry/2020/12/10/080000 additionalBranchPrefix によるブランチの分割 depName を使ったリファクタリング   .circleci/config.yml の分割 ブログの執筆  Docker Hub の Rate Limit 問題に対応した話    </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -334,6 +340,8 @@ mercari/tfnotify との違い 本家との違いは Release Note とドキュメ
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
       
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
@@ -352,8 +360,6 @@ mercari/tfnotify との違い 本家との違いは Release Note とドキュメ
       
       <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
-      
     </div>
   </section>
 
@@ -363,9 +369,9 @@ mercari/tfnotify との違い 本家との違いは Release Note とドキュメ
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (36)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -392,7 +398,7 @@ mercari/tfnotify との違い 本家との違いは Release Note とドキュメ
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       

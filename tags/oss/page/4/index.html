@@ -60,6 +60,41 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-04-28T21:25:00JST">Apr 28, 2019</time></li>
+      
+      
+      <li>137 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/durl/">durl - 壊れたURLを検知するCLIツール</a></h2>
+  </header>
+
+  
+  <div class="summary">結構前に開発したツールですが、まだ記事にしてなかったので紹介します。
+https://github.com/suzuki-shunsuke/durl
+ファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。
+なお、ページ内リンク(アンカー)が壊れているものについては検知できません。
+インストール Go製で、バイナリを GitHub Releases で公開しています。
+https://github.com/suzuki-shunsuke/durl/releases
+Docker イメージ https://quay.io/repository/suzuki_shunsuke/durl
+busybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。
+使い方 durl init で設定ファイル .durl.yml を生成します。
+$ durl init durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。
+https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9
+find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/durl/" title="durl - 壊れたURLを検知するCLIツール">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-01T14:56:00JST">Dec 1, 2018</time></li>
       
       
@@ -248,6 +283,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
       
       <a href="https://techblog.szksh.cloud/github-app-for-codebuild/" class="list-group-item">AWS CodeBuild を実行する Github App を作る</a>
@@ -266,8 +303,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
       
-      <a href="https://techblog.szksh.cloud/terraform-providers-lock/" class="list-group-item">terraform init で lock ファイルが更新される問題の対応</a>
-      
     </div>
   </section>
 
@@ -277,9 +312,9 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (35)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (36)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (15)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -306,7 +341,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (2)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
       
