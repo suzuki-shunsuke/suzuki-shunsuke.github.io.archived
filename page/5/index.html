@@ -56,6 +56,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
+      
+      
+      <li>197 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-parameter/">buildflow の script や template に渡される parameter</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。
+buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。
+ PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase
+ Status: Phase の実行結果  succeeded failed skipped   Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/buildflow-parameter/" title="buildflow の script や template に渡される parameter">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:26:57JST">Oct 17, 2020</time></li>
       
       
@@ -323,37 +351,6 @@ https://circleci.com/docs/2.0/configuration-reference/#run
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-04-24T16:53:01JST">Apr 24, 2020</time></li>
-      
-      
-      <li>247 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/circleci-checkout-default-branch/">CircleCI の checkout の注意点</a></h2>
-  </header>
-
-  
-  <div class="summary">CircleCI の組み込みの command checkout の注意点について書きます。
-なお、ここに書かれている内容は 2020/04/24 時点のものであり、予告なしに checkout の挙動が変わる可能性があります。
-また、今回は話を簡略化するため、 checkout 実行時点で .git がない(つまりキャッシュしていない)ものとします。
-最初に結論 先に結論を書くと
- CircleCI ではローカルのデフォルトブランチを参照しないほうが良い($CIRCLE_BRANCH がデフォルトブランチである場合は除く)  履歴が origin と異なり、 $CIRCLE_BRANCH と同様になっているため   代わりに origin のデフォルトブランチを参照したほうが良い git branch -f &lt;デフォルトブランチ&gt; origin/&lt;デフォルトブランチ&gt; を実行してデフォルトブランチの履歴を修正するのもあり  checkout がなにをやっているか checkout でなにをやっているかは実際に使ってみて CircleCI の job の詳細画面(?) から確認できます。
-サンプル: https://app.circleci.com/pipelines/github/suzuki-shunsuke/test-circleci/73/workflows/5611059c-d6b1-4a34-91b5-45d6f149d408/jobs/96
-ここでは checkout の全てについては触れません。一部抜粋します。
-elif [ -n &#34;$CIRCLE_BRANCH&#34; ] then git reset --hard &#34;$CIRCLE_SHA1&#34; git checkout -q -B &#34;$CIRCLE_BRANCH&#34; fi git reset --hard などをしています。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/circleci-checkout-default-branch/" title="CircleCI の checkout の注意点">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -384,6 +381,8 @@ elif [ -n &#34;$CIRCLE_BRANCH&#34; ] then git reset --hard &#34;$CIRCLE_SHA1&#34
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua-v0.5/" class="list-group-item">aqua v0.1.0 から v0.5.0 での変更点</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
@@ -402,8 +401,6 @@ elif [ -n &#34;$CIRCLE_BRANCH&#34; ] then git reset --hard &#34;$CIRCLE_SHA1&#34
       
       <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
       
-      <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
-      
     </div>
   </section>
 
@@ -413,7 +410,7 @@ elif [ -n &#34;$CIRCLE_BRANCH&#34; ] then git reset --hard &#34;$CIRCLE_SHA1&#34
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (36)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (37)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
@@ -442,6 +439,8 @@ elif [ -n &#34;$CIRCLE_BRANCH&#34; ] then git reset --hard &#34;$CIRCLE_SHA1&#34
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
@@ -459,8 +458,6 @@ elif [ -n &#34;$CIRCLE_BRANCH&#34; ] then git reset --hard &#34;$CIRCLE_SHA1&#34
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
     </div>
   </section>

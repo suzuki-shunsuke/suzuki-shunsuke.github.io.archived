@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2021/09 on melody</title>
+    <link>https://techblog.szksh.cloud/archives/2021/09/</link>
+    <description>Recent content in 2021/09 on melody</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>jp</language><atom:link href="https://techblog.szksh.cloud/archives/2021/09/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>aqua v0.1.0 から v0.5.0 での変更点</title>
+      <link>https://techblog.szksh.cloud/aqua-v0.5/</link>
+      <pubDate>Sat, 04 Sep 2021 11:58:42 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/aqua-v0.5/</guid>
+      <description>先日 aqua v0.1.0 をリリースした記事を書いたばかりですが、 そこから更に開発を続けて v0.5.0 をリリースしたので、変更点を紹介します。
+基本的に Release Note に書いてあるとおりです。
+ PATH を project (aqua.yaml) 毎に設定する必要がなくなりました  ~/.aqua/bin を PATH に追加すればよくなりました direnv などを使って環境変数を追加する必要がなくなりました   install コマンドに --test option を追加し、 file.src の設定が正しいかテストできるようになりました  CI で aqua の設定をテストするのに便利   GitHub Release だけでなく、任意の URL から tool のダウンロード・インストールができるようになりました  Go や helm, Hashicorp の product のような公式サイトからダウンロードするタイプのツールも install できるようになりました   Breaking Change: inline_registry の設定の形式を変更しました aqua の設定の再利用性を高める Registry という仕組みを導入しました  standard Registry を公開しました https://github.</description>
+    </item>
+    
+  </channel>
+</rss>

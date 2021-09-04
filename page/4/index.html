@@ -56,6 +56,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-07T14:43:10JST">Nov 7, 2020</time></li>
+      
+      
+      <li>491 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/splitting-circleci-config/">Splitting .circleci/config.yml</a></h2>
+  </header>
+
+  
+  <div class="summary">In this post I introduce how to split a huge .circleci/config.yml.
+CircleCI doesn&rsquo;t support to split .circleci/config.yml, so we manage all workflows and jobs configuration into one file .circleci/config.yml. If the repository is Monorepo, the more the number of services increases, the more the size of .circleci/config.yml becomes large and it&rsquo;s hard to maintain .circleci/config.yml. By splitting .circleci/config.yml per service, it makes easy to maintain .circleci/config.yml and we can configure split file&rsquo;s CODEOWNERS.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/splitting-circleci-config/" title="Splitting .circleci/config.yml">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-01T17:51:44JST">Nov 1, 2020</time></li>
       
       
@@ -320,34 +345,6 @@ buildflow では一部の設定項目について他のファイルのパスを�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T19:44:39JST">Oct 17, 2020</time></li>
-      
-      
-      <li>197 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-parameter/">buildflow の script や template に渡される parameter</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
-この記事では buildflow の Tengo script やテンプレートにパラメータとして渡される変数について紹介します。
-buildflow では Tengo script はテンプレートが使える設定項目が多くあります。それらの設定には共通のフォーマットのパラメータが渡されます。
- PR: Pull Request の情報: GitHub API のレスポンス body Files: Pull Request で更新されたファイルの一覧: GitHub API のレスポンス body Phases: 対象の Phase よりも前の Phase の結果 Phase: 対象の Phase Tasks: 対象の Phase の Task の結果 Task: 対象の Task Item: dynamic task のパラメータとして渡される Meta: 設定 meta  Phase
- Status: Phase の実行結果  succeeded failed skipped   Tasks: Phase の task の実行結果 Meta: phase の 設定 meta  Task</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/buildflow-parameter/" title="buildflow の script や template に渡される parameter">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -378,6 +375,8 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua-v0.5/" class="list-group-item">aqua v0.1.0 から v0.5.0 での変更点</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
@@ -396,8 +395,6 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
       
       <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
       
-      <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
-      
     </div>
   </section>
 
@@ -407,7 +404,7 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (36)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (37)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
@@ -436,6 +433,8 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
@@ -453,8 +452,6 @@ buildflow では Tengo script はテンプレートが使える設定項目が�
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
     </div>
   </section>

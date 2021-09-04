@@ -56,6 +56,32 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-09-04T11:58:42JST">Sep 4, 2021</time></li>
+      
+      
+      <li>465 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/aqua-v0.5/">aqua v0.1.0 から v0.5.0 での変更点</a></h2>
+  </header>
+
+  
+  <div class="summary">先日 aqua v0.1.0 をリリースした記事を書いたばかりですが、 そこから更に開発を続けて v0.5.0 をリリースしたので、変更点を紹介します。
+基本的に Release Note に書いてあるとおりです。
+ PATH を project (aqua.yaml) 毎に設定する必要がなくなりました  ~/.aqua/bin を PATH に追加すればよくなりました direnv などを使って環境変数を追加する必要がなくなりました   install コマンドに --test option を追加し、 file.src の設定が正しいかテストできるようになりました  CI で aqua の設定をテストするのに便利   GitHub Release だけでなく、任意の URL から tool のダウンロード・インストールができるようになりました  Go や helm, Hashicorp の product のような公式サイトからダウンロードするタイプのツールも install できるようになりました   Breaking Change: inline_registry の設定の形式を変更しました aqua の設定の再利用性を高める Registry という仕組みを導入しました  standard Registry を公開しました https://github.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/aqua-v0.5/" title="aqua v0.1.0 から v0.5.0 での変更点">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-09-02T14:33:16JST">Sep 2, 2021</time></li>
       
       
@@ -276,37 +302,6 @@ https://github.com/suzuki-shunsuke/example-opa-table-driven-tests
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-04-25T16:09:47JST">Apr 25, 2021</time></li>
-      
-      
-      <li>143 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a></h2>
-  </header>
-
-  
-  <div class="summary">GitHub Actions の勉強がてら Pull Request (以下 PR) で変更されたファイルや PR Label に応じて Matrix build を実行する Github Actions の Workflow のサンプルを書いてみました。
-https://github.com/suzuki-shunsuke/example-github-actions-dynamic-matrix
-Monorepo で同じ Job を PR で変更されたものに対してだけ実行したい、 けど workflow をサービスごとに定義するのはめんどいみたいな場合に使えるかもしれません。
-勉強がてらちょっと書いてみて軽く動作確認しただけなので、バグってる、あるいは実用的ではないかもしれません。
-ここでは Monorepo の CI を GitHub Actions で実行する場合を考えます。
-GitHub Actions では path filter を用いて workflow の実行有無を制御することができます。 そこでサービスごとに workflow を作成し、 path filter を設定することでそのサービスが更新されたときのみそのサービスの CI を実行するということが簡単にできます。
-しかし多くのサービスが含まれる Monorepo で各サービスに同じ Job を実行したい場合を考えてみましょう。 その場合サービスを追加するたびに workflow を追加していく必要があります。 まぁ .github/workflows 配下に 1 つ YAML をコピペで作成するだけといえばそれまでなのですが、それすらも省略したいとしましょう。
-Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch Build の buildspec を PR で変更されたファイルおよび PR Label に応じて動的に生成しています。 これの良いところは、サービスを追加したり、リネームしたり、削除したりしても CI をイジる必要がまったくないところです。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" title="PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -337,6 +332,8 @@ Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch B
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua-v0.5/" class="list-group-item">aqua v0.1.0 から v0.5.0 での変更点</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/aqua/" class="list-group-item">aqua - CLI ツールのバージョン管理</a>
@@ -355,8 +352,6 @@ Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch B
       
       <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
       
-      <a href="https://techblog.szksh.cloud/example-github-actions-dynamic-matrix/" class="list-group-item">PR で変更されたファイルや PR Label に応じて matrix build を実行する Github Actions の Workflow のサンプルを書いてみた</a>
-      
     </div>
   </section>
 
@@ -366,7 +361,7 @@ Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch B
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (36)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (37)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
@@ -395,6 +390,8 @@ Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch B
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/07" class="list-group-item">2021/07 (3)</a>
@@ -412,8 +409,6 @@ Terraform の CI/CD を CodeBuild に移行した話では CodeBuild の Batch B
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/11" class="list-group-item">2020/11 (7)</a>
       
     </div>
   </section>
