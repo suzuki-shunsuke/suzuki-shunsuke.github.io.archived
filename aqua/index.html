@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>aqua - CLI ツールのバージョン管理 - melody</title>
     
-<meta name="description" content="aqua という OSS を開発しているので紹介します。記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &amp;#39;jq-{{if eq .OS &amp;#34;darwin&amp;#34;}}osx-amd64{{else}}{{if eq .OS &amp;#34;linux&amp;#34;}}linux64{{else}}win64.exe{{end}}{{end}}&amp;#39; files: - name: jq - name: conftest type: github_release repo_owner: open-policy-agent repo_name: conftest asset: &amp;#39;conftest_{{trimPrefix &amp;#34;v&amp;#34; .">
+<meta name="description" content="2021-09-04 追記: aqua v0.1.0 から v0.5.0 での変更点aqua という OSS を開発しているので紹介します。記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &amp;#39;jq-{{if eq .OS &amp;#34;darwin&amp;#34;}}osx-amd64{{else}}{{if eq .">
 
 <meta property="og:title" content="aqua - CLI ツールのバージョン管理 - melody">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://techblog.szksh.cloud/aqua/">
 <meta property="og:image" content="https://techblog.szksh.cloud/images/default.png">
 <meta property="og:site_name" content="melody">
-<meta property="og:description" content="aqua という OSS を開発しているので紹介します。記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &amp;#39;jq-{{if eq .OS &amp;#34;darwin&amp;#34;}}osx-amd64{{else}}{{if eq .OS &amp;#34;linux&amp;#34;}}linux64{{else}}win64.exe{{end}}{{end}}&amp;#39; files: - name: jq - name: conftest type: github_release repo_owner: open-policy-agent repo_name: conftest asset: &amp;#39;conftest_{{trimPrefix &amp;#34;v&amp;#34; .">
+<meta property="og:description" content="2021-09-04 追記: aqua v0.1.0 から v0.5.0 での変更点aqua という OSS を開発しているので紹介します。記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &amp;#39;jq-{{if eq .OS &amp;#34;darwin&amp;#34;}}osx-amd64{{else}}{{if eq .">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="melody">
 <meta name="twitter:url" content="https://techblog.szksh.cloud/aqua/">
 <meta name="twitter:title" content="aqua - CLI ツールのバージョン管理 - melody">
-<meta name="twitter:description" content="aqua という OSS を開発しているので紹介します。記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &amp;#39;jq-{{if eq .OS &amp;#34;darwin&amp;#34;}}osx-amd64{{else}}{{if eq .OS &amp;#34;linux&amp;#34;}}linux64{{else}}win64.exe{{end}}{{end}}&amp;#39; files: - name: jq - name: conftest type: github_release repo_owner: open-policy-agent repo_name: conftest asset: &amp;#39;conftest_{{trimPrefix &amp;#34;v&amp;#34; .">
+<meta name="twitter:description" content="2021-09-04 追記: aqua v0.1.0 から v0.5.0 での変更点aqua という OSS を開発しているので紹介します。記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &amp;#39;jq-{{if eq .OS &amp;#34;darwin&amp;#34;}}osx-amd64{{else}}{{if eq .">
 <meta name="twitter:image" content="https://techblog.szksh.cloud/images/default.png">
 
 
@@ -65,7 +65,7 @@
         "height": 60
       }
     },
-    "description": "aqua という OSS を開発しているので紹介します。\n記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。\naqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。\n例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。\npackages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: \u0026#39;jq-{{if eq .OS \u0026#34;darwin\u0026#34;}}osx-amd64{{else}}{{if eq .OS \u0026#34;linux\u0026#34;}}linux64{{else}}win64.exe{{end}}{{end}}\u0026#39; files: - name: jq - name: conftest type: github_release repo_owner: open-policy-agent repo_name: conftest asset: \u0026#39;conftest_{{trimPrefix \u0026#34;v\u0026#34; ."
+    "description": "2021-09-04 追記: aqua v0.1.0 から v0.5.0 での変更点\naqua という OSS を開発しているので紹介します。\n記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。\naqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。\n例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。\npackages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: \u0026#39;jq-{{if eq .OS \u0026#34;darwin\u0026#34;}}osx-amd64{{else}}{{if eq ."
   }
 </script>
 
@@ -117,7 +117,7 @@
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2021-08-28T09:07:38JST">Aug 28, 2021</time></li>
       
       
-      <li>629 Words</li>
+      <li>636 Words</li>
       
       
     </ul>
@@ -139,7 +139,8 @@
 
   
 
-  <div class="article-body"><p><a href="https://github.com/suzuki-shunsuke/aqua">aqua</a> という OSS を開発しているので紹介します。</p>
+  <div class="article-body"><p>2021-09-04 追記: <a href="/aqua-v0.5">aqua v0.1.0 から v0.5.0 での変更点</a></p>
+<p><a href="https://github.com/suzuki-shunsuke/aqua">aqua</a> という OSS を開発しているので紹介します。</p>
 <p>記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。</p>
 <h2 id="aqua-とは">aqua とは</h2>
 <p>aqua は CLI ツールのバージョン管理のための CLI です。
