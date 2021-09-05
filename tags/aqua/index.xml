@@ -31,5 +31,19 @@ aqua では Registry を活用することで設定を記述する手間を省�
  PATH を project (aqua.yaml) 毎に設定する必要がなくなりました  ~/.aqua/bin を PATH に追加すればよくなりました direnv などを使って環境変数を追加する必要がなくなりました   install コマンドに --test option を追加し、 file.src の設定が正しいかテストできるようになりました  CI で aqua の設定をテストするのに便利   GitHub Release だけでなく、任意の URL から tool のダウンロード・インストールができるようになりました  Go や helm, Hashicorp の product のような公式サイトからダウンロードするタイプのツールも install できるようになりました   Breaking Change: inline_registry の設定の形式を変更しました aqua の設定の再利用性を高める Registry という仕組みを導入しました  standard Registry を公開しました https://github.</description>
     </item>
     
+    <item>
+      <title>aqua - CLI ツールのバージョン管理</title>
+      <link>https://techblog.szksh.cloud/aqua/</link>
+      <pubDate>Sat, 28 Aug 2021 09:07:38 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/aqua/</guid>
+      <description>2021-09-04 追記: aqua v0.1.0 から v0.5.0 での変更点
+aqua という OSS を開発しているので紹介します。
+記事の内容は aqua v0.1.0 に基づきます。将来的に仕様が変わる可能性があります。
+aqua とは aqua は CLI ツールのバージョン管理のための CLI です。 aqua で管理する主な対象は GitHub Release で公開されているツールです。 YAML の設定ファイルを書いてコマンドを実行すると指定したツールをインストールすることができます。
+例えば以下のような設定ファイルを書き、 aqua install というコマンドを実行すると jq, conftest などが GitHub Release からダウンロードされ、インストールされます。
+packages: - name: jq registry: inline version: jq-1.6 - name: conftest registry: inline version: v0.27.0 inline_registry: - name: jq type: github_release repo_owner: stedolan repo_name: jq asset: &amp;#39;jq-{{if eq .OS &amp;#34;darwin&amp;#34;}}osx-amd64{{else}}{{if eq .</description>
+    </item>
+    
   </channel>
 </rss>
