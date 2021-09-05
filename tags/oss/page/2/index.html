@@ -60,6 +60,41 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-27T19:39:44JST">Oct 27, 2020</time></li>
+      
+      
+      <li>168 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/matchfile/">matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール</a></h2>
+  </header>
+
+  
+  <div class="summary">自作の CLI ツール matchfile について紹介します。
+https://github.com/suzuki-shunsuke/matchfile
+この記事の執筆時点で最新バージョンは v0.1.1 です。
+変更されたファイルの一覧から実行する必要のあるタスクを導出するための CLI ツールです。 Go で書かれていて、バイナリをダウンロードしてくれば使えます。
+Pull Request (以下 PR) の CI では PR で変更されたファイルに応じて 必要なタスク(build, test, lint, etc) だけを実行したかったりします。
+そこで、 PR で変更されたファイルパスのリスト と タスクが依存するファイルパスの条件 を元に、そのタスクを実行する必要があるか判定するためのコマンドとして matchfile を開発しました。
+ただし、 matchfile の機能としては PR や CI とは独立しているので、もっと別の目的でも使えるとは思います。
+matchfile は PR で変更されたファイルパスのリスト や タスクが依存するファイルパスの条件 を取得したりする機能はありません。
+PR で変更されたファイルパスのリスト は ci-info という自分が作った別のツールを使うと取得できます。
+タスクが依存するファイルパスの条件 はタスクに大きく依存するので matchfile はカバーしていません。
+matchfile の使い方としては
+$ matchfile run &lt;PR で変更されたファイルパスのリストが書かれたファイルへのパス&gt; &lt;タスクが依存するファイルパスの条件が書かれたファイルへのパス&gt; で、 PR で変更されたファイルパスのリスト のうち一つでも タスクが依存するファイルパスの条件 にマッチすれば true を、マッチしなければ false を標準出力します。 コマンドの exit code で結果を表現することも考えられましたが、そうすると set -e しているときに若干面倒くさいので、標準出力で表現しました。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/matchfile/" title="matchfile - 変更されたファイルの一覧から必要なタスクを導出するための CLI ツール">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-18T09:53:08JST">Oct 18, 2020</time></li>
       
       
@@ -313,35 +348,6 @@ task には幾つか type がありますが、全ての type に共通するパ
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
-      
-      
-      <li>127 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
-この記事では buildflow の概念である build, phase, task について書きたいと思います。
-buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
-$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
-設定ファイルでは phases, tasks をそれぞれ配列で指定します。
---- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/buildflow-build-phase-task/" title="buildflow の build, phase, task について">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -372,6 +378,8 @@ $ buildflow run で 1 つの build が実行されます。 build は複数の p
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua-generate/" class="list-group-item">aqua の設定ファイルをインタラクティブに生成する generate コマンド</a>
+      
       <a href="https://techblog.szksh.cloud/aqua-v0.5/" class="list-group-item">aqua v0.1.0 から v0.5.0 での変更点</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
@@ -390,8 +398,6 @@ $ buildflow run で 1 つの build が実行されます。 build は複数の p
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
       
-      <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
-      
     </div>
   </section>
 
@@ -401,7 +407,7 @@ $ buildflow run で 1 つの build が実行されます。 build は複数の p
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (37)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (38)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
@@ -419,7 +425,7 @@ $ buildflow run で 1 つの build が実行されます。 build は複数の p
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aqua" class="list-group-item">aqua (2)</a>
       
     </div>
   </section>
@@ -430,7 +436,7 @@ $ buildflow run で 1 つの build が実行されます。 build は複数の p
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       

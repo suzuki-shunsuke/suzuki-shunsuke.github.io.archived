@@ -56,6 +56,41 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-04-28T21:25:00JST">Apr 28, 2019</time></li>
+      
+      
+      <li>137 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/durl/">durl - 壊れたURLを検知するCLIツール</a></h2>
+  </header>
+
+  
+  <div class="summary">結構前に開発したツールですが、まだ記事にしてなかったので紹介します。
+https://github.com/suzuki-shunsuke/durl
+ファイル中の URL が壊れていないかチェックするツールです。 ファイル中の URL を抽出し、HTTPリクエストを投げてステータスコードが 2xx でないものがあった場合、異常終了します。
+なお、ページ内リンク(アンカー)が壊れているものについては検知できません。
+インストール Go製で、バイナリを GitHub Releases で公開しています。
+https://github.com/suzuki-shunsuke/durl/releases
+Docker イメージ https://quay.io/repository/suzuki_shunsuke/durl
+busybox ベースの Docker イメージも提供しています。 CI で使うのに便利です。
+使い方 durl init で設定ファイル .durl.yml を生成します。
+$ durl init durl check に対象ファイルパスのリストを標準入力として渡してください。 find コマンドなどと組み合わせると良いです。
+https://github.com/suzuki-shunsuke/go-errlog/blob/v0.9.0/scripts/durl.sh#L9
+find . \ -type d -name node_modules -prune -o \ -type d -name .git -prune -o \ -type d -name vendor -prune -o \ -type f -print | \ grep -v package-lock.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/durl/" title="durl - 壊れたURLを検知するCLIツール">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-03-17T13:47:40JST">Mar 17, 2019</time></li>
       
       
@@ -337,28 +372,6 @@ if err != nil { return err } ロギングに必要な情報を戻り値のerror�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-12-19T21:02:11JST">Dec 19, 2018</time></li>
-      
-      
-      <li>45 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/graylog-alert-issue/">GraylogのAlertの課題</a></h2>
-  </header>
-
-  
-  <div class="summary">Graylogを運用してきて感じているAlert機能周りの課題をリストアップします。 自分のGraylogの理解が不十分で勘違いしている部分もあるかもしれませんが、ご了承ください。 Graylogのバージョンは 2.5.0 です。 ここでいう「メンション」とは、Slackのようなチャットツールのメンションを指します。 リストの詳細を書きだしてみたものの、リストだけでだいたい言いたいことが言えてしまっていたのと、単なる愚痴っぽくなってしまったので、 リストだけに留めます。
-2018-12-31 追記 元々 Alert Condition, Notification の APIがないと勘違いしていたのですが、 実はちゃんとあったので terraform で管理できるように go-graylog を更新しました。
- https://github.com/suzuki-shunsuke/go-graylog/pull/50 https://github.com/suzuki-shunsuke/go-graylog/pull/52 https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alarm_callback.md https://github.com/suzuki-shunsuke/go-graylog/blob/v11.0.0/docs/resources/alert_condition.md  課題リスト  APIでAlert Condition, Notificationを管理できない  APIがないので terraform でサポートも出来ない 数が増えるとWeb UIでは管理が辛い・修正漏れや設定ミスが出やすい   Condition, NotificationがStreamに紐づく  ConditionによってNotificationを変えられない  条件に応じてアラートの文面・通知先・メンション先・メンションの有無を変えられない (正確にはテンプレートエンジンで頑張ればある程度対応できるかもしれないが、個人的にはテンプレートそのものを切り替えたい)   ConditionやNotificationを複数のStreamで使い回せない   (少なくとも標準機能では)時間帯によってアラートの挙動を変更できない  夜中にはアラートを飛ばさない・メンションをつけないといったことが出来ない 一時的にアラートを止められない   Pluginを使うにしてもどれを使ったら良いか分からない  もっとGraylogがメジャーになれば状況も変わるかもしれない    </div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -389,6 +402,8 @@ if err != nil { return err } ロギングに必要な情報を戻り値のerror�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua-generate/" class="list-group-item">aqua の設定ファイルをインタラクティブに生成する generate コマンド</a>
+      
       <a href="https://techblog.szksh.cloud/aqua-v0.5/" class="list-group-item">aqua v0.1.0 から v0.5.0 での変更点</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
@@ -407,8 +422,6 @@ if err != nil { return err } ロギングに必要な情報を戻り値のerror�
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
       
-      <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
-      
     </div>
   </section>
 
@@ -418,7 +431,7 @@ if err != nil { return err } ロギングに必要な情報を戻り値のerror�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (37)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (38)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
@@ -436,7 +449,7 @@ if err != nil { return err } ロギングに必要な情報を戻り値のerror�
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aqua" class="list-group-item">aqua (2)</a>
       
     </div>
   </section>
@@ -447,7 +460,7 @@ if err != nil { return err } ロギングに必要な情報を戻り値のerror�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       

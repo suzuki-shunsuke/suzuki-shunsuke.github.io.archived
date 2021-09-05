@@ -56,6 +56,31 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T18:52:34JST">Sep 30, 2018</time></li>
+      
+      
+      <li>131 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-exec-network-name-collision/">drone exec を並列実行した際のdocker network name の衝突について</a></h2>
+  </header>
+
+  
+  <div class="summary">drone exec を並列実行すると docker network name が衝突することがあります。
+$ drone exec --local &amp; drone exec --local [1] 42934 2018/06/06 01:58:12 Error response from daemon: network drone_default is ambiguous (4 matches found on name) 2018/06/06 01:58:12 Error response from daemon: Conflict. The container name &quot;/drone_step_0&quot; is already in use by container &quot;464a29b0726d6ff1a352d81df9c837330501085be550bb16abac3d338dfad887&quot;. You have to remove (or rename) that container to be able to reuse that name. [1] + exit 1 drone exec --local drone は pipeline 実行時に network を作成し、pipeline が終了すると network を削除します。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/drone-exec-network-name-collision/" title="drone exec を並列実行した際のdocker network name の衝突について">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-06T23:59:35JST">Sep 6, 2018</time></li>
       
       
@@ -125,6 +150,8 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua-generate/" class="list-group-item">aqua の設定ファイルをインタラクティブに生成する generate コマンド</a>
+      
       <a href="https://techblog.szksh.cloud/aqua-v0.5/" class="list-group-item">aqua v0.1.0 から v0.5.0 での変更点</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
@@ -143,8 +170,6 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
       
-      <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
-      
     </div>
   </section>
 
@@ -154,7 +179,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (37)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (38)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
@@ -172,7 +197,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aqua" class="list-group-item">aqua (2)</a>
       
     </div>
   </section>
@@ -183,7 +208,7 @@ https://github.com/suzuki-shunsuke/go-gencfg/blob/master/README.md</div>
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       

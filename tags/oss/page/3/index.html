@@ -60,6 +60,35 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T18:09:19JST">Oct 17, 2020</time></li>
+      
+      
+      <li>127 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-build-phase-task/">buildflow の build, phase, task について</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうと思います。
+この記事では buildflow の概念である build, phase, task について書きたいと思います。
+buildflow には Build, Phase, Task という概念があります。 CircleCI の Pipeline, Workflow, Job みたいなものと思ってもらえるとよいと思います。
+$ buildflow run で 1 つの build が実行されます。 build は複数の phase からなり、 phase が 1 つずつ順に実行されます。 phase は複数の task からなり、 task が全て終了すると、その phase も終了となります。 task は並列に実行したり、依存関係を定義したりできます。 task では外部コマンドを実行したりできます。
+設定ファイルでは phases, tasks をそれぞれ配列で指定します。
+--- phases: - name: setup tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo - name: build tasks: - name: hello command: command: echo hello - name: foo command: command: echo foo dependency: - hello - name: post build tasks: - name: hello command: command: echo hello 上の例では 3 つの phase setup, build, post build が順に実行されます。 デフォルトではどれかの phase が失敗するとそれ以降の phase は実行されません(この挙動は変えられます)。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/buildflow-build-phase-task/" title="buildflow の build, phase, task について">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T17:18:34JST">Oct 17, 2020</time></li>
       
       
@@ -341,38 +370,6 @@ https://github.com/suzuki-shunsuke/flute
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-12T07:40:45JST">Jun 12, 2019</time></li>
-      
-      
-      <li>302 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-jsonnet-generator/">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った</a></h2>
-  </header>
-
-  
-  <div class="summary">Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作ったので紹介します。
-https://github.com/suzuki-shunsuke/drone-jsonnet-generator
-背景 https://docs.drone.io/user-guide/pipeline/migrating/
-Drone は v0.8 から v1 で .drone.yml のフォーマットが大きく変わっています。 Drone v1 ではビルド実行時に自動で変換しているため、v0.8 の .drone.yml でもそのまま動きます(matrix builds も動きます)。
-そのため、Drone v0.8 から v1 に移行する際、すぐに .drone.yml を修正しなくても問題ないのですが、 v1 独自の機能が出てきた場合 v0.8 のフォーマットの場合利用できないかもしれませんし、 いつまでも古いままだと気持ち悪いので出来るならフォーマットを変換したいです。
-drone-cli ではフォーマットを変換する drone convert というコマンドが提供されています。
-ただし、 drone convert は matrix build を multiple pipeline に変換するのですが、 非常に冗長になります。 そのため、jsonnet を利用することが推奨されています。
-https://docs.drone.io/user-guide/pipeline/migrating/
- The above syntax can be quite verbose if you are testing a large number of variations.</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/drone-jsonnet-generator/" title="Drone v0.8 の .drone.yml を v1 の .drone.jsonnet に変換するツールを作った">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -403,6 +400,8 @@ https://docs.drone.io/user-guide/pipeline/migrating/
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/aqua-generate/" class="list-group-item">aqua の設定ファイルをインタラクティブに生成する generate コマンド</a>
+      
       <a href="https://techblog.szksh.cloud/aqua-v0.5/" class="list-group-item">aqua v0.1.0 から v0.5.0 での変更点</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-08/" class="list-group-item">2021-08 やったこと</a>
@@ -421,8 +420,6 @@ https://docs.drone.io/user-guide/pipeline/migrating/
       
       <a href="https://techblog.szksh.cloud/job-2021-05-01-05-31/" class="list-group-item">仕事でやったこと 2021-05-01 ~ 2021-05-31</a>
       
-      <a href="https://techblog.szksh.cloud/job-2021-04-01-04-30/" class="list-group-item">仕事でやったこと 2021-04-01 ~ 2021-04-30</a>
-      
     </div>
   </section>
 
@@ -432,7 +429,7 @@ https://docs.drone.io/user-guide/pipeline/migrating/
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (37)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (38)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
       
@@ -450,7 +447,7 @@ https://docs.drone.io/user-guide/pipeline/migrating/
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/aws" class="list-group-item">aws (2)</a>
+      <a href="https://techblog.szksh.cloud/tags/aqua" class="list-group-item">aqua (2)</a>
       
     </div>
   </section>
@@ -461,7 +458,7 @@ https://docs.drone.io/user-guide/pipeline/migrating/
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
       
