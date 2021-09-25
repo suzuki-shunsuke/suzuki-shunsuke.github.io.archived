@@ -7,6 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>jp</language><atom:link href="https://techblog.szksh.cloud/archives/2021/09/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>aqua で組織・チームのツール群を管理</title>
+      <link>https://techblog.szksh.cloud/aqua-global-configs/</link>
+      <pubDate>Sat, 25 Sep 2021 12:01:56 +0900</pubDate>
+      
+      <guid>https://techblog.szksh.cloud/aqua-global-configs/</guid>
+      <description>aqua v0.7.3 をリリースし、 複数の global configuration をサポートしました。
+個人で使う分にはあまり嬉しい機能でもないかもしれませんが、 会社・組織・チームといった集団(以下組織で統一)で設定を共有するには便利な機能だと思います。
+これまで aqua では 2 つの設定ファイルをサポートしていました。
+ -c で指定した場合はそのファイル、そうでなければカレントディレクトリから探索して最初に見つかったファイル  リポジトリ直下にそのリポジトリ用の aqua.yaml をおく   global configuration (デフォルトは ~/.aqua/global/[.]aqua.y[a]ml)  個人の dotfiles とかで aqua.yaml を管理しておく    こうすることで特定のリポジトリ用の設定と個人の設定を管理することができます。
+しかし、第三の設定を参照することはできませんでした。 例えばある組織で使うツールセットを aqua で管理しようと思ってもこれまでは難しかったです。
+そこで AQUA_GLOBAL_CONFIG という環境変数に : 区切りで設定ファイルへのパスを設定することで先頭から順に設定ファイルを参照するようにしました。
+設定ファイルの優先順位は高い方から順に次のようになります。
+ -c で指定した場合はそのファイル、そうでなければカレントディレクトリから探索して最初に見つかったファイル AQUA_GLOBAL_CONFIG global configuration (デフォルトは ~/.aqua/global/[.]aqua.y[a]ml)  イメージとしては
+ プロジェクト(リポジトリ)の設定 組織の設定 個人の設定  という感じです。
+例えば GitHub Organizations に aqua-config というリポジトリを作成し、以下のようなファイルを用意したとしましょう。
+ all.</description>
+    </item>
+    
+    <item>
       <title>aqua の設定ファイルをインタラクティブに生成する generate コマンド</title>
       <link>https://techblog.szksh.cloud/aqua-generate/</link>
       <pubDate>Sun, 05 Sep 2021 10:17:39 +0900</pubDate>
