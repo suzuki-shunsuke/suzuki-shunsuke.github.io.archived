@@ -56,6 +56,28 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-10T21:14:03JST">Oct 10, 2018</time></li>
+      
+      
+      <li>20 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/migrate-to-user-gh-pages/">Project site を User site に移行しました (GitHub Pages)</a></h2>
+  </header>
+
+  
+  <div class="summary">なんとなく試験的に Project site でホスティングしていた GitHub Pages を User site に移行しました。
+source code は source branch にあります。
+CIに関しては Hugo製ブログをGitHub PagesへCIでデプロイ にも書きましたが参考になる部分もあるかもしれません。</div>
+
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-10-01T08:04:16JST">Oct 1, 2018</time></li>
       
       
@@ -278,35 +300,6 @@ PATCH /api/repos/:owner/:name にリクエストが飛んでいるので、そ�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2018-09-30T19:44:27JST">Sep 30, 2018</time></li>
-      
-      
-      <li>139 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-git-authentication/">Drone の build 実行時の認証方法</a></h2>
-  </header>
-
-  
-  <div class="summary">drone の build における GitHub (GitHub前提で書きますが、GitHub以外でも同じだと思います) の認証の話(どうやって認証しているか)について書いておこうと思います。 drone の build は clone step で対象のリポジトリを GitHub から clone してきています。 この際に何かしらの方法で認証しているはずです。
-結論を言うと、
-あるリポジトリAのbuildでは、 リポジトリAの drone連携を有効化したユーザー Bの access token を .netrc に書き込んで認証しています。 よってユーザーBにcloneする権限があるリポジトリはcloneできるし、 ユーザーBにcloneする権限がないリポジトリはcloneできません。 つまり、 誰が連携を有効化するかが重要 になります(これについては後述します)。 なお、drone連携の有効化はそのリポジトリのowner以上でないと出来ません。
-drone上でリポジトリの連携を有効化すると、 リポジトリのHookが作成されます。 リポジトリの settings &gt; Hooks から確認できます。 この Hook の Payload URL を見ると access_token クエリがあると思います。 JWTのようですね。これはリポジトリの連携を有効化したユーザーのtokenです。
-このtokenが GitHub から drone への webhook のパラメータとして送られてくるので、 drone 側で認証し、認証したユーザーのGitHub のaccess token を取得し、 build 時にコンテナの /root/.netrc に書き込むようです。
-.netrcに書き込まれているのは試しに個人の private repository で .</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/drone-git-authentication/" title="Drone の build 実行時の認証方法">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -337,6 +330,8 @@ drone上でリポジトリの連携を有効化すると、 リポジトリのHo
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-09/" class="list-group-item">2021-09 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/aqua-global-configs/" class="list-group-item">aqua で組織・チームのツール群を管理</a>
       
       <a href="https://techblog.szksh.cloud/aqua-generate/" class="list-group-item">aqua の設定ファイルをインタラクティブに生成する generate コマンド</a>
@@ -355,8 +350,6 @@ drone上でリポジトリの連携を有効化すると、 リポジトリのHo
       
       <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
       
-      <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
-      
     </div>
   </section>
 
@@ -366,9 +359,9 @@ drone上でリポジトリの連携を有効化すると、 リポジトリのHo
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (39)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (40)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (17)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -395,6 +388,8 @@ drone上でリポジトリの連携を有効化すると、 リポジトリのHo
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/10" class="list-group-item">2021/10 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
@@ -412,8 +407,6 @@ drone上でリポジトリの連携を有効化すると、 リポジトリのHo
       <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
     </div>
   </section>

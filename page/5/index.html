@@ -56,6 +56,33 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:29:51JST">Oct 17, 2020</time></li>
+      
+      
+      <li>152 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-dynamic-task/">buildflow の dynamic task</a></h2>
+  </header>
+
+  
+  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書きます。
+この記事では buildflow の dynamic task という機能について説明します。 dynamic task では task.items の値でループを回し、複数の task を動的に生成できます。 勿論 task.items はオプションなので、指定しなければ普通の task として扱われます。 task.items を指定する場合、 map か list か、それらを返す Tengo script でないといけません。
+--- phases: - name: main tasks: - name: &#34;list {{.Item.Key}} {{.Item.Value.name}}&#34; command: command: &#34;echo {{.Item.Key}} {{.Item.Value.name}} {{.Item.Value.age}}&#34; items: - name: foo age: 10 - name: bar age: 20 上記の設定は dynamic task を使わないとこうなります。
+--- phases: - name: main tasks: - name: &#34;list 0 foo&#34; command: command: &#34;echo 0 foo 10&#34; - name: &#34;list 1 bar&#34; command: command: &#34;echo 1 bar 20&#34; パラメータ Item は Key, Value を持ち、 Items が map の場合、それぞれ map の key, value が渡され、 list の場合、 index と value が渡されます。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/buildflow-dynamic-task/" title="buildflow の dynamic task">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T21:05:41JST">Oct 17, 2020</time></li>
       
       
@@ -302,39 +329,6 @@ terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.ym
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-07-31T20:42:54JST">Jul 31, 2020</time></li>
-      
-      
-      <li>444 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/github-comment/">github-comment - GitHub にコメントを投稿する CLI</a></h2>
-  </header>
-
-  
-  <div class="summary">GitHub の issue や pull request, commit にコメントを投稿する CLI ツールを作りました(結構前の話ですが)。
-https://github.com/suzuki-shunsuke/github-comment
-このブログの執筆時点で最新は v1.5.0 です。
-Go 製なので、 GitHub Releases からダウンロードしてくれば簡単にインストールできます。
-想定している主な用途は、 CI/CD の 結果をコメントで通知することで DX を向上することです。 例えば CI がこけたらこけたコマンドとエラーメッセージを通知するなどです。
-github-comment には
- init: 設定ファイルの雛形を生成する post: コメントを投稿する exec: 外部コマンドを実行し、その結果を元にコメントを投稿する  という 3 つのサブコマンドがあります。
-コメントの投稿には GitHub の Access Token が必要です。 コマンドライン引数 -token でも渡せますが、環境変数として設定しましょう。
-$ export GITHUB_TOKEN=xxx # GITHUB_ACCESS_TOKEN も可 post コマンド こんな感じでコメントを投稿できます。
-$ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template test パラメータの数が多いですが、いくつかの Platform では環境変数から自動でパラメータを補完してくれます。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/github-comment/" title="github-comment - GitHub にコメントを投稿する CLI">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -365,6 +359,8 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-09/" class="list-group-item">2021-09 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/aqua-global-configs/" class="list-group-item">aqua で組織・チームのツール群を管理</a>
       
       <a href="https://techblog.szksh.cloud/aqua-generate/" class="list-group-item">aqua の設定ファイルをインタラクティブに生成する generate コマンド</a>
@@ -383,8 +379,6 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
       
       <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
       
-      <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
-      
     </div>
   </section>
 
@@ -394,9 +388,9 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (39)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (40)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (17)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -423,6 +417,8 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/10" class="list-group-item">2021/10 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
@@ -440,8 +436,6 @@ $ github-comment post -org suzuki-shunsuke -repo github-comment -pr 1 -template 
       <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
     </div>
   </section>

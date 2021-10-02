@@ -56,6 +56,36 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-06-01T08:34:10JST">Jun 1, 2019</time></li>
+      
+      
+      <li>195 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/drone-plugin-jsonnet-check/">.drone.jsonnet と .drone.yml を比較する Drone plugin を作った</a></h2>
+  </header>
+
+  
+  <div class="summary">久しぶりに Drone plugin を作ったので紹介します。
+https://www.github.com/suzuki-shunsuke/drone-plugin-jsonnet-check
+.drone.jsonnet から .drone.yml を生成していて、両方を Git で管理している場合に、 .drone.jsonnet と .drone.yml の状態が一致しているかテストするための plugin です。
+Drone v1 では matrix builds が廃止され、multiple pipeline が導入されました。 matrix builds を drone convert コマンドで multiple pipeline に変換すると、pipeline の数が多いほど冗長でメンテナンス性が悪くなります。 そこで公式では jsonnet で記述して .drone.yml に変換する方法が推奨されています。
+https://docs.drone.io/user-guide/pipeline/migrating/
+ To simplify your configuration we recommend using jsonnet.
+ $ drone jsonnet --format --stream jsonnet から yaml への変換は Jsonnet extension を使うと Drone がビルド実行時に自動で変換してくれるので .drone.yml を管理する必要はなくなりますが、 使っていない場合、 .drone.jsonnet と .</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/drone-plugin-jsonnet-check/" title=".drone.jsonnet と .drone.yml を比較する Drone plugin を作った">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-05-23T11:43:18JST">May 23, 2019</time></li>
       
       
@@ -328,40 +358,6 @@ https://godoc.org/github.com/hashicorp/terraform/helper/schema#ImportStatePassth
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-01-20T12:27:26JST">Jan 20, 2019</time></li>
-      
-      
-      <li>154 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/downgrade-github-plan/">GithubをFree Planにダウングレードした</a></h2>
-  </header>
-
-  
-  <div class="summary">GitHub のプラン体系が変わり、無料プランでも無制限でprivate repositoryが作れるようになりました。
-https://github.blog/2019-01-07-new-year-new-github/
-そこで無料プランにダウングレードすることにしました。
- https://help.github.com/articles/downgrading-your-github-billing-plan/ https://blog.jnito.com/entry/2019/01/09/081913  無料プランではwikiはpublic repositoryでしか使えないので、 private repository の wiki を 移行することにしました。
-private なソースコード(サービス)のためのwikiではなく、 個人的なメモが書いてあるだけだったので移行することに特に問題はありませんでした。
-全 private repository の wiki を clone そこでまずはそういった wiki を clone して一つのリポジトリにまとめることにしました。
-https://github.com/suzuki-shunsuke/foo の wiki は https://github.com/suzuki-shunsuke/foo.wiki で clone できます。
-次のようなコマンドを実行し、private repositoryのwikiを全部cloneしました。
-https://developer.github.com/v3/repos/#list-your-repositories
-curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visibility=private&#34; | jq -r &#39;.[].html_url&#39; | xargs -I{} -n 1 git clone {}.wiki wikiが存在しないものに関しては clone に失敗します。 API で wiki のリストが取得できると良かったんですが、 wikiに関するAPIはなさそうです。
-また /user/repos API のレスポンスの has_wiki はwikiが存在しなくても、wikiが無効化されてなければ true なようです。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/downgrade-github-plan/" title="GithubをFree Planにダウングレードした">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -392,6 +388,8 @@ curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visib
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-09/" class="list-group-item">2021-09 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/aqua-global-configs/" class="list-group-item">aqua で組織・チームのツール群を管理</a>
       
       <a href="https://techblog.szksh.cloud/aqua-generate/" class="list-group-item">aqua の設定ファイルをインタラクティブに生成する generate コマンド</a>
@@ -410,8 +408,6 @@ curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visib
       
       <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
       
-      <a href="https://techblog.szksh.cloud/create-empty-lambda-by-terraform/" class="list-group-item">Terraform で空の AWS Lambda Function を作る方法</a>
-      
     </div>
   </section>
 
@@ -421,9 +417,9 @@ curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visib
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (39)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (40)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (16)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (17)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -450,6 +446,8 @@ curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visib
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/archives/2021/10" class="list-group-item">2021/10 (1)</a>
+      
       <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/08" class="list-group-item">2021/08 (3)</a>
@@ -467,8 +465,6 @@ curl &#34;https://api.github.com/user/repos?access_token=$GITHUB_TOKEN&amp;visib
       <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2020/12" class="list-group-item">2020/12 (5)</a>
       
     </div>
   </section>
