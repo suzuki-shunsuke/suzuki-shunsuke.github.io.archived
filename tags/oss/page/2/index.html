@@ -60,6 +60,34 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-12-03T09:07:32JST">Dec 3, 2020</time></li>
+      
+      
+      <li>92 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/">Terraform の Docker Provider の Collaborator になりました</a></h2>
+  </header>
+
+  
+  <div class="summary">先日 kreuzwerker/terraform-provider-docker の Collaborator になりました。 kreuzwerker/terraform-provider-docker は Terraform の Docker Provider であり、 Docker コンテナや image, network などを管理できます。 元々は Hashicorp の Official Provider であった terraform-providers/terraform-provider-docker が kreuzwerker/terraform-provider-docker に移管され、 Community Provider になりました。 元のリポジトリは hashicorp org に移され archive されています。
+Collaborator になった経緯 リポジトリが移管される際に、メンテナを募集していて過去に contribution していた自分にも声をかけていただきました。
+https://github.com/hashicorp/terraform-provider-docker/issues/306
+Contributor になった経緯 自分がこの provider に contribution した経緯は、 Terraform の Hands on を書くのに丁度よい provider を探していたことでした。
+Hands on の題材として Docker コンテナを作ったりできたらいいんじゃないかなと思って Docker provider を試してみました。 しかし当時の docker_container リソースは read をちゃんとサポートしていませんでした。 なので import や update がまともに動きませんでした。 それを見かねて修正して PR を投げたのが最初です。</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/collaborator-of-terraform-docker-provider/" title="Terraform の Docker Provider の Collaborator になりました">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-11-07T14:43:10JST">Nov 7, 2020</time></li>
       
       
@@ -324,31 +352,6 @@ task.input は task.when が評価されたあと、 task の command などが�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-10-17T20:49:28JST">Oct 17, 2020</time></li>
-      
-      
-      <li>41 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/buildflow-split-files/">buildflow で設定ファイルを分割する</a></h2>
-  </header>
-
-  
-  <div class="summary">buildflow というツールを開発しているので buildflow というタグをつけて何回かに分けてブログを書こうかなと思います。
-この記事では buildflow の設定ファイルを分割する方法について説明します。
-buildflow では一部の設定項目について他のファイルのパスを指定して読み込むということが出来ます。 1 つのファイルに全部の設定を書いていると、ファイルが大きくなってメンテナンス性が悪くなったり、 コードオーナーが曖昧になったりするので、そういう場合は分割すると良いでしょう。 コードオーナーが異なる複数のサービスで共通の設定ファイルを用いる場合、ファイルを分割して GitHub の CODEOWNERS を設定するのもよいでしょう。 あまりないかもしれませんが、ファイルを分割すると同じファイルを読み込んで再利用も出来ます。
-また、 Tengo script を独立したファイルに分割すると、 test が可能になります。 Tengo script をテストするためのツールとして tengo-tester というツールも開発しているので、そちらをお使いください。
-以下のようなファイル読み込みの設定があります。
- phase.import task.import: task.input_file task.output_file task.when_file command.command_file command.env[].value_file write_file.template_file  ファイルのパスは、絶対パスか、実行中の build の設定ファイルが存在するディレクトリからの相対パスになります。</div>
-
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -379,6 +382,8 @@ buildflow では一部の設定項目について他のファイルのパスを�
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/what-i-did-2021-10/" class="list-group-item">2021-10 やったこと</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-09/" class="list-group-item">2021-09 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/aqua-global-configs/" class="list-group-item">aqua で組織・チームのツール群を管理</a>
@@ -397,8 +402,6 @@ buildflow では一部の設定項目について他のファイルのパスを�
       
       <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
       
-      <a href="https://techblog.szksh.cloud/opa-table-driven-test/" class="list-group-item">OPA で Table Driven Tests っぽいことをしてみる</a>
-      
     </div>
   </section>
 
@@ -408,9 +411,9 @@ buildflow では一部の設定項目について他のファイルのパスを�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (40)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (41)</a>
       
-      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (17)</a>
+      <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (18)</a>
       
       <a href="https://techblog.szksh.cloud/tags/drone" class="list-group-item">drone (14)</a>
       
@@ -437,7 +440,7 @@ buildflow では一部の設定項目について他のファイルのパスを�
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/archives/2021/10" class="list-group-item">2021/10 (1)</a>
+      <a href="https://techblog.szksh.cloud/archives/2021/10" class="list-group-item">2021/10 (2)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/09" class="list-group-item">2021/09 (3)</a>
       
