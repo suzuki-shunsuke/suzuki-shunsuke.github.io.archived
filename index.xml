@@ -230,7 +230,7 @@ Terraform にそこまで詳しくない developer にも書いてもらうと�
       <pubDate>Sat, 27 Feb 2021 20:51:56 +0900</pubDate>
       
       <guid>https://techblog.szksh.cloud/job-2021-02-01-02-28/</guid>
-      <description> Terraform リポジトリの統合 Terraform を v0.14 へ upgrade デプロイをサービスごとに分割 CircleCI の設定ファイルの分割  https://quipper.hatenablog.com/entry/2020/12/01/080000 と同様のことを別のリポジトリでもやった   Renovate の設定を改善し、安全性と運用の負担軽減、オープンなままの PR の削減 miam の Rate Limit 問題の解消  </description>
+      <description> Terraform リポジトリの統合 Terraform を v0.14 へ upgrade デプロイをサービスごとに分割 CircleCI の設定ファイルの分割  https://blog.studysapuri.jp/entry/2020/12/01/080000 と同様のことを別のリポジトリでもやった   Renovate の設定を改善し、安全性と運用の負担軽減、オープンなままの PR の削減 miam の Rate Limit 問題の解消  </description>
     </item>
     
     <item>
@@ -313,7 +313,7 @@ mercari/tfnotify との違い 本家との違いは Release Note とドキュメ
       
       <guid>https://techblog.szksh.cloud/job-2020-11-01-11-30/</guid>
       <description>2020-11-01 から 2020-11-30 にかけて仕事でやったことを書ける範囲で書きます。
- github-ci-monitor を導入し、 CI の失敗を通知  https://github.com/suzuki-shunsuke/github-ci-monitor   Terraform  Upgrade AWS Provider: Renovate で自動更新する仕組みの改善 Upgrade Terraform from v0.12 to v0.13 tfsec の導入 PR の label によって CI(plan/apply) の実行対象を追加できるようにした CircleCI から CodeBuild への移行 tfmigrate の検証   Monorepo の CI の高速化 (CircleCI)  k8s manifest の test を、変更があったものに対してだけ実行するようにした   kube-linter の導入 Renovate  https://quipper.hatenablog.com/entry/2020/12/10/080000 additionalBranchPrefix によるブランチの分割 depName を使ったリファクタリング   .circleci/config.yml の分割 ブログの執筆  Docker Hub の Rate Limit 問題に対応した話    </description>
+ github-ci-monitor を導入し、 CI の失敗を通知  https://github.com/suzuki-shunsuke/github-ci-monitor   Terraform  Upgrade AWS Provider: Renovate で自動更新する仕組みの改善 Upgrade Terraform from v0.12 to v0.13 tfsec の導入 PR の label によって CI(plan/apply) の実行対象を追加できるようにした CircleCI から CodeBuild への移行 tfmigrate の検証   Monorepo の CI の高速化 (CircleCI)  k8s manifest の test を、変更があったものに対してだけ実行するようにした   kube-linter の導入 Renovate  https://blog.studysapuri.jp/entry/2020/12/10/080000 additionalBranchPrefix によるブランチの分割 depName を使ったリファクタリング   .circleci/config.yml の分割 ブログの執筆  Docker Hub の Rate Limit 問題に対応した話    </description>
     </item>
     
     <item>

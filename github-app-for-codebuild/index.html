@@ -230,7 +230,7 @@ token を発行するには</p>
 <p>が必要で、 build 実行時に installation id を環境変数として渡すことで Lambda だけでなく Codebuild でも installation access token が使えます。</p>
 <p>もちろん GitHub App を使っても rate limit に引っかかることはありますが、 Personal Access Token に比べて回避しやすいかとは思います。</p>
 <h2 id="lambda-から-repository-のコードを参照する">Lambda から Repository のコードを参照する</h2>
-<p><a href="https://quipper.hatenablog.com/entry/2020/12/03/080000">https://quipper.hatenablog.com/entry/2020/12/03/080000</a> では CodeBuild でリポジトリのコードを checkout し、
+<p><a href="https://blog.studysapuri.jp/entry/2020/12/03/080000">https://blog.studysapuri.jp/entry/2020/12/03/080000</a> では CodeBuild でリポジトリのコードを checkout し、
 build の中で動的に buildspec を生成して batch build を実行しています。</p>
 <p>同じようなことを Lambda でやろうとした場合、色々制約があります。
 Lambda ではリポジトリを checkout してくる代わりに、 build を実行するのに必要な情報を静的に生成してリポジトリにコミットしておきそれを GitHub API で取得するというやり方があります。

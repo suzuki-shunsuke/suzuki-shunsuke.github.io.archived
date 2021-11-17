@@ -191,7 +191,7 @@ archive_file data source を使って dummy の zip ファイルを生成する�
 </code></pre></div><pre><code>Error: unable to load &quot;lambda-base/dummy.zip&quot;: open lambda-base/dummy.zip: no such file or directory
 </code></pre><p>しかしローカルで terraform plan, apply を実行してみても再現しませんでした。</p>
 <p>CI では Pull Request で plan file を生成して S3 に plan file を upload し、 PR をマージした default branch では terraform plan を実行せずに S3 から plan file をダウンロードして terraform apply を実行しています。</p>
-<p><a href="https://quipper.hatenablog.com/entry/2021/03/10/080000">Pull Request の terraform plan の実行結果を S3 に保存して安全に apply | Quipper Product Team Blog</a></p>
+<p><a href="https://blog.studysapuri.jp/entry/2021/03/10/080000">Pull Request の terraform plan の実行結果を S3 に保存して安全に apply | Quipper Product Team Blog</a></p>
 <p>plan file を指定して terraform apply を実行した際には zip file が作成されず、上記のエラーが発生することがわかりました。</p>
 <p>関連する issue もありました。 <a href="https://github.com/hashicorp/terraform-provider-archive/issues/39">https://github.com/hashicorp/terraform-provider-archive/issues/39</a></p>
 <p>この issue では幾つかの解決方法が紹介されています。ちなみに 2021-06-24 現在 Hashicorp 側からは特に反応がないように見えます。

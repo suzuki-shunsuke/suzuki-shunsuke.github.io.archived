@@ -140,7 +140,7 @@
   
 
   <div class="article-body"><p>Terraform v0.14 で local で <code>terraform init</code> すると lock ファイルが更新されてしまう問題に対応しました。</p>
-<p>結論を最初に言うと、 <a href="https://quipper.hatenablog.com/entry/2021/03/12/080000">100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法</a>で紹介している方法で Renovate で Terraform Provider を update する際に <code>terraform init -upgrade</code> を実行して lock ファイルを更新してコミット・プッシュしているのですが、
+<p>結論を最初に言うと、 <a href="https://blog.studysapuri.jp/entry/2021/03/12/080000">100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法</a>で紹介している方法で Renovate で Terraform Provider を update する際に <code>terraform init -upgrade</code> を実行して lock ファイルを更新してコミット・プッシュしているのですが、
 その際に <code>terraform providers lock -platform=darwin_amd64</code> を実行するようにしました。</p>
 <p>Terraform v0.14 で lock ファイル <code>.terraform.lock.hcl</code> が導入されました。
 Renovate で Terraform Provider を update する際にも lock ファイルを更新する必要があるので、
@@ -160,7 +160,7 @@ Renovate で Terraform Provider を update する際にも lock ファイルを�
 <li>ローカルで Mac 上で <code>terraform init</code> すると Mac の hash 値が追加され、 lock ファイルに差分が生じる</li>
 </ul>
 <p>なので差分が出てしまった場合はコミットするで良いとは思いますが、そもそも CI で lock ファイルを更新する際に Mac の hash 値も追加してしまえばローカルで Mac 上で <code>terraform init</code> しても差分が出なくなります。ちなみに Windows 上で <code>terraform init</code> する人は自分の周りにはいなさそうなので、 Windows は対応しないことにしました。</p>
-<p><a href="https://quipper.hatenablog.com/entry/2021/03/12/080000">100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法</a>で紹介しているようにすでに lock ファイルを更新してコミット・プッシュする仕組みはあるので、変更としては 1 (正確にはコードコメント入れて4)行追加するだけでした。</p>
+<p><a href="https://blog.studysapuri.jp/entry/2021/03/12/080000">100 以上の Terraform 環境をいい感じに v0.14 に upgrade した方法</a>で紹介しているようにすでに lock ファイルを更新してコミット・プッシュする仕組みはあるので、変更としては 1 (正確にはコードコメント入れて4)行追加するだけでした。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">github-comment exec -- terraform providers lock -platform<span style="color:#f92672">=</span>darwin_amd64
 </code></pre></div></div>
 
