@@ -56,6 +56,35 @@
       <li><article class="li">
   <header>
     <ul class="p-facts">
+      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-09-12T08:05:59JST">Sep 12, 2020</time></li>
+      
+      
+      <li>146 Words</li>
+      
+      
+    </ul>
+    <h2 class="title"><a href="https://techblog.szksh.cloud/post-tfnotify-parse-error/">tfnotify の parse error を通知する</a></h2>
+  </header>
+
+  
+  <div class="summary">tfnotify が terraform の標準出力のパースに失敗してコメントを投稿できないことがあります。
+コメントを投稿できなくてもビルドのログには残るのですが、やはりコメントを投稿できると便利なので、tfnotify がパースエラーでコメントの投稿に失敗したら、 github-comment でコメントを投稿するようにしました。
+なお、この記事を書いている時点のバージョンは tfnotify v0.7.0, github-comment v1.9.0 です。
+例えば tfnotify plan がパースエラーになった場合、 cannot parse plan result というメッセージが標準エラー出力されます。 そこで標準エラー出力に cannot parse plan result が含まれていたら github-comment でコメントするようにします。
+terraform plan | github-comment exec -k plan -- tfnotify plan .github-comment.yml
+# 細かく template を分けているが、別に分けなくてもよい templates: # header は CodeBuild の場合 header: &#39;{{Env &#34;TARGET&#34;}} [Build link]({{Env &#34;CODEBUILD_BUILD_URL&#34;}})&#39; exit_code: &#39;:{{if eq .ExitCode 0}}white_check_mark{{else}}x{{end}}: Exit Code {{.ExitCode}}&#39; join_command: |``` $ {{.JoinCommand}} ``` hidden_combined_output: |&lt;details&gt; &lt;pre&gt;&lt;code&gt;{{.</div>
+
+  
+  <footer>
+    <a href="https://techblog.szksh.cloud/post-tfnotify-parse-error/" title="tfnotify の parse error を通知する">Read More…</a>
+  </footer>
+  
+</article>
+</li>
+      
+      <li><article class="li">
+  <header>
+    <ul class="p-facts">
       <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2020-08-02T13:21:37JST">Aug 2, 2020</time></li>
       
       
@@ -331,37 +360,6 @@ State Locking とは terraform plan などのコマンドは State を変更す�
 </article>
 </li>
       
-      <li><article class="li">
-  <header>
-    <ul class="p-facts">
-      <li><i class="fa fa-calendar" aria-hidden="true"></i><time datetime="2019-11-30T13:54:47JST">Nov 30, 2019</time></li>
-      
-      
-      <li>120 Words</li>
-      
-      
-    </ul>
-    <h2 class="title"><a href="https://techblog.szksh.cloud/dd-time/">dd-time - コマンドの実行時間を Datadog に送るツール</a></h2>
-  </header>
-
-  
-  <div class="summary">コマンドの実行時間を Datadog に送る dd-time というツールを作りました。
-このツールは circle-dd-bench にインスパイアされていますが、 CircleCI 以外でも需要あると思ったり、他にも幾つか改善したい部分があったので自作することにしました。
-circle-dd-bench については circle-dd-bench の作者が書いたブログ https://blog.yuyat.jp/post/circle-dd-bench/ も参考にしてください。
-dd-time は Go 製なので GitHub Releases からバイナリをダウンロードしてインストールすれば使えます。
-使い方はシンプルで実行時間を計測したいコマンドの前に dd-time -- をつけるだけです。 例えば Docker image のビルドの時間を計測したい場合次のような感じになります。
-$ dd-time -t command:docker-build -- docker build . Datadog の API key を環境変数 DATADOG_API_KEY として設定する必要があります。 こうすると Datadog の Post timeseries points API を使い、command_execution_time というメトリックス名(変更可能)でコマンドの実行時間が送られます。
-メトリックスの名前や host, tags はそれぞれ --metric-name (-m), --host, --tag (-t) で指定できます。 --tag は複数回指定可能で、 key:value というフォーマットで指定します。
-CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag として勝手に設定されますが、 CircleCI 以外でも使えます。</div>
-
-  
-  <footer>
-    <a href="https://techblog.szksh.cloud/dd-time/" title="dd-time - コマンドの実行時間を Datadog に送るツール">Read More…</a>
-  </footer>
-  
-</article>
-</li>
-      
     </ul>
 
     
@@ -392,6 +390,8 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
     </div>
     <div class="list-group">
       
+      <a href="https://techblog.szksh.cloud/update-aqua-v0.7.16/" class="list-group-item">aqua の最近の update (v0.7.4 ~ v0.7.16)</a>
+      
       <a href="https://techblog.szksh.cloud/what-i-did-2021-10/" class="list-group-item">2021-10 やったこと</a>
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-09/" class="list-group-item">2021-09 やったこと</a>
@@ -410,8 +410,6 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
       
       <a href="https://techblog.szksh.cloud/what-i-did-2021-07/" class="list-group-item">2021-07 やったこと</a>
       
-      <a href="https://techblog.szksh.cloud/job-2021-06-01-06-30/" class="list-group-item">仕事でやったこと 2021-06-01 ~ 2021-06-30</a>
-      
     </div>
   </section>
 
@@ -421,7 +419,7 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
     </div>
     <div class="list-group">
       
-      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (41)</a>
+      <a href="https://techblog.szksh.cloud/tags/oss" class="list-group-item">oss (42)</a>
       
       <a href="https://techblog.szksh.cloud/tags/job" class="list-group-item">job (18)</a>
       
@@ -433,11 +431,11 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
       
       <a href="https://techblog.szksh.cloud/tags/golang" class="list-group-item">golang (6)</a>
       
+      <a href="https://techblog.szksh.cloud/tags/aqua" class="list-group-item">aqua (5)</a>
+      
       <a href="https://techblog.szksh.cloud/tags/circleci" class="list-group-item">circleci (5)</a>
       
       <a href="https://techblog.szksh.cloud/tags/graylog" class="list-group-item">graylog (5)</a>
-      
-      <a href="https://techblog.szksh.cloud/tags/aqua" class="list-group-item">aqua (4)</a>
       
       <a href="https://techblog.szksh.cloud/tags/ansible" class="list-group-item">ansible (3)</a>
       
@@ -449,6 +447,8 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
       <div class="panel-title">ARCHIVE</div>
     </div>
     <div class="list-group">
+      
+      <a href="https://techblog.szksh.cloud/archives/2021/11" class="list-group-item">2021/11 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/10" class="list-group-item">2021/10 (2)</a>
       
@@ -467,8 +467,6 @@ CircleCI で実行した場合、 CircleCI のビルドイン環境変数が tag
       <a href="https://techblog.szksh.cloud/archives/2021/03" class="list-group-item">2021/03 (1)</a>
       
       <a href="https://techblog.szksh.cloud/archives/2021/02" class="list-group-item">2021/02 (3)</a>
-      
-      <a href="https://techblog.szksh.cloud/archives/2021/01" class="list-group-item">2021/01 (3)</a>
       
     </div>
   </section>
